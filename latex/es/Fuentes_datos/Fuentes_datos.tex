@@ -51,7 +51,7 @@ La radiación emitida por una fuente de radiación es alterada por la presencia de
 
 Estos tres fenómenos se dan en diferente proporción en función de las características del objeto y de la radiación. La parte que  interesa a efectos de la teledetección es aquella que se refleja en el objeto, ya que esta es la que posteriormente puede recogerse y emplearse para la generación de las imágenes.
 
-Como ya se dijo en el capítulo \ref{Introduccion_datos}, las imágenes como capas ráster presentan habitualmente la particularidad de tener varias bandas. En lugar de un único valor para cada celda, existen $n$ valores, uno por cada banda. La imagen recoge la \textbf{intensidad de la radiación} dentro de una amplitud dada del espectro, y a su vez subdivide esta en distintas franjas. Los Niveles Digitales de cada banda corresponden a la intensidad dentro de una de esas franjas del espectro en particular.
+Como ya se dijo en el capítulo acerca de los datos, las imágenes como capas ráster presentan habitualmente la particularidad de tener varias bandas. En lugar de un único valor para cada celda, existen $n$ valores, uno por cada banda. La imagen recoge la \textbf{intensidad de la radiación} dentro de una amplitud dada del espectro, y a su vez subdivide esta en distintas franjas. Los Niveles Digitales de cada banda corresponden a la intensidad dentro de una de esas franjas del espectro en particular.
 
 Puesto que cada objeto refleja la radiación de diferentes longitudes de onda de modo distinto, esto puede considerarse como una propiedad del objeto. Se tiene así el concepto de \textbf{firma espectral}, que es la respuesta característica de un tipo de objeto dentro del espectro electromagnético. 
 
@@ -164,7 +164,7 @@ Dentro de los errores que aparecen como consecuencia de la digitalización en sí,
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.8\textwidth]{Fuentes_datos/Imprecisiones_digitalizacion.pdf}
+\includegraphics[width=\textwidth]{Fuentes_datos/Imprecisiones_digitalizacion.pdf}
 \caption{\small Errores derivados del proceso de digitalización. a) Versión correcta, con nodos coincidentes. b) y c) Versiones con errores que causan una falsa desconexión entre las líneas.}
 \label{Fig:Imprecisiones_digitalizacion} 
 \end{figure}
@@ -197,7 +197,7 @@ Para la aplicación del GPS diferencial se requiere no solo un receptor único (aq
 
 El fundamento de esta técnica es que los errores que afectan al receptor móvil \textbf{también afectan al de referencia}. No obstante, la magnitud del error que afecta al receptor de referencia puede conocerse, ya que se conoce la coordenada exacta de este, y en base a eso puede eliminarse el error que afecta al receptor móvil, asumiendo que ambos errores son de similar índole.
 
-En la actualidad, aplicando estas técnicas de corrección diferencial, un GPS puede obtener precisiones del orden de 2 metros en latitud y longitud, y 3 en altitud\cite{wikipediaGPS}. Sin corrección diferencial, esta precisión es de unos 10--20 metros.
+En la actualidad, aplicando estas técnicas de corrección diferencial, un GPS puede obtener precisiones del orden de 2 metros en latitud y longitud, y 3 en altitud. Sin corrección diferencial, esta precisión es de unos 10--20 metros.
 
 
 La precisión del sistema GPS depende del tipo de receptor GPS (o, en el lenguaje común, GPS a secas) que se emplee, obteniéndose mayores precisiones con receptores más avanzados, siempre dentro de las posibilidades del propio sistema GPS. Existen muchas clases de receptores GPS, siendo dos de ellas las principales en relación con los SIG:

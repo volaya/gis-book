@@ -8,7 +8,6 @@
 \usepackage[latin1]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,dvips,paperwidth=5in,paperheight=8in,tmargin=.65in,bmargin=.9in, left=0.80in, right=0.65in}
-\usepackage{hyperref}
 \usepackage{lettrine}
 \usepackage[raggedright]{titlesec}
 
@@ -67,7 +66,9 @@
 \fancyfoot[LO,RE]{}
 \fancyfoot[CE,CO]{}
 \fancyfoot[LE,RO]{\thepage}
-  
+
+\usepackage{hyperref}
+
 \begin{document}
 
 \renewcommand{\headrulewidth}{0pt}
@@ -111,7 +112,7 @@ Los nombre de productos o corporaciones que aparecen en el texto pueden constitu
 \vspace{5mm}
 \noindent \rule{\textwidth}{1pt}
 
-\cleardoublepage
+\newpage
 
 \makeatletter
 \newlength\drop

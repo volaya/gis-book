@@ -7,8 +7,6 @@
 Visualizar la información geográfica es una parte fundamental del trabajo con un SIG. Aunque algunos datos incluyen su propia manera de representarse ---por  ejemplo, las imágenes de satélite, las ortofotos, o las obtenidas de un servicio de mapas---, en el SIG es en general el usuario quien define la forma de representar el dato. Es decir, el usuario de SIG \textbf{toma el papel del cartógrafo}, y por tanto debe conocer los fundamentos que este utiliza para la creación de mapas.
 
 Además de las herramientas y conceptos cartográficos clásicos, los SIG incorporan elementos de la denominada \textbf{visualización científica}, tales como la \textbf{interactividad} o la \textbf{representacion de datos multidimensionales}. El resultado de este nuevo planteamiento, más rico que el de la cartografía clásica, se conoce como \textbf{geovisualización}. 
-\end{figure}
-
 
 En este capítulo veremos las ideas fundamentales sobre la visualización de datos, desarrollando la aplicación de estas en la cartografía tradicional, así como en el ámbito de la geovisualización y de los SIG.
 
@@ -254,7 +252,7 @@ Para evitar problemas de percepción del tamaño, es importante mostrar en la leye
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=.5\columnwidth]{Visualizacion/EjemplosLeyendaSimbolosProporcionales.pdf}
+\includegraphics[width=.65\columnwidth]{Visualizacion/EjemplosLeyendaSimbolosProporcionales.pdf}
 \caption{\small Dos ejemplos de leyendas para un mapa de símbolos proporcionales.}
 \label{Fig:EjemplosLeyendaSimbolosProporcionales} 
 \end{figure}
@@ -327,7 +325,7 @@ Para transmitir correctamente la información, es importante normalizar la variab
 \label{Visualizacion_SIG}
 
 
-Una vez que conocemos los conceptos básicos sobre representación gráfica y su uso para la elaboración de mapas, es momento de ver cómo estos se aplican en el contexto de un SIG. Dos aspectos son especialmente relevantes a este respecto: el hecho de contar con múltiples capas que han de representarse conjuntamente, y las particularidades de la representación en pantalla, con la interactividad que el SIG ofrece.
+Una vez que conocemos los conceptos básicos sobre representación gráfica y su uso para la elaboración de mapas, es momento de ver cómo estos se aplican en el contexto de un SIG. Dos aspectos son especialmente relevantes a este respecto: el hecho de \textbf{contar con múltiples capas} que han de representarse conjuntamente, y las \textbf{particularidades de la representación en pantalla}, con la interactividad que el SIG ofrece.
 
 
 \subsection{Combinación de capas}
@@ -337,14 +335,14 @@ En general, una capa aislada no constituye la forma óptima de visualizar esta. S
 Aunque sencillo de llevar a cabo en lo que a manejo del SIG respecta, combinar capas es un proceso que también debe realizarse con conocimiento y en el que, si se realiza correctamente, las diferencias pueden ser notables. No solo se trata de dar espacio dentro del mapa a toda la información que esas capas contienen, sino que exista una sinergia entre ellas en la medida de lo posible, para que se complementen mutuamente como partes de un conjunto. 
 
 
-El primer aspecto a considerar es el \textbf{orden de las capas}, que indica cómo se disponen estas las unas sobre las otras y definen el orden de pintado. Si una misma zona está ocupada por elementos de varias capas, solo serán visibles los correspondientes a la capa superior, ya que la representación de los pertenecientes a las demás quedará oculta. 
+La configuración fundamental en este sentido es el \textbf{orden de las capas}, que indica cómo se disponen estas las unas sobre las otras y define el orden de pintado. Si una misma zona está ocupada por elementos de varias capas, solo serán visibles los correspondientes a la capa superior, ya que la representación de los pertenecientes a las demás quedará oculta. 
 
-Sabemos que las capas ráster llenan todo el espacio y contienen valores en todas sus celdas (o píxeles en el caso de imágenes). Por ello, van a tapar lo que se sitúe por debajo de ellas y no resulta buena idea situarlas en lo alto del orden de pintado. En su lugar, se deben considerar como capas base sobre las que situar las restantes, de tal modo que no impidan a estas visualizarse correctamente.
+Sabemos que las capas ráster llenan todo el espacio y contienen valores en todas sus celdas (o píxeles en el caso de imágenes). Por ello, van a tapar lo que se sitúe por debajo de ellas y no resulta buena idea situarlas en lo alto del orden de pintado. En su lugar, se deben considerar como \textbf{capas base sobre las que situar las restantes}, de tal modo que no impidan a estas visualizarse correctamente.
 
 Con un razonamiento similar, podemos establecer la mejor forma de ordenar las capas vectoriales, situando por norma general los polígonos y encima de estos las líneas y los puntos respectivamente. 
 
 
-En ocasiones, un determinado orden viene impuesto por el significado que tienen las capas. Por ejemplo, si nuestro mapa contiene una capa con la red de drenaje y otra con carreteras, lo lógico y habitual es que las carreteras estén por encima de los ríos, ya que lo normal es que pasen por encima de estos y no al contrario. 
+En ocasiones, un determinado orden viene \textbf{impuesto por el significado} que tienen las capas. Por ejemplo, si nuestro mapa contiene una capa con la red de drenaje y otra con carreteras, lo lógico y habitual es que las carreteras estén por encima de los ríos, ya que lo normal es que pasen por encima de estos y no al contrario. 
 
 
 Una funcionalidad de que disponen los SIG para la combinación de capas es el uso de \textbf{transparencias} totales o parciales. Estas se pueden aplicar tanto a capas ráster como vectoriales, de forma que puede verse a través de ellas y así presentar la información de otras capas que se encuentren por debajo. Por ejemplo, la representación mostrada en la figura \ref{Fig:CombinacionCapas} hace uso de esta técnica. El polígono que delimita la cuenca vertiente es semi--transparente, de tal modo que la capa de relieve sombreado que está debajo puede verse, dando la sensación de que sigue ese relieve.
@@ -392,6 +390,6 @@ Una solución a esto es especificar un \textbf{tamaño absoluto} de estos elemento
 \label{Fig:RepresentacionSaturada} 
 \end{figure}
 
-La posibilidad de representar capas a distintas escalas, puede también dar lugar a \textbf{problemas de rendimiento}. Para evitar estos, se recomienda un \textbf{planteamiento multi--escalar} en el que, según la escala, se visualicen unas u otras capas, así como trabajar con capas de menor detalle a escalas pequeñas)
+La posibilidad de representar capas a distintas escalas, puede también dar lugar a \textbf{problemas de rendimiento}. Para evitar estos, se recomienda un \textbf{planteamiento multi--escalar} en el que, según la escala, se visualicen unas u otras capas, así como trabajar con capas de menor detalle a escalas pequeñas
 
 \pagestyle{empty}
