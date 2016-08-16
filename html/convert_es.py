@@ -182,28 +182,14 @@ if __name__ == '__main__':
             traceback.print_exc()
             pass 
 
-    chapterHtmlFiles = ["chapters/%s.html" % n for n in chapterNames]
-    for path in chapterHtmlFiles:
-        with open(path) as f:
-            s = f.read()
-        p = re.compile(r"\\ref\{([^:]*?)\}")
-        refs = p.findall(s)
-        for ref in refs:
-            try:
-                s = s.replace(r"\ref{%s}" % ref, '<a href="%s.html#%s">%s</a>' % (labelrefs[ref], ref, ref))
-            except KeyError:
-                pass
-                #print ref
-        with open(path, "w") as f:
-            f.write(s)
 
     chaptersWithRefs = []
     for chapter in chapters:
-    	p = re.compile(r"\\ref\{([^:]*?)\}")
+    	p = re.compile(r"\\ref\{(.*?)\}")
         refs = p.findall(chapter)
-        for ref in refs:
+        for i, ref in enumerate(refs):
             try:
-                chapter = chapter.replace(r"\ref{%s}" % ref, '<a href="#%s">%s</a>' % (ref, ref))
+                chapter = chapter.replace(r"\ref{%s}" % ref, '<a href="#%s">%i</a>' % (ref, i)).replace("$$", "").replace(r"\label{%s}" % ref, '<a name="%s"></a>' % ref)
             except KeyError:
                 pass
 
