@@ -10,7 +10,7 @@ import json
 import codecs
 
 tableshtml={
-"Tabla:PropiedadesVariablesVisuales": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">Posición</th><th class="head">Tamaño</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">Orientación</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td></tr><tr class="row-odd"><td>Selectiva</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td></tr><tr class="row-even"><td>Ordenada</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
+"Tabla:PropiedadesVariablesVisuales": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">PosiciÃ³n</th><th class="head">TamaÃ±o</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">OrientaciÃ³n</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td></tr><tr class="row-odd"><td>Selectiva</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td></tr><tr class="row-even"><td>Ordenada</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
 }
 
 exps_pre = [(r"\\bigskip", ""),
@@ -52,10 +52,7 @@ exps_post = [(r"\\index\{.*?\}", ""),
         (r"\\section.*?\{(.*?)\}", r'<h2 id="\1">\1</h2>'),
         (r"\\subsection.*?\{(.*?)\}", r'<h3 id="\1">\1</h3>'),
         (r"\\subsubsection.*?\{(.*?)\}", r'<h4 id="\1">\1</h4>'),
-        (r"\\begin\{figure\}.*?\n", "<figure></center>"),
-        (r"\\end\{figure\}", "</figure></center>"),
-        (r"\\caption\{(.*)\}", r"<figcaption>\1</figcaption>"),
-        (r"(\\label\{Fig:.*?\})", r"$$\1$$"),
+        #(r"(\\label\{Fig:.*?\})", r"$$\1$$"),
         (r"---", "&#8212;"),
         (">>", "&raquo;"),
         ("<<", "&laquo;"),
@@ -74,9 +71,7 @@ def template():
         s = f.read()
     return s
 
-labelrefs = {}
-
-def convertFile(path):     
+def convertFile(path, chapterNum):     
     name = os.path.splitext(os.path.basename(path))[0]
     with open(path) as f:
         s = f.read()
@@ -87,10 +82,12 @@ def convertFile(path):
 
     p = re.compile(r"\\chapter.*?\{(.*?)\}")
     title = p.findall(s)[0]
-    p = re.compile(r"(\\includegraphics.*?\{.*?\})")
+
+    p = re.compile(r"\\begin\{figure\}[\s\S]*?\\end\{figure\}?")
     imgs = p.findall(s)
-    for img in imgs:
-        f = img[img.find("{")+1:img.rfind("}")]
+    for i, img in enumerate(imgs):
+        print img
+        f = re.search(r"\\includegraphics.*?\{(.*?)\}", img).groups()[0]
         path, ext = os.path.splitext(f)
         if ext == ".pdf":
             ext = ".png"
@@ -101,13 +98,12 @@ def convertFile(path):
             size = float(size) * 100
         except:
             size = 100
-        s = s.replace(img, r"<img src='../img/%s%s' width='%s'>" % (path, ext, str(size) + "%"))
-    p = re.compile(r"\\label\{([^:]*?)\}")
-    labels = p.findall(s)
-    global labelrefs
-    for label in labels:
-        labelrefs[label] = name
-    s = p.sub(r'<a name="\1"></a>', s) 
+        caption = re.search(r"\\caption\{(.*?)\}", img).groups()[0]
+        label = re.search(r"\\label\{(.*?)\}", img).groups()[0]
+        figNum = "%i.%i" % (chapterNum, i + 1)
+        s = s.replace(img, (r"<a name='%s'></a><figure><center><img src='../img/%s%s' width='%s%%'>"
+            "<figcaption>Figura %s: %s</figcaption></figure></center>" % (label, path, ext, str(size), figNum, caption)))
+        s = s.replace("\\ref{%s}" % label, '<a href="#%s">%s</a>' % (label, figNum))
 
     p = re.compile(r"(\\begin\{table[\S\s]*?\\end\{table.*?\})")
     tables = p.findall(s)
@@ -120,7 +116,6 @@ def convertFile(path):
             replace = tableshtml[tablelabel] + "<figcaption>%s</figcaption>$$\label{%s}$$" % (caption, tablelabel)
             s = s.replace(table, replace)            
         except Exception, e:
-            print e
             pass
 
     for exp, replace in exps_post:
@@ -156,7 +151,7 @@ def convertImages():
 
 ebookTemplate = '''<html> 
 <head> 
-<title>Introducción a los SIG</title> 
+<title>IntroducciÃ³n a los SIG</title> 
 </head> 
 <body> 
 %s
@@ -174,26 +169,14 @@ if __name__ == '__main__':
     chapterFiles = ["../latex/es/%s/%s.tex" % (n,n) for n in chapterNames]
 
     chapters = []
-    for f in chapterFiles:
+    for i, f in enumerate(chapterFiles):
         try:
-            chapter = convertFile(f)
+            chapter = convertFile(f, i + 1)
             chapters.append(chapter)
         except Exception, e:
             traceback.print_exc()
             pass 
 
-
-    chaptersWithRefs = []
-    for chapter in chapters:
-    	p = re.compile(r"\\ref\{(.*?)\}")
-        refs = p.findall(chapter)
-        for i, ref in enumerate(refs):
-            try:
-                chapter = chapter.replace(r"\ref{%s}" % ref, '<a href="#%s">%i</a>' % (ref, i)).replace("$$", "").replace(r"\label{%s}" % ref, '<a name="%s"></a>' % ref)
-            except KeyError:
-                pass
-
-        chaptersWithRefs.append(chapter)
-    fullBook = "<mbp:pagebreak/>".join(chaptersWithRefs)
+    fullBook = "<mbp:pagebreak/>".join(chapters)
     with open("chapters/ebook.html", 'w')  as f:
         f.write(ebookTemplate % fullBook)
