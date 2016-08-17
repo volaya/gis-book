@@ -1,5 +1,6 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: cp1252 -*-
+
 import re
 import os.path
 import sys
@@ -8,9 +9,10 @@ import glob
 import traceback
 import json
 import codecs
+import time
 
 tableshtml={
-"Tabla:PropiedadesVariablesVisuales": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">PosiciÃ³n</th><th class="head">TamaÃ±o</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">OrientaciÃ³n</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td></tr><tr class="row-odd"><td>Selectiva</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td></tr><tr class="row-even"><td>Ordenada</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td><span class="math">\(\diamondsuit\)</span></td><td><span class="math">\(\diamondsuit\)</span></td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
+"Tabla:PropiedadesVariablesVisuales": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">Posición</th><th class="head">Tamaño</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">Orientación</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-odd"><td>Selectiva</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-even"><td>Ordenada</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
 }
 
 exps_pre = [(r"\\bigskip", ""),
@@ -25,6 +27,7 @@ exps_pre = [(r"\\bigskip", ""),
         (r"\\end\{center\}", ""),
         (r"\\small", ""),
         (r"\\emph\{(.*?)\}", r"<i>\1</i>"),
+        (r"\$(.*?)\$", r"<i>\1</i>"),
         (r"\\iftrue[\s\S]*?\\fi", ""),
         (r"\\iffalse([\s\S]*?)\\fi", r"\1")]
         
@@ -52,7 +55,6 @@ exps_post = [(r"\\index\{.*?\}", ""),
         (r"\\section.*?\{(.*?)\}", r'<h2 id="\1">\1</h2>'),
         (r"\\subsection.*?\{(.*?)\}", r'<h3 id="\1">\1</h3>'),
         (r"\\subsubsection.*?\{(.*?)\}", r'<h4 id="\1">\1</h4>'),
-        #(r"(\\label\{Fig:.*?\})", r"$$\1$$"),
         (r"---", "&#8212;"),
         (">>", "&raquo;"),
         ("<<", "&laquo;"),
@@ -66,7 +68,7 @@ exps_post = [(r"\\index\{.*?\}", ""),
 
 
 def template():
-    path = "template_es.html"
+    path = "html/template_es.html"
     with open(path) as f:
         s = f.read()
     return s
@@ -83,7 +85,6 @@ def convertFile(path, chapterNum):
     p = re.compile(r"\\begin\{figure\}[\s\S]*?\\end\{figure\}?")
     imgs = p.findall(s)
     for i, img in enumerate(imgs):
-        print img
         f = re.search(r"\\includegraphics.*?\{(.*?)\}", img).groups()[0]
         path, ext = os.path.splitext(f)
         if ext == ".pdf":
@@ -120,7 +121,7 @@ def convertFile(path, chapterNum):
         s = p.sub(replace, s)            
 
     html = template().replace("[BODY]", s)
-    with open(os.path.join("chapters", name + ".html"), "w") as f:
+    with open(os.path.join("html", name + ".html"), "w") as f:
         f.write(html.decode('iso-8859-1').encode('utf8'))
 
     return s
@@ -148,22 +149,25 @@ def convertImages():
 
 ebookTemplate = '''<html> 
 <head> 
-<title>IntroducciÃ³n a los SIG</title> 
+<title>Introducción a los SIG</title> 
 </head> 
 <body> 
+<a name="start"> 
+<h2>Introduccion a los SIG</h2></a> </p> 
+<p>Copyright © Victor Olaya. 2016</p> 
+<p>Versión del %s</p> 
+<mbp:pagebreak/>
 %s
 </body>
 </html>'''
 
 if __name__ == '__main__':
-    try:
-    	os.mkdir("chapters")
-    except:
-    	pass
 
+    chapterFiles = ["../latex/es/prologo.tex"]
     chapterNames = ["Introduccion", "Historia", "Fundamentos_cartograficos", "Datos", 
     				"Fuentes_datos", "Software", "Bases_datos", "Analisis", "Visualizacion"]
-    chapterFiles = ["../latex/es/%s/%s.tex" % (n,n) for n in chapterNames]
+    chapterFiles.extend(["../latex/es/%s/%s.tex" % (n,n) for n in chapterNames])
+
 
     chapters = []
     for i, f in enumerate(chapterFiles):
@@ -174,6 +178,9 @@ if __name__ == '__main__':
             traceback.print_exc()
             pass 
 
+    import locale
+    locale.setlocale(locale.LC_TIME, "esn")
     fullBook = "<mbp:pagebreak/>".join(chapters)
-    with open("chapters/ebook.html", 'w')  as f:
-        f.write(ebookTemplate % fullBook)
+    with open("html/ebook.html", 'w')  as f:
+        text = ebookTemplate % (time.strftime("%x") , fullBook)
+        f.write(text)
