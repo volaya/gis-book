@@ -1,6 +1,5 @@
 
 \chapter{Fundamentos cartográficos y geodésicos}
-\label{Fundamentos_cartograficos}
 
 
 \section{Conceptos geodésicos básicos}
@@ -92,7 +91,6 @@ Las operaciones de transformación y conversión aparecen en los SIG como funciona
 Para facilitar el uso de sistemas de referencia, existen proyectos de codificación de estos, de forma que cada sistema existente puede identificarse de forma sencilla mediante un código. El más extendido de estos es el sistema de codificación \textbf{EPSG}.
 
 \section{Conceptos cartográficos básicos}
-\label{Escala}
 
 De entre los conceptos fundamentales de la cartografía que todo usuario de SIG ha de conocer, destaca el de \textbf{escala}. La escala  es la \textbf{relación de tamaño} existente entre el mapa que se obtiene al desarrollar nuestra superficie de proyección (de tamaño acorde con el objeto proyectado, esto es la Tierra) y el que finalmente manejamos, de tamaño más reducido. Conociendo esta relación podemos conocer las verdaderas magnitudes de los elementos que vemos en el mapa, ya que podemos convertir las medidas hechas sobre el mapa en medidas reales. Es importante recordar que esas medidas no son tan <<reales>>, puesto que la propia proyección las ha distorsionado ---lo cual no debe olvidarse---, pero sí que son medidas en la escala original del objeto cartografiado.
 
@@ -106,7 +104,6 @@ Es importante ser consciente de la limitación que la escala considerada a la hor
 
 Un tipo de datos particulares con los que se trabaja en un SIG, los datos \emph{ráster}, tienen a su vez un parámetro de resolución (el \textbf{tamaño de celda}) ligado a la escala.
 
-\label{GeneralizacionCartografica}
 
 Relacionado con el concepto de escala encontramos la denominada \textbf{generalización cartográfica}. Generalizar implicar expresar alguna idea o información de forma más resumida, de tal modo que esta sea comprensible y pueda aprovecharse de la mejor manera posible. La generalización es necesaria en un SIG para representar datos a una escala menor que su escala operacional, ya que a las limitaciones de la visión humana han de sumarse las limitaciones de resolución que los dispositivos presentan. Por ejemplo, no tiene sentido representar el callejero de una ciudad a una escala pequeña como la que se utilizaría para representar un mapa mundial, ya que cada pequeño punto de la pantalla contendría un gran número de calles. Además de obtener un resultado inservible, se consumirían recursos en efectuar todos los cálculos necesarios para producir esa representación.
 
@@ -122,11 +119,6 @@ En ocasiones, el proceso de generalización es necesario por razones distintas a 
 La generalización, por tanto, es un proceso que tiene como objetivo la producción de una imagen cartográfica \textbf{legible y expresiva}, reduciendo el contenido del mapa a aquello que sea posible y necesario representar. Para ello, se enfatiza lo que resulta de importancia y se suprime lo que carece de ella. 
 
 Existen diversas operaciones que se emplean en el proceso de generalización. Algunas de las más relevantes son las \textbf{simplificación} (representar un elemento menos complejo), la \textbf{agregación} (representar varios elementos como uno solo ---Figura \ref{Fig:Generalizacion_agregacion}---), la \textbf{exageración} (representar elementos con mayor tamaño del que les corresponde) y el \textbf{desplazamiento} (representar en una posición modificada, para garantizar la legibilidad). 
-
-
-
-
-\label{Generalizacion_en_SIG}
 
 En un SIG, la generalización puede incorporarse como parte de los propios mecanismos de representación, aplicándose las transformación correspondientes en tiempo real. A partir de un juego de datos, se elaboran las representaciones según la escala a la que se estén representando. Esta solución tiene el inconveniente de producir resultados que no resultan óptimos, por ser la generalización un proceso complejo y difícil de automatizar, y, sobre todo, el de consumir gran cantidad de recursos. La generalización en este caso tiene un objetivo cartográfico, pero en lugar de  hacer más fluido el trabajo con datos de gran volumen, lo hace más lento.
 

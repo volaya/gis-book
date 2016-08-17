@@ -24,6 +24,7 @@ exps_pre = [(r"\\bigskip", ""),
         (r"\\begin\{center\}", ""),
         (r"\\end\{center\}", ""),
         (r"\\small", ""),
+        (r"\\emph\{(.*?)\}", r"<i>\1</i>"),
         (r"\\iftrue[\s\S]*?\\fi", ""),
         (r"\\iffalse([\s\S]*?)\\fi", r"\1")]
         
@@ -31,7 +32,6 @@ exps_post = [(r"\\index\{.*?\}", ""),
         (r"\\pagestyle\{.*?\}",r""),
         (r"\\%", "%"),
         (r"\\_", "_"),
-        (r"\\emph\{(.*?)\}", r"<i>\1</i>"),
         (r"\\underline\{(.*?)\}", r"<u>\1</u>"),
         (r"\\begin\{intro\}([\s\S]*?)\\end\{intro\}", 
             r'<hr/><p><i>\1</i></p><hr/>'), 
@@ -48,7 +48,7 @@ exps_post = [(r"\\index\{.*?\}", ""),
         (r"\\subitem", ""),
         (r"\\texttt\{(.*?)\}", r"<tt>\1</tt>"), 
         (r"\\textbf\{(.*?)\}", r"<b>\1</b>"),        
-        (r"\\chapter.*?\{(.*?)\}", ""),
+        (r"\\chapter.*?\{(.*?)\}", r'<h1 id="\1">\1</h1>'),
         (r"\\section.*?\{(.*?)\}", r'<h2 id="\1">\1</h2>'),
         (r"\\subsection.*?\{(.*?)\}", r'<h3 id="\1">\1</h3>'),
         (r"\\subsubsection.*?\{(.*?)\}", r'<h4 id="\1">\1</h4>'),
@@ -79,9 +79,6 @@ def convertFile(path, chapterNum):
     for exp, replace in exps_pre:
         p = re.compile(exp)
         s = p.sub(replace, s) 
-
-    p = re.compile(r"\\chapter.*?\{(.*?)\}")
-    title = p.findall(s)[0]
 
     p = re.compile(r"\\begin\{figure\}[\s\S]*?\\end\{figure\}?")
     imgs = p.findall(s)
@@ -122,7 +119,7 @@ def convertFile(path, chapterNum):
         p = re.compile(exp)
         s = p.sub(replace, s)            
 
-    html = template().replace("[BODY]", s).replace("[TITLE]", title)
+    html = template().replace("[BODY]", s)
     with open(os.path.join("chapters", name + ".html"), "w") as f:
         f.write(html.decode('iso-8859-1').encode('utf8'))
 

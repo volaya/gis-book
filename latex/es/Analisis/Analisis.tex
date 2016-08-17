@@ -1,6 +1,6 @@
 
 \chapter{Análisis espacial. Fundamentos}
-\label{Analisis}
+
 
 
 \pagestyle{fancy}
@@ -71,13 +71,12 @@ El establecimiento de modelos de cambio y variación representa una de las herram
 \end{itemize}
 
 \section{Particularidades de los datos espaciales para su análisis}
-\label{Analisis_espacial}
 
 
 Las características propias de los datos espaciales dotan a estos de una \textbf{gran potencialidad} de análisis, al tiempo que \textbf{condicionan o limitan} otras operaciones. Algunas de estas características representan problemas que han de tenerse presentes en el análisis; otros son simplemente conceptos básicos que deben conocerse pero no han de implicar necesariamente una dificultad asociada.
 
 \subsection{Escala}
-\label{Escala_analisis}
+
 
 A la hora de estudiar la información geográfica, podemos hacerlo a \textbf{distintos niveles} y, dependiendo del nivel elegido, los resultados serán de una u otra naturaleza. Debido a esto, además de considerar la escala cartográfica para la representación y gestión de datos en un SIG, es necesario considerar la \textbf{escala de análisis}.
 
@@ -110,7 +109,6 @@ El concepto de \textbf{fractal} tiene una implicación directa en este hecho.
 El propio \textbf{formato de almacenamiento} condiciona el efecto de la escala, ya que puede imponer límites. Tal es el caso cuando se trabaja con capas raster, en las que el \textbf{tamaño de celda} delimita la precisión que puede obtenerse en el análisis.
 
 \subsection{El Problema de la Unidad de Área Modificable}
-\label{MAUP}
 
 Muchas de las variables con las que trabajamos dentro de un SIG \textbf{no pueden medirse de forma puntual}, y por ello han de \textbf{estudiarse para un área dada}. Ejemplos de este tipo de variables son el porcentaje de población en un rango de edad determinado o la densidad media de población.
 
@@ -122,7 +120,6 @@ Este problema, por tener relación con la elección de la unidad de agregación de 
 Un problema particular relacionado con el PUAM es la denominada \textbf{falacia ecológica}, que consiste en asumir que los valores calculados para una unidad de área pueden aplicarse a los individuos de la población existente en dicha área. Sólo en el caso de que exista una completa homogeneidad para la variable analizada, lo cual raramente sucede, la anterior suposición sería cierta.
 
 \subsection{Autocorrelación espacial} 
-\label{Autocorrelacion_espacial}
 
 Se denomina \textbf{autocorrelación espacial} a la existencia de una \textbf{correlación de la variable consigo misma}, de tal modo que los valores de esta variable en un punto guardan relación directa con los de esa misma variable en otros puntos cercanos. Por ejemplo, en el caso de medirse la temperatura, los puntos cerca de un foco de calor tendrán una temperatura mayor que aquellos cerca de focos fríos. Si estudiamos la distribución de una enfermedad infecciosa, es más probable que los casos se encuentren agrupados, de forma que la presencia de un alto número de casos implique también una alta incidencia en poblaciones cercanas.
 
@@ -160,7 +157,7 @@ Los dos principales conceptos estadísticos que definen la estructura espacial de
 
 
 \subsection{Efectos de borde}
-\label{EfectoBorde}
+
 
 Las zonas que estudiamos dentro de todo análisis espacial \textbf{tienen unos límites establecidos}. Estos límites vienen definidos de forma artificial ---el límite de la fotografía aérea de la que disponemos, por ejemplo--- o bien de forma natural ---si estudiamos un bosque junto a un pantano, el bosque encuentra su límite al borde de este último---. La presencia de estos bordes \textbf{distorsiona el resultado de los análisis}, en especial para aquellos parámetros no puntuales que requieren la definición de un area de estudio (densidades, etc., como ya vimos para el caso del PUAM)
 
