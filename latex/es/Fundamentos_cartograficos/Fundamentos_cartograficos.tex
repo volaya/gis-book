@@ -68,13 +68,13 @@ Puede apreciarse en la figura que se producen distorsiones al realizar la proyec
 
 Según las propiedades métricas que se conserven, las proyecciones pueden ser \textbf{equiárea} (mantienen una escala constante), \textbf{conformes} (mantienen los ángulos y la forma de los objetos) o \textbf{equidistantes} (mantienen las distancias).
 
-La elección de una u otra proyección es función de las necesidades concretas de cada caso de uso. 
+La elección de una u otra proyección es función de las \textbf{necesidades concretas} de cada caso de uso. 
 
 En la actualidad, una de las proyecciones más extendidas en todos los ámbitos es la \textbf{proyección universal transversa de Mercator}, la cual da lugar al \textbf{sistema de coordenadas UTM}. Este sistema no es simplemente una proyección, sino un sistema completo para cartografiar la practica totalidad de la Tierra. Para ello, esta se divide en una serie de zonas rectangulares mediante una cuadricula y se aplica una proyección y unos parámetros geodésicos concretos a cada una de dichas zonas. En su forma actual, emplea un único elipsoide (WGS--84).
 
-Con el sistema UTM, las coordenadas de un punto no se expresan como coordenadas terrestres absolutas, sino mediante la zona correspondiente y las coordenadas relativas a la zona UTM en la que nos encontremos.
+Con el sistema UTM, las coordenadas de un punto no se expresan como coordenadas terrestres absolutas, sino mediante \textbf{la zona correspondiente y las coordenadas relativas} a la zona UTM en la que nos encontremos.
 
-La cuadricula UTM tiene un total de 60 husos numerados entre 1 y 60, cada uno de los cuales abarca una amplitud de 6\degree de longitud. El huso 1 se sitúa entre los 180\degree y 174\degree O, y la numeración avanza hacia el Este. 
+La cuadricula UTM tiene un total de 60 \textbf{husos} numerados entre 1 y 60, cada uno de los cuales abarca una amplitud de 6\degree de longitud. El huso 1 se sitúa entre los 180\degree y 174\degree O, y la numeración avanza hacia el Este. 
 
 En latitud, cada huso se divide en 20 zonas, que van desde los 80\degree S hasta los 84\degree N. Estas se codifican con letras desde la C a la X, no utilizándose las letras I y O por su similitud con los dígitos 1 y 0. Cada zona abarca 8 grados de longitud, excepto la X que se prolonga unos 4 grados adicionales. 
 
@@ -86,7 +86,7 @@ Para evitar la aparición de números negativos, se considera que el origen no tie
 
 Una situación muy habitual en el trabajo con un SIG es disponer de cartografía en \textbf{varios sistemas de coordenadas}, o bien en un mismo sistema pero con parámetros diferentes (por ejemplo, diferente datum). Para poder emplear toda esa cartografía de forma conjunta, resulta necesario trabajar en un sistema único y bien definido, lo cual hace necesario convertir al menos una parte de ella. Cuando el datum es distinto en los sistemas de origen y destino, la \textbf{conversión de coordenadas} se conoce como \textbf{transformación de coordenadas}.
 
-Las operaciones de transformación y conversión aparecen en los SIG como funcionalidades que permiten modificar los datos geográficos, reemplazando sus coordenadas por coordenadas en otro sistema de coordenadas. Igualmente, aparecen como funcionalidades de representación, permitiendo la conversión <<\textbf{al vuelo}>>, es decir, en tiempo real. En este caso, un dato en un sistema de coordenadas se puede representar en cualquier otro sin necesidad de una conversión previa, con lo que puede usarse conjuntamente con datos en un sistema de coordenadas distinto.
+Las operaciones de transformación y conversión aparecen en los SIG como funcionalidades que permiten modificar los datos geográficos, reemplazando sus coordenadas por coordenadas en otro sistema de coordenadas. Igualmente, aparecen como funcionalidades de representación, permitiendo la conversión \textbf{al vuelo}, es decir, en tiempo real. En este caso, un dato en un sistema de coordenadas se puede representar en cualquier otro sin necesidad de una conversión previa, con lo que puede usarse conjuntamente con datos en un sistema de coordenadas distinto.
 
 Para facilitar el uso de sistemas de referencia, existen proyectos de codificación de estos, de forma que cada sistema existente puede identificarse de forma sencilla mediante un código. El más extendido de estos es el sistema de codificación \textbf{EPSG}.
 
@@ -104,27 +104,24 @@ Es importante ser consciente de la limitación que la escala considerada a la hor
 
 Un tipo de datos particulares con los que se trabaja en un SIG, los datos \emph{ráster}, tienen a su vez un parámetro de resolución (el \textbf{tamaño de celda}) ligado a la escala.
 
-
 Relacionado con el concepto de escala encontramos la denominada \textbf{generalización cartográfica}. Generalizar implicar expresar alguna idea o información de forma más resumida, de tal modo que esta sea comprensible y pueda aprovecharse de la mejor manera posible. La generalización es necesaria en un SIG para representar datos a una escala menor que su escala operacional, ya que a las limitaciones de la visión humana han de sumarse las limitaciones de resolución que los dispositivos presentan. Por ejemplo, no tiene sentido representar el callejero de una ciudad a una escala pequeña como la que se utilizaría para representar un mapa mundial, ya que cada pequeño punto de la pantalla contendría un gran número de calles. Además de obtener un resultado inservible, se consumirían recursos en efectuar todos los cálculos necesarios para producir esa representación.
 
-En ocasiones, el proceso de generalización es necesario por razones distintas a las anteriores, y requiere operaciones también distintas. Por ejemplo, podemos crear un mapa del mundo que contenga vías de comunicación, pero no todas, sino solo las principales autopistas de cada país. En este caso, no vamos a encontrar problemas con distintas carreteras que se solapan en la representación, ni tampoco un volumen excesivo de datos, pero debemos igualmente <<adaptar>> la representación a la escala, es decir, efectuar algún tipo de generalización. En este caso, se representarían las carreteras con un ancho mayor del real, ya que, de otro modo, no serían apenas visibles.
-
-\begin{figure}
+\begin{figure}[!hbt]
 \centering
 \includegraphics[width=.75\columnwidth]{Fundamentos_cartograficos/Generalizacion_agregacion.png}
 \caption{\small Un ejemplo de generalización por agregación. Dos carreteras prácticamente paralelas y unidas se representan como dos elementos en el mapa, pero en el localizador de la parte superior izquierda, a escala de menor detalle, se generalizan como una única (Tomado de Yahoo Maps).}
 \label{Fig:Generalizacion_agregacion} 
 \end{figure}
 
-La generalización, por tanto, es un proceso que tiene como objetivo la producción de una imagen cartográfica \textbf{legible y expresiva}, reduciendo el contenido del mapa a aquello que sea posible y necesario representar. Para ello, se enfatiza lo que resulta de importancia y se suprime lo que carece de ella. 
+
+En ocasiones, el proceso de generalización es necesario por razones distintas a las anteriores, y requiere operaciones también distintas. Por ejemplo, podemos crear un mapa del mundo que contenga vías de comunicación, pero no todas, sino solo las principales autopistas de cada país. En este caso, no vamos a encontrar problemas con distintas carreteras que se solapan en la representación, ni tampoco un volumen excesivo de datos, pero debemos igualmente <<adaptar>> la representación a la escala, es decir, efectuar algún tipo de generalización. En este caso, se representarían las carreteras con un ancho mayor del real, ya que, de otro modo, no serían apenas visibles si las representamos con su ancho correspondiente.
+
+La generalización, por tanto, es un proceso que tiene como objetivo la producción de una \textbf{imagen cartográfica legible y expresiva}, reduciendo el contenido del mapa a aquello que sea posible y necesario representar. Para ello, se enfatiza lo que resulta de importancia y se suprime lo que carece de ella. 
 
 Existen diversas operaciones que se emplean en el proceso de generalización. Algunas de las más relevantes son las \textbf{simplificación} (representar un elemento menos complejo), la \textbf{agregación} (representar varios elementos como uno solo ---Figura \ref{Fig:Generalizacion_agregacion}---), la \textbf{exageración} (representar elementos con mayor tamaño del que les corresponde) y el \textbf{desplazamiento} (representar en una posición modificada, para garantizar la legibilidad). 
 
-En un SIG, la generalización puede incorporarse como parte de los propios mecanismos de representación, aplicándose las transformación correspondientes en tiempo real. A partir de un juego de datos, se elaboran las representaciones según la escala a la que se estén representando. Esta solución tiene el inconveniente de producir resultados que no resultan óptimos, por ser la generalización un proceso complejo y difícil de automatizar, y, sobre todo, el de consumir gran cantidad de recursos. La generalización en este caso tiene un objetivo cartográfico, pero en lugar de  hacer más fluido el trabajo con datos de gran volumen, lo hace más lento.
 
-Una solución alternativa y más adecuada de incorporar la generalización dentro de un SIG suele basarse en un enfoque multi--escalar (Figura \ref{Fig:SIG_multi_escala}), en el cual se maneja información de una misma zona de estudio a diferentes escalas, y se usa en cada momento aquella que resulte más conveniente. Si se trabajara con cartografía en papel, sería equivalente a tener varios mapas de una zona a diferentes escalas.
-
-\begin{figure}
+\begin{figure}[!hbt]
 \centering
 \includegraphics[width=\textwidth]{Fundamentos_cartograficos/SIG_multi_escala.png}
 \caption{\small En un SIG es habitual manejar información a diferentes escalas. En función de la escala de representación, la información visualizada será una u otra.}
@@ -132,16 +129,13 @@ Una solución alternativa y más adecuada de incorporar la generalización dentro d
 \end{figure}
 
 
+En un SIG, la generalización puede incorporarse como parte de los propios mecanismos de representación, aplicándose las transformación correspondientes en tiempo real. A partir de un juego de datos, se elaboran las representaciones según la escala a la que se estén representando. Esta solución tiene el inconveniente de producir resultados que no resultan óptimos, por ser la generalización un proceso complejo y difícil de automatizar, y, sobre todo, el de consumir gran cantidad de recursos. La generalización en este caso tiene un objetivo cartográfico, pero en lugar de  hacer más fluido el trabajo con datos de gran volumen, lo hace más lento.
+
+Una solución alternativa y más adecuada de incorporar la generalización dentro de un SIG suele basarse en un enfoque multi--escalar (Figura \ref{Fig:SIG_multi_escala}), en el cual se maneja información de una misma zona de estudio a diferentes escalas, y se usa en cada momento aquella que resulte más conveniente. Si se trabajara con cartografía en papel, sería equivalente a tener varios mapas de una zona a diferentes escalas.
+
+
 El concepto de \emph{capa},\index{Capa} que veremos más adelante y que es vital para la idea actual de un SIG, permite este manejo simultáneo de información a distintas escalas.
 
-En el caso de imágenes, este enfoque multi--escalar implica la creación de las denominadas \textbf{pirámides} (Figura \ref{Fig:Piramides}).
-
-
-\begin{figure}
-\centering
-\includegraphics[width=.55\textwidth]{Fundamentos_cartograficos/Piramide.png}
-\caption{\small Pirámides de representación con imágenes preparadas a distintas escalas (Fuente: OSGeo).}
-\label{Fig:Piramides} 
-\end{figure}
+En el caso de imágenes, este enfoque multi--escalar implica la creación de las denominadas \textbf{pirámides}. En lugar de una imagen con una determinada resolución, se tiene una colección de estas con distintas resoluciones, y en función de la escala necesaria para la representación, se emplea la más adecuada.
 
 \pagestyle{empty}

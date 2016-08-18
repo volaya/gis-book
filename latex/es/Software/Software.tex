@@ -88,7 +88,7 @@ Junto a esto, las herramientas de escritorio incluyen funcionalidades para \text
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=.9\textwidth]{Software/Serie_mapas.png}
+\includegraphics[width=\textwidth]{Software/Serie_mapas.png}
 \caption{\small La automatización de las tareas de creación cartográfica permite simplificar la producción de grandes volúmenes de cartografía, como por ejemplo al dividir un área geográfica en una serie dada de mapas.}
 \label{Fig:Serie_mapas} 
 \end{figure}
@@ -225,7 +225,9 @@ Inicialmente, la aplicación encuadra una región que cubre 20 elementos o teselas
 Si, por el contrario, aplicamos conjuntamente las técnicas anteriores de \emph{tiling} y \emph{cacheo}, al variar el encuadre no es necesario obtener del servidor una imagen que cubra todo el área a representar, sino tan solo los 8 elementos correspondientes a la zona no cubierta por la imagen inicial, ya que los restantes ya habrán sido obtenidos con anterioridad y se encontrarán almacenados (\emph{cacheados}) en nuestro ordenador. Es decir, el cliente crea la imagen a representar con 8 subimágenes pedidas al servidor y otras 12 ya descargadas previamente, reduciendo sensiblemente el volumen de datos pedidos al servidor.
 
 
-Una técnica de reciente aparición es la denominada \textbf{tiling vectorial}. Aplicando los mismos principios que el \emph{tiling}, es decir, la subdivisión de los datos de forma regular, las capas vectoriales se <<trocean>> en el origen y se envían después solamente los datos necesarios para el área cubierta en el cliente. Combinando este enfoque con el uso de capas con distinto detalle según la escala, se logran dos ventajas: 
+Una técnica de reciente aparición es la denominada \textbf{tiling vectorial}. Aplicando los mismos principios que el \emph{tiling}, es decir, la subdivisión de los datos de forma regular, las capas vectoriales se <<trocean>> en el origen y se envían después solamente los datos necesarios para el área cubierta en el cliente. 
+
+Combinando este enfoque con el uso de capas con distinto detalle según la escala, se logran dos ventajas: 
 
 \begin{itemize}
 \item Disminución del volumen de datos. 
@@ -268,7 +270,7 @@ Para tener una noción de lo que en la práctica realmente significa el uso de est
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.6\columnwidth]{Software/Esquema_no_interoperable.pdf}
+\includegraphics[width=.7\columnwidth]{Software/Esquema_no_interoperable.pdf}
 \caption{\small Esquema de una arquitectura no interoperable.}
 \label{Fig:Esquema_no_interoperable} 
 \end{figure}
@@ -288,7 +290,7 @@ En contraste con lo anterior, tenemos una situación de plena interoperabilidad b
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.6\columnwidth]{Software/Esquema_interoperable.pdf}
+\includegraphics[width=.7\columnwidth]{Software/Esquema_interoperable.pdf}
 \caption{\small Esquema de una arquitectura interoperable.}
 \label{Fig:Esquema_interoperable} 
 \end{figure}
@@ -323,161 +325,24 @@ Junto a estos estándares, encontramos los elaborados por otras organizaciones co
 
 El SIG sobre plataformas moviles (teléfonos, tablets, etc.) tiene una innegable relación con las formas de SIG que hemos visto, tanto el SIG de escritorio como el SIG movil. A los elementos de estas se suman las propias características de funcionar sobre un dispositivo movil, que proporcionan un gran número de posibilidades adicionales.
 
-Los dispositivos móviles actuales ofrecen dos funcionalidades fundamentales en este sentido: el \textbf{acceso inalámbrico a Internet} y la \emph{capacidad de conocer la posición} del dispositivo. Esto permite implementar una funcionalidad cercana al SIG clásico, pero con mayor potencial (por ejemplo, para la \textbf{recogida de datos}), así como ofrecer \textbf{servicios basados en localización}.
+Los dispositivos móviles actuales ofrecen dos funcionalidades fundamentales en este sentido: el \textbf{acceso inalámbrico a Internet} y la \emph{capacidad de conocer la posición} del dispositivo.  Esta última puede introducirse \textbf{manualmente}, calcularse en \textbf{a partir de la red}, o bien con métodos \textbf{basados en el propio dispositivo}. A día de hoy, lo más habitual es el uso del sistema GPS, que entra dentro de este ultimo grupo. Una excepción es el caso de \textbf{posicionamiento en interiores}, donde el GPS no está operativo, y en el que puedenemplearse en su lugar métodos basados en una red local dentro del recinto en cuestión.
 
+Las circunstancias anteriores permiten implementar una funcionalidad cercana al SIG clásico, pero con mayor potencial (por ejemplo, para la \textbf{recogida de datos}), así como ofrecer \textbf{servicios basados en localización}.
 
-Los siguientes son algunos de los aspectos que caracterizan al SIG móvil y lo diferencian del SIG clásico sobre una plataforma estática:
-
-\begin{itemize}
-	\item \textbf{Variedad de plataformas}. Mientras que en en caso de un SIG que se ejecuta en un ordenador de sobremesa las diferencias de plataforma son prácticamente inexistente (con, tal vez, la única salvedad del sistema operativo), en el caso del SIG móvil la situación es muy diferente. Existen plataformas muy diversas y dispositivos con características completamente distintas (por ejemplo, un teléfono móvil es, en ciertos aspectos, radicalmente distinto a un Tablet PC). Garantizar que todos estos dispositivos van a poder funcionar con una aplicación requiere un esfuerzo extra a la hora de desarrollar esta.\index{Tablet PC}\index{Teléfono móvil}
-	
-	\item \textbf{El usuario es parte de la información}. El SIG nos permite analizar información muy variada, pero los análisis que realizamos se basan en unos datos concretos, ya sean estos locales o remotos. La posición de la maquina donde se ejecuta el SIG no es relevante ni tenida en cuenta, y ni siquiera existe la posibilidad de conocer y utilizar esta. En el SIG móvil, por el contrario, la posición del dispositivo es conocida (si este integra algún tipo de mecanismo para calcular está, de entre los que veremos más adelante en esta misma sección). Esa posición no solo puede ser empleada como otro dato más, sino que, en muchos casos, es el dato más importante y el que permite ofrecer servicios personalizados en función de dicha posición. Indirectamente, el usuario se convierte también en parte de la información, ya que es \emph{su} posición la que ahora forma parte de esta.
-	
-	\item \textbf{Acceso variable}. La calidad del acceso a Internet va a fluctuar notablemente para un mismo conjunto de dispositivo, aplicación, y usuario, ya que se trata de un servicio muy variable en función de la localización. 
-	
-	\item \textbf{Limitaciones de los dispositivos}. Comparados con un ordenador de sobremesa, que representa el dispositivo estándar en el que un SIG se ejecuta tradicionalmente, los dispositivos móviles presentan importante limitaciones. Las más destacable de ellas es su propio tamaño, ya que las pantallas son pequeñas y obligan a un uso distinto de su espacio para poder mostrar en ellas todos los elementos necesarios para garantizar una correcta usabilidad de las aplicaciones. Otras limitaciones son las ya mencionadas de almacenamiento y proceso. Y, por último, deben considerarse también las limitaciones en los dispositivos de entrada, muy distintos de los habituales teclado y ratón, y sin apenas posibilidad de contar con otros periféricos más específicos.\index{Usabilidad}
-	
-	\item \textbf{Escalabilidad de los datos}. Por las propias características tanto de los dispositivos como de sus conexiones, es necesario poner atención en la escalabilidad de los datos para que las aplicaciones funcionen en circunstancias variadas, modificando el detalle en función de las situación.
-\end{itemize}
-
-\section{Aplicaciones del SIG móvil}
-
-Para estudiar las posibilidades que el SIG móvil nos brinda, podemos analizar el papel que la información geográfica juega en el trabajo de campo. De este modo, descubriremos en qué fases de este existirán diferencias si podemos contar con una herramienta con las capacidades de un SIG, ampliada además con otros elementos tales como un sistema GPS incorporado en el dispositivo. Entendemos aquí trabajo de campo no en el sentido tradicional, sino como cualquier actividad desarrollada al aire libre en la que pueda aplicarse de algún modo un SIG móvil, y que no necesariamente ha de constituir un <<trabajo>> como tal. 
-
-Por una parte, la información geográfica es una herramienta en la que nos apoyamos para desarrollar la actividad en cuestión. Es decir, \emph{usamos} la información geográfica de forma directa. Así sucede, por ejemplo, cuando debemos tomar datos en una localización concreta como por ejemplo una parcela de inventario en un inventario forestal o un punto de alcantarillado para realizar un control del estado de una red de saneamiento. También hacemos un uso similar cuando buscamos el restaurante más próximo o queremos encontrar el camino más rápido para tomar una carretera desde nuestro emplazamiento actual.
-
-Tradicionalmente, la información geográfica se ha llevado al campo en forma de mapas impresos. Consultando estos se encontraba el lugar seleccionado y la forma de desplazarse hasta él. Empleábamos mapas topográficos para encontrar esa parcela de inventario, callejeros para localizar la alcantarilla o un mapa de carreteras para saber cómo desplazarnos en coche. Con el SIG móvil, la información geográfica <<viaja>> al campo en formato digital, almacenada dentro del propio dispositivo o bien accediendo mediante este a información remota a través de Internet. Esto ofrece ventajas tales como una mayor comodidad o como la posibilidad de tener varios dispositivos que compartan la cartografía. Es decir, varios técnicos que trabajen en campo pueden <<llevar>> el mismo mapa sin necesidad de tener varias copias de este, sino tan solo varias <<copias>> del dispositivo, que es por otra parte el mismo que emplearán para la toma de datos o para cualquiera de las restantes tareas de su trabajo.
-
-Por otra parte, la información geográfica en sí puede ser parte de la información recogida en campo. Es decir, es objeto de interés directo del trabajo de campo, y no solo un medio para realizar este. En este caso, los dispositivos móviles van a permitir recoger con más precisión cualquier tipo de dato espacial sobre el terreno, al mismo tiempo que facilitan la creación de dicho dato espacial o la edición de uno ya existente en función de lo observado. Se unen en este punto la capacidad del dispositivo para conocer las coordenadas de su localización y las capacidades de las aplicaciones SIG para edición de datos, así como las propias ventajas de los datos digitales en lo que a su actualización respecta (véase \ref{Datos_digitales_y_analogicos}). 
-
-Esta es una de las razones principales del auge actual de los proyectos colaborativos para la creación de cartografía Los complejos y caros equipos empleados en la cartografía clásica pueden sustituirse en muchos casos por dispositivos simples como un teléfono móvil o una unidad GPS de consumo, ambos sencillos de manejar para el usuario no especializado. Este puede así tomar información geográfica y aportarla a algún proyecto comunitario, o bien guardarla para su uso personal. \index{VGI}
-
-Con las ideas anteriores, podemos localizar las principales tareas que el SIG móvil va a desarrollar en los distintos ámbitos de aplicación y dividirlas en dos bloques: aquellas que permiten a los usuarios optimizar su movilidad durante el trabajo de campo, y aquellas que facilitan el desarrollo de la labor en cuestión una vez que se ha posicionado correctamente. 
-
-Con respecto a las relacionadas con la movilidad, no se ha de pensar que estas se limitan a la localización de un emplazamiento puntual como se ha mencionado anteriormente, en lo que sería un uso casi exclusivo del sistema de posicionamiento del dispositivo. También el análisis, parte importante de un SIG, puede servir para mejorar el desplazamiento que el trabajo en campo conlleva. El cálculo de rutas es el principal ejemplo en este sentido, tal y como se implementa en los navegadores GPS, aunque no el único. Elaborar un plan de ruta en tiempo real puede ser útil para muchos profesionales, que pueden hacer uso de algoritmos como el del <<problema del viajante>> si estos se encuentran implementados en su SIG móvil.
-
-Dentro de las actividades que facilitan la labor en campo son de especial interés las relacionadas con la captura de información geográfica, que se simplifica notablemente como ya hemos dicho. Asimismo, también debemos citar cualquier tipo de servicio al que pueda accederse mediante la conexión inalámbrica del dispositivo y proporcione información complementaria o algún tipo de apoyo a la persona que opera con este. Y por último, no ha de olvidarse el análisis SIG como una herramienta con gran utilidad, ya que permitirá realizar procesos adicionales que pueden añadir nuevas posibilidades, tales como, por ejemplo, la validación en tiempo real de los datos recogidos.
-
-La siguiente lista resume algunas de las actividades principales que pueden llevarse a cabo con un SIG móvil. Algunas de ellas pueden desarrollarse sin necesidad de contar con todos los elementos posibles (dispositivo, conexión inalámbrica y sistema de posicionamiento), aunque buena parte requieren el concurso de todos ellos.
+Algunos de los grupos principales en que estos servicios pueden agruparse son los siguientes:
 
 \begin{itemize}
-	\item \textbf{Navegación}. Cálculo de ruta óptima entre dos puntos, guiado en interiores (centros comerciales, museos, etc.), aparcamiento guiado, gestión de
-tráfico. Una de las actividades más populares y extendidas.\index{Navegación}
-\item \textbf{Inventario}. Recogida de datos de cualquier tipo sobre el terreno. Cubre desde datos de inventarios forestales a prospecciones arqueológicas, pasando por datos censales o infraestructuras urbanas, entre muchos otros.
-\item \textbf{Información}. Paginas amarillas espaciales o guias de viaje virtuales. En general, cualquier servicio de mapas o de puntos de interés con posición (monumentos, tiendas, aparcamientos...) accesible desde un dispositivo móvil.
-\item \textbf{Emergencia}. Localización de situaciones de emergencia, asistencia a vehículos, optimización de asistencias y tiempos de respuesta. El usuario, ante una emergencia, puede conocer su posición e informar de ella, o bien a través de la red puede conocerse esta y emplearse para dar una respuesta óptima y una ayuda lo más eficiente posible.
-\item \textbf{Publicidad}. Anuncios basados en localización, indicación de negocios cercanos, promociones para comercios próximos. Existen algunas limitaciones para evitar la publicidad no deseada, pero si el usuario da permiso, puede recibir información sobre posibilidades comerciales en su entorno.
-\item \textbf{Seguimiento}. Tanto de personas como de productos, a lo largo de rutas predefinidas o no. También puede servir para monitorizar una actividad en las distintas localizaciones por las que pase el usuario. Por ejemplo, una compañía telefónica puede estudiar los patrones de comportamiento en lo que al acceso a la red respecta, según el emplazamiento desde el que se accede.
-\item \textbf{Gestión}. Por ejemplo, de infraestructuras, de instalaciones, o de flotas. El dispositivo puede ir sobre el elemento a gestionar o bien emplearse para llegar hasta él y efectuar allí algún tipo de control.
-\item \textbf{Ocio}. Buscadores de amigos o juegos con componente espacial, entre otros.
+	\item \textbf{Navegación}. Cálculo de ruta óptima entre dos puntos, guiado, etc.
+\item \textbf{Inventario}. Recogida de datos de cualquier tipo sobre el terreno, en los que se almacena la posición asociada al dato en sí.
+\item \textbf{Información}. Paginas amarillas espaciales o guias de viaje virtuales.
+\item \textbf{Publicidad}. Anuncios basados en localización, indicación de negocios cercanos, promociones para comercios próximos.
+\item \textbf{Seguimiento}. Tanto de personas como de productos, a lo largo de rutas predefinidas o no.
+\item \textbf{Gestión}. Por ejemplo, de infraestructuras, de instalaciones, o de flotas. 
 \end{itemize}
 
 
-\section{Métodos de posicionamiento}
+La información adicional que el dispositivo movil provee permite ampliar el contexto de la aplicación SIG, gracias a que se conoce la localización, la orientación (hacia dónde se desplaza el usuario o quñe tiene delante de sí), la velocidad, e incluso el entorno físico (iluminación, etc.)
 
-\index{Metodos@Métodos!de posicionamiento}
-
-Uno de los elementos clave del SIG móvil es la capacidad de conocer la posición del dispositivo en todo momento, incorporando, como ya hemos visto, esa posición como un dato más de particular relevancia para realizar otras operaciones habituales del SIG o para ofrecer servicios de diversos tipos. Si el dispositivo en cuestión es una unidad GPS, está claro que dispone de un sistema para obtener su posición, igual que sucede si se trata de otro tipo de dispositivo pero con un receptor GPS incorporado. Sin embargo, existen otras formas de que el dispositivo conozca su posición, y pueden emplearse de igual modo para obtener resultados similares en cuanto a las prestaciones que van a permitir.
-
-Los métodos mediante los cuales puede determinarse la posición de un dispositivo pueden clasificarse en tres tipos, a saber:
-
-\begin{itemize}
-	\item Introducción manual de la posición.
-	\item Métodos basados en red.
-	\item Metodos basados en terminal.
-\end{itemize}
-
-La introducción manual es el método más obvio y simple que, no obstante, puede implicar también el uso de algún tipo de tecnología y requiere algunas matizaciones. Además de introducir directamente en el dispositivo las coordenadas actuales de este, es posible establecer una posición mediante la denominada \emph{geocodificación inversa}. En el capítulo \ref{Geocodificacion} veíamos que mediante la geocodificación asignábamos coordenadas a un determinado elemento, que podía ser un punto dado o cualquier otro elemento susceptible de ser georreferenciada. Aplicando este razonamiento de forma inversa, y si disponemos una base de datos con un conjunto de esos elementos y sus coordenadas asociadas, podemos obtener estas últimas haciendo búsquedas en esa base de datos con el nombre del elemento. Es decir, podemos decirle al dispositivo que la posición actual es \emph{Badajoz} o \emph{Estadio Vicente Calderón} y él se encargará de convertir esa información en una coordenada numérica similar a la que se obtendría si tuviera instalado un receptor GPS o alguna otra tecnología similar.\index{GPS}\index{Geocodificación}\index{Geocodificación!inversa}
-
-Algunos servicios de consulta de los que presentábamos en el capítulo \ref{Servidores_y_clientes_remotos} permiten este tipo de operaciones, y devuelven coordenadas asociadas a un determinado fenómeno geográfico. En particular, los denominadas servicios de \emph{Nomenclator} son los encargados de ello, como veremos con más detalle en el apartado \ref{Nomenclator}.\index{Nomenclator}
-
-Con respecto a los dos tipos restantes, ambos se apoyan en una red de estaciones cuyas posiciones son conocidas. Los basados en red obtienen su posición mediante cálculos realizados en función de una señal emitida por el dispositivo. El método más habitual de esta clase es el empleado por los teléfonos móviles para calcular su posición en función del repetidor más cercano de entre los que le ofrecen cobertura. 
-
-Por el contrario, en los métodos basados en terminal es el propio dispositivo el que recibe la señal que procede de las estaciones, y en función de estas calcula su posición. El sistema GPS es el ejemplo más popular de un método de esta última clase. Existen asimismo métodos combinados que emplean ambas técnicas para el cálculo posicional.
-
-La figura \ref{Fig:MetodosPosicionamiento} esquematiza lo anterior.
-
-\begin{figure}[!hbtp]   
-	\centering
-	\includegraphics[width=0.95\textwidth]{SIG_movil/MetodosPosicionamiento.pdf}
-	\caption{\small Metodos de posicionamiento basados en red (a) y en terminal (b)}
-\label{Fig:MetodosPosicionamiento} 
-\end{figure}
-
-Con independencia del tipo de método, el proceso de cálculo de posición sigue un esquema como el siguiente:
-
-\begin{itemize}
-	\item La posición de las estaciones es conocida.
-	\item La información de la señal se transforma en una distancia (a excepción de si se aplica la técnica conocida como Ángulo de Llegada, que veremos seguidamente).
-	\item La posición se calcula conociendo las distancias a un número dado de estaciones base.
-\end{itemize}
-
-
-Para convertir la información de la señal en una posición, encontramos diversas técnicas, a saber:
-
-\begin{itemize}
-	\item Celda de Origen (Cell of Origin, COO). Se identifica la estación base más cercana y con ello se sabe que el dispositivo se encuentra en el perímetro de esta, dentro de su radio de alcance. La precisión depende de la densidad de la red. Para el caso de telefonía móvil, se sitúa entre los 200 metros y varios kilómetros, por lo que es baja para cierto tipo de servicios.
-	\item Tiempo de Llegada (Time of Arrival, TOA). Se conoce la velocidad de transmisión de la señal y el
-tiempo entre el envio y la recepción de la señal, con lo que puede calcularse la distancia. Se tiene así la distancia respecto a una estación dada. Considerando la velocidad de transmisión de la señal, son necesarios relojes de alta precisión para lograr un calculo preciso.
-\item Diferencia de Tiempo de Llegada (Time Difference of Arrival, TDOA) o Diferencia de Tiempo Observada Mejorada (Enhanced Observed Time Difference, E--OTD). En ambas técnicas se mide igualmente el tiempo, pero el cálculo de la distancia se basa en la diferencia de las
-señales de tres estaciones, pudiéndose así triangular la posición. En el caso de TDOA el cálculo de la posición lo realiza el proveedor de la red, mientras que en el E--ODT es el dispositivo móvil quien lo hace.
-\item Ángulo de Llegada (Angle of arrival, AOA), Dirección de Llegada (DOA): Se usan antenas direccionables para detectar el ángulo de llegada.
-\end{itemize}\index{Angle of Arrival (AOA)}\index{Time Difference of Arrival (TDOA)}\index{Enhanced Observed Time Difference (E--OTD)}\index{Time Difference of Arrival (TDOA)}\index{Time of Arrival (TOA)}\index{Cell of Origin, (COO)}
-
-Estas técnicas pueden emplearse simultáneamente, con objeto de proporcionar una localización más fiable o de adaptarse a las propias circunstancias de la red de estaciones en cada momento.
-
-Es interesante mencionar que la precisión en los métodos basados en terminal es en general mayor que la de los métodos basados en red, siendo así más adecuados para servicios en los que la posición deba conocerse de forma más precisa \cite{Lopez2004CRC}. Así, el GPS ofrece precisiones mucho mayores que las que se pueden obtener con la identificación de la celda más cercana en una red de telefonía móvil. El GPS es, sin embargo, una técnica pensada para emplearse en exteriores, y los servicios en interior no pueden hacer uso de este, además de requerir una precisión aún mayor. En este caso, métodos basados en redes locales inalámbricas (WLAN), Bluetooth o ultrasonidos son una opción	válida, todos ellos también basados en terminal.\index{Bluetooth}\index{WLAN}
-
-\section{Redes inalámbricas}
-
-Uno de los elementos más importantes en el SIG móvil es la conexión inalámbrica, que nos permite el acceso a Internet y poder acceder a todos los tipos de servicios a través de esta. Sin conexión, disponemos de gran cantidad de funcionalidades, en especial aquellas fundamentales para lo que denominábamos SIG en campo. Podemos llevar el SIG móvil y tomar datos, realizar análisis geográficos sobre el terreno o navegar hasta una posición dada. Para ello solo necesitamos los datos que estén almacenados en el propio dispositivo, tal y como sucede en un navegador GPS que contiene su propia cartografía.
-
-Sin conexión a Internet, sin embargo, no se dispone de capacidad para recibir servicios ni tampoco para acceder a datos remotos o realizar consultas sobre datos de terceros, limitando así de forma notable el alcance del  SIG móvil. Siendo la conexión inalámbrica un elemento tan relevante, es necesario conocer algunos fundamentos acerca de su funcionamiento y de cómo los dispositivos habituales en el SIG móvil incorporan la tecnología correspondiente.
-
-Existen dos esquemas principales para clasificar las redes inalámbricas: según la topología de la red y según su alcance
-
-En relación con la topología de la red encontramos dos grupos: aquellas en que la red presenta una infraestructura formada por un número de estaciones inmóviles (nodos) a las que acceden los terminales, y aquellas en las que los propios terminales forman una red \emph{ad--hoc}, siendo ellos mismos los nodos de esta.
-
-Según su alcance, y variando este de menor a mayor, podemos dividir las redes inalámbricas en Redes Inalámbricas de Área Personal (Wireless Personal Area Network, WPAN), Redes Inalámbricas de Área Local (Wireless Local Area Network, WLAN) y Redes Inalámbricas de Área Amplia (Wireless  Wide Area Network, WWAN). Está clasificación se emplea con frecuencia, por lo que veremos los tipos anteriores con algo más de detalle.
-
-Una red WPAN tiene un alcance corto, de unos 10 metros, y utiliza una frecuencia que no requiere de licencia para operar. La mayoría de las redes de este tipo se basan en Bluetooth, y su velocidad de transmisión es de unos 0.5 Mbps.
-
-Por su parte, una red WLAN tiene un alcance mayor, entre 10 y 100 metros, y su velocidad es muy superior, hasta los 100 Mbps. Utilizan también frecuencias sin necesidad de licencia. Las redes inalámbricas de este tipo surgen a partir de las redes locales no inalámbricas (LAN), principales pensadas para la transmisión de datos. Es por ello que esta tecnología esta principalmente orientada a la transmisión de datos, y no ofrece soporte para voz como sucede con las redes WWAN.
-
-Una red WWAN cubre un a distancia de entre 100 metros y 30 kilómetros, y emplea una frecuencia no libre, es decir, una cuyo uso requiere la adquisición de una licencia. Originalmente este tipo de redes se pensaron para transmisión de voz, por lo que su velocidad es baja, 4,8 kbps. La evolución de estas redes para la transmisión de datos ha dado lugar a una segunda generación con mayores velocidades, como sucede con las redes de los sistemas GSM (Global System for Mobile) o GRPS (General Packet Radio Service), con velocidades de 9,6--14 kbps y 20--115 kbps respectivamente. Estas velocidades siguen siendo insuficientes para gran cantidad de aplicaciones, pero las redes de tercera generación, como el sistema UTMS (Universal Mobile Telecommunication System) europeo, pueden alcanzar tasas que permiten operar fluidamente del mismo modo que en una red local. 
-\index{WWAN}\index{WPAN}\index{WWAN}\index{LAN}\index{General Packet Radio Service (GPRS)}\index{Global System for Mobile (GSM)}\index{Universal Mobile Telecommunication System}
-
-
-\subsection{El contexto}
-
-Un hecho básico a considerar a la hora de diseñar \emph{software} para un SIG móvil es que en este el \emph{software} conoce dónde se encuentra el usuario, y el trabajo de dicho usuario normalmente se basa en emplear esa localización para realizar algún tipo de tarea. Aparece así un concepto que carece prácticamente de importancia en un SIG de escritorio que se ejecuta sobre una máquina inmóvil, pero que en el SIG móvil y en cualquier otra aplicación móvil resulta fundamental: el \emph{contexto}.
-
-\index{Contexto}
-
-Entendemos por contexto toda aquella información que puede ser utilizada para caracterizar la situación de una entidad. Una entidad es una persona, lugar o objeto que se considera relevante para la interacción entre el usuario y la aplicación, pudiendo considerarse como entidad también a estos últimos \cite{Dey2001PUC}.
-
-Los factores implicados en definir un contexto son variados, pero pueden considerarse divididos en cuatro grupos fundamentales \cite{Schilit1994IEEE}:
-
-\begin{itemize}
-	\item Contexto \textbf{espacial}. Caracterizado por dónde se encuentra el usuario.
-	\item Contexto \textbf{social}. Caracterizado por quién es el usuario.
-	\item Contexto \textbf{informacional}. Caracterizado por qué recursos se hallan cerca del usuario.
-	\item Contexto \textbf{técnico}. Caracterizado por las características de la red y los dispositivos.
-\end{itemize}
-
-Si atendemos al caso particular de los servicios basados en mapas, \cite{Nivala2003HCI} propone los tipos de contexto que se detallan a continuación:
-
-\begin{itemize}
-	\item \textbf{Usuario}. La identidad del usuario permite considerar aspectos tales como su edad y sexo (las cuales condicionan inevitablemente sus intereses), sus preferencias personales (por ejemplo, el idioma que habla y en el que quiere recibir el servicio) o quienes son su amistades y desea contactar con ellas.
-	\item \textbf{Localización}. El elemento de contexto más empleado, puede ser tanto absoluta (expresada mediante una coordenada georeferenciada) o relativa a algún otro elemento que forma a su vez parte del contexto.
-	\item \textbf{Tiempo}. Puede considerarse a distintas escalas. Por ejemplo, la hora del día (de interés si se busca un establecimiento para indicar al usuario solo aquellos que estén abiertos en ese momento) o la estación del año (que condiciona las actividades que se pueden realizar, ya que muchas de ellas son estacionales).
-	\item \textbf{Orientación}. Para saber hacia dónde se dirige el usuario y conocer, por ejemplo, qué tiene delante a la vista. También para servicios de navegación, para saber si el usuario sigue adecuadamente una ruta propuesta. Si el usuario se mueve, puede conocerse mediante el movimiento, pero en caso de estar parado requiere la presencia de elementos adicionales en el dispositivo.	
-	\item \textbf{Historial de navegación}. Permite crear un perfil del usuario y saber sus intereses en función de los lugares en los que ha estado.
-	\item \textbf{Propósito de uso}. Viene definido por las actividades y objetivos del usuario, así como el papel que ejerce durante la utilización del dispositivo móvil. Los distintos tipos de usuarios tendrán diferentes necesidades en lo que respecta a la información, la presentación (por ejemplo, mapas con una representación más o menos técnica) o los modos de interacción con el dispositivo.
-	\item \textbf{Situación cultural y social}. La situación de un usuario en este sentido se caracteriza por la proximidad a otros usuarios, su relación social y sus tareas colaborativas.
-	\item \textbf{Entorno físico}. En este apartado se incluyen elementos como la iluminación existente o el ruido ambiente, que condicionan la interacción con el dispositivo y las capacidades del usuario de operar sobre él.
-	\item \textbf{Propiedades del sistema}. Se incluyen aquí los aspectos relativos a la tecnología. Por ejemplo, si el dispositivo es en color o en blanco y negro, si tiene teclado o pantalla táctil, o si la conexión a Internet es continua o intermitente.
-\end{itemize}
 
 
 \pagestyle{empty}

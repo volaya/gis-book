@@ -10,6 +10,7 @@ import traceback
 import json
 import codecs
 import time
+import shutil
 
 tableshtml={
 "Tabla:PropiedadesVariablesVisuales": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">Posición</th><th class="head">Tamaño</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">Orientación</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-odd"><td>Selectiva</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-even"><td>Ordenada</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
@@ -68,7 +69,7 @@ exps_post = [(r"\\index\{.*?\}", ""),
 
 
 def template():
-    path = "html/template_es.html"
+    path = os.path.join(os.path.dirname(__file__), "html", "template.html")
     with open(path) as f:
         s = f.read()
     return s
@@ -99,7 +100,7 @@ def convertFile(path, chapterNum):
         caption = re.search(r"\\caption\{(.*?)\}", img).groups()[0]
         label = re.search(r"\\label\{(.*?)\}", img).groups()[0]
         figNum = "%i.%i" % (chapterNum, i + 1)
-        s = s.replace(img, (r"<a name='%s'></a><figure><center><img src='../img/%s%s' width='%s%%'>"
+        s = s.replace(img, (r"<a name='%s'></a><figure><center><img src='img/%s%s' width='%s%%'>"
             "<figcaption>Figura %s: %s</figcaption></figure></center>" % (label, path, ext, str(size), figNum, caption)))
         s = s.replace("\\ref{%s}" % label, '<a href="#%s">%s</a>' % (label, figNum))
 
@@ -121,7 +122,7 @@ def convertFile(path, chapterNum):
         s = p.sub(replace, s)            
 
     html = template().replace("[BODY]", s)
-    with open(os.path.join("html", name + ".html"), "w") as f:
+    with open(os.path.join(os.path.dirname(__file__), "html", name + ".html"), "w") as f:
         f.write(html.decode('iso-8859-1').encode('utf8'))
 
     return s
@@ -161,13 +162,21 @@ ebookTemplate = '''<html>
 </body>
 </html>'''
 
-if __name__ == '__main__':
+def convert():
+    src = os.path.join(os.path.dirname(__file__), "img")
+    dst = os.path.join(os.path.dirname(__file__), "html", "img")
+    if os.path.exists(dst):
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
+    dst = os.path.join(os.path.dirname(__file__), "ebook", "img")
+    if os.path.exists(dst):
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
 
     chapterFiles = ["../latex/es/prologo.tex"]
     chapterNames = ["Introduccion", "Historia", "Fundamentos_cartograficos", "Datos", 
-    				"Fuentes_datos", "Software", "Bases_datos", "Analisis", "Visualizacion"]
+                    "Fuentes_datos", "Software", "Bases_datos", "Analisis", "Visualizacion"]
     chapterFiles.extend(["../latex/es/%s/%s.tex" % (n,n) for n in chapterNames])
-
 
     chapters = []
     for i, f in enumerate(chapterFiles):
@@ -181,6 +190,13 @@ if __name__ == '__main__':
     import locale
     locale.setlocale(locale.LC_TIME, "esn")
     fullBook = "<mbp:pagebreak/>".join(chapters)
-    with open("html/ebook.html", 'w')  as f:
+    with open(os.path.join(os.path.dirname(__file__), "ebook", "ebook.html"), 'w')  as f:
         text = ebookTemplate % (time.strftime("%x") , fullBook)
         f.write(text)
+
+    print "- HTML version created in 'html' folder"
+    print "- 'ebook.html' file created in 'ebook' folder. You can convert this into a Kindle MOBI book using Amazon's 'kindlegen' utility."
+
+if __name__ == '__main__':
+    convert()
+
