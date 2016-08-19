@@ -28,7 +28,8 @@ exps_pre = [(r"\\bigskip", ""),
         (r"\\begin\{center\}", ""),
         (r"\\end\{center\}", ""),
         (r"\\small", ""),
-        (r"\\emph\{(.*?)\}", r"<i>\1</i>")]
+        (r"\\emph\{(.*?)\}", r"<i>\1</i>"),
+        (r"\$(.*?)\$", r"<i>\1</i>")]
 
         
 exps_post = [(r"\\index\{.*?\}", ""),
@@ -93,8 +94,8 @@ def convertFile(path, chapterNum):
         caption = re.search(r"\\caption\{(.*?)\}", img).groups()[0]
         label = re.search(r"\\label\{(.*?)\}", img).groups()[0]
         figNum = "%i.%i" % (chapterNum, i + 1)
-        s = s.replace(img, (r"<a name='%s'></a><figure><center><img src='img/%s%s' width='%s%%'>"
-            "<figcaption>Figura %s: %s</figcaption></figure></center>" % (label, path, ext, str(size), figNum, caption)))
+        s = s.replace(img, (r"<a name='%s'></a><center><figure><img src='img/%s%s' width='%s%%'/>"
+            "<br><figcaption>Figura %s: %s</figcaption></figure></center>" % (label, path, ext, str(size), figNum, caption)))
         s = s.replace("\\ref{%s}" % label, '<a href="#%s">%s</a>' % (label, figNum))
 
     p = re.compile(r"(\\begin\{table[\S\s]*?\\end\{table.*?\})")
@@ -205,10 +206,10 @@ def convert():
         fn = os.path.join(src, f)
         epub.write(fn, os.path.join('OEBPS', f))
 
-    epub.writestr('OEBPS/Content.opf', index % {
+    epub.writestr('OEBPS/Content.opf', (index % {
       'manifest': manifest,
       'spine': spine,
-    })
+    }).decode('iso-8859-1').encode('utf8'))
 
 
 ###############################
