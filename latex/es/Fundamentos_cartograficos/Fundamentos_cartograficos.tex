@@ -1,6 +1,7 @@
 
-\chapter{Fundamentos cartográficos y geodésicos}
+\chapter{Fundamentos geodésicos y cartográficos}
 
+Puesto que los SIG heredan conceptos utilizados anteriormente enla elaboración de mapas, es necesario conocer estos para hacer buen uso de las herramientas que un SIG ofrece. En este sentido, resultan fundamentales los elementos de la geodesía y la cartografía, sin los cuales no es posible entender el contexto de un SIG.
 
 \section{Conceptos geodésicos básicos}
 \pagestyle{fancy}
@@ -44,10 +45,9 @@ Para un mismo elipsoide pueden utilizarse distintos puntos fundamentales, que da
 
 \subsection{Sistemas de coordenadas}
 
-Una vez hemos definido un modelo para definir la forma de la Tierra, podemos establecer un sistema de codificar cada una de las posiciones sobre su superficie y asignar a estas las correspondientes coordenadas. Para ello, encontramos dos opciones: utilizar los elementos de la \textbf{geometría esférica} y con estos definir el sistema de referencia, o utilizar la \emph{geometría plana}, para lo cual será necesario un mecanismo de \textbf{proyección} de coordenadas que permita situar los elementos de la superficie del elipsoide sobre una superficie plana.
+Una vez hemos definido un modelo para definir la forma de la Tierra, podemos establecer un sistema de codificar cada una de las posiciones sobre su superficie y asignar a estas las correspondientes coordenadas. Para ello, encontramos dos opciones: utilizar los elementos de la \textbf{geometría esférica} y con estos definir el sistema de referencia, o utilizar la \textbf{geometría plana}, para lo cual será necesario un mecanismo de \textbf{proyección} de coordenadas que permita situar los elementos de la superficie del elipsoide sobre una superficie plana.
 
-El sistema de \emph{coordenadas geográficas} es un sistema de coordenadas esféricas mediante el cual un punto se localiza con dos valores angulares: \textbf{latitud}
-y \textbf{longitud}. Las lineas de igual latitud o longitud se denominan \textbf{paralelos} y \textbf{meridianos} respectivamente.
+El sistema de \textbf{coordenadas geográficas} es un sistema de coordenadas esféricas mediante el cual un punto se localiza con dos valores angulares: \textbf{latitud} y \textbf{longitud}. Las lineas de igual latitud o longitud se denominan \textbf{paralelos} y \textbf{meridianos} respectivamente.
 
 Las coordenadas geográficas resultan de gran utilidad, especialmente cuando se trabaja con grandes regiones. No obstante, no se trata de un sistema cartesiano, y tareas como la medición de áreas o distancias es mucho más complicada. Para poder crear cartografía y simplificar gran número de operaciones posteriores, necesitamos coordenadas cartesianas. El proceso de asignar una coordenada plana a cada punto de la superficie de la Tierra (que no es plana) se conoce como \textbf{proyección cartográfica}.
 
