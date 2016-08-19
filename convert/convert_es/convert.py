@@ -11,6 +11,7 @@ import json
 import codecs
 import time
 import shutil
+import zipfile
 
 tableshtml={
 "Tabla:PropiedadesVariablesVisuales": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">Posición</th><th class="head">Tamaño</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">Orientación</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-odd"><td>Selectiva</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-even"><td>Ordenada</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
@@ -148,27 +149,10 @@ def convertImages():
         print " ".join(commands)
         #call(commands)
 
-ebookTemplate = '''<html> 
-<head> 
-<title>Introducción a los SIG</title> 
-</head> 
-<body> 
-<a name="start"> 
-<h2>Introduccion a los SIG</h2></a> </p> 
-<p>Copyright © Victor Olaya. 2016</p> 
-<p>Versión del %s</p> 
-<mbp:pagebreak/>
-%s
-</body>
-</html>'''
 
 def convert():
     src = os.path.join(os.path.dirname(__file__), "img")
     dst = os.path.join(os.path.dirname(__file__), "html", "img")
-    if os.path.exists(dst):
-        shutil.rmtree(dst)
-    shutil.copytree(src, dst)
-    dst = os.path.join(os.path.dirname(__file__), "ebook", "img")
     if os.path.exists(dst):
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
@@ -188,18 +172,72 @@ def convert():
             traceback.print_exc()
             pass 
 
+
+    epub = zipfile.ZipFile(os.path.join(os.path.dirname(__file__), "ebook", "librosig.epub"), 'w')
+
+    epub.writestr("mimetype", "application/epub+zip")
+
+    epub.writestr("META-INF/container.xml", '''<container version="1.0"
+               xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+      <rootfiles>
+        <rootfile full-path="OEBPS/Content.opf" media-type="application/oebps-package+xml"/>
+      </rootfiles>
+    </container>''');
+
+    index = '''<package version="2.0"
+        xmlns="http://www.idpf.org/2007/opf">
+        <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+            <dc:title>Introducción a los SIG</dc:title>
+            <dc:creator opf:file-as="Olaya, Víctor" opf:role="aut">Víctor Olaya</dc:creator>
+            <dc:language>es</dc:language>        
+            <dc:description>Introducción a los Sistemas de Información Geográfica.</dc:description>                
+        </metadata>
+      <manifest>
+        <item id="intro" href="intro.html" media-type="application/xhtml+xml"/>
+        %(manifest)s
+      </manifest>
+      <spine toc="ncx">
+        <itemref idref="intro" />
+        %(spine)s
+      </spine>
+    </package>'''
+
+    intro = '''<html> 
+                <head> 
+                <title>Introducción a los SIG</title> 
+                </head> 
+                <body> 
+                <a name="start"> 
+                <h2>Introduccion a los SIG</h2></a> </p> 
+                <p>Copyright © Victor Olaya. 2016</p> 
+                <p>Versión del %s</p> 
+                </body>
+                </html>'''
+
+    manifest = ""
+    spine = ""
+
     import locale
     try:
         locale.setlocale(locale.LC_TIME, "esn")
     except:
         pass
-    fullBook = "<mbp:pagebreak/>".join(chapters)
-    with open(os.path.join(os.path.dirname(__file__), "ebook", "ebook.html"), 'w')  as f:
-        text = ebookTemplate % (time.strftime("%x") , fullBook)
-        f.write(text)
+    epub.writestr('OEBPS/intro.html', intro % (time.strftime("%x")))       
 
-    print "- HTML version created in 'html' folder"
-    print "- 'ebook.html' file created in 'ebook' folder. You can convert this into a Kindle MOBI book using Amazon's 'kindlegen' utility."
+    for i, html in enumerate(chapters):
+        manifest += '<item id="file_%s" href="%s.html" media-type="application/xhtml+xml"/>' % (
+                      i+1, i+1)
+        spine += '<itemref idref="file_%s" />' % (i+1)
+        epub.writestr('OEBPS/%i.html' % (i+1), html.replace("img/", "")) 
+
+    for f in os.listdir(src):
+        fn = os.path.join(src, f)
+        epub.write(fn, os.path.join('OEBPS', f))
+
+    epub.writestr('OEBPS/Content.opf', index % {
+      'manifest': manifest,
+      'spine': spine,
+    })
 
 if __name__ == '__main__':
     convert()
