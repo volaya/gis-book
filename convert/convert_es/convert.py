@@ -186,6 +186,15 @@ def convert():
                 </body>
                 </html>'''
 
+    chapterTemplate = '''<html> 
+                <head>  
+                    <title></title>
+                    <link href="base.css" rel="stylesheet" type="text/css" />               
+                </head> 
+                <body> 
+                %s                
+                </body>
+                </html>'''
     manifest = ""
     spine = ""
 
@@ -194,13 +203,16 @@ def convert():
         locale.setlocale(locale.LC_TIME, "esn")
     except:
         pass
+
+    epub.write(os.path.join(os.path.dirname(__file__), "ebook", "base.css"), os.path.join('OEBPS', "base.css"))
     epub.writestr('OEBPS/intro.html', (intro % (time.strftime("%x"))).decode('iso-8859-1').encode('utf8'))       
 
     for i, html in enumerate(chapters):
         manifest += '<item id="file_%s" href="%s.html" media-type="application/xhtml+xml"/>' % (
                       i+1, i+1)
         spine += '<itemref idref="file_%s" />' % (i+1)
-        epub.writestr('OEBPS/%i.html' % (i+1), html.replace("img/", "").decode('iso-8859-1').encode('utf8')) 
+        chapterText = chapterTemplate % html.replace("img/", "")
+        epub.writestr('OEBPS/%i.html' % (i+1), chapterText.decode('iso-8859-1').encode('utf8')) 
 
     for f in os.listdir(src):
         fn = os.path.join(src, f)
