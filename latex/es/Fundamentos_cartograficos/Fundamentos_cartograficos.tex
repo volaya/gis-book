@@ -121,15 +121,14 @@ La generalización, por tanto, es un proceso que tiene como objetivo la producció
 Existen diversas operaciones que se emplean en el proceso de generalización. Algunas de las más relevantes son las \textbf{simplificación} (representar un elemento menos complejo), la \textbf{agregación} (representar varios elementos como uno solo ---Figura \ref{Fig:Generalizacion_agregacion}---), la \textbf{exageración} (representar elementos con mayor tamaño del que les corresponde) y el \textbf{desplazamiento} (representar en una posición modificada, para garantizar la legibilidad). 
 
 
+En un SIG, la generalización puede incorporarse como parte de los propios mecanismos de representación, aplicándose las transformación correspondientes en tiempo real. A partir de un juego de datos, se elaboran las representaciones según la escala a la que se estén representando. Esta solución tiene el inconveniente de producir resultados que no resultan óptimos, por ser la generalización un proceso complejo y difícil de automatizar, y, sobre todo, el de consumir gran cantidad de recursos. La generalización en este caso tiene un objetivo cartográfico, pero en lugar de  hacer más fluido el trabajo con datos de gran volumen, lo hace más lento.
+
 \begin{figure}[!hbt]
 \centering
 \includegraphics[width=\textwidth]{Fundamentos_cartograficos/SIG_multi_escala.png}
 \caption{\small En un SIG es habitual manejar información a diferentes escalas. En función de la escala de representación, la información visualizada será una u otra.}
 \label{Fig:SIG_multi_escala} 
 \end{figure}
-
-
-En un SIG, la generalización puede incorporarse como parte de los propios mecanismos de representación, aplicándose las transformación correspondientes en tiempo real. A partir de un juego de datos, se elaboran las representaciones según la escala a la que se estén representando. Esta solución tiene el inconveniente de producir resultados que no resultan óptimos, por ser la generalización un proceso complejo y difícil de automatizar, y, sobre todo, el de consumir gran cantidad de recursos. La generalización en este caso tiene un objetivo cartográfico, pero en lugar de  hacer más fluido el trabajo con datos de gran volumen, lo hace más lento.
 
 Una solución alternativa y más adecuada de incorporar la generalización dentro de un SIG suele basarse en un enfoque multi--escalar (Figura \ref{Fig:SIG_multi_escala}), en el cual se maneja información de una misma zona de estudio a diferentes escalas, y se usa en cada momento aquella que resulte más conveniente. Si se trabajara con cartografía en papel, sería equivalente a tener varios mapas de una zona a diferentes escalas.
 
