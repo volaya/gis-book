@@ -28,22 +28,14 @@ exps_pre = [(r"\\bigskip", ""),
         (r"\\begin\{center\}", ""),
         (r"\\end\{center\}", ""),
         (r"\\small", ""),
-        (r"\\emph\{(.*?)\}", r"<i>\1</i>"),
-        (r"\$(.*?)\$", r"<i>\1</i>"),
-        (r"\\iftrue[\s\S]*?\\fi", ""),
-        (r"\\iffalse([\s\S]*?)\\fi", r"\1")]
+        (r"\\emph\{(.*?)\}", r"<i>\1</i>")]
+
         
 exps_post = [(r"\\index\{.*?\}", ""),
         (r"\\pagestyle\{.*?\}",r""),
         (r"\\%", "%"),
         (r"\\_", "_"),
         (r"\\underline\{(.*?)\}", r"<u>\1</u>"),
-        (r"\\begin\{intro\}([\s\S]*?)\\end\{intro\}", 
-            r'<hr/><p><i>\1</i></p><hr/>'), 
-        (r"\url\{(.*?)}", r'<a href="\1">\1</a>'),
-        (r"\\begin\{verbatim\}([\s\S]*?)\\end\{verbatim\}", r"<pre>\1</pre>"), 
-        (r"\\begin\{quotation\}([\s\S]*?)\\end\{quotation\}", r"<p>\1</p>"), 
-        (r"\\begin\{displaymath\}([\s\S]*?)\\end\{displaymath\}", r"\\begin{eqnarray}\1\\end{eqnarray}"), 
         (r"\\footnote\{[\s\S]*?\}", ""),
         (r"\\begin\{itemize\}", "<ul>"),
         (r"\\end\{itemize\}", "</ul>"),
@@ -129,27 +121,6 @@ def convertFile(path, chapterNum):
     return s
 
 
-
-def findFiles(directory, pattern):
-    for root, dirs, files in os.walk(directory):
-        for basename in files:
-            if fnmatch.fnmatch(basename, pattern):
-                filename = os.path.join(root, basename)
-                yield filename
-                
-    
-def convertImages():
-    for f in findFiles('../latex', '*.pdf'):
-
-        from subprocess import call
-        dest = os.path.basename(f)
-        dest = os.path.splitext(dest)[0]
-        dest = "img/%s.png" % dest
-        commands = [r'"Inkscape.exe"', "--export-png=" + dest, f]
-        print " ".join(commands)
-        #call(commands)
-
-
 def convert():
     src = os.path.join(os.path.dirname(__file__), "img")
     dst = os.path.join(os.path.dirname(__file__), "html", "img")
@@ -208,8 +179,8 @@ def convert():
                 </head> 
                 <body> 
                 <a name="start"> 
-                <h2>Introduccion a los SIG</h2></a> </p> 
-                <p>Copyright © Victor Olaya. 2016</p> 
+                <h2>Introducción a los SIG</h2></a> </p> 
+                <p>Copyright © Víctor Olaya. 2016</p> 
                 <p>Versión del %s</p> 
                 </body>
                 </html>'''
@@ -222,13 +193,13 @@ def convert():
         locale.setlocale(locale.LC_TIME, "esn")
     except:
         pass
-    epub.writestr('OEBPS/intro.html', intro % (time.strftime("%x")))       
+    epub.writestr('OEBPS/intro.html', (intro % (time.strftime("%x"))).decode('iso-8859-1').encode('utf8'))       
 
     for i, html in enumerate(chapters):
         manifest += '<item id="file_%s" href="%s.html" media-type="application/xhtml+xml"/>' % (
                       i+1, i+1)
         spine += '<itemref idref="file_%s" />' % (i+1)
-        epub.writestr('OEBPS/%i.html' % (i+1), html.replace("img/", "")) 
+        epub.writestr('OEBPS/%i.html' % (i+1), html.replace("img/", "").decode('iso-8859-1').encode('utf8')) 
 
     for f in os.listdir(src):
         fn = os.path.join(src, f)
@@ -238,6 +209,30 @@ def convert():
       'manifest': manifest,
       'spine': spine,
     })
+
+
+###############################
+
+def findFiles(directory, pattern):
+    for root, dirs, files in os.walk(directory):
+        for basename in files:
+            if fnmatch.fnmatch(basename, pattern):
+                filename = os.path.join(root, basename)
+                yield filename
+                
+    
+def convertImages():
+    for f in findFiles('../latex', '*.pdf'):
+
+        from subprocess import call
+        dest = os.path.basename(f)
+        dest = os.path.splitext(dest)[0]
+        dest = "img/%s.png" % dest
+        commands = [r'"Inkscape.exe"', "--export-png=" + dest, f]
+        print " ".join(commands)
+        #call(commands)
+
+###############################
 
 if __name__ == '__main__':
     convert()
