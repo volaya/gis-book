@@ -7,6 +7,6 @@ This is a (very) abridged version of the [Libro Libre SIG](https://github.com/vo
 
 The book uses LaTeX. LaTeX sources are found in the *latex* folder, with subfolders for each available language.
 
-To create the HTML and ebook versions, run the *convert.html* script in the *convert* folder.
+To create the HTML and EPUB versions, run the *convert.py* script in the *convert* folder.
 
 On-line version available at http://volaya.github.io/gis-book/
