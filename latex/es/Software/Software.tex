@@ -50,20 +50,20 @@ Aunque en el caso más habitual, la representación de una capa en un lienzo de un
 
 El análisis es una capacidad fundamental de los SIG desde sus orígenes. Otros usos, tales como la visualización, pese a ser prácticamente imprescindibles hoy en día, estaban muy limitados en los primeros SIG. 
 
-La tendencia actual en los SIG es considerar las capacidades de análisis como herramientas modulares que se ejecutan sobre una plataforma base, la cual comprende las capacidades de visualización y entrada y salida de datos. Todas estas capacidades de análisis son independientes entre sí, aunque pueden coordinarse y emplearse en conjunto para alcanzar un resultado concreto. 
+La tendencia actual en los SIG es considerar las capacidades de análisis como \textbf{herramientas modulares} que se ejecutan sobre una plataforma base, la cual comprende las capacidades de visualización y entrada y salida de datos. Todas estas capacidades de análisis son independientes entre sí, aunque pueden coordinarse y emplearse en conjunto para alcanzar un resultado concreto. 
 
 Cuando las herramientas de análisis utilizan directamente la base del SIG donde se encuentran las capacidades de visualización y manejo de datos, puede existir cierto grado de interactividad. Por ejemplo, el usuario puede delimitar un área o introducir una corrdenada operando sobr eel lienzo donde se representan las capas, y este valor se utilizará después como parámetro de entrada para una operación analítica.
 
 En caso de no existir este tipo de interacción entre elementos de análisis y elementos de visualización y exploración de datos, los procesos de análisis suelen constituir utilidades autocontenidas que simplemente toman una serie de datos de entrada, realizan un proceso en el que el usuario no interviene, y finalmente generan un resultado con carácter definitivo. Este resultado podrá ser posteriormente visualizado o utilizado como entrada para un nuevo análisis.
 
-Por su naturaleza, tanto los datos espaciales como los procesos en los que estos intervienen se prestan a formar parte de estos flujos de trabajo más o menos complejos, y es por ello que en los SIG actuales una funcionalidad básica es la creación de tareas complejas que permiten simplificar todo un proceso de muchas etapas en una única que las engloba a todas. La forma anteriormente comentada en que aparecen las formulaciones dentro de un SIG, de forma atomizada y modular, facilita la creación de estos <<modelos>> a partir de procesos simples.
+Por su naturaleza, tanto los datos espaciales como los procesos en los que estos intervienen se prestan a formar parte de \textbf{flujos de trabajo} más o menos complejos, y es por ello que en los SIG actuales una funcionalidad básica dentro del análisis es la \textbf{automatización}. Esta se da mediante la \textbf{creación de tareas complejas que permiten simplificar todo un proceso} de muchas etapas en una única que las engloba a todas. La forma anteriormente comentada en que aparecen las formulaciones dentro de un SIG, de forma atomizada y modular, facilita la creación de estos <<modelos>> a partir de procesos simples.
 
 Asimismo, las herramientas SIG que contienen funcionalidad de análisis suelen permitir el acceso a estas a traves de lenguajes de \emph{scripting}, lo cual facilita la creación de flujos de trabajo y la automatización de rutinas complejas de análisis. Si bien este trabajo no se realiza de un modo gráfico e intuitivo como en el ejemplo mostrado anteriormente, y requiere mayores conocimientos, la flexibilidad y potencia que ofrece es mucho mayor.
 
 \subsection{Edición}
 
 
-Los datos geográficos con los que trabajamos en un SIG no son una realidad estática. La información contenida en una capa es susceptible de ser \textbf{modificada o corregida}, y las funciones que permiten estas tareas son importantes para dotar al SIG de versatilidad. Sin ellas, los datos espaciales pierden gran parte de su utilidad dentro de un SIG, ya que se limitan las posibilidades de trabajo sobre estos. Las funcionalidades de edición son, por tanto, básicas en una herramienta de escritorio.
+Los datos geográficos con los que trabajamos en un SIG no son una realidad estática. La información contenida en una capa es \textbf{susceptible de ser modificada o corregida}, y las funciones que permiten estas tareas son importantes para dotar al SIG de versatilidad. Sin ellas, los datos espaciales pierden gran parte de su utilidad dentro de un SIG, ya que se limitan las posibilidades de trabajo sobre estos. Las funcionalidades de edición son, por tanto, básicas en una herramienta de escritorio.
 
 Las operaciones de edición pueden emplearse para la \textbf{creación de nueva cartografía}, así como para la \textbf{actualización} de esta. Aunque las tareas de edición más habituales son las relacionadas con la edición de geometrías, no es esta la única edición que puede realizarse dentro de un SIG. Podemos distinguir las siguientes formas de edición:
 
@@ -101,11 +101,11 @@ Estas posibilidades surgen de la \textbf{separación entre los datos espaciales y
 
 Uno de los avances más importantes en la historia de los SIG lo constituye la llegada del \emph{Web Mapping}. Entendemos como tal a las tecnologías que permiten \textbf{incorporar las ideas de los SIG dentro de paginas Web}, utilizando un navegador Web como aplicación principal. Asimismo, estas tecnologías, junto a la importancia de Internet, han propiciado el desarrollo de otros elementos tecnológicos tales como \textbf{servicios de datos remotos}, que se utilizan tanto en las aplicaciones de escritorio como en el propio \emph{Web Mapping}.
 
-Los conceptos de \textbf{servidor} y \textbf{cliente} son fundamentales en este contexto. Veamos algunas ideas generales al respecto.
+Los conceptos de \emph{servidor} y \emph{cliente} son fundamentales en este contexto. Veamos algunas ideas generales al respecto.
 
-Conocemos como \emph{servidor} al elemento encargado de \emph{servir} algún tipo de contenido. En el ámbito SIG, se trata fundamentalmente de datos geográficos, que constituyen el principal producto que se distribuye a través de la red dentro de nuestro campo. 
+Conocemos como \textbf{servidor} al elemento encargado de proporcionar (servir) algún tipo de contenido. En el ámbito SIG, se trata fundamentalmente de datos geográficos, que constituyen el principal producto que se distribuye a través de la red dentro de nuestro campo. 
 
-El \emph{cliente} es responsable de \emph{pedir} ese dato al servidor, tomarlo y trabajar con él. Un navegador Web es un cliente, ya que  realiza una petición para mostrar una página Web. Al introducir una direccion Web en la barra de direcciones del navegador, proporcionamos una serie de datos que son los que se emplean para realizar el proceso, y que vamos a ver a continuación en detalle.
+El \textbf{cliente} es responsable de pedir ese dato al servidor, tomarlo y trabajar con él. Un navegador Web es un cliente, ya que  realiza una petición para mostrar una página Web. Al introducir una direccion Web en la barra de direcciones del navegador, proporcionamos una serie de datos que son los que se emplean para realizar el proceso.
 
 Supongamos la dirección Web:
 
@@ -206,9 +206,9 @@ Dos técnicas básicas que se emplean actualmente en los clientes que manejan info
 
 Ambas técnicas se utilizan en servicios en los que el servidor provee imágenes, ya que es en estos en los que resultan aplicables, y también donde es más necesario recurrir a este tipo de técnicas.
 
-El \emph{tiling} es una técnica consistente en dividir las imágenes con las que se trabaja en imágenes menores que formen un mosaico. Esto permite un trabajo más rápido, al utilizar unidades mínimas de menor tamaño y poder reducir la necesidad de transmitir datos a través de la red si se realiza una gestión correcta del conjunto de elementos de ese mosaico. En lugar de transmitir una única imagen se transmiten varias de menor tamaño y la información correspondiente a la posición relativa de estas.
+El \textbf{tiling} es una técnica consistente en dividir las imágenes con las que se trabaja en imágenes menores que formen un mosaico. Esto permite un trabajo más rápido, al utilizar unidades mínimas de menor tamaño y poder reducir la necesidad de transmitir datos a través de la red si se realiza una gestión correcta del conjunto de elementos de ese mosaico. En lugar de transmitir una única imagen se transmiten varias de menor tamaño y la información correspondiente a la posición relativa de estas.
 
-El \emph{cacheo}, por su parte, es una técnica no exclusiva del ámbito SIG, sino de la Web en general, y consiste en almacenar de forma temporal los datos obtenidos de un servidor en la máquina local. De este modo, si volviera a resultar necesario acceder a esos datos, no han de pedirse al servidor, sino que pueden recuperarse de la copia local, con las ventajas que ello tiene en cuanto a la velocidad de acceso y la fiabilidad del proceso.
+El \textbf{cacheo}, por su parte, es una técnica no exclusiva del ámbito SIG, sino de la Web en general, y consiste en almacenar de forma temporal los datos obtenidos de un servidor en la máquina local. De este modo, si volviera a resultar necesario acceder a esos datos, no han de pedirse al servidor, sino que pueden recuperarse de la copia local, con las ventajas que ello tiene en cuanto a la velocidad de acceso y la fiabilidad del proceso.
 
 El uso conjunto de \emph{tiling} y \emph{cacheo} puede disminuir sensiblemente el volumen de datos a transmitir para, por ejemplo, modificar el encuadre de un mapa en una aplicación SIG Web. La figura \ref{Fig:Tiling} muestra un ejemplo sencillo que servirá para comprender el ahorro de datos que puede conseguirse con el uso conjunto de estas técnicas.
 
