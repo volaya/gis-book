@@ -173,10 +173,11 @@ def convert():
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
 
-    chapterFiles = ["../latex/es/prologo.tex"]
+    chapterFiles = [os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "latex/es/prologo.tex")]
     chapterNames = ["Introduccion", "Historia", "Fundamentos_cartograficos", "Datos", 
                     "Fuentes_datos", "Software", "Bases_datos", "Analisis", "Visualizacion"]
-    chapterFiles.extend(["../latex/es/%s/%s.tex" % (n,n) for n in chapterNames])
+    chapterFiles.extend([os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 
+                        "latex/es/%s/%s.tex" % (n,n)) for n in chapterNames])
 
     chapters = []
     for i, f in enumerate(chapterFiles):
@@ -188,7 +189,10 @@ def convert():
             pass 
 
     import locale
-    locale.setlocale(locale.LC_TIME, "esn")
+    try:
+        locale.setlocale(locale.LC_TIME, "esn")
+    except:
+        pass
     fullBook = "<mbp:pagebreak/>".join(chapters)
     with open(os.path.join(os.path.dirname(__file__), "ebook", "ebook.html"), 'w')  as f:
         text = ebookTemplate % (time.strftime("%x") , fullBook)
