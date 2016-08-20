@@ -129,10 +129,10 @@ def convert():
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
 
-    chapterFiles = [os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "latex/es/prologo.tex")]
+    chapterFiles = [os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "latex/es/prologo.tex")]
     chapterNames = ["Introduccion", "Historia", "Fundamentos_cartograficos", "Datos", 
                     "Fuentes_datos", "Software", "Bases_datos", "Analisis", "Visualizacion"]
-    chapterFiles.extend([os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 
+    chapterFiles.extend([os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 
                         "latex/es/%s/%s.tex" % (n,n)) for n in chapterNames])
 
     chapters = []
@@ -162,17 +162,33 @@ def convert():
             <dc:title>Introducción a los SIG</dc:title>
             <dc:creator opf:file-as="Olaya, Víctor" opf:role="aut">Víctor Olaya</dc:creator>
             <dc:language>es</dc:language>        
-            <dc:description>Introducción a los Sistemas de Información Geográfica.</dc:description>                
+            <dc:description>Introducción a los Sistemas de Información Geográfica.</dc:description> 
+            <meta name="cover" content="cover.jpg" />               
         </metadata>
       <manifest>
+        <item id="cover" href="cover.html" media-type="application/xhtml+xml"/> 
+        <item id="cover-image" href="cover.jpg" media-type="image/jpeg"/>
         <item id="intro" href="intro.html" media-type="application/xhtml+xml"/>
         %(manifest)s
       </manifest>
       <spine toc="ncx">
+        <itemref idref="cover" linear="no"/>
         <itemref idref="intro" />
         %(spine)s
       </spine>
     </package>'''
+
+    cover = '''<html>
+              <head>
+                <title>Cover</title>
+                <style type="text/css"> img { max-width: 100%; } </style>
+              </head>
+              <body>
+                <div id="cover-image">
+                  <img src="cover.jpg" alt="Introducción a los SIG"/>
+                </div>
+              </body>
+            </html>'''
 
     intro = '''<html> 
                 <head> 
@@ -195,6 +211,7 @@ def convert():
                 %s                
                 </body>
                 </html>'''
+
     manifest = ""
     spine = ""
 
@@ -205,7 +222,9 @@ def convert():
         pass
 
     epub.write(os.path.join(os.path.dirname(__file__), "ebook", "base.css"), os.path.join('OEBPS', "base.css"))
-    epub.writestr('OEBPS/intro.html', (intro % (time.strftime("%x"))).decode('iso-8859-1').encode('utf8'))       
+    epub.write(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "covers", "ebook_es.jpg"), os.path.join('OEBPS', "cover.jpg"))
+    epub.writestr('OEBPS/intro.html', (intro % (time.strftime("%x"))).decode('iso-8859-1').encode('utf8'))
+    epub.writestr('OEBPS/cover.html', (intro % (time.strftime("%x"))).decode('iso-8859-1').encode('utf8'))       
 
     for i, html in enumerate(chapters):
         manifest += '<item id="file_%s" href="%s.html" media-type="application/xhtml+xml"/>' % (
