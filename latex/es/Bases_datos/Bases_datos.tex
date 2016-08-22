@@ -36,13 +36,13 @@ Por último, los usuarios de la base de datos también obtienen ventajas al trabaj
 	\item \textbf{Facilidad para reutilización de datos}. Esto es, facilidad para compartir.
 \end{itemize}
 
-De forma resumida, puede decirse que la principal bondad de una base de datos es la \textbf{centralización} que supone de todos los datos con los que se trabaja en un contexto determinado, con las consecuencias que ello tiene para una mejor gestión, acceso o estructuración de estos.
+De forma resumida, puede decirse que la principal bondad de una base de datos es la \textbf{centralización} que supone de todos los datos con los que se trabaja en un contexto determinado, con las consecuencias que ello tiene para una \textbf{mejor gestión, acceso o estructuración} de estos.
 
 
 \section{Bases de datos relacionales}
 
 
-De entre los distintos modelos existentes para plantear una base de datos, el más habitual, tanto dentro como fuera del ambito de los SIG, es de las denominadas \textbf{bases de datos relacionales}. Este modelo utiliza un esquema basado en \textbf{tablas}, que resulta a la vez sencillo de comprender y fácil de utilizar para el análisis y la consulta de los datos. Las tablas contienen un número dado de \textbf{registros} (equivalentes a las filas en la tabla), así como \textbf{campos} (columnas),
+De entre los distintos modelos existentes para plantear una base de datos, el más habitual, tanto dentro como fuera del ámbito de los SIG, es de las denominadas \textbf{bases de datos relacionales}. Este modelo utiliza un esquema basado en \textbf{tablas}, que resulta a la vez sencillo de comprender y fácil de utilizar para el análisis y la consulta de los datos. Las tablas contienen un número dado de \textbf{registros} (equivalentes a las filas en la tabla), así como \textbf{campos} (columnas),
 
 La tabla en sí se conoce como \textbf{relación}, ya que recoge la relación existente entre sus elementos, y constituye así el eje central del modelo relacional. Las columnas representan los distintos \textbf{atributos} asociados a la entidad, mientras que las filas conforman los distintos \textbf{registros}. Una fila se forma con un conjunto de $n$ atributos, constituyendo una \textbf{tupla}.
 
@@ -51,7 +51,7 @@ Una base de datos contiene normalmente más de una tabla, ya que suelen ser mucho
 
 Cuando trabajamos con datos espaciales, es habitual emplear la \textbf{componente espacial como clave}, ya que esta suele ser única. 
 
-Las interrelaciones entre tablas pueden ser de distintos tipos, según el número de entidades de una tabla con los que se relacionen las entidades de la otra. Tenemos así relaciones de \textbf{uno a muchos}, de \textbf{uno a uno} o de \textbf{muchos a muchos}. Por ejemplo, en una tabla con entidades que representan personas y otra con entidades que representan ciudades, si establecemos una interrelacion \emph{vive en}, se tratará de una interrelación de uno a muchos, ya que en una ciudad pueden habitar varias personas.
+Las interrelaciones entre tablas pueden ser de distintos tipos, según el número de entidades de una tabla con los que se relacionen las entidades de la otra. Tenemos así relaciones de \textbf{uno a muchos}, de \textbf{uno a uno} o de \textbf{muchos a muchos}. Por ejemplo, en una tabla con entidades que representan personas y otra con entidades que representan ciudades, si establecemos una interrelación \emph{vive en}, se tratará de una interrelación de uno a muchos, ya que en una ciudad pueden habitar varias personas.
 
 
 
@@ -78,9 +78,9 @@ En este sentido, resulta de especial importancia la existencia de \textbf{lengua
 
 Todo cuanto hemos visto en los puntos anteriores constituye el conjunto de ideas fundamentales sobre las que se asienta la creación y uso de bases de datos de cualquier índole. La inclusión de datos espaciales en este esquema no es en absoluto obvia, y presenta una complejidad adicional que requiere de nuevos planteamientos. Para que una base de datos pueda considerarse espacial, debe adaptarse y añadir elementos adicionales. 
 
-En primer lugar, el dato espacial debe poder \textbf{almacenarse de forma nativa} en la base de datos. Esto quiere decir que una geometría debe poder almacenarse asociada a una entidad en una tabla, del mismo modo que sucede con otros tipos de datos tales como valores numéricos o cadenas de texto. El dato no solo debe poder almacenarse, sino tambien \textbf{entenderse} por parte del SGBD, para así comprender la naturaleza su naturaleza espacial y poder responder a peticiones relativas a esta por parte del usuario. Esto se denomina \textbf{almacenamiento transparente}, frente al almacenamiento \textbf{opaco}, en el cual la base de datos es capaz de recoger cualquier tipo de valor, pero sin ser capaz de entender su naturaleza y utilizarlo.
+En primer lugar, el dato espacial debe poder \textbf{almacenarse de forma nativa} en la base de datos. Esto quiere decir que una geometría debe poder almacenarse asociada a una entidad en una tabla, del mismo modo que sucede con otros tipos de datos tales como valores numéricos o cadenas de texto. El dato no solo debe poder almacenarse, sino también \textbf{entenderse} por parte del SGBD, para así comprender la naturaleza su naturaleza espacial y poder responder a peticiones relativas a esta por parte del usuario. Esto se denomina \textbf{almacenamiento transparente}, frente al almacenamiento \textbf{opaco}, en el cual la base de datos es capaz de recoger cualquier tipo de valor, pero sin ser capaz de entender su naturaleza y utilizarlo.
 
-Aunque existen planteamientos para almacenar datos raster en bases de datos, en general \textbf{las bases de datos espaciales trabajan con datos vectoriales} y están mejor adaptadas a estos. Las geometrías del dato vectorial se incluyen, como ya se ha dicho, dentro de los valores de un registro de la tabla (que se corresponde con una entidad en el modelo de datos vectoriales). Por su parte, la componente temática del dato espacial puede almacenarse sin problema en la base de datos, sin necesidad de ningún tipo de adaptación.
+Aunque existen planteamientos para almacenar datos ráster en bases de datos, \textbf{las bases de datos espaciales trabajan principalmente con datos vectoriales} y están mejor adaptadas a estos. Las geometrías del dato vectorial se incluyen, como ya se ha dicho, dentro de los valores de un registro de la tabla (que se corresponde con una entidad en el modelo de datos vectoriales). Por su parte, la componente temática del dato espacial puede almacenarse sin problema en la base de datos, sin necesidad de ningún tipo de adaptación.
 
 Cuando la base de datos está preparada para almacenar y trabajar con los datos espaciales, es necesario \textbf{adaptar el lenguaje de consulta}. A las operaciones habituales que un SGBD es capaz de realizar en función de los datos, se añaden otras que utilizan las propiedades espaciales del dato espacial. Se tiene así un \textbf{lenguaje de consulta espacial}, que permite consultas con componente espacial.
 
@@ -95,7 +95,7 @@ Aunque las consultas no son algo exclusivo de las bases de datos, es mediante el
 En el contexto espacial, una consulta representa un uso similar al que damos a un mapa clásico, cuando en base a este respondemos a preguntas como \emph{¿qué hay en la localización X?} o \emph{¿qué ríos pasan por la provincia Y?} No obstante, no debemos olvidar que los datos espaciales tienen dos componentes: una espacial y otra temática. Preguntas como las anteriores hacen referencia a la componente espacial, pero igualmente pueden efectuarse consultas que se apliquen sobre la parte temática. Y más aún, pueden efectuarse consultas conjuntas que interroguen a los datos geográficos acerca de los atributos espaciales y temáticos que estos contienen.
 
 
-Un ejemplo muy sencillo de consulta es lo que conocemos en un SIG como \textbf{selección}. De todos los registros de la tabla de datos, aquellos que cumplen el criterio indicado se marcan como seleccionados, y posteriormente pueden utilizarse únicamente estos como base de otro análisis, o simplemente el usuario puede ver cuáles han sido los seleccionados para así obtener la respuesta a su consulta. La figura \ref{Fig:Seleccion} muestra un ejemplo típico de esto, en el que el usuario define un area rectangular y se seleccionan las entidades que cumplen la condición de intersecar con él. Los criterios de selección pueden ser sencillos como este, o más elaborados y complejos.
+Un ejemplo muy sencillo de consulta es lo que conocemos en un SIG como \textbf{selección}. De todos los registros de la tabla de datos, aquellos que cumplen el criterio indicado se marcan como seleccionados, y posteriormente pueden utilizarse únicamente estos como base de otro análisis, o simplemente el usuario puede ver cuáles han sido los seleccionados para así obtener la respuesta a su consulta. La figura \ref{Fig:Seleccion} muestra un ejemplo típico de esto, en el que el usuario define un área rectangular y se seleccionan las entidades que cumplen la condición de intersecar con él. Los criterios de selección pueden ser sencillos como este, o más elaborados y complejos.
 
 \begin{figure}[!hbt]   
 \centering
@@ -182,7 +182,7 @@ Ese conocimiento básico de geografía que tenemos es en realidad una especie de í
 
 De modo similar, los índices espaciales nos permiten obtener resultados en un área concreta sin necesidad de analizar todo el espacio ocupado por el total de los datos. Gracias a ello, hacen las consultas mas efectivas y permiten trabajar con grandes volúmenes de datos.
 
-Los índices espaciales se almacenan junto con los datos a los que hacen referencia, bien en ficheros adicionales o dentro de la propia base de datos, en case de utilizarse una. Los SGBD espaciales tienen \textbf{capacidades para calcular estos índices espaciales} y almacenarlos en la base de datos, recurriendo a ellos cuando se realiza una consulta que requiera su uso.
+Los índices espaciales se almacenan junto con los datos a los que hacen referencia, bien en ficheros adicionales o dentro de la propia base de datos, en caso de utilizarse una. Los SGBD espaciales tienen \textbf{capacidades para calcular estos índices espaciales} y almacenarlos en la base de datos, recurriendo a ellos cuando se realiza una consulta que requiera su uso.
 
 
 \pagestyle{empty}

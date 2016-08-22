@@ -13,7 +13,7 @@ Ejemplos de análisis que realizamos con cartografía fuera de un SIG son el busca
 
 Mediante el análisis podemos generar nuevos datos que pueden ser \textbf{nuevas capas de datos geográficos, tablas de datos, valores escalares} o \textbf{vectores}.
 
-En ocasiones, los resultados expresan \textbf{la misma variable} que el dato de partida (por ejemplo, el cálculo de una media), y en otros las variables de entrada y salida son \textbf{distintas} (por ejemplo, si a partir de una capa de elevaciones calculamos una de pendientes).
+En ocasiones, los resultados expresan \textbf{la misma variable} que el dato de partida (por ejemplo, el cálculo de una media), y en otros \textbf{las variables de entrada y salida son distintas} (por ejemplo, si a partir de una capa de elevaciones calculamos una de pendientes).
 
 Asimismo, todo análisis espacial parte de un conjunto de datos espaciales, pudiendo estos ser \textbf{de un único tipo, o de varios distintos} que se combinan en un procedimiento concreto. Por ejemplo, en el caso de calcular la localización del punto más alto, el resultado es una sencilla coordenada, y tan solo se utiliza la variable elevación. En el caso de la altura media de una ciudad, se utilizan dos entradas: por un lado, la elevación, y por otro, el emplazamiento de la ciudad. Aunque un mapa clásico contiene toda esa información en una única hoja, en realidad son dos elementos distintos combinados a la hora de representarlos. En términos más acordes con un SIG, podemos decir que tenemos dos capas distintas que utilizamos como entradas.
 
@@ -27,51 +27,95 @@ El análisis dentro un SIG nos permite tanto formular como responder a cuestiones
 \item Relativas a la variación espacial
 \end{itemize}
 
-Algunos ejemplos de análisis geográfico son los siguientes.
+\section{Algunos ejemplos de análisis espacial}
+
+Algunos ejemplos de análisis espacial son los siguientes.
+
+\subsection{Consulta espacial}
+
+Vimos las consultas en detalle dentro del capítulo dedicado a las bases de datos.
+
+Pueden combinarse con otros de los análisis disponibles, por ejemplo para la \textbf{selección} de una serie de elementos sobre los que posteriormente se desarrollara el análisis en cuestión.
+
+\subsection{Análisis topológico}. 
+
+Pueden plantearse consultas referidas no solo a la posición de los elementos geográficos, sino a la \textbf{relación con otros elementos}. La existencia de topología puede emplearse para la realización de consultas que respondan a cuestiones como:
 
 \begin{itemize}
-\item \textbf{Consulta espacial}. Vimos las consultas en detalle dentro del capítulo dedicado a las bases de datos.
+\item ¿Cómo llegar desde mi posición actual hasta una coordenada concreta por la red viaria existente?
 
-\item \textbf{Análisis topológico}. Pueden plantearse consultas referidas no solo a la posición de los elementos geográficos, sino a la \textbf{relación con otros elementos}. La existencia de topología puede emplearse para la realización de consultas que respondan a cuestiones como:
+\item ¿Qué comunidades autónomas comparten límite con Madrid?
+\end{itemize}
 
-\subitem ¿Cómo llegar desde mi posición actual hasta una coordenada concreta por la red viaria existente?
+\subsection{Medición}. 
 
-\subitem ¿Qué comunidades autónomas comparten límite con Madrid?
-
-\item \textbf{Medición}. La existencia de una referencia espacial para cada uno de los elementos con los que trabajamos en el análisis dentro de un SIG hace que podamos \textbf{cuantificar} otra serie de parámetros también espaciales. Entre las mediciones más básicas, encontramos las distancias, áreas, perímetros o factores de forma. Mas elaboradas, encontramos otras como pendientes o indices derivados de medidas simples.
-
-
-\item \textbf{Combinación}. Uno de los procedimientos más habituales y más característicos dentro del uso de un SIG es la \textbf{combinación o superposición} de varias capas de información. La propia estructura de la información geográfica en capas facilita notablemente estos procedimientos y convierte a los SIG en plataformas ideales para llevar a cabo análisis donde se combina información sobre diversas variables.
+La existencia de una referencia espacial para cada uno de los elementos con los que trabajamos en el análisis dentro de un SIG hace que podamos \textbf{cuantificar} otra serie de parámetros también espaciales. Entre las mediciones más básicas, encontramos las distancias, áreas, perímetros o factores de forma. Mas elaboradas, encontramos otras como pendientes o indices derivados de medidas simples.
 
 
+\subsection{Combinación}
 
-\item \textbf{Transformaciones}. Podemos englobar dentro de este grupo una amplia serie de procedimientos que modifican los elementos de entrada de diversas formas. Entre los más habituales, encontramos la \textbf{transformación de coordenadas}, la \textbf{simplificación de geometrías}, o la \textbf{creación de áreas de influencia} o la \textbf{reclasificación de valores}. Estas transformación pueden afectar tanto a la componente espacial como a la componente temática del dato. 
+Uno de los procedimientos más habituales y más característicos dentro del uso de un SIG es la \textbf{combinación o superposición} de varias capas de información. La propia estructura de la información geográfica en capas facilita notablemente estos procedimientos y convierte a los SIG en plataformas ideales para llevar a cabo análisis donde se combina información sobre diversas variables.
 
-\item \textbf{Análisis de superficies}. El análisis de superficies es uno de los más potentes de cuantos encontramos en un SIG. Desde parámetros básicos como la \textbf{pendiente} o la \textbf{orientación} hasta parámetros morfométricos muy específicos, pasando por todas las herramientas del \textbf{análisis hidrológico}, la batería de operaciones disponibles es muy amplia. 
+En el caso de capas vectoriales, las \textbf{operaciones de solape} tales como \textbf{unión, intersección, diferencia o recorte}, son habituales. La figura \ref{Fig:Interseccion} muestra un ejemplo de la operación de intersección con dos capas de polígonos.
 
-\item \textbf{Estadística descriptiva}. Los elementos de la estadística clásica tienen sus equivalentes en los datos espaciales, y nos permiten \textbf{calificar cuantitativamente} los datos con los que trabajamos. Se incluyen aquí descriptores de centralidad y dispersión, de dependencia espacial o el estudio de patrones espaciales, entre otros muchos. Estos pueden a su vez usarse para el contraste de hipótesis que contengan una cierta componente espacial.
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width= \columnwidth]{Analisis/Interseccion.pdf}
+\caption{\small Operación de intersección de dos capas de polígonos.}
+\label{Fig:Interseccion} 
+\end{figure}
+
+\subsection{Transformaciones}
+
+Podemos englobar dentro de este grupo una amplia serie de procedimientos que modifican los elementos de entrada de diversas formas. Entre los más habituales, encontramos la \textbf{transformación de coordenadas}, la \textbf{simplificación de geometrías}, o la \textbf{creación de áreas de influencia} o la \textbf{reclasificación de valores}. Estas transformación pueden afectar tanto a la componente espacial como a la componente temática del dato. 
+
+Un caso particular, ya mencionado en un capítulo anterior, es la \textbf{conversión entre modelos de datos}, esto es, entre el modelo ráster y el vectorial. La figura \ref{Fig:Conversiones} muestra un ejemplo de esto. Partiendo de un mapa escaneado (una capa ráster) con curvas de nivel, pueden detectarse estas y crearse una capa vectorial con dichas curvas de nivel. Estas pueden posteriormente convertirse en un Modelo Digital de Elevaciones (ráster) mediante \textbf{interpolación}, el cual es posible convertir de nuevo en una capa vectorial de líneas.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width= \columnwidth]{Analisis/Conversiones.png}
+\caption{\small Conversión entre distintos modelos de datos para una capa de elevaciones.}
+\label{Fig:Conversiones} 
+\end{figure}
+
+\subsection{Análisis de superficies}
+
+El análisis de superficies es uno de los más potentes de cuantos encontramos en un SIG. Desde parámetros básicos como la \textbf{pendiente} o la \textbf{orientación} hasta parámetros morfométricos muy específicos, pasando por todas las herramientas del \textbf{análisis hidrológico}, la batería de operaciones disponibles es muy amplia. 
+
+\subsection{Estadística descriptiva}
+
+Los elementos de la estadística clásica tienen sus equivalentes en los datos espaciales, y nos permiten \textbf{calificar cuantitativamente} los datos con los que trabajamos. Se incluyen aquí descriptores de centralidad y dispersión, de dependencia espacial o el estudio de patrones espaciales, entre otros muchos. Estos pueden a su vez usarse para el contraste de hipótesis que contengan una cierta componente espacial.
 
 Por ejemplo, estos estadísticos nos permiten dar respuesta a cuestiones del tipo
 
-\subitem ¿Es constante la media de altura a lo largo de toda la geografía de mi país?
+\begin{itemize}
+\item ¿Es constante la media de altura a lo largo de toda la geografía de mi país?
 
-\subitem ¿Existe alguna dirección predominante en los movimientos de individuos de una especie o se desplazan erráticamente?
+\item ¿Existe alguna dirección predominante en los movimientos de individuos de una especie o se desplazan erráticamente?
+\end{itemize}
 
-\item \textbf{Inferencia}. Otro análisis estadístico de gran importancia en los SIG es el que permite inferir comportamientos de las distintas variables y estudiar, por ejemplo, la forma en que estas van a evolucionar a lo largo del tiempo.
+\subsection{Inferencia}
+
+Otro análisis estadístico de gran importancia en los SIG es el que permite inferir comportamientos de las distintas variables y estudiar, por ejemplo, la forma en que estas van a evolucionar a lo largo del tiempo.
 
 El establecimiento de modelos de cambio y variación representa una de las herramientas más actuales en el campo de los SIG, y un campo en abundante desarrollo.
 
-\item \textbf{Toma de decisiones y optimización}. La estructura de la información geográfica en capas dentro de un SIG, favorable como ya vimos para la superposición de capas, lo es igualmente para estudiar de forma combinada los efectos de distintos factores. Este estudio nos permite luego responder a cuestiones como, por ejemplo,
+\subsection{Toma de decisiones y optimización}
 
-\subitem ¿Cuál es el mejor lugar para emplazar una nueva construcción en función de su impacto sobre el medio?
+La estructura de la información geográfica en capas dentro de un SIG, favorable como ya vimos para la superposición de capas, lo es igualmente para estudiar de forma combinada los efectos de distintos factores. Este estudio nos permite luego responder a cuestiones como, por ejemplo,
 
-\subitem ¿Dónde situar un nuevo hospital para que el servicio en la comarca mejore lo máximo posible?
+\begin{itemize}
+\item ¿Cuál es el mejor lugar para emplazar una nueva construcción en función de su impacto sobre el medio?
 
-\item \textbf{Modelización}. La creación de modelos espaciales dentro de un SIG es una tarea aún pendiente de mucho desarrollo. No obstante, existe un gran número de modelos en los más diversos campos, y la arquitectura de datos y procesos de los SIG es propicia para la implementación de otros nuevos.
+\item ¿Dónde situar un nuevo hospital para que el servicio en la comarca mejore lo máximo posible?
 \end{itemize}
 
-\section{Particularidades de los datos espaciales para su análisis}
+\subsection{Modelización}
 
+La creación de modelos espaciales dentro de un SIG es una tarea aún pendiente de mucho desarrollo. No obstante, existe un gran número de modelos en los más diversos campos, y la arquitectura de datos y procesos de los SIG es propicia para la implementación de otros nuevos.
+
+
+\section{Particularidades de los datos espaciales para su análisis}
 
 Las características propias de los datos espaciales dotan a estos de una \textbf{gran potencialidad} de análisis, al tiempo que \textbf{condicionan o limitan} otras operaciones. Algunas de estas características representan problemas que han de tenerse presentes en el análisis; otros son simplemente conceptos básicos que deben conocerse pero no han de implicar necesariamente una dificultad asociada.
 

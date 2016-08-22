@@ -129,14 +129,16 @@ La componente temática en el modelo vectorial se establece mediante los denomina
 
 Un elemento particular del modelo de representación vectorial es la \textbf{topología}.  Una capa vectorial contiene topología si en ella se almacenan de algún modo las relaciones espaciales que existen entre sus elementos. Disponer de topología en una capa vectorial es de gran importancia a la hora de llevar a cabo ciertos tipos de análisis, así como procedimientos tales como la edición de los propios datos geográficos. 
 
-Aunque la mayoría de operaciones con una capa vectorial pueden llevarse a cabo en ausencia de topología, algunas de ellas como el \textbf{análisis de redes} no se pueden llevar a cabo sin topología. Si pensamos en una capa de vías sobre la que desarrollar ese análisis de redes, un mero conjunto de elementos geométricos (líneas en este caso), no nos da información sobre los posibles enlaces entre las vías que quedan representadas. Los puntos donde se cruzan dos vías pueden ser cruces o rotondas (es decir, puede pasarse de una vía a otra, existiendo conexión entre ellas), o bien pasos elevados o subterráneos donde una de las vías pasa por encima de la otra (y por tanto no existe comunicación entre ambas). Las circunstancias son muy distintas en función del tipo de cruce que exista, y por ello es imprescindible conocer esta información para efectuar un análisis de redes correcto (Figura \ref{Fig:Topologia_vias})
-
 \begin{figure}[!hbt]   
 \centering
 \includegraphics[width=.8\columnwidth]{Datos/Topologia_vias.pdf}
 \caption{\small Capa de vías de comunicación sin topología (a) o con ella (b). Los puntos en este segundo caso indican conexiones entre vias, y son una representación visible de la topología existente. }
 \label{Fig:Topologia_vias} 
 \end{figure}
+
+Aunque la mayoría de operaciones con una capa vectorial pueden llevarse a cabo en ausencia de topología, algunas de ellas como el \textbf{análisis de redes} no se pueden llevar a cabo sin topología. Si pensamos en una capa de vías sobre la que desarrollar ese análisis de redes, un mero conjunto de elementos geométricos (líneas en este caso), no nos da información sobre los posibles enlaces entre las vías que quedan representadas. Los puntos donde se cruzan dos vías pueden ser cruces o rotondas (es decir, puede pasarse de una vía a otra, existiendo conexión entre ellas), o bien pasos elevados o subterráneos donde una de las vías pasa por encima de la otra (y por tanto no existe comunicación entre ambas). Las circunstancias son muy distintas en función del tipo de cruce que exista, y por ello es imprescindible conocer esta información para efectuar un análisis de redes correcto (Figura \ref{Fig:Topologia_vias})
+
+
 
 
 El almacenamiento de entidades basado en una mera lista de coordenadas de cada entidad, sin topología,  se conoce popularmente como \emph{spaghetti}, pues si pensamos en una capa de lineas sin topología que se entrecruzan en el espacio, esta se asemejan en cierta forma a un caótico plato de \emph{spaguettis} sin orden ni relación entre ellos.
