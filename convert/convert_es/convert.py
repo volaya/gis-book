@@ -100,14 +100,15 @@ def convertFile(path, chapterNum):
 
     p = re.compile(r"(\\begin\{table[\S\s]*?\\end\{table.*?\})")
     tables = p.findall(s)
-    for table in tables:            
+    for tableNum, table in enumerate(tables):  
         idx = table.find("Tabla:")
         tablelabel = table[idx:table.find("}", idx)]
         idx = table.find(r"\caption") + 9        
         caption = table[idx:table.find("}\n", idx)]
         try:
-            replace = tableshtml[tablelabel] + "<figcaption>%s</figcaption>$$\label{%s}$$" % (caption, tablelabel)
-            s = s.replace(table, replace)            
+            replace = "<a name='%s'></a>%s<center><figcaption>Cuadro %s: %s</figcaption></center>" % (tablelabel, tableshtml[tablelabel], tableNum + 1, caption)
+            s = s.replace(table, replace)
+            s = s.replace("\\ref{%s}" % tablelabel, '<a href="#%s">%s</a>' % (label, tableNum))
         except Exception, e:
             pass
 
