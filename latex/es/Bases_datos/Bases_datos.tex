@@ -1,8 +1,4 @@
-
 \chapter{Bases de datos}
-
-
- 
 
 \pagestyle{fancy}
 
@@ -78,7 +74,7 @@ En este sentido, resulta de especial importancia la existencia de \textbf{lengua
 
 Todo cuanto hemos visto en los puntos anteriores constituye el conjunto de ideas fundamentales sobre las que se asienta la creación y uso de bases de datos de cualquier índole. La inclusión de datos espaciales en este esquema no es en absoluto obvia, y presenta una complejidad adicional que requiere de nuevos planteamientos. Para que una base de datos pueda considerarse espacial, debe adaptarse y añadir elementos adicionales. 
 
-En primer lugar, el dato espacial debe poder \textbf{almacenarse de forma nativa} en la base de datos. Esto quiere decir que una geometría debe poder almacenarse asociada a una entidad en una tabla, del mismo modo que sucede con otros tipos de datos tales como valores numéricos o cadenas de texto. El dato no solo debe poder almacenarse, sino también \textbf{entenderse} por parte del SGBD, para así comprender la naturaleza su naturaleza espacial y poder responder a peticiones relativas a esta por parte del usuario. Esto se denomina \textbf{almacenamiento transparente}, frente al almacenamiento \textbf{opaco}, en el cual la base de datos es capaz de recoger cualquier tipo de valor, pero sin ser capaz de entender su naturaleza y utilizarlo.
+En primer lugar, el dato espacial debe poder \textbf{almacenarse de forma nativa} en la base de datos. Esto quiere decir que una geometría debe poder almacenarse asociada a una entidad en una tabla, del mismo modo que sucede con otros tipos de datos tales como valores numéricos o cadenas de texto. El dato no solo debe poder almacenarse, sino también \textbf{entenderse} por parte del SGBD, para así comprender su naturaleza espacial y poder responder a peticiones relativas a esta por parte del usuario. Esto se denomina \textbf{almacenamiento transparente}, frente al almacenamiento \textbf{opaco}, en el cual la base de datos es capaz de recoger cualquier tipo de valor, pero sin ser capaz de entender su naturaleza y utilizarlo.
 
 Aunque existen planteamientos para almacenar datos ráster en bases de datos, \textbf{las bases de datos espaciales trabajan principalmente con datos vectoriales} y están mejor adaptadas a estos. Las geometrías del dato vectorial se incluyen, como ya se ha dicho, dentro de los valores de un registro de la tabla (que se corresponde con una entidad en el modelo de datos vectoriales). Por su parte, la componente temática del dato espacial puede almacenarse sin problema en la base de datos, sin necesidad de ningún tipo de adaptación.
 
@@ -170,7 +166,7 @@ Los índices nos permiten \emph{alcanzar} los elementos que constituyen la respue
 
 Un ejemplo fácil de entender es el de una guía telefónica en la que los nombre están ordenados alfabéticamente. Gracias a ese orden y a que se conoce el alfabeto, se puede buscar rápidamente un nombre sin necesidad de leer todos ellos.
 
-Al utilizar una base de datos, si no disponemos de un índice deberemos recorrer toda ella para dar respuesta a nuestras consultas. No sabemos \emph{dónde} buscar las respuestas a nuestras consultas, del mismo modo que si en una guía telefónica no supiéramos que carece de sentido buscar en la letra F el número telefónico del señor Pérez.
+Al utilizar una base de datos, si no disponemos de un índice deberemos recorrer toda ella para dar respuesta a nuestras consultas. No sabemos \emph{dónde} buscar las respuestas a nuestras consultas, del mismo modo que si no supiéramos que carece de sentido buscar en la letra F el número telefónico del señor Pérez.
 
 Ademas de índices para datos de tipo numérico o texto, en los que resulta obvio establecer un orden natural, en el ámbito de los SIG tienen importancia los denominados \textbf{índices espaciales}. Aunque sus fundamentos teóricos son distintos, el concepto es similar al de índices de bases de datos no espaciales: elementos que permiten \textbf{optimizar las consultas mediante una correcta estructuración} de los datos, en particular en este caso de su componente espacial.
 
