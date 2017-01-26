@@ -48,7 +48,7 @@ El análisis es una capacidad fundamental de los SIG desde sus orígenes. Otros us
 
 La tendencia actual en los SIG es considerar las capacidades de análisis como \textbf{herramientas modulares} que se ejecutan sobre una plataforma base, la cual comprende las capacidades de visualización y entrada y salida de datos. Todas estas capacidades de análisis son independientes entre sí, aunque pueden coordinarse y emplearse en conjunto para alcanzar un resultado concreto. 
 
-Cuando las herramientas de análisis utilizan directamente la base del SIG donde se encuentran las capacidades de visualización y manejo de datos, puede existir cierto grado de interactividad. Por ejemplo, el usuario puede delimitar un área o introducir una corrdenada operando sobr eel lienzo donde se representan las capas, y este valor se utilizará después como parámetro de entrada para una operación analítica.
+Cuando las herramientas de análisis utilizan directamente la base del SIG donde se encuentran las capacidades de visualización y manejo de datos, puede existir cierto grado de interactividad. Por ejemplo, el usuario puede delimitar un área o introducir una coordenada operando sobre el lienzo donde se representan las capas, y este valor se utilizará después como parámetro de entrada para una operación analítica.
 
 En caso de no existir este tipo de interacción entre elementos de análisis y elementos de visualización y exploración de datos, los procesos de análisis suelen constituir utilidades autocontenidas que simplemente toman una serie de datos de entrada, realizan un proceso en el que el usuario no interviene, y finalmente generan un resultado con carácter definitivo. Este resultado podrá ser posteriormente visualizado o utilizado como entrada para un nuevo análisis.
 
@@ -101,7 +101,7 @@ Los conceptos de \emph{servidor} y \emph{cliente} son fundamentales en este cont
 
 Conocemos como \textbf{servidor} al elemento encargado de proporcionar (servir) algún tipo de contenido. En el ámbito SIG, se trata fundamentalmente de datos geográficos, que constituyen el principal producto que se distribuye a través de la red dentro de nuestro campo. 
 
-El \textbf{cliente} es responsable de pedir ese dato al servidor, tomarlo y trabajar con él. Un navegador Web es un cliente, ya que  realiza una petición para mostrar una página Web. Al introducir una direccion Web en la barra de direcciones del navegador, proporcionamos una serie de datos que son los que se emplean para realizar el proceso.
+El \textbf{cliente} es responsable de pedir ese dato al servidor, tomarlo y trabajar con él. Un navegador Web es un cliente, ya que  realiza una petición para mostrar una página Web. Al introducir una dirección Web en la barra de direcciones del navegador, proporcionamos una serie de datos que son los que se emplean para realizar el proceso.
 
 Supongamos la dirección Web:
 
@@ -109,7 +109,7 @@ Supongamos la dirección Web:
 \small\texttt{http://victorolaya.com/writing}
 \end{center}
 
-Al visitar esa página, se efectua una petición a través de su dirección, la cual se compone de las siguientes partes:
+Al visitar esa página, se efectúa una petición a través de su dirección, la cual se compone de las siguientes partes:
 
 \begin{itemize}
 	\item \texttt{http}: El protocolo a usar, que define la forma en que se van a comunicar cliente y servidor.
@@ -304,7 +304,7 @@ Algunos de los estándares OGC más relevantes son los siguientes:
 
 Cada uno de estos estándares está descrito en una especificación, y estas están sujetas a cambios y mejoras, existiendo varias versiones en cada caso. 
 
-Junto a estos estándares, encontramos los elaborados por otras organizaciones como \textbf{ISO} o \textbf{W3C}, de ámbito más general, pero que también tienen importancia en el ambito SIG. Entre ellos, destacar los estándares ISO encargados de definir el \textbf{formato de almacenamiento de metadato}, o los estándares de W3C para la \textbf{comunicación en Internet}.
+Junto a estos estándares, encontramos los elaborados por otras organizaciones como \textbf{ISO} o \textbf{W3C}, de ámbito más general, pero que también tienen importancia en el ámbito SIG. Entre ellos, destacar los estándares ISO encargados de definir el \textbf{formato de almacenamiento de metadatos}, o los estándares de W3C para la \textbf{comunicación en Internet}.
 
 
 
@@ -312,9 +312,9 @@ Junto a estos estándares, encontramos los elaborados por otras organizaciones co
 
 \section{SIG móvil}
 
-El SIG sobre plataformas moviles (teléfonos, tablets, etc.) tiene una innegable relación con las formas de SIG que hemos visto, tanto el SIG de escritorio como el SIG movil. A los elementos de estas se suman las propias características de funcionar sobre un dispositivo movil, que proporcionan un gran número de posibilidades adicionales.
+El SIG sobre plataformas móviles (teléfonos, tablets, etc.) tiene una innegable relación con las formas de SIG que hemos visto, tanto el SIG de escritorio como el SIG móvil. A los elementos de estas se suman las propias características de funcionar sobre un dispositivo móvil, que proporcionan un gran número de posibilidades adicionales.
 
-Los dispositivos móviles actuales ofrecen dos funcionalidades fundamentales en este sentido: el \textbf{acceso inalámbrico a Internet} y la \textbf{capacidad de conocer la posición} del dispositivo.  Esta última puede introducirse \textbf{manualmente}, calcularse en \textbf{a partir de la red}, o bien con métodos \textbf{basados en el propio dispositivo}. A día de hoy, lo más habitual es el uso del sistema GPS, que entra dentro de este ultimo grupo. Una excepción es el caso de \textbf{posicionamiento en interiores}, donde el GPS no está operativo, y en el que puedenemplearse en su lugar métodos basados en una red local dentro del recinto en cuestión.
+Los dispositivos móviles actuales ofrecen dos funcionalidades fundamentales en este sentido: el \textbf{acceso inalámbrico a Internet} y la \textbf{capacidad de conocer la posición} del dispositivo.  Esta última puede introducirse \textbf{manualmente}, calcularse \textbf{a partir de la red}, o bien con métodos \textbf{basados en el propio dispositivo}. A día de hoy, lo más habitual es el uso del sistema GPS, que entra dentro de este ultimo grupo. Una excepción es el caso de \textbf{posicionamiento en interiores}, donde el GPS no está operativo, y en el que pueden emplearse en su lugar métodos basados en una red local dentro del recinto en cuestión.
 
 Las circunstancias anteriores permiten implementar una funcionalidad cercana al SIG clásico, pero con mayor potencial (por ejemplo, para la \textbf{recogida de datos}), así como ofrecer \textbf{servicios basados en localización}.
 
@@ -323,14 +323,14 @@ Algunos de los grupos principales en que estos servicios pueden agruparse son lo
 \begin{itemize}
 	\item \textbf{Navegación}. Cálculo de ruta óptima entre dos puntos, guiado, etc.
 \item \textbf{Inventario}. Recogida de datos de cualquier tipo sobre el terreno, en los que se almacena la posición asociada al dato en sí.
-\item \textbf{Información}. Paginas amarillas espaciales o guias de viaje virtuales.
+\item \textbf{Información}. Paginas amarillas espaciales o guías de viaje virtuales.
 \item \textbf{Publicidad}. Anuncios basados en localización, indicación de negocios cercanos, promociones para comercios próximos.
 \item \textbf{Seguimiento}. Tanto de personas como de productos, a lo largo de rutas predefinidas o no.
 \item \textbf{Gestión}. Por ejemplo, de infraestructuras, de instalaciones, o de flotas. 
 \end{itemize}
 
 
-La información adicional que el dispositivo movil provee permite ampliar el contexto de la aplicación SIG, gracias a que se conoce la localización, la orientación (hacia dónde se desplaza el usuario o qué tiene delante de sí), la velocidad, e incluso el entorno físico (iluminación, etc.)
+La información adicional que el dispositivo móvil provee permite ampliar el contexto de la aplicación SIG, gracias a que se conoce la localización, la orientación (hacia dónde se desplaza el usuario o qué tiene delante de sí), la velocidad, e incluso el entorno físico (iluminación, etc.)
 
 
 

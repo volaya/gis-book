@@ -61,7 +61,7 @@ En un sistema de teledetección, dos son los elementos tecnológicos principales q
 
 El sensor es el elemento que incorpora la capacidad de <<leer>> la radiación electromagnética y registrar su intensidad dentro de la una zona concreta del espectro. Puede ir desde una simple cámara fotográfica hasta un sensor más especializado.
 
-Los sensores se denominan \textbf{pasivos} si aprovechan las fuentes de radiación existentes en la naturaleza (fundamentalmente el Sol) y se limitan a recoger la radiación de dichas fuentes reflejada por los elementos del medio, o \textbf{activos} si emiten radiación, y recogen dicha radiación tras ser reflejada por dichos elementos. Para entender este concepto de un modo de un modo sencillo, podemos decir que una cámara fotográfica es un sensor pasivo, mientras que una camara fotográfica con \emph{flash} es un sensor activo. La radiación emitida por los sensores activos no ha de ser necesariamente luz visible (como en el caso del flash), sino que pueden emitir en otras secciones del espectro.
+Los sensores se denominan \textbf{pasivos} si aprovechan las fuentes de radiación existentes en la naturaleza (fundamentalmente el Sol) y se limitan a recoger la radiación de dichas fuentes reflejada por los elementos del medio, o \textbf{activos} si emiten radiación, y recogen dicha radiación tras ser reflejada por dichos elementos. Para entender este concepto de un modo sencillo, podemos decir que una cámara fotográfica es un sensor pasivo, mientras que una camara fotográfica con \emph{flash} es un sensor activo. La radiación emitida por los sensores activos no ha de ser necesariamente luz visible (como en el caso del flash), sino que pueden emitir en otras secciones del espectro.
 
 Tecnologías como el \textbf{radar} o el \textbf{LiDAR} (similar al radar pero con pulsos de laser en lugar de ondas de radio), se basan en sensores activos. En el caso del LiDAR, permite obtener imagenes que no tiene un caracter visual, sino que contienen en sus valores la elevación de los objetos, pudiendo así emplearse para cartografiar el relieve.
 
@@ -82,14 +82,14 @@ Uno de los parámetros principales que definen las propiedades de un sistema de t
 
 \begin{itemize}
 	\item \textbf{Resolución espacial}. Indica la dimensión del objeto más pequeño que puede distinguirse en la imagen. Es la dimensión real que un píxel de la imagen tiene sobre el terreno.
-	\item \textbf{Resolución espectral}. Indica la amplitud de cada una de las regiones del espectro quqe se recogen en la imagen. La región del espectro abarcada y el número de bandas son los elementos que definen la resolución espectral. 
+	\item \textbf{Resolución espectral}. Indica la amplitud de cada una de las regiones del espectro que se recogen en la imagen. La región del espectro abarcada y el número de bandas son los elementos que definen la resolución espectral. 
 	\item \textbf{Resolución radiométrica}. Para cada una de las bandas que produce un sensor (asociada esta a una determinada región del espectro según su resolución espectral), el dato recogido, que constituye su Nivel Digital, indica la intensidad correspondiente a esa región. El nivel de detalle con el que puede medirse esa intensidad es el que define la resolución radiométrica del sensor.\index{Resolución!radiométrica}
 	\item \textbf{Resolución temporal}. Indica el tiempo que tarda el sensor en volver a tomar una imagen de una misma zona.  Tiene sentido en el caso de sensores orbitales. La resolución temporal depende de la altura a la que se encuentra la plataforma que monta el sensor, así como la resolución espacial. 
 \end{itemize}
 
 No resulta posible (por razones técnicas y teóricas) disponer de un sensor en el cual todas las anteriores regiones sean altas. Algunos sensores priman determinadas resoluciones, mientras que otros favorecen otras distintas.
 
-A la hora de utilizar imágenes de teledetección, debe considerarse qué tipo de resolución  resulta de mayor interés (por ejemplo, para localizar elementos de pequeño tamaño son necesarias imágenes con alta resolución especial). En base a esto, se escogerá una u otra clase de imágenes, que será la que ofrezca los valores de resolución más adecuados en conjunto. La utilización simultánea de datos de varios sensores en un proyecto es una alternativa para compensar este hecho.
+A la hora de utilizar imágenes de teledetección, debe considerarse qué tipo de resolución  resulta de mayor interés (por ejemplo, para localizar elementos de pequeño tamaño son necesarias imágenes con alta resolución espacial). En base a esto, se escogerá una u otra clase de imágenes, que será la que ofrezca los valores de resolución más adecuados en conjunto. La utilización simultánea de datos de varios sensores en un proyecto es una alternativa para compensar este hecho.
 
 
 \subsection{Fotogrametría}
@@ -119,7 +119,7 @@ Para la creación de capas raster, lo habitual es la digitalización automática, a
 
 El escaneo es el proceso de digitalización que convierte una imagen impresa (analógica) en una imagen digital. Dentro de un SIG, se emplea para digitalizar tanto mapas como fotografías aéreas, y su resultado es una capa ráster. 
 
-Aunque existen escáneres específicamente diseñados para el trabajo con documentos cartográficos, estos son dispositivos muy especializados y de muy elevado coste. Los escáneres más genéricos, pensados para el trabajo con todo tipo de imágenes y para todo tipo de usos, pueden no obstante emplearse de igual modo para escanear tanto mapas como imágenes aéreas con resultados aceptables, utilizándose con frecuencia.
+Aunque existen escáneres específicamente diseñados para el trabajo con documentos cartográficos, estos son dispositivos muy especializados y de muy elevado coste. Los escáneres más genéricos, pensados para el trabajo con todo tipo de imágenes y para todo tipo de usos, pueden, no obstante, emplearse de igual modo para escanear tanto mapas como imágenes aéreas con resultados aceptables, utilizándose con frecuencia.
 
 
 Los parámetros básicos que definen las características de un escáner son la \textbf{resolución espacial} y la \textbf{resolución radiométrica}. La primera de estas se mide habitualmente en \textbf{puntos por pulgada} y nos indica el número de puntos (celdas) que el sensor es capaz de tomar por cada unidad de longitud sobre el papel. La resolución radiométrica, por su parte, indica la capacidad del sensor para distinguir entre dos colores distintos. 
@@ -228,7 +228,7 @@ El concepto de metadato no es algo nuevo y exclusivo de los datos digitales, ya 
 
 Dos de las funciones principales de los metadatos son \textbf{garantizar el uso correcto de los datos y facilitar su gestión, localización y consulta}.
 
-Los datos espaciales, como muchos otros datos, son creados habitualmente para un determinado objetivo, y este objetivo no ha de ser necesariamente evidente o contenerse como tal en los datos mismos. Cuando se emplean esos datos para un objetivo distinto a aquel para el que fueron diseñados, pueden surgir problemas debido a que se está realizando un proceso para el que los datos con los que se trabaja presentan carencias.  Por ejemplo, consultar los metadatso puede \textbf{evitar el trabajo con datos desfasados o de precisión insuficiente}, ya que conociendo estos parámetros es posible juzgar si los datos son adecuados al fin que se persigue con ellos.
+Los datos espaciales, como muchos otros datos, son creados habitualmente para un determinado objetivo, y este objetivo no ha de ser necesariamente evidente o contenerse como tal en los datos mismos. Cuando se emplean esos datos para un objetivo distinto a aquel para el que fueron diseñados, pueden surgir problemas debido a que se está realizando un proceso para el que los datos con los que se trabaja presentan carencias.  Por ejemplo, consultar los metadatos puede \textbf{evitar el trabajo con datos desfasados o de precisión insuficiente}, ya que conociendo estos parámetros es posible juzgar si los datos son adecuados al fin que se persigue con ellos.
 
 Los creadores de datos deben procurar \textbf{acompañarlos de metadatos precisos y suficientes}, y los usuarios deben \textbf{consultarlos antes de utilizar} dichos datos. 
 
