@@ -1,3 +1,4 @@
 *.pyc
 .Rproj.user
 gis-book.Rproj
+.Rhistory
