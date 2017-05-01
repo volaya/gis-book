@@ -42,3 +42,22 @@ for(i in 1:length(f_en)) {
 file.remove("prologo.tex")
 file.remove("Libro_SIG.tex")
 setwd(old_dir)
+
+# update figure paths
+d
+d_refs = paste0(d[-1], "/")
+d_ref_new = paste0("../es/", d_refs)
+f_en = f_en[!grepl(pattern = "Libro|prolo", x = f_en)]
+
+for(i in seq_along(f_en)) {
+  doc = readLines(f_en[i])
+  for(j in seq_along(d_refs)) {
+    linematches = grep(pattern = d_refs[j], x = doc)
+    old_doc = doc[linematches]
+    print(old_doc)
+    new_doc = gsub(pattern = d_refs[j], replacement = d_ref_new[j], x = old_doc, perl = T)
+    print(new_doc)
+    doc[linematches] = new_doc
+  }
+  writeLines(doc, f_en[i])
+}
