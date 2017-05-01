@@ -1,0 +1,6 @@
+*.aux
+*.pdf
+*.log
+*.gz
+*.toc
+*.tcp
