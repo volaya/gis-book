@@ -1,0 +1,234 @@
+
+\chapter{Fundamentos geodésicos y cartográficos}
+\label{Fundamentos_cartograficos}
+
+
+\section{Conceptos geodésicos básicos}
+
+La característica principal de la información georreferenciada es que tiene una localización en el espacio, particularmente en el espacio terrestre. Esta localización se ha de dar por medio de unas coordenadas que la definan de forma adecuada, lo cual implica la necesidad de establecer un sistema en base al cual expresar dichas coordenadas. 
+
+La geodesia es la ciencia encargada de proveer el marco teórico en el que fundamentar lo anterior, y su objeto de estudio es la forma de la Tierra. La geodesia, en sus diversas ramas, proporciona métodos y conceptos que permiten la utilización rigurosa de coordenadas.
+
+La necesidad del estudio geodésico surge por el hecho de que la Tierra no es plana, y cuando el territorio que pretendemos estudiar es lo suficientemente extenso, la curvatura de la Tierra no puede ser ignorada. Este es el caso que vamos a encontrar cuando trabajemos con un SIG, y es por ello que los SIG implementan los elementos necesarios para poder efectuar un manejo de la información geográfica riguroso y acorde con los conceptos de la geodesia.
+
+Uno de los objetivos principales de la geodesia es establecer un sistema de referencia y definir un conjunto de puntos (conocidos como \textbf{vértices geodésicos}) cuyas coordenadas en dicho sistema sean conocidas con una precisión elevada. Posteriormente, y en base a esos puntos, los cuales forman una \textbf{red geodésica}, se pueden calcular las coordenadas de cualquier punto en el sistema de referencia definido.
+
+\subsection{Superficies de referencia}
+
+Dos conceptos básicos para esta tarea: el  \textbf{elipsoide de referencia} y el \textbf{geoide}.
+
+La Tierra tiene forma esférica, aunque no es una esfera perfecta, sino que está achatada, constituyendo lo que se conoce como elipsoide. Sobre un elipsoide, el radio de la Tierra ya no es constante, y depende del emplazamiento. Asimilar la Tierra a un elipsoide es más preciso y necesario a la hora de elaborar cartografía de zonas no muy extensas que suponer la Tierra con una forma perfectamente esférica.
+
+Un elipsoide viene definido por dos parámetros: el semieje mayor y el semieje menor (\ref{Fig:Elipsoide}) . En el caso de la Tierra estos se corresponderían con el radio ecuatorial y el radio polar respectivamente. La relación existente entre estas dos medidas define el grado de achatamiento del elipsoide. 
+\begin{figure}
+\centering
+\includegraphics[width=.6\columnwidth]{Fundamentos_cartograficos/Elipsoide.pdf}
+\caption{\small Parámetros que definen el elipsoide}
+\label{Fig:Elipsoide} 
+\end{figure}
+
+Una vez que se dispone de una expresión teórica para la forma de la Tierra, el siguiente paso es la determinación de los parámetros que definen esta. En el caso de utilizar la esfera, hay que calcular su radio. En el caso de asumir el elipsoide como forma de referencia, deben determinarse las medidas de los semiejes menor y mayor. 
+
+Por razones históricas, existen numerosos elipsoides, derivados del trabajo de los geodestas en diferentes épocas y lugares. Los primeros elipsoides generales, que permiten ser usados en toda la superficie terrestre, aparecen hace aproximadamente un siglo, con objeto de disponer de una referencia internacional que facilite el uso de cartografía en las distintas zonas del planeta. El elipsoide WGS--84 es uno de los más empleados en la actualidad, pues es el utilizado por el sistema GPS (apartado \ref{GPS}).\index{GPS}
+
+El geoide\index{Geoide} es la otra superficie de referencia, definida como la superficie tridimensional en cuyos puntos la atracción gravitatoria es constante. Se trata de una superficie equipotencial que resulta de suponer los océanos en reposo y a un nivel medio y prolongar estos por debajo de la superficie terrestre. 
+
+Al igual que en el caso de los elipsoides, existen diversos geoides de referencia, y estos no son constantes en el tiempo sino que evolucionan para adaptarse a las modificaciones que tienen lugar sobre la superficie terrestre.
+
+La figura \ref{Fig:Tres_superficies} muestra una comparación esquemática entre las tres superficies: superficie real de la Tierra, geoide y elipsoide.
+
+\begin{figure}
+\centering
+\includegraphics[width=.6\columnwidth]{Fundamentos_cartograficos/Tres_superficies.pdf}
+\caption{\small Tres superficies fundamentales: superficie real de la Tierra, geoide y elipsoide (Adaptado de Wikipedia).}
+\label{Fig:Tres_superficies} 
+\end{figure}
+
+En un elipsoide general, tanto la posición de su centro de gravedad como de su plano ecuatorial coinciden con los terrestres. Por el contrario, cuando el elipsoide es local, estas propiedades no han de cumplirse necesariamente, y el elipsoide a solas resulta insuficiente ya que carecemos de información sobre su posicionamiento con respecto a la superficie terrestre. 
+
+Surge así el concepto de \textbf{datum}, que es el conjunto formado por una superficie de referencia (el elipsoide) y un punto en el que <<enlazar>> este al geoide. Este punto se denomina \textbf{punto fundamental}, y en él el elipsoide es tangente al geoide. La vertical al geoide y al elipsoide son idénticas en el punto fundamental. 
+
+Para un mismo elipsoide pueden utilizarse distintos puntos fundamentales, que darán lugar a distintos datum y a distintas coordenadas para un mismo punto.
+
+\subsection{Sistemas de coordenadas}
+
+Una vez hemos definido un modelo para definir la forma de la Tierra, podemos establecer un sistema de codificar cada una de las posiciones sobre su superficie y asignar a estas las correspondientes coordenadas. Para ello, encontramos dos opciones: utilizar los elementos de la geometría esférica y con estos definir el sistema de referencia, o utilizar la geometría plana, para lo cual será necesario un mecanismo de proyección de coordenadas que permita situar los elementos de la superficie del elipsoide sobre una superficie plana.
+
+El sistema de coordenadas geográficas es un sistema de coordenadas esféricas mediante el cual un punto se localiza con dos valores angulares: \textbf{latitud}
+y \textbf{longitud}. Las lineas de igual latitud o longitud se denominan \textbf{paralelos} y \textbf{meridianos} respectivamente (Figura \ref{Fig:Coordenadas_geograficas}).
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\columnwidth]{Fundamentos_cartograficos/Coordenadas_geograficas.pdf}
+\caption{\small Esquema de los elementos del sistema de coordenadas geográficas.}
+\label{Fig:Coordenadas_geograficas} 
+\end{figure}
+
+Las coordenadas geográficas resultan de gran utilidad, especialmente cuando se trabaja con grandes regiones. No obstante, no se trata de un sistema cartesiano, y tareas como la medición de áreas o distancias es mucho más complicada. Para poder trasladar la información geográfica a un plano, con objeto de poder crear cartografía y simplificar gran número de operaciones posteriores, necesitamos coordenadas cartesianas. El proceso de asignar una coordenada plana a cada punto de la superficie de la Tierra (que no es plana) se conoce como \textbf{proyección cartográfica}.
+
+La superficie de la esfera o no es \textbf{desarrollable}, es decir, no puede convertirse en un plano. Por ello, es necesario disponer de una metodología para pasar puntos desde la superficie curva al plano, tal y como el que se muestra en la figura \ref{Fig:Proyeccion}.
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\columnwidth]{Fundamentos_cartograficos/Proyeccion.pdf}
+\caption{\small Esquema del concepto de proyección. A los puntos $A, B$ y $C$ sobre la superficie del elipsoide les asocian equivalentes $a, b$ y $c$ sobre un plano.}
+\label{Fig:Proyeccion} 
+\end{figure}
+
+
+En el caso de la figura \ref{Fig:Proyeccion} los puntos se proyectan directamente sobre un plano. Otra opción es proyectarlos sobre una superficie tridimensional que, al contrario que la esfera, sea desarrollable. Las más habituales son el cilindro y el cono, que dan lugar a las proyecciones \textbf{cónicas} y \textbf{cilíndricas}.
+
+Puede apreciarse en la figura que se producen distorsiones al realizar la proyección. Por ejemplo, la distancia entre los puntos $A$ y $B$ no es igual a la existente entre los puntos $a$ y $b$. Con independencia de las características propias de la proyección, siempre existen distorsiones, por ser la de la esfera una superficie no desarrollable. Estas distorisiones se conocen como \textbf{anamorfosis} . 
+
+
+Según las propiedades métricas que se conserven, las proyecciones pueden ser \textbf{equiárea} (mantienen una escala constante), \textbf{conformes} (mantienen los ángulos y la forma de los objetos) o \textbf{equidistantes} (mantienen las distancias).
+
+La elección de una u otra proyección es función de las necesidades particulares. 
+
+En la actualidad, una de las proyecciones más extendidas en todos los ámbitos es la proyección universal transversa de Mercator, la cual da lugar al \textbf{sistema de coordenadas UTM}. Este sistema no es simplemente una proyección, sino un sistema completo para cartografiar la practica totalidad de la Tierra. Para ello, esta se divide en una serie de zonas rectangulares mediante una cuadricula y se aplica una proyección y unos parámetros geodésicos concretos a cada una de dichas zonas. En su forma actual, emplea un único elipsoide (WGS--84).
+
+Con el sistema UTM, las coordenadas de un punto no se expresan como coordenadas terrestres absolutas, sino mediante la zona correspondiente y las coordenadas relativas a la zona UTM en la que nos encontremos.
+
+La cuadricula UTM tiene un total de 60 husos numerados entre 1 y 60, cada uno de los cuales abarca una amplitud de 6\degree de longitud. El huso 1 se sitúa entre los 180\degree y 174\degree O, y la numeración avanza hacia el Este. 
+
+En latitud, cada huso se divide en 20 zonas, que van desde los 80\degree S hasta los 84\degree N. Estas se codifican con letras desde la C a la X, no utilizándose las letras I y O por su similitud con los dígitos 1 y 0. Cada zona abarca 8 grados de longitud, excepto la X que se prolonga unos 4 grados adicionales. 
+
+Una zona UTM se localiza, por tanto, con un número y una letra, y es en función de la zona como posteriormente se dan las coordenadas que localizan un punto. Estas coordenadas se expresan en metros y expresan la distancia entre el punto y el origen de la zona UTM en concreto. El origen de la zona se sitúa en el punto de corte entre el meridiano central de la zona y el ecuador. 
+
+Para evitar la aparición de números negativos, se considera que el origen no tiene una coordenada X de 0 metros, sino de 500000, y una coordenada Y de 10000000 metros, lo cual hace que todas las coordenadas referidas a él sean positivas.
+
+\subsection{Transformación y conversión de coordenadas}
+
+Una situación muy habitual en el trabajo con un SIG es disponer de cartografía en varios sistemas de coordenadas en un mismo sistema pero con parámetros diferentes (por ejemplo, diferente datum). Para poder emplear toda esa cartografía de forma conjunta, resulta necesario trabajar en un sistema único y bien definido, lo cual hace necesario convertir al menos una parte de ella. Cuando el datum es distinto en los sistemas de origen y destino, la \textbf{conversión de coordenadas} se conoce como \textbf{Transformación de coordenadas}.
+
+Las operaciones de transformacion y conversión aparecen en los SIG como funcionalidades que permiten modificar los datos geográficos, reemplazando sus coordenadas por coordenadas en otro sistema de coordenadas. Igualmente, aparecen como funcionalidades de representación, permitiendo la conversión <<al vuelo>>\index{Transformación!al vuelo}, es decir, en tiempo real. Un dato en un sistema de coordenadas se representa en otro dado, con lo que puede usarse conjuntamente con datos en un sistema de coordenadas distinto, sin necesidad de una conversión previa.
+
+Para facilitar el uso de sistemas de referencia, existen proyectos de codificación de estos, de forma que cada sistema existente puede indentificarse de forma sencilla mediante un código. El más extendido de estos es el sistema de codificación \textbf{EPSG}.
+
+
+
+
+\section{Escala}
+\label{Escala}
+\index{Escala}
+
+El concepto de escala es fundamental a la hora de trabajar con cartografía, y es uno de los valores básicos que definen toda representación cartográfica. La escala  es la relación de tamaño existente entre el mapa que se obtiene al desarrollar nuestra superficie de proyección (de tamaño acorde con el objeto proyectado, esto es la Tierrra) y el que finalmente manejamos, de tamaño más reducido. Conociendo esta relación podemos ya conocer las verdaderas magnitudes de los elementos que vemos en el mapa, ya que podemos convertir las medidas hechas sobre el mapa en medidas reales. Es importante recordar que esas medidas no son tan <<reales>>, puesto que la propia proyección las ha distorsionado ---lo cual no debe olvidarse---, pero sí que son medidas en la escala original del objeto cartografiado.
+
+La escala se expresa habitualmente como un denominador que relaciona una distancia medida en un mapa y la distancia que esta medida representa en la realidad. Por ejemplo, una escala 1:50000 quiere decir que 1 centímetro en un mapa equivale a 50000 centímetros en la realidad, es decir a 500 metros. Este valor se conoce como \textbf{Escala Numérica}.
+
+Independientemente del tipo de proyección, la escala es completamente cierta únicamente en determinadas partes del mapa. En otros puntos de este, la escala varía. La relación entre la escala en esos puntos y la Escala Numérica se conoce como \textbf{Factor de Escala}. 
+
+
+
+
+A pesar de que la escala es imprescindible para darle un uso práctico a todo mapa, y cualquier usuario de este debe conocer y aplicar el concepto de escala de forma precisa, los SIG pueden resultar engañosos al respecto. Aunque la escala como idea sigue siendo igual de fundamental cuando trabajamos con información geográfica en un SIG, las propias características de este y la forma en la que dicha información se incorpora en el SIG pueden hacer que no se perciba la escala como un concepto tan relevante a la hora de desarrollar actividad con él.
+
+Esto es debido principalmente a que la escala tiene una relación directa con la visualización, ya que se establece entre la realidad y una representación visual particular, esto es, el mapa. Como ya se ha mencionado en el capítulo \ref{Introduccion_fundamentos}, los datos en un SIG tienen carácter numérico y no visual, y la representación de estos se encarga de realizarla el subsistema correspondiente a partir de dichos datos numéricos. Es decir, que en cierta medida en un SIG no es estrictamente necesaria la visualización de los datos, y cuando esta se lleva a cabo no tiene unas características fijas, ya que, como veremos, el usuario puede elegir el tamaño con el que estos datos se representan en la pantalla.
+
+Un mapa impreso puede ampliarse o reducirse mediante medios fotomecánicos. Sin embargo, no es esta una operación <<natural>>, y está claro que desde el punto de vista del rigor cartográfico no es correcta si lo que se hace es aumentar el tamaño del mapa. En un SIG, sin embargo, es una operación más el elegir la escala a la que se representan los datos y modificar el tamaño de representación, y esta resulta por completo natural e incluso trivial\cite{Jenerette2000BESA}.
+
+Aunque tradicionalmente se entiende la escala como un concepto asociado a la representación, los datos geográficos tienen una escala inherente que no es función de dicha representación, sino del detalle con que han sido tomados. En este sentido es más conveniente entender la escala como un elemento relacionado con la resolución de los datos, es decir, con el \textbf{tamaño mínimo cartografiado}. Esta concepción no es en absoluto propia de los SIG, ya que deriva de las representaciones clásicas y los mapas impresos. Se sabe que el tamaño mínimo que el ojo humano es capaz de diferenciar es del orden de 0,2 mm. Aplicando a este valor la escala a la que queremos crear un mapa, tendremos la mínima distancia sobre el terreno que debe medirse. 
+
+Es importante ser consciente de la limitación que la escala considerada a la hora de la toma de datos (conocida como escala operacional) impone, especialmente en el contexto de un SIG. En un SIG, podemos aumentar el tamaño en pantalla de una cierta información geográfica, variando la escala cartográfica, pero ello no modifica la escala de análisis. Por ello, por mucho que ampliemos no vamos a ver más detalles, ya que para ello sería necesario tomar más datos. \index{Escala!cartográfica}\index{Escala!operacional}
+
+Veremos más ideas sobre la escala de análisis y algunas implicaciones al respecto en el capítulo \ref{Introduccion_procesos}, al inicio de la parte dedicada a los procesos, ya que estos conceptos son fundamentales para realizar correctamente análisis y operaciones como las descritas en esa parte del libro.
+
+Un tipo de datos espaciales particulares con los que se trabaja en un SIG, los datos \emph{ráster}, tienen a su vez un parámetro de resolución, con una clara relación con el concepto de escala. Veremos más al respecto en el capítulo \ref{Tipos_datos}.\index{Raster}
+
+\section{Generalización cartográfica}
+\label{GeneralizacionCartografica}
+
+Muy relacionado con el concepto de escala encontramos la denominada \emph{generalización cartográfica}\index{Generalización!cartográfica}. Generalizar implicar expresar alguna idea o información de forma más resumida, de tal modo que esta sea comprensible y pueda aprovecharse de la mejor manera posible. Cuando hablamos de cartografía, la generalización implica representar un dato geográfico a una escala menor (es decir, un tamaño mayor) del que le corresponde si se atiende al detalle que este posee.
+
+Si resulta incorrecto como hemos visto ampliar el tamaño un mapa sin incorporar más datos (esto es, sin variar consecuentemente la escala de análisis), puede resultar igualmente erróneo <<encoger>> ese mapa y mostrar la información geográfica a una escala muy distinta de la que corresponde a esos datos. Si la diferencia de escala es pequeña, no existe dificultad, pero si esta diferencia es grande, la representación resultante puede no ser adecuada y confusa. No solo habrá información que no se perciba, sino que parte de la información que quede patente puede no estarlo en la forma idónea y más intuitiva.
+
+Para ver un ejemplo de lo anterior, y poniendo un ejemplo un tanto extremo, pensemos en un mapa del mundo en el que se representen todas las calles y caminos existentes. Esta información tiene una escala adecuada para ser mostrada en un callejero local cuya escala nominal suele ser del orden de 1:5000, pero a la escala 1:1000000, adecuada para un mapa mundial, representar todo su detalle resulta innecesario. La representación resultante va a tener una densidad excesiva, y muchos de sus elementos no podrán distinguirse debido a su cercanía.
+
+En caso de que esta representación no se haga sobre papel sino sobre una pantalla y trabajando con un SIG, la situación es similar y resulta incluso más necesario aplicar alguna forma de generalización. A las limitaciones de la visión humana han de sumarse las limitaciones de resolución que el propio dispositivo presenta. En la situación del ejemplo anterior, muchos elementos del mapa (calles, edificios, etc.), ocuparían por su tamaño un mismo y único punto en la pantalla (veremos más adelante que cada uno de estos puntos se conoce como \emph{píxel}\index{Pixel}), por lo que resultaría imposible distinguirlos o detallarlos más allá de ese nivel de resolución.
+
+A lo anterior debemos añadir el hecho de que producir esa representación, aunque sea sobre un solo píxel, puede requerir gran cantidad de procesos y operaciones, ya que el conjunto de calles que se contienen en él pueden presentar gran complejidad, tanto mayor cuanto mayor sea el nivel de detalle con que han sido recogidas en los datos. Es decir, que en el trabajo con un SIG la generalización no tiene importancia únicamente para la visualización en sí, sino también para el rendimiento del propio SIG a la hora de producir dicha visualización.
+
+Aunque en las situaciones anteriores la generalización puede llevarse a cabo eligiendo qué elementos representar y cuáles no, esta selección no recoge en sí toda la complejidad de la generalización, ya que esta es un conjunto más complejo de procesos y transformaciones gráficas \cite{Robinson1978Wiley}.
+
+En ocasiones, el proceso de generalización es necesario por razones distintas a lo visto en el ejemplo anterior, y requiere diferentes operaciones. Por ejemplo, podemos crear un mapa del mundo que contenga vías de comunicación, pero no todas, sino solo las principales autopistas de cada país. En este caso, no vamos a encontrar problemas con distintas carreteras que se solapan en la representación, ni tampoco un volumen excesivo de datos, pero debemos igualmente <<adaptar>> la representación a la escala, es decir, efectuar algún tipo de generalización. 
+
+Si en ese mapa representamos una carretera con un ancho de 20 metros a escala 1:1000000, el tamaño que tendrá en el mapa será de tan solo 0,02 milímetros. Este ancho es prácticamente nulo y no tiene sentido representar esa carretera de esta forma, sino darle un ancho mayor. Aunque no se esté dibujando con exactitud la magnitud real de ese elemento, el resultado es mucho mejor desde todos los puntos de vista. Esta es otra forma de generalización que busca también mejorar la calidad de la representación y la transmisión de la información que contiene.
+
+La generalización, por tanto, es un proceso que tiene como objetivo la producción de una imagen cartográfica legible y expresiva, reduciendo el contenido del mapa a aquello que sea posible y necesario representar. Para ello, se enfatiza aquello que resulta de importancia y se suprime lo que carece de ella \cite{Anon2002EUITP}. 
+
+\subsection{Operaciones de generalización}
+
+Existen diversas operaciones que se emplean en el proceso de generalización. Algunas de las más relevantes son las siguientes \cite{McMaster1992AAG}:
+
+\begin{itemize}
+\item \textbf{Simplificación}. Se trata de crear elementos más sencillos que sean más fáciles y rápidos de representar. Los elementos originales se sustituyen por estos más sencillos, de tal modo que se mantienen las características visuales principales pero las operaciones con los datos se optimizan.
+\item \textbf{Suavizado}. Se sustituyen formas angulosas por otras más suaves y de menor complejidad.
+\item \textbf{Agregación}. Un conjunto de varios objetos se sustituye por uno nuevo con un menor número. Por ejemplo, al representar una ciudad, no dibujar cada una de las casas, sino solo el contorno de cada manzana. La figura \ref{Fig:Generalizacion_agregacion} muestra un ejemplo de esta técnica aplicado a elementos lineales, en particular carreteras.
+\item \textbf{Exageración}. En ocasiones, mantener el objeto a la escala que le corresponde haría que no se pudieran apreciar las características de este. En este caso, se exagera su tamaño para que pueda interpretarse con mayor facilidad y no perder información en la representación.
+\item \textbf{Desplazamiento}. Un objeto se representa en una posición distinta a la que le corresponde, con el fin de garantizar su visibilidad y obtener un resultado más claro.
+\end{itemize}
+
+\index{Generalización!cartográfica!tipos}
+
+\begin{figure}
+\centering
+\includegraphics[width=.6\columnwidth]{Fundamentos_cartograficos/Generalizacion_agregacion.png}
+\caption{\small Un ejemplo de generalización por agregación. Dos carreteras prácticamente paralelas y unidas se representan como dos elementos en el mapa, pero en el localizador de la parte superior izquierda, a escala de menor detalle, se generalizan como una única (Tomado de Yahoo Maps).}
+\label{Fig:Generalizacion_agregacion} 
+\end{figure}
+
+Combinando operaciones como las anteriores de forma adecuada, se obtiene una cartografía mucho más útil, en la cual la información que contiene resulta más accesible y práctica, con un mayor potencial desde todos los puntos de vista. En el caso de trabajar en un SIG, algunas de estas operaciones, como pueden ser la simplificación o la agregación, tiene también un efecto beneficioso sobre el propio manejo de los datos dentro del SIG.
+
+Estas operaciones se enumeran aquí como ideas a aplicar para efectuar la generalización de un documento geográfico, como corresponde a este capítulo de fundamentos y conceptos cartográficos básicos. No obstante, estas mismas operaciones también las veremos en otras partes del libro, ya que no son exclusivas de esta parte. Por su importante papel en la representación visual de los datos, veremos más al respecto en la parte dedicada a visualización. Algunos algoritmos para la simplificación y suavizado de líneas\index{Suavizado!de líneas} los estudiaremos en la parte dedicada a procesos, particularmente en el apartado \ref{Generalizacion_lineas}.
+
+\subsection{Generalización en el contexto de un SIG}
+\label{Generalizacion_en_SIG}
+
+La generalización es importante en un SIG debido a la variedad de escalas posibles que puede tener la información con que se trabaja, así como por la variedad de escalas de representación que pueden definirse gracias a la flexibilidad que el propio SIG presenta en sus capacidades de visualización. Existen diversas formas de enfocar inicialmente el problema de obtener un juego de datos óptimo para ser representado en cada caso y una representación óptima de este.
+
+La mayor problemática se encuentra en el manejo de datos con gran precisión y gran volumen ---como, por ejemplo, esos datos de calles y vías de todo el mundo--- al representarlos a una escala de menor detalle, aunque el proceso de generalización no es necesario exclusivamente en este caso, sino en muchos otros con independencia del volumen y la escala original. 
+
+Una aproximación básica puede ser trabajar con todo el conjunto de datos y generalizarlo a medida que sea necesario en función de la escala de trabajo en cada momento. Es decir, si el usuario decide visualizar todo un continente, el SIG no traza todas las calles de ese continente, sino que se seleccionan de forma automática los objetos a ser visualizados y después se crea la representación. Las operaciones de generalización se llevan a cabo en el momento mismo en que el usuario lo necesita.
+
+Este tipo de generalización <<al vuelo>>\index{Generalización!cartográfica!al vuelo} no resulta, sin embargo, óptimo, y en la mayoría de los casos es inviable o no proporciona los resultados esperados. Esto es así debido a que se ha de trabajar con el gran volumen de datos original, y generalizar estos es una tarea suficientemente compleja como para que los algoritmos encargados de hacerlo no lo hagan de forma fluida. No ha de olvidarse que, mientras que la razón fundamental de la generalización en el contexto de la cartografía clásica es la mera visualización y la transmisión de la información, en el entorno de un SIG también existen razones relacionadas con la eficiencia de los procesos, como ya se ha mencionado. Aplicando esta metodología, la generalización no es ventajosa en términos de cómputo, sino que, por el contrario, puede incluso suponer una carga adicional al proceso de visualización.
+
+Aun en el caso de que el volumen de datos no fuera grande y no existieran problemas de rendimiento, una generalización por completo automatizada no garantiza un resultado óptimo. Aun existiendo algoritmos y formulaciones matemáticas que permiten generalizar de forma relativamente adecuada (algunos de los cuales los veremos más adelante en este libro), el proceso global de generalización combina varios procedimientos distintos, y en conjunto conforma un proceso no exento de subjetividad. La labor tradicional del cartógrafo no puede automatizarse de forma total, y se hace necesario cierto trabajo manual para obtener un resultado de calidad o evaluar el generado por un procedimiento automático.
+
+Por todo lo anterior, la forma de incorporar la generalización dentro de un SIG suele basarse en un enfoque multi--escalar, en el cual se maneja información de una misma zona de estudio a diferentes escalas, y se usa en cada momento aquella que resulte más conveniente. Si trabajara con cartografía en papel, sería equivalente a tener varios mapas de una zona a diferentes escalas.
+
+Por ejemplo, en un mapa con núcleos de población a escala 1:25000\index{Escala} se almacenará cada ciudad como un polígono que delimite su contorno. Esa misma información a escala 1:1000000 se almacenará como un único punto cada ciudad, ya que el tamaño de esta es demasiado pequeño en la representación, y no tiene sentido el empleo de tanto detalle. Para convertir un mapa en otro se ha producido un proceso de simplificación, convirtiendo polígonos en puntos.
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{Fundamentos_cartograficos/SIG_multi_escala.png}
+\caption{\small En un SIG es habitual manejar información a diferentes escalas. En función de la escala de representación, la información visualizada será una u otra.}
+\label{Fig:SIG_multi_escala} 
+\end{figure}
+
+Si incorporamos ambos mapas dentro de un SIG, podemos utilizar el que corresponda en función de la escala requerida. De este modo, la generalización no es una tarea que el propio SIG desarrolle, sino que cuando esta es necesaria puede recurrir a una información ya generalizada de antemano. El rendimiento del proceso es mayor, y además el dato generalizado puede haber sido elaborado de la forma más conveniente.
+
+El concepto de \emph{capa},\index{Capa} que veremos en el capítulo \ref{Introduccion_datos} y que es vital para la idea actual de un SIG, permite este manejo simultáneo de información a distintas escalas.
+
+En la figura \ref{Fig:SIG_multi_escala} puede verse un esquema de lo anterior. A medida que variamos la escala de representación, la información que vemos representada tiene una escala distinta y podría también tener un distinto origen. Incluso el tipo de información que vemos varía, ya que las representaciones más globales son de tipo gráfico, creadas a partir de los propios datos almacenados como objetos (calles, carreteras, etc.), mientras que la de mayor detalle es una fotografía aérea.
+
+
+
+En el caso de imágenes tales como esa fotografía aérea, existen además en un SIG una serie de procesos que también pueden considerarse como parte de la generalización, y que atañen más al rendimiento que a la representación. Para entenderse esto piénsese que las imágenes se componen de elementos denominados \emph{píxeles}, que son pequeños puntos, cada uno de los cuales tendrá un color asociado (esto lo veremos con mucho más detalle en el capítulo \ref{Tipos_datos}). El numero de estos píxeles en una imagen grande es muy superior al de una pantalla (una pantalla también se divide en puntos, si te acercas a una lo podrás ver claramente). 
+
+El proceso de representación de la imagen en la pantalla consiste en calcular qué color asignar a cada píxel de la pantalla en función de los de la imagen, pero este proceso, si se utiliza la imagen completa, es muy costoso en términos de cómputo, ya que implica procesar toda la información de la imagen, que puede ser del orden de centenares de millones de píxeles. Si representamos una porción de esa imagen (una porción del territorio que cubre), podemos solo trabajar con los píxeles en esa zona, pero la representación de toda la imagen hace necesario procesar todos los valores que contiene.\index{Pixel}
+
+Este proceso en realidad puede verse como un tipo de generalización <<al vuelo>>. Ya dijimos que este tenía principalmente dos problemas: el rendimiento y la imposibilidad de obtener resultados óptimos de forma automatizada. En el caso de imágenes, existe el problema del rendimiento, pero es posible automatizar la creación de datos a diferente escala de trabajo. Esto es así debido a que la representación de elementos tales como carreteras o lagos se hace mediante una interpretación de esos objetos, y este proceso es en cierta medida subjetivo, como vimos.  En el caso de imágenes no hay que interpretar objeto alguno, ya que esos objetos ya <<están>> representados en la imagen, y únicamente es necesario disminuir la escala.
+
+\begin{figure}
+\centering
+\includegraphics[width=.45\textwidth]{Fundamentos_cartograficos/Piramide.png}
+\caption{\small Pirámides de representación con imágenes preparadas a distintas escalas (Fuente: OSGeo).}
+\label{Fig:Piramides} 
+\end{figure}
+
+Los algoritmos para llevar a cabo este proceso se conocen como de \emph{remuestreo}\index{Remuestreo}, y los veremos con detalle en el capítulo \ref{Algebra_de_mapas}. Algunos SIG utilizan estos algoritmos para hacer más fluido el manejo de grandes imágenes mediante la creación de las denominadas \emph{pirámides}. Cuando el usuario introduce en el SIG una imagen de gran tamaño, este prepara varias versiones de esa imagen a distintas escalas de detalle, de forma que posteriormente pueda recurrir a la que sea más conveniente en cada caso en función de la escala de representación. Es decir, el SIG realiza la <<generalización>> de esa imagen de forma automática, siendo necesario proporcionarle únicamente la imagen de mayor detalle. La figura \ref{Fig:Piramides} ilustra gráficamente esto. \index{Pirámides}
+
+
+
+
+\pagestyle{empty}

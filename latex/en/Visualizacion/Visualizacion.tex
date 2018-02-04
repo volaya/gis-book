@@ -1,0 +1,389 @@
+\chapter{Visualización y representación de datos espaciales. }
+
+
+\pagestyle{fancy}
+
+Visualizar la información geográfica es una parte fundamental del trabajo con un SIG. Aunque algunos datos incluyen su propia manera de representarse ---por  ejemplo, las imágenes de satélite, las ortofotos, o las obtenidas de un servicio de mapas---, en el SIG es en general el usuario quien define la forma de representar el dato. Es decir, el usuario de SIG \textbf{toma el papel del cartógrafo}, y por tanto debe conocer los fundamentos que este utiliza para la creación de mapas.
+
+Además de las herramientas y conceptos cartográficos clásicos, los SIG incorporan elementos de la denominada \textbf{visualización científica}, tales como la \textbf{interactividad} o la \textbf{representacion de datos multidimensionales}. El resultado de este nuevo planteamiento, más rico que el de la cartografía clásica, se conoce como \textbf{geovisualización}. 
+
+En este capítulo veremos las ideas fundamentales sobre la visualización de datos, desarrollando la aplicación de estas en la cartografía tradicional, así como en el ámbito de la geovisualización y de los SIG.
+
+
+\section{Conceptos básicos de visualización}
+
+Cuando visualizamos cualquier tipo de información geográfica, ya sea a través de un mapa clásico o de algún elemento gráfico en la pantalla de un ordenador, estamos utilizando un \textbf{lenguaje visual} para transmitirla. Del mismo modo que al hablar empleamos un lenguaje oral y al escribir un lenguaje escrito, siempre que plasmemos la información geográfica en una serie de elementos visuales estaremos empleando este lenguaje visual.
+
+
+El estudio de los signos de un lenguaje constituye lo que se conoce como \textbf{semiología}. En el caso de los elementos del lenguaje visual, encontramos una \textbf{semiología gráfica}. Esta semiología trata los signos del lenguaje visual y la gramática de estos, definiendo una lingüística visual que nos ayuda a comprender cómo una representación gráfica dada cumple su propósito de transmitir la información en base a la cual se crea.
+
+
+\subsection{Las variables visuales}
+
+Existen diversas propiedades de los elementos visuales que podemos emplear para trasnmitir una información, siendo más adecuadas unas u otras según sea la circunstancia.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=\columnwidth]{Visualizacion/VariablesVisuales.pdf}
+\caption{\small Ejemplo de uso de las distintas variables visuales. De izquierda a derecha: posición, forma, tamaño, tono, valor, textura, y orientación}
+\label{Fig:VariablesVisuales} 
+\end{figure}
+
+
+Estas propiedades conforman lo que se conoce como \textbf{variables visuales}, y se aplican a los elementos básicos de la representación, que son aquellos objetos geométricos de que se compone esta. Las variables visuales permiten diferenciar unos de otros y asignarles unas ciertas características, susceptibles a su vez de ser interpretadas junto al propio significado que el objeto pueda tener. Dados dos elementos, estos pueden diferenciarse por las siguientes variables, que aparecen representadas en la figura \ref{Fig:VariablesVisuales}: Posición, forma, tamaño, textura, color y orientación
+
+El uso de la \textbf{posición} está muy restringido en el caso de un mapa, por deber respetarse el emplazamiento real en el espacio del elemento representado, y por ello y no se emplea.
+
+La \textbf{forma} viene definida por el perímetro exterior del objeto. La forma se aplica fundamentalmente a los símbolos puntuales, situando un símbolo de una forma dada sobre las coordenadas exactas del punto a representar. Su aplicación a símbolos lineales es difícil y no se da, mientras que en el caso de aplicarse sobre símbolos de superficie requiere la alteración de los polígonos representados (por ejemplo, que tracen los límites de países), dando lugar a una representación imprecisa, al menos en lo que al contorno del polígono respecta. 
+
+El \textbf{tamaño} se refiere a la dimensión del símbolo. Para el caso de símbolos puntuales, puede aplicarse sin más que hacer más grande o pequeño el símbolo en sí. En el caso de líneas, el grosor de estas constituye la forma de aplicar la variable tamaño. No se usa en símbolos superficiales, salvo aplicándolo sobre la textura de relleno.
+
+El tamaño \textbf{condiciona la percepción de otras variables visuales}, especialmente cuando se trata de tamaños pequeños. 
+
+La \textbf{textura} hace referencia al relleno de un símbolo mediante algún patrón. Se aplica en lineas mediante el uso de guiones y espacios en blanco que dan lugar a un patrón de discontinuidad, aunque su uso principal es en el caso de símbolos de superficie.
+
+El \textbf{color} es la más importante de todas las variables visuales, debido a las posibilidades que ofrece.
+
+Dos son las componentes de un color que se utilizan como variables visuales, y que pueden entenderse como tales por si mismas: el tono y el  valor. 
+
+El \textbf{tono} es lo que en el lenguaje común denominaríamos color, es decir el nombre del color, por ejemplo verde, rojo o amarillo. 
+
+El tono puede verse \textbf{alterado por los tonos del entorno}, especialmente en símbolos de pequeño tamaño. Aunque es una variable para la que la percepción humana tiene gran sensibilidad, en los símbolos pequeños puede ser difícil de identificar y pueden producirse una falsa percepción si comparten espacio con otras más grandes de un tono distinto. 
+
+Por su parte, el \textbf{valor} indica la claridad del color. Un tono azul puede ser más claro o más oscuro sin dejar de ser azul. Esa variación que se produce es una variación del valor del color. 
+
+La capacidad de diferenciar dos símbolos con valor distinto varía en función del tipo de símbolo. Así, es mayor en el caso de símbolos de superficie, mientras que en el caso de símbolos puntuales y lineales está relacionada con el tamaño. Si el punto es muy pequeño o la línea muy delgada, es más difícil apreciar el valor y, por tanto, comparar este con otro o extraer la información que mediante esa variable visual se intenta transmitir.
+
+
+Por último, la \textbf{orientación} se aplica sobre los símbolos puntuales, siempre que estos no presenten simetrías que impidan percibir correctamente la orientación. Para los símbolos de superficie, se aplica a través de la textura, variando la orientación de esta. No se aplica en el caso de líneas.
+
+\subsection{Las propiedades de las variables visuales}
+
+Se distinguen 4 propiedades básicas que una variable visual puede presentar:
+
+\begin{itemize}
+	\item \textbf{Asociativa}. Una variable visual presenta la propiedad asociativa si al ser aplicada no aumenta ni disminuye la visibilidad de un elemento. Es decir, cuando en función de esa variable visual no puede asignársele más o menos importancia a este.
+	\item \textbf{Selectiva}. La propiedad selectiva la presentan aquellas variables visuales que, al ser aplicadas, generan distintas categorías de símbolos.
+	\item \textbf{Ordenada}. Cuando una variable visual puede emplearse para representar un orden, se dice que presenta la propiedad ordenada.
+	\item \textbf{Cuantitativa}. Cuando, además del orden, una variable puede mostrar cantidades o proporciones, entonces se dice que posee la propiedad cuantitativa.
+\end{itemize}
+
+En la anterior lista, las propiedades están organizadas según los denominados \emph{niveles de organización}. La propiedad asociativa se sitúa en el nivel más bajo, mientras que la cuantitativa ocupa el más alto. El nivel de organización de las variables visuales tiene importancia a la hora de combinar varias de ellas en un símbolo, como veremos más adelante. Asimismo, el nivel de organización define qué tipo de información podemos transmitir con una variable visual.
+
+La figura \ref{Fig:PropiedadesVariablesVisuales} muestra diferentes representaciones de un conjunto de símbolos puntuales en los que en cada caso se ha utilizado únicamente una variable visual.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=\columnwidth]{Visualizacion/PropiedadesVariablesVisuales.pdf}
+\caption{\small Representación de un conjunto de símbolos aplicando de forma individual las distintas variables visuales.}
+\label{Fig:PropiedadesVariablesVisuales} 
+\end{figure}
+
+Comenzando con la propiedad asociativa, vemos que a excepción del tamaño y el valor, las demás variables visuales no hacen que los elementos presenten una preponderancia en la imagen. No existen una orientación que podamos definir como más importante, ni tampoco un color. Lo mismo sucede con la textura, la forma y la posición. 
+
+Con el tamaño, sin embargo, resulta claro que mayor tamaño implica un papel destacado dentro de la información que transmite el mapa. De igual modo, un mayor valor (un color más oscuro) da sensación de mayor definición, y centra la atención de observador sobre el elemento de un modo muy superior a como lo hace un valor bajo.
+
+Respecto a la propiedad selectiva, diremos que una variable visual la presenta si de un vistazo podemos rápidamente seleccionar los elementos que pertenecen a un determinado grupo, identificados estos mediante dicha variable visual. El caso más claro de propiedad selectiva lo presenta el tono. Podemos rápidamente quedarnos solo con los elementos amarillos o con los rojos. Aunque no de un modo tan claro, todas las restantes variables presentan igualmente esta propiedad, a excepción de la forma. La forma no permite que los elementos se agrupen de modo espontáneo en familias, y su validez en este sentido está muy ligada a la complejidad de dicha forma.
+
+La propiedad ordenada la presentan aquellas variables que permiten establecer un orden. Tan solo posición, textura, tamaño y valor la presentan, mientras que las demás carecen de ella. Por ejemplo, en la imagen correspondiente a la variable visual tono no podemos decir cuáles de los elementos situaríamos al principio y cuáles al final de una escala dada definida por esos tonos. Con el valor, sin embargo, sí que podemos, ya que esta escala iría de los tonos más claros a los más oscuros, y visualmente podemos sin dificultad distinguir los distintos niveles y ordenarlos.
+
+Por último, la propiedad cuantitativa la presentan aquellas variables visuales que permiten estimar proporciones o cantidades de forma visual. Esta propiedad es exclusiva del tamaño y de la posición, mientras que las demás no la presentan. Podemos por, ejemplo ver que los círculos grandes en la figura correspondiente son aproximadamente el doble que los pequeños. 
+
+En el cuadro \ref{Tabla:PropiedadesVariablesVisuales} se muestra un resumen de todo lo anterior.
+
+\begin{table}[!hbt]
+\small
+\centering  \label{Tabla:PropiedadesVariablesVisuales}
+\begin{tabular}{p{3.6cm}ccccccc}  
+ & \rotatebox{90}{\textbf{Posición}} & \rotatebox{90}{\textbf{Tamaño}} & \rotatebox{90}{\textbf{Forma}} & \rotatebox{90}{\textbf{Valor}} & \rotatebox{90}{\textbf{Tono}} & \rotatebox{90}{\textbf{Textura}} & \rotatebox{90}{\textbf{Orientación}} \\ \midrule   
+\textbf{Asociativa}& $\diamondsuit$ & - & $\diamondsuit$ & - & $\diamondsuit$ & $\diamondsuit$ & $\diamondsuit$ \\
+\textbf{Selectiva}& $\diamondsuit$ & $\diamondsuit$ & - & $\diamondsuit$ & $\diamondsuit$ & $\diamondsuit$ & $\diamondsuit$ \\
+\textbf{Ordenada}&$\diamondsuit$ & $\diamondsuit$ & - & $\diamondsuit$ & - & - & - \\
+\textbf{Cuantitativa}& $\diamondsuit$ & $\diamondsuit$ & - & - & - & - & -  \\
+\bottomrule \end{tabular}
+\caption{\small Cuadro resumen con las propiedades de las variables visuales.}
+\end{table}
+
+Las variables visuales pueden combinarse (por ejemplo representando elementos con puntos de distinto tamaño y tono). Al hacerlo, deben tenerse en cuenta las propiedades de estas del mismo modo que cuando se emplean de forma individual. Las propiedades a reforzar serán aquellas que convengan más al tipo de información representado, y deben presentarlas todas las variables a combinar para que el efecto conjunto sea más acusado.
+
+
+\subsection{La percepción de las variables visuales}
+
+La percepción de las variables \textbf{puede verse alterada por el medio}. Es importante estudiar esta alteración desde dos puntos de vista: la \textbf{constancia perceptiva} (hasta qué punto podemos modificar los elementos visuales o su entorno sin que dejen de transmitir su información y sean confundidos sus características) y las \textbf{ayudas a la percepción} (cómo podemos facilitar que se perciban exactamente como pretendemos)
+
+Entendemos por constancias perceptivas a las propiedades de los objetos cuya \textbf{percepción no varía aunque se produzcan modificaciones}. Por ejemplo, dado un objeto redondo tal como una rueda, si lo miramos en una dirección perpendicular aparecerá efectivamente como una forma circular perfecta. Sin embargo, si la miramos desde otro ángulo, veremos una forma elíptica, pero ello no nos lleva a pensar que la rueda en sí no sea ya redonda. Este ejemplo muestra la constancia perceptiva de la forma.
+
+No todas las variables visuales tienen una constancia perceptiva como la anterior. Cuando la percepción de un elemento cambia aunque el estimulo no lo haga, en lugar de una constancia perceptiva hablamos de un \textbf{contraste perceptivo}. Los contrastes perceptivos pueden inducir una interpretación errónea de la información que pretendemos transmitir, al producirse una percepción equivocada.
+
+Las siguientes son algunas de las ideas más importantes a tener en cuenta a este respecto a la hora de crear un mapa:
+
+\begin{itemize}
+	\item El tamaño es la variable visual que más afectada se ve, y el tamaño aparente de un objeto puede variar notablemente si se encuentra rodeado de otros de un tamaño distinto. Es importante tener esto en cuenta a la hora de emplear simbología de elementos puntuales en un mapa.	
+	\item El valor se ve igualmente alterado al situar alrededor elementos de distinto valor, especialmente si estos son numerosos.
+	\item El tono se ve alterado por la presencia de otros tonos distintos. En un mapa, veremos este efecto al enfrentar el color de un elemento sobre el color del fondo. 
+	\item Tonos complementarios puestos juntos pueden crear sensación de vibración en la frontera que los separa.
+\end{itemize}
+
+En lo que respecta a las ayudas a la percepción, el factor más importante en la creación de un mapa es una \textbf{correcta separación entre el fondo y la figura}. Dentro de los distintos elementos o niveles de un mapa (que se corresponderán en líneas generales con las capas que se empleen en el SIG para crearlo), se han de emplear las propiedades de las variables visuales para restar importancia visual a aquellas que tengan menos relevancia, y de este modo centrar la atención sobre la información que se desea transmitir por encima de las demás.
+
+Para de aquellas capas que tengan la misma importancia y quieran destacarse en el mapa, es necesario establecer una \textbf{adecuada jerarquización}. Esta jerarquía debe aportar una <<profundidad>> a la información, de forma que existan niveles en esta y se perciba que algunos elementos están por encima de otros. La forma de ordenar las distintas capas en un SIG ya establece un orden, aunque este no es en sí suficiente, y deben utilizarse las variables visuales para enfatizar o no unas o otras capas y la información que contienen.
+
+Como ejemplo de lo anterior, la figura \ref{Fig:JerarquiaMapa} muestra un ejemplo de como una correcta jerarquización es fundamental para crear mapas de calidad.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=\columnwidth]{Visualizacion/JerarquiaMapa.png}
+\caption{\small Mapa con jerarquía incorrecta (a) y mapa adecuadamente jerarquizado (b).}
+\label{Fig:JerarquiaMapa} 
+\end{figure}
+
+
+\section{El mapa y la comunicación cartográfica}
+
+El mapa es un medio de comunicación visual que constituye un lenguaje con un objetivo particular: la \textbf{descripción de relaciones espaciales}. Un mapa es, pues, una abstracción simbólica de algún fenómeno real, lo cual significa que presenta un cierto grado de simplificación y generalización.
+
+El lenguaje visual que ya conocemos se convierte ahora en un lenguaje cartográfico al adaptarlo al caso particular de la creación de mapas, y sus reglas son imprescindibles para poder crear cartografía que facilite la labor posterior del usuario. El conjunto de ideas relativas a la producción de mapas dan forma a lo que conocemos como \textbf{diseño cartográfico}.
+
+El diseño cartográfico implica la toma de decisiones por parte del cartógrafo (en este caso el usuario de SIG). Estas decisiones han de estar motivadas fundamentalmente por la \textbf{utilidad del mapa} y el \textbf{público al que va destinado}, y en función de estas han de elegirse aspectos como la \textbf{proyección} a utilizar (no necesariamente la misma en que se encuentran las capas que se van a incluir en el mapa), la \textbf{escala} (dependiendo del nivel de detalle que se desee comunicar, y siempre dentro de las limitaciones de los propios datos), el \textbf{tipo de mapa} (más adelante en este capítulo detallaremos los tipos más importantes), la cantidad de \textbf{simplificación} que debe realizarse o los \textbf{símbolos} que han de emplearse para plasmar la información a transmitir.
+
+
+Es importante distinguir entre dos tipos de cartografía: \textbf{cartografía base}, también denominada \emph{fundamental} o \emph{topográfica}, y \textbf{cartografía temática}.
+
+La cartografía base representa el tipo de mapa que originalmente era el objeto principal de la cartografía, cuando lo primordial era recoger con precisión \emph{qué} había sobre la Tierra, documentando a través del documento cartográfico las características físicas de esta. 
+
+La cartografía temática se centra en la \textbf{representación de un tema concreto} (una variable espacial dada), pudiendo esta ser de cualquier índole: física, social, política, cultural, etc. Se excluyen de la lista de esos temas posibles a los puramente topográficos, que constituyen el objeto de la cartografía base.
+
+De otro modo, la cartografía topográfica representa \textbf{elementos físicos del terreno} (un accidente geográfico, el curso de un río, el perfil de una costa), mientras que la cartografía temática se centra más en la \textbf{representación de valores y atributos}.
+
+La cartografía temática se apoya en la cartografía base, ya que esta se incluye también en los mapas temáticos para facilitar la comprensión del comportamiento espacial de la variable representada y ubicar esta en un contexto geográfico dentro del propio mapa. 
+
+
+\subsection{Los tipos de información y su representación}
+
+Sabemos ya que la componente temática de la información geográfica puede ser de tipo numérico o alfanumérico, y que la primera se divide en los tipos nominal, ordinal, intervalos y razones.  La selección de una forma de simbolización adecuada en función de la naturaleza de la información es clave para lograr un mapa efectivo. En particular, debe emplearse una variable visual que presente la propiedad (nivel de organización) adecuado. 
+
+Por ejemplo, las propiedades asociativa y selectiva solo son de interés para información cualitativa, mientras que el tamaño es la única variable visual con la propiedad cuantitativa, y por tanto la única adecuada para representar razones.
+
+Las siguientes son algunas ideas básicas a este respecto referidas a los distintos tipos antes citados.
+
+
+\begin{itemize}
+	\item \textbf{Nominal}. La información de tipo nominal se representa adecuadamente utilizando la variable visual forma. Lo que representamos responde principalmente a la pregunta \emph{qué} en lugar de a la pregunta \emph{cuánto}, y está más relacionado en cierto modo con la cartografía base que con la cartografía temática. El uso de símbolos, para elementos puntuales o lineales es una solución muy eficaz y habitual en este caso. Para el caso de representar áreas puede emplearse la variable visual color y emplear distintos tonos, o bien la textura
+	
+	La información alfanumérica se trata a efectos de representación del mismo modo que la de tipo nominal.
+	
+
+	\item \textbf{Ordinal}. A diferencia de la información nominal, en la información ordinal los valores definen un orden, por lo que la propiedad ordenada es necesaria para poder aplicarla a este caso.
+	
+	\item \textbf{Intervalos y razones}. Como en el caso anterior, pueden emplearse todas las variables visuales que presenten la propiedad ordenada. No debe olvidarse, no obstante, que la propiedad de mostrar el orden en términos de cantidades o proporciones, que denominábamos cuantitativa, es exclusiva del tamaño, siendo este la variable visual más adecuada para representar correctamente este tipo de información.
+
+	Frecuentemente, estos valores son de tipo real (no enteros), por lo que es además necesario agruparlos en clases (intervalos). Esta agrupación puede realizarse según diversas metodologías, siendo las más habituales los intervalos iguales, los intervalos por percentiles, o los intervalos naturales, que tratan de disminuir la varianza de cada clase.
+
+	El uso de una u otra metodología puede tener un efecto muy notable en la representación, como se muestra en la figura \ref{Fig:TiposIntervalosClases}.
+
+	\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=.7\columnwidth]{Visualizacion/TiposIntervalosClases.pdf}
+	\caption{\small Comparación entre distintos esquemas para la creación de intervalos de clase.}
+	\label{Fig:TiposIntervalosClases} 
+	\end{figure}
+
+
+\end{itemize}
+
+
+Por último, es de interés señalar que, aunque los niveles de organización de las variables visuales expresan a su vez unas posibilidades crecientes (es decir, con una variable como el valor o el tamaño podemos expresar todo lo que el tono puede transmitir, ya que están en un nivel superior), ello no implica necesariamente que el uso de una variable de un nivel superior es mejor que otra de uno inferior. Por ejemplo, el uso del valor para un mapa con información cualitativa no es adecuado . Puesto que el valor tiene la propiedad ordenada, esto puede inducir a pensar que existe algún orden en la variable representada, lo cual es falso. 
+
+
+
+\subsection{Elementos del mapa. Composición}
+
+Un mapa no es solo lo que se deriva de la representación de la información geográfica y su simbolización, sino un conjunto de elementos dispuestos de forma óptima, siendo uno de ellos aquel que contiene la información geográfica como tal.
+
+Igual de importante que simbolizar correctamente la información geográfica es \textbf{situar adecuadamente los distintos elementos del mapa}, ya que estos están pensados también, al igual que la propia simbología, para facilitar la interpretación de la información y hacer esta más comprensible.
+
+Los siguientes son los elementos fundamentales que podemos emplear para componer un mapa (Figura \ref{Fig:ElementosMapa}):
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=\columnwidth]{Visualizacion/ElementosMapa.png}
+\caption{\small Ejemplo de mapa mostrando sus elementos más habituales.}
+\label{Fig:ElementosMapa} 
+\end{figure}
+
+\begin{itemize}
+\item \textbf{Nombre o título}. Imprescindible para conocer qué información muestra el mapa.
+	\item \textbf{Autor}. La persona u organismo que ha creado el mapa debe aparecer indicada en algún punto de este.
+	\item \textbf{Otra información sobre el mapa}. Por ejemplo, la relativa al sistema de referencia empleado o la fecha de su creación, entre otras.
+	\item \textbf{Canevás}. El canevás es una retícula que nos indica dónde dentro de la superficie terrestre se encuentra aquello que el mapa representa, y provee la referencia geográfica para sus elementos. Asimismo, complementa a la escala para la estimación visual de distancias y medidas. Es más necesario en caso de escalas bajas, aunque se añade con independencia de la escala.
+	\item \textbf{Leyenda}. Aunque se ha de tratar de utilizar una simbología lo más expresiva posible, no toda la información puede incorporarse en el mapa, y es necesario acompañarlo de una leyenda. Esta ha de ser también fácil de interpretar y lo más clara posible. Una leyenda demasiado extensa o de difícil comprensión probablemente nos indica que la simbología escogida es mejorable.
+	
+	
+	La leyenda y el mapa en sí forman un todo, por lo que no deben separarse mediante un cuadro, salvo en el caso en que el mapa cubra todo el área del lienzo y no sea fácil separar visualmente de forma clara ambos elementos.
+	\item \textbf{Norte}. Aunque habitualmente se presupone la orientación Norte--Sur, no siempre ha de ocurrir así, y una aguja apuntando al norte o una rosa de los vientos sirve para aclarar la orientación del mapa. 
+	\item \textbf{Escala}. La escala debe indicarse tanto de forma numérica como gráfica, de modo que puedan realizarse cálculos y estimar visualmente distancias entre puntos dados del mapa.\index{Escala}
+	\item \textbf{Localizador}. Un localizador provee un elemento visual para situar el mapa en un contexto geográfico más amplio. Es de especial interés en el caso de series de mapas, para establecer la relación entre el presente y los restantes dentro de la misma serie. En este caso, el localizador sirve como mapa índice.
+	\item \textbf{Mapas de detalle}. Cuando resulta necesario mostrar una cierta zona del mapa con mayor detalle y a una escala mayor, se puede incluir un mapa correspondiente a esa zona como un enclavado dentro del mapa principal. Se debe señalar asimismo sobre este último la zona a la que corresponde el mapa de detalle.
+\end{itemize}
+
+
+
+Asimismo, es importante que el diseño del mapa recalque su propósito, haciendo énfasis en los aspectos más relevantes para cumplir este.
+
+
+\section{Tipos de mapas temáticos}
+
+Existen diversas alternativas en función del tipo de elemento que se pretenda simbolizar o las características de la variable tratada, y la elección de una u otra supondrá una diferencia importante en el mapa obtenido y en su uso posterior. En un mismo mapa pueden combinarse varias de estas formas, especialmente si se pretende representar más de una variable, en cuyo caso la combinación debe buscar la máxima claridad en la representación de todas ellas.
+
+En este apartado detallaremos los siguientes tipos de mapas temáticos: mapas de símbolos proporcionales, mapas de densidad de puntos, mapas de isolíneas y mapas de coropletas. Todos ellos se utilizan para la representación de variables cuantitativas.
+
+
+\subsection{Mapas de símbolos proporcionales}
+
+Un mapa de símbolos proporcionales representa \textbf{variables cuantitativas} a través de símbolos cuyo \textbf{tamaño está en relación con el valor} a representar de dicha variable. Es decir, emplea la \textbf{variable visual tamaño} (la única con la propiedad cuantitativa) para transmitir el valor de la variable representada. Si el símbolo es lineal, como por ejemplo una barra, el escalado de los símbolos para los distintos valores se realiza utilizando la longitud. Es decir, a un valor doble le corresponde una barra del doble de longitud. En el caso de símbolos de superficie, se emplea la superficie. Por ejemplo, en el caso de usar círculos, a un valor doble no le corresponde un circulo de radio doble, sino uno de área doble.
+
+El escalado de símbolos se puede dar de forma continua, aunque resulta más conveniente efectuar un escalado discreto, creando clases y asignando a cada una de ellas un único tamaño. 
+
+Para evitar problemas de percepción del tamaño, es importante mostrar en la leyenda la relación entre los distintos tamaños de los símbolos y sus valores, como se muestra en la figura \ref{Fig:EjemplosLeyendaSimbolosProporcionales}
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=.65\columnwidth]{Visualizacion/EjemplosLeyendaSimbolosProporcionales.pdf}
+\caption{\small Dos ejemplos de leyendas para un mapa de símbolos proporcionales.}
+\label{Fig:EjemplosLeyendaSimbolosProporcionales} 
+\end{figure}
+
+
+\subsection{Mapas de puntos}\index{Mapa!de puntos}
+
+Los mapas de puntos se emplean especialmente para \textbf{variables que representan algún tipo de cantidad}, tales como la población, el gasto medio por persona o la producción de un determinado cultivo. Estas cantidades se representan mediante la \textbf{repetición de puntos}, en numero proporcional a su magnitud. Cada uno de esos puntos representa un valor unitario, y el conjunto de ellos sobre la zona en cuestión suma la cantidad total a representar. Los puntos tienen todos la misma forma y tamaño, a diferencia de lo que vimos en el caso de los símbolos proporcionales. Son especialmente adecuados para variables discretas (valores enteros)
+
+Tres son los aspectos que deben tenerse en cuenta a la hora de elaborar un mapa de puntos: el \textbf{valor de cada punto} (es decir, cuántas unidades de la variable representa cada punto), su \textbf{tamaño} y su \textbf{posición}.
+
+El valor de cada punto se debe establecer \textbf{en función de los valores mínimo y máximo} de la variable, para que resulte en un mapa en el que los puntos no aparezcan en demasía o sean demasiado escasos. Este valor se representará en la leyenda para su interpretación, habitualmente en forma de texto, escribiendo por ejemplo, que <<un punto equivale a 1000 habitantes>>.
+
+La elección del tamaño del punto debe garantizar la buena visibilidad de este, al tiempo que no debe ser excesivamente grande para que no ocupe demasiado espacio y dificulte la visión de otros. El \textbf{tamaño óptimo está en relación con el valor unitario} escogido, y ambos parámetros deben establecerse conjuntamente para lograr la combinación más adecuada.
+
+La posición del punto es de gran importancia para transmitir la información correcta y no dar lugar ambigüedades o incorporar errores conceptuales. Si no disponemos de información adicional y solo tenemos el valor correspondiente a una zona dada, los puntos se han de disponer de forma regular ocupando toda la superficie de la zona. Si, por el contrario, sabemos algo más acerca de la distribución de la variable, debemos emplear esa información para emplazarlos de forma más realista. Si, por ejemplo, la zona corresponde a una provincia y sabemos la localización de la principal ciudad dentro de ella, es más lógico situar más puntos cerca del emplazamiento de esa ciudad que en otras partes de la provincia, ya que una mayor parte de la población estará allí.
+
+Otro aspecto a considerar es el significado de la variable que se representa y la posibilidad o no de que aparezca en las distintas localizaciones de los puntos. Si la variable es, por ejemplo, el numero de ejemplares avistados de un determinado ave acuática, situar los puntos sobre zonas urbanas o de bosque no tiene sentido, ya que dan a entender que ahí hay presencia de esa especie (tantos ejemplares como los puntos en cuestión indiquen), algo que es falso.
+
+
+La imagen \ref{Fig:MapaPuntos} muestra un ejemplo de un mapa de puntos.
+
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=.8\columnwidth]{Visualizacion/MapaPuntos.png}
+\caption{\small Mapa de puntos.}
+\label{Fig:MapaPuntos} 
+\end{figure}
+
+
+\subsection{Mapas de isolíneas}
+
+Los mapas de isolíneas son muy utilizados para la representación de \textbf{variables continuas}. Se combinan adecuadamente con otros tipos de mapas, ya que, al representarse únicamente mediante líneas, permite la presencia de otros elementos dentro del mapa sin resultar obstrusiva.
+
+Un mapa de isolíneas está formado por un conjunto de líneas, cada una de las cuales une \textbf{puntos que presentan el mismo valor} de la variable. Estas líneas no pueden cruzarse, ya que ello significaría que en un punto se presentan dos valores. El caso más típico de mapa de isolíneas son las curvas de nivel que aparecen el un mapa topográfico, indicando la elevación del terreno.
+
+La representación de isolíneas viene definida por la denominada \textbf{equidistancia}, que indica la diferencia entre los valores de dos isolíneas contiguas. Una menor equidistancia implica un mayor número de isolíneas y una representación más densa.
+
+La variable visual tamaño es la única que suele emplearse para simbolizar isolíneas, en particular para señalar aquellas líneas que representan un valor múltiplo de una determinada cantidad y hacer así más fácil la lectura del mapa. Estas líneas son lo que se conoce como \textbf{curvas directrices}. 
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=.8\columnwidth]{Visualizacion/Isolineas.png}
+\caption{\small Mapa de isolíneas. Se ha empleado para su representación tanto las líneas como el coloreado de las franjas entre estas.}
+\label{Fig:Isolineas} 
+\end{figure}
+
+
+Las líneas se etiquetan con el valor que representan (con texto sobre la línea), y se aprovecha el hecho de que dos líneas consecutivas están separadas siempre por una magnitud igual a la equidistancia, lo cual aporta un importante contexto en lo que a los valores se refiere. 
+
+Una forma particular de representar las isolíneas mediante color es hacerlo no sobre las líneas, sino sobre las zonas que median entre ellas. Es decir, representar la clase en lugar del límite de clase. Este tipo de mapas se asemeja al mapa de coropletas (que veremos seguidamente), tratándose más de un mapa de áreas que de líneas, por lo que se conoce como de \emph{isocoropletas}. Ambos tipos de representación, mediante áreas y mediante líneas, pueden combinarse en un único mapa.\index{Isocoropletas}
+
+En la figura \ref{Fig:Isolineas} puede verse un ejemplo de mapa de isolíneas combinando las dos formas anteriores.
+
+
+\subsection{Mapas de coropletas}\index{Mapa!de coropletas}
+
+Los mapas de coropletas son utilizados habitualmente para representar la información geográfica en un SIG. Por ejemplo, los mapas de la figura \ref{Fig:TiposIntervalosClases} son todos ellos mapas de coropletas.
+
+En un mapa de coropletas se tiene una serie de áreas definidas, cada una de las cuales posee un valor de una variable. Este valor de la variable afecta a todo el área y es el que se representa por medio de alguna variable visual, normalmente el color a través de su componente valor.
+
+Los mapas de coropletas adolecen de ciertos inconvenientes, siendo los principales la \textbf{sensación de cambio brusco en los límites entre áreas}, la cual puede transmitir la idea de que en esa frontera los valores de la variable cambian bruscamente, ocultando la continuidad de la variable en caso de existir esta,, y la \textbf{homogeneidad dentro de cada área}, que puede no ser cierta.
+
+Para transmitir correctamente la información, es importante normalizar la variable en función de la superficie de cada unidad. Por ejemplo, en el caso de representar la población de una serie de términos municipales, es más adecuado representar la población por unidad de área, dividiendo el valor de población cada unidad entre la superficie de esta.
+
+
+\section{La visualización en un SIG}
+
+
+Una vez que conocemos los conceptos básicos sobre representación gráfica y su uso para la elaboración de mapas, es momento de ver cómo estos se aplican en el contexto de un SIG. Dos aspectos son especialmente relevantes a este respecto: el hecho de \textbf{contar con múltiples capas} que han de representarse conjuntamente, y las \textbf{particularidades de la representación en pantalla}, con la interactividad que el SIG ofrece.
+
+
+\subsection{Combinación de capas}
+
+En general, una capa aislada no constituye la forma óptima de visualizar esta. Si en un mapa encontramos elementos variados, ello no obedece a la mera economía de espacio, sino a que añadir información adicional a la de esa capa que queremos representar nos ayuda a entenderla mejor. Los procesos que tienen lugar en el espacio están relacionados unos con otros, y \textbf{visualizar esas relaciones aporta una mayor riqueza a la visualización}, haciendo que sea más sencillo extraer la información contenida en ella. 
+
+Aunque sencillo de llevar a cabo en lo que a manejo del SIG respecta, combinar capas es un proceso que también debe realizarse con conocimiento y en el que, si se realiza correctamente, las diferencias pueden ser notables. No solo se trata de dar espacio dentro del mapa a toda la información que esas capas contienen, sino que exista una sinergia entre ellas en la medida de lo posible, para que se complementen mutuamente como partes de un conjunto. 
+
+
+La configuración fundamental en este sentido es el \textbf{orden de las capas}, que indica cómo se disponen estas las unas sobre las otras y define el orden de pintado. Si una misma zona está ocupada por elementos de varias capas, solo serán visibles los correspondientes a la capa superior, ya que la representación de los pertenecientes a las demás quedará oculta. 
+
+Sabemos que las capas ráster llenan todo el espacio y contienen valores en todas sus celdas (o píxeles en el caso de imágenes). Por ello, van a tapar lo que se sitúe por debajo de ellas y no resulta buena idea situarlas en lo alto del orden de pintado. En su lugar, se deben considerar como \textbf{capas base sobre las que situar las restantes}, de tal modo que no impidan a estas visualizarse correctamente.
+
+Con un razonamiento similar, podemos establecer la mejor forma de ordenar las capas vectoriales, situando por norma general los polígonos y encima de estos las líneas y los puntos respectivamente. 
+
+
+En ocasiones, un determinado orden viene \textbf{impuesto por el significado} que tienen las capas. Por ejemplo, si nuestro mapa contiene una capa con la red de drenaje y otra con carreteras, lo lógico y habitual es que las carreteras estén por encima de los ríos, ya que lo normal es que pasen por encima de estos y no al contrario. 
+
+
+Una funcionalidad de que disponen los SIG para la combinación de capas es el uso de \textbf{transparencias} totales o parciales. Estas se pueden aplicar tanto a capas ráster como vectoriales, de forma que puede verse a través de ellas y así presentar la información de otras capas que se encuentren por debajo. Por ejemplo, la representación mostrada en la figura \ref{Fig:CombinacionCapas} hace uso de esta técnica. El polígono que delimita la cuenca vertiente es semi--transparente, de tal modo que la capa de relieve sombreado que está debajo puede verse, dando la sensación de que sigue ese relieve.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=.7\columnwidth]{Visualizacion/CombinacionCapas.png}
+\caption{\small Combinación de capas mediante transparencia.}
+\label{Fig:CombinacionCapas} 
+\end{figure}
+
+En el caso de una capa ráster, puede aplicarse una transparencia total, haciendo que determinadas partes de esta no se representen, en función de sus valores.
+
+En el caso en que una variable se encuentre dividida en \textbf{varias capas} (división horizontal), debe asignarse una \textbf{misma simbología} a todas esas capas, con el fin de que la representación sea coherente.
+
+
+\subsection{Particularidades de la representación en pantalla}
+
+Tanto para las representaciones en papel como para las representaciones en pantalla se siguen unos mismos principios a la hora de diseñarlas, pero estas últimas presentan algunas características particulares que hacen necesario tener en consideración otros factores. 
+
+Podemos distinguir dos bloques fundamentales de diferencias que hacen que un mapa pensado para ser visualizado en la pantalla mientras ejecutamos un SIG no deba diseñarse exactamente igual que si estuviera pensado exclusivamente para ser utilizado en un soporte impreso: la \textbf{baja resolución de la pantalla} y la \textbf{interactividad} de la propia representación.
+
+
+A la hora de preparar cartografía impresa, la resolución no es un problema, ya que las capacidades de que se dispone superan a las necesidades que el cartógrafo puede tener. En la pantalla, sin embargo, algunos elementos pueden no aparecer con suficiente claridad y, aunque en papel cumplan su función correctamente, es conveniente sustituirlos por otros más adecuados cuando no se trabaja sobre un medio impreso. Entre los elementos a evitar se encuentran las \textbf{fuentes con ornamentos} tales como sombreados, las \textbf{fuentes con serifas} (pequeños adornos al final de las líneas para facilitar la lectura) o los \textbf{rellenos o punteados de paso muy fino}.
+
+Respecto a la interactividad de las representaciones, debe tenerse presente que, a diferencia de un mapa impreso, en un SIG lo que vemos no es un elemento estático, sino dinámico. En este contexto, \emph{dinámico} no quiere decir que el mapa cambie o que represente un proceso dinámico, sino que el usuario puede alterarlo utilizando por lo menos las herramientas más fundamentales que proporcionan interactividad, tales como el desplazamiento, el acercamiento o el alejamiento. 
+
+Por ejemplo, el hecho de que la escala de la representación pueda variar según la voluntad del usuario puede causar problemas con algunos de sus elementos  tales como símbolos o etiquetas de texto. Si todos los elementos del mapa se escalan proporcionalmente, una reducción importante de escala disminuirá el tamaño del texto hasta hacerlo ilegible. Por el contrario, si aumentamos la escala el tamaño puede ser excesivo. La figura \ref{Fig:ProblemasRepresentacionSimbolos} muestra este hecho. 
+
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=\columnwidth]{Visualizacion/ProblemasRepresentacionSimbolos.pdf}
+\caption{\small El cambio de escala varía el tamaño de los símbolos tales como las etiquetas, haciéndolos demasiado pequeños (a) o demasiado grandes (b)}
+\label{Fig:ProblemasRepresentacionSimbolos} 
+\end{figure}
+
+
+Una solución a esto es especificar un \textbf{tamaño absoluto} de estos elementos que no varíe con la escala. Es decir, que un símbolo o una etiqueta de texto tengan siempre el mismo tamaño en pantalla y ocupen los mismos píxeles. A escalas bajas, sin embargo, este método puede dar lugar a representaciones saturadas, como se observa en la figura \ref{Fig:RepresentacionSaturada}.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=.9\columnwidth]{Visualizacion/RepresentacionSaturada.png}
+\caption{\small Representación saturada al representar elementos con tamaño fijo a una escala baja.}
+\label{Fig:RepresentacionSaturada} 
+\end{figure}
+
+La posibilidad de representar capas a distintas escalas, puede también dar lugar a \textbf{problemas de rendimiento}. Para evitar estos, se recomienda un \textbf{planteamiento multi--escalar} en el que, según la escala, se visualicen unas u otras capas, así como trabajar con capas de menor detalle a escalas pequeñas
+
+\pagestyle{empty}

@@ -10,6 +10,8 @@
 \geometry{verbose,dvips,paperwidth=5in,paperheight=8in,tmargin=.65in,bmargin=.9in, left=0.80in, right=0.65in}
 \usepackage{lettrine}
 \usepackage[raggedright]{titlesec}
+\usepackage{booktabs}
+\usepackage[all]{nowidow}
 
 \newcommand{\degree}{\ensuremath{^\circ}}
 
@@ -22,8 +24,6 @@
 \titleformat{\subsection}
   {\raggedright\normalfont\slshape}{\thesection}{1em}{}	
 	
-\widowpenalty=10000
-\clubpenalty=10000
 \brokenpenalty=10000\relax
 
 \setlist[itemize]{leftmargin=*, noitemsep}
@@ -89,38 +89,17 @@
 
 \vspace*{3cm}
 \begin{center}
-\Large{\emph{Introducción a los Sistemas de Información Geográfica}}
+\Large{\emph{Introducción a los SIG}}
 \end{center}
-\newpage
+\cleardoublepage
 
-\null
-\vfill
-\scriptsize
-\noindent
-Introducción a los Sistemas de Información Geográfica\\
-Copyright \copyright 2016 Víctor Olaya\\
-
-\vspace{10mm}
-\noindent Versión revisada el \today{}\\
-
-\vspace{6mm}
-\noindent
-Se concede permiso para copiar, distribuir o modificar esta obra bajo los términos expresados en la licencia Creative Common Atribución, la cual puede encontrarse en \url{www.creativecommons.org}. La licencia se aplica a todo el texto, así como las imágenes creadas por el propio autor, que serán aquellas para las que no se especifique de modo explícito una distinta procedencia. Este libro puede descargarse y consultarse de forma libre en varios formatos, incluyendo formatos editables, en la dirección Web \url{http://victorolaya.com}.\\
-
-\noindent
-Los nombre de productos o corporaciones que aparecen en el texto pueden constituir marcas registradas y se emplean sin otro afán que el meramente identificativo. Asimismo, la inclusión o no de uno de tales productos no expresa recomendación alguna por parte del autor.\\
-
-\vspace{5mm}
-\noindent \rule{\textwidth}{1pt}
-
-\newpage
 
 \makeatletter
 \newlength\drop
 \newcommand*{\titleGM}{%
 \thispagestyle{empty}
 \begingroup% Gentle Madness
-\drop = 0.1\textheight
+\drop = 0.05\textheight
 \vspace*{\baselineskip}
 \vfill
 \hbox{%
@@ -131,9 +110,8 @@ Los nombre de productos o corporaciones que aparecen en el texto pueden constitu
 \vbox{%
     \vspace{\drop}
     {\Large\textsc{Víctor Olaya}\par}\vskip3.5\baselineskip
-    {\Huge\bfseries\raggedright{Introducción a los Sistemas de Información Geográfica}\par}
-    \vspace{2.5cm}
-    \vspace{0.4\textheight}
+    {\Huge\bfseries\raggedright{Introducción a los SIG}\par}
+    \vspace{0.55\textheight}
 }% end of vbox
 }% end of parbox
 }% end of hbox
@@ -142,6 +120,14 @@ Los nombre de productos o corporaciones que aparecen en el texto pueden constitu
 \endgroup}
 \makeatother
 \titleGM
+
+\null
+\vfill
+\scriptsize
+\noindent
+Introducción a los SIG.\\
+Copyright \copyright 2016 Víctor Olaya.\\
+Imagen de cubierta: The Art Journal; \emph{The Industry of All Nations Illustrated Catalogue} (London, England: Bradbury and Evans, 1851)
 
 \cleardoublepage
 \normalsize
@@ -154,7 +140,7 @@ Los nombre de productos o corporaciones que aparecen en el texto pueden constitu
 \cleardoublepage
 \vspace*{3cm}
 \begin{center} 
-{\Large\scshape Introducción a los Sistemas de Información Geográfica}
+{\Large\scshape Introducción a los SIG}
 \end{center}
 
 \begin{mainmatter}

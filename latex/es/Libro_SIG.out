@@ -1,0 +1,82 @@
+\BOOKMARK [0][-]{chapter.1}{\277Qu\351 es un SIG?}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Historia de los SIG}{}% 2
+\BOOKMARK [1][-]{section*.2}{La evoluci\363n de los SIG como disciplina}{chapter.2}% 3
+\BOOKMARK [1][-]{section*.3}{La evoluci\363n de la tecnolog\355a}{chapter.2}% 4
+\BOOKMARK [1][-]{section*.4}{La evoluci\363n de los datos}{chapter.2}% 5
+\BOOKMARK [1][-]{section*.5}{La evoluci\363n de las t\351cnicas y formulaciones}{chapter.2}% 6
+\BOOKMARK [0][-]{chapter.3}{Fundamentos geod\351sicos y cartogr\341ficos}{}% 7
+\BOOKMARK [1][-]{section*.6}{Conceptos geod\351sicos b\341sicos}{chapter.3}% 8
+\BOOKMARK [2][-]{subsection*.7}{Superficies de referencia}{section*.6}% 9
+\BOOKMARK [2][-]{subsection*.8}{Sistemas de coordenadas}{section*.6}% 10
+\BOOKMARK [2][-]{subsection*.9}{Transformaci\363n y conversi\363n de coordenadas}{section*.6}% 11
+\BOOKMARK [1][-]{section*.10}{Conceptos cartogr\341ficos b\341sicos}{chapter.3}% 12
+\BOOKMARK [0][-]{chapter.4}{El dato geogr\341fico y su almacenamiento}{}% 13
+\BOOKMARK [1][-]{section*.11}{Datos e Informaci\363n. Tipos de informaci\363n.}{chapter.4}% 14
+\BOOKMARK [1][-]{section*.12}{Divisi\363n de la informaci\363n. Capas}{chapter.4}% 15
+\BOOKMARK [1][-]{section*.13}{Modelos para la informaci\363n geogr\341fica}{chapter.4}% 16
+\BOOKMARK [2][-]{subsection*.14}{Modelo r\341ster}{section*.13}% 17
+\BOOKMARK [2][-]{subsection*.15}{Modelo vectorial}{section*.13}% 18
+\BOOKMARK [2][-]{subsection*.16}{Raster vs vectorial}{section*.13}% 19
+\BOOKMARK [0][-]{chapter.5}{Fuentes principales de datos espaciales}{}% 20
+\BOOKMARK [1][-]{section*.17}{Teledetecci\363n}{chapter.5}% 21
+\BOOKMARK [2][-]{subsection*.18}{Fundamentos f\355sicos}{section*.17}% 22
+\BOOKMARK [2][-]{subsection*.19}{Sensores y plataformas}{section*.17}% 23
+\BOOKMARK [2][-]{subsection*.21}{Fotogrametr\355a}{section*.17}% 24
+\BOOKMARK [1][-]{section*.22}{Cartograf\355a impresa. Digitalizaci\363n}{chapter.5}% 25
+\BOOKMARK [2][-]{subsection*.23}{Calidad de la digitalizaci\363n}{section*.22}% 26
+\BOOKMARK [1][-]{section*.24}{GPS}{chapter.5}% 27
+\BOOKMARK [1][-]{section*.25}{Informaci\363n Geogr\341fica Voluntaria}{chapter.5}% 28
+\BOOKMARK [1][-]{section*.26}{Metadatos}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection*.27}{Contenido y creaci\363n de metadatos}{section*.26}% 30
+\BOOKMARK [0][-]{chapter.6}{Software y tecnolog\355a}{}% 31
+\BOOKMARK [1][-]{section*.28}{Herramientas de escritorio}{chapter.6}% 32
+\BOOKMARK [2][-]{subsection*.29}{Entrada y salida de datos}{section*.28}% 33
+\BOOKMARK [2][-]{subsection*.30}{Visualizaci\363n}{section*.28}% 34
+\BOOKMARK [2][-]{subsection*.31}{An\341lisis}{section*.28}% 35
+\BOOKMARK [2][-]{subsection*.32}{Edici\363n}{section*.28}% 36
+\BOOKMARK [2][-]{subsection*.33}{Generaci\363n de cartograf\355a}{section*.28}% 37
+\BOOKMARK [1][-]{section*.34}{Cartograf\355a en la Web \(Web\205mapping\). Clientes y servidores}{chapter.6}% 38
+\BOOKMARK [1][-]{section*.35}{Algunas t\351cnicas relacionadas con servicios SIG}{chapter.6}% 39
+\BOOKMARK [1][-]{section*.36}{Est\341ndares}{chapter.6}% 40
+\BOOKMARK [2][-]{subsection*.37}{Principales est\341ndares}{section*.36}% 41
+\BOOKMARK [1][-]{section*.38}{SIG m\363vil}{chapter.6}% 42
+\BOOKMARK [0][-]{chapter.7}{Bases de datos}{}% 43
+\BOOKMARK [1][-]{section*.39}{Bases de datos relacionales}{chapter.7}% 44
+\BOOKMARK [1][-]{section*.40}{Sistemas gestores de bases de datos}{chapter.7}% 45
+\BOOKMARK [2][-]{subsection*.41}{Bases de datos espaciales}{section*.40}% 46
+\BOOKMARK [1][-]{section*.42}{Consultas}{chapter.7}% 47
+\BOOKMARK [2][-]{subsection*.43}{\315ndices espaciales}{section*.42}% 48
+\BOOKMARK [0][-]{chapter.8}{An\341lisis espacial. Fundamentos}{}% 49
+\BOOKMARK [1][-]{section*.44}{Algunos ejemplos de an\341lisis espacial}{chapter.8}% 50
+\BOOKMARK [2][-]{subsection*.45}{Consulta espacial}{section*.44}% 51
+\BOOKMARK [2][-]{subsection*.46}{An\341lisis topol\363gico}{section*.44}% 52
+\BOOKMARK [2][-]{subsection*.47}{Medici\363n}{section*.44}% 53
+\BOOKMARK [2][-]{subsection*.48}{Combinaci\363n}{section*.44}% 54
+\BOOKMARK [2][-]{subsection*.49}{Transformaciones}{section*.44}% 55
+\BOOKMARK [2][-]{subsection*.50}{An\341lisis de superficies}{section*.44}% 56
+\BOOKMARK [2][-]{subsection*.51}{Estad\355stica descriptiva}{section*.44}% 57
+\BOOKMARK [2][-]{subsection*.52}{Inferencia}{section*.44}% 58
+\BOOKMARK [2][-]{subsection*.53}{Toma de decisiones y optimizaci\363n}{section*.44}% 59
+\BOOKMARK [2][-]{subsection*.54}{Modelizaci\363n}{section*.44}% 60
+\BOOKMARK [1][-]{section*.55}{Particularidades de los datos espaciales para su an\341lisis}{chapter.8}% 61
+\BOOKMARK [2][-]{subsection*.56}{Escala}{section*.55}% 62
+\BOOKMARK [2][-]{subsection*.57}{El Problema de la Unidad de \301rea Modificable}{section*.55}% 63
+\BOOKMARK [2][-]{subsection*.58}{Autocorrelaci\363n espacial}{section*.55}% 64
+\BOOKMARK [2][-]{subsection*.59}{Existencia de estructura}{section*.55}% 65
+\BOOKMARK [2][-]{subsection*.60}{Efectos de borde}{section*.55}% 66
+\BOOKMARK [0][-]{chapter.9}{Visualizaci\363n y representaci\363n de datos espaciales. }{}% 67
+\BOOKMARK [1][-]{section*.61}{Conceptos b\341sicos de visualizaci\363n}{chapter.9}% 68
+\BOOKMARK [2][-]{subsection*.62}{Las variables visuales}{section*.61}% 69
+\BOOKMARK [2][-]{subsection*.63}{Las propiedades de las variables visuales}{section*.61}% 70
+\BOOKMARK [2][-]{subsection*.64}{La percepci\363n de las variables visuales}{section*.61}% 71
+\BOOKMARK [1][-]{section*.65}{El mapa y la comunicaci\363n cartogr\341fica}{chapter.9}% 72
+\BOOKMARK [2][-]{subsection*.66}{Los tipos de informaci\363n y su representaci\363n}{section*.65}% 73
+\BOOKMARK [2][-]{subsection*.67}{Elementos del mapa. Composici\363n}{section*.65}% 74
+\BOOKMARK [1][-]{section*.68}{Tipos de mapas tem\341ticos}{chapter.9}% 75
+\BOOKMARK [2][-]{subsection*.69}{Mapas de s\355mbolos proporcionales}{section*.68}% 76
+\BOOKMARK [2][-]{subsection*.70}{Mapas de puntos}{section*.68}% 77
+\BOOKMARK [2][-]{subsection*.71}{Mapas de isol\355neas}{section*.68}% 78
+\BOOKMARK [2][-]{subsection*.72}{Mapas de coropletas}{section*.68}% 79
+\BOOKMARK [1][-]{section*.73}{La visualizaci\363n en un SIG}{chapter.9}% 80
+\BOOKMARK [2][-]{subsection*.74}{Combinaci\363n de capas}{section*.73}% 81
+\BOOKMARK [2][-]{subsection*.75}{Particularidades de la representaci\363n en pantalla}{section*.73}% 82
