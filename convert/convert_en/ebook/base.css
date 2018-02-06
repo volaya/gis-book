@@ -1,0 +1,100 @@
+
+div.cover {
+  text-align: center;
+  page-break-after: always;
+  padding: 0px;
+  margin: 0px; }
+  div.cover img {
+    height: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0px;
+    background-color: #cccccc; }
+
+
+.cover-img {
+  height: 100%;
+  max-width: 100%;
+  padding: 0px;
+  margin: 0px; }
+
+
+
+
+
+
+img {
+  border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 1px 4px;
+  box-sizing: border-box;
+
+}
+
+img.pwhack {
+  /* Paperwhite hack */
+  width: 100%; }
+
+
+p img {
+  border-radius: 0;
+  border: none; }
+
+figure {
+  /* These first 3 should center figures */
+  padding: 1em;
+  background-color: #cccccc;
+  border: 1px solid black;
+  text-align: center; }
+  figure figcaption {
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: bold; }
+
+table {
+  /*width: 100% */
+  page-break-inside: avoid;
+  border: 1px;
+  /* centers on kf8 */
+  margin: 1em auto;
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+th {
+  font-variant: small-caps;
+  padding: 5px !important;
+  vertical-align: baseline;
+  border-bottom: 1px solid black; }
+
+td {
+  font-family: "Palatino", "Times New Roman", Caecilia, serif;
+  font-size: small;
+  hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  padding: 5px !important;
+  page-break-inside: avoid;
+  text-align: left;
+  text-indent: 0;
+  vertical-align: baseline; }
+
+td:nth-last-child {
+  border-bottom: 1px solid black; }
+
+.zebra {
+  /* shade background by groups of three */ }
+  .zebra tr th {
+    background-color: white; }
+  .zebra tr:nth-child(6n-1), .zebra tr:nth-child(6n+0), .zebra tr:nth-child(6n+1) {
+    background-color: #cccccc; }
+
+sup {
+  vertical-align: super;
+  font-size: 0.5em;
+  line-height: 0.5em; }
+
+sub {
+  vertical-align: sub;
+  font-size: 0.5em;
+  line-height: 0.5em; }
