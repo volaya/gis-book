@@ -1,193 +1,180 @@
 
 
-\chapter{El dato geográfico y su almacenamiento}
+\chapter{Geographical data}
 
-
-De todos los subsistemas de un SIG, el correspondiente a los datos es el pilar fundamental que pone en marcha los restantes. Los datos son el combustible que alimenta el SIG. El subsistema de datos es, a su vez, el más interrelacionado, y está conectado de forma inseparable a todos los restantes. 
+From all GIS subsystems, the data one is probably the most importart one. It is also the more interrelated, as it is linked to all of them and all depend on it to a certain extent. Data is the fuel that drives GIS. 
 
 
 \pagestyle{fancy}
 
-\section{Datos e Información. Tipos de información.}
+\section{Data and information. Types of information.}
 
-Existe una importante diferencia entre los conceptos de \textbf{datos} e \textbf{información}. Un SIG es un Sistema de \emph{Información} Geográfica, pero maneja \emph{datos} geográficos, existiendo diferencias entre estos conceptos.
+There is a big difference between the concepts of \textbf{data} and \textbf{information}. A GIS is a Geographical \emph{Information} System, but it uses geographical \emph{data}.
 
-Entendemos como dato al simple \textbf{conjunto de valores o elementos que utilizamos para representar algo}. Por ejemplo, el código 502132N es un dato. 
+Data is a \emph{set of values of elements used to represent something}. For instance, the string 502132N is a data.
 
-El dato anterior podemos interpretarlo como si fuera una referencia geográfica, y cuyo significado sería entonces una latitud, en particular 50\degree $21'$ $32''$ Norte. Si lo interpretamos como un código que hace referencia a un documento de identificación de una persona, la información que nos aporta es en ese caso completamente distinta. El dato sería el mismo, formado por seis dígitos y una letra, pero la información que da es diferente, ya que lo entendemos e interpretamos de manera distinta.
+We can interpret that data as being a geographical reference, in which case it could be a latitude value, in particular 50\degree $21'$ $32''$ North. If we interpret it as being a reference to an indentity card associated to a person, the information that we get from it is completely different. It is the same data, containing six digits and a letter, but the information that we extract from it is different, since we understand and interpret it in a differet way.
 
-La información es, por tanto, el resultado de un dato y una \textbf{interpretación}, y el trabajo con datos es en muchos casos un proceso enfocado a obtener de estos toda la información posible. 
+Information is, therefore, the result of data and \textbf{its interpretation}. and in many cases, working with data means just trying to extract from it all the information that it might contain.
 
-Comprender el significado y las diferencias entre datos e información permiten entender entre otras cosas que la relación entre los volúmenes de ambos no es necesariamente constante. Por ejemplo, los datos 502132NORTE o CINCUENTA VEINTIUNO TREINTAYDOS NORTE tienen un volumen mayor que el dato 502132N, pero recogen la misma información espacial que este (suponiendo que los interpretamos como datos de latitud). 
+Understanding the meaning and the differences between data an information allows us to understand, for instance, why the ratio between the size of a given data and the amount of information it contains is not constant. The strings 502132NORTH and FIFTY TWENTY ONE THIRTY TWO NORTH are longer than 502132N, but they contain the same information (as long as we interpret them as the latitude component of a coordinate).
 
-En la información geográfica se distinguen dos componentes: \textbf{espacial} y \textbf{temática}. La componente espacial hace referencia a la posición dentro de un sistema de referencia establecido, y responde a la pregunta \emph{¿dónde?}. La componente temática responde a la pregunta \emph{¿qué?}, y define la naturaleza del fenómeno que se produce en la localización indicada por la componente espacial.
+Geographical information has two separate components: \emph{spatial} and \emph{thematic}. The spatial component contains the position, referred to a given reference system, and it answers the question \emph{where?}. The thematic component answers the question \emph{what?}, and it defines the characteristics of the phenomenon or feature that occurs at the location indicated by the spatial component.
 
+While the spatial component is usually a numerical value (most coordinate systems use just numbers), the thematic component can be \textbf{numeric} or \textbf{alphanumeric}. A numeric variable can be itself of four different types: \textbf{nominal, ordinal, interval} or \textbf{ratio}.
 
-Mientras que la componente espacial va a ser generalmente un valor numérico, pues son de esa naturaleza los sistemas de coordenadas que permiten expresar una posición concreta en referencia a un marco dado, la componente temática puede ser \textbf{numérica} o \textbf{alfanumérica} (texto). Una variable numérica puede a su vez ser de cuatro tipos: \textbf{nominal, ordinal, intervalo} o \textbf{razón}.
+The operations that can be performed on a certain geographical data is defined by the type of variable of its thematic component.
 
+The different approaches for representing and storing geographical information, which we will see later in this same chapter, depend on the type of variable that we are working with.
 
-El tipo de variable condiciona las operaciones que pueden realizarse con un dato geográfico en función de cómo sea su componente temática. 
-
-Las diferentes formas de representar y almacenar la información, que veremos más adelante en este capitulo, dependen del tipo de variable con que se trabaje.
-
-Un concepto a tener en cuenta en relación con las componentes de la información geográfica es la \textbf{dimensión}. Los elementos que registramos pueden ir desde sencillos puntos (0D) hasta volúmenes tridimensionales (3D) (Figura \ref{Fig:Dimensiones}).
+An important concept to consider related to geographical information is the \textbf{dimension}. The elements that we store range from simple points (0D), to three-dimensional volumes (3D) (Figure \ref{Fig:Dimensions}).
 
 \begin{figure}[!hbt] 
 \centering
-\includegraphics[width=\textwidth]{../es/Datos/Dimensiones.pdf}
-\caption{\small Dimensiones de la componente geográfica.}
-\label{Fig:Dimensiones} 
+\includegraphics[width=\textwidth]{Data/Dimensions.pdf}
+\caption{\small Dimensions of the spatial component of geographical data.}
+\label{Fig:Dimensions} 
 \end{figure}
 
 
-\section{División de la información. Capas}
+\section{Subdivision of information. Layers}
 
-En un SIG, la información espacial referida a una zona de estudio \textbf{está dividida en varios niveles}, de tal forma que, pese a coincidir sobre un mismo emplazamiento, la información sobre distintas variables se encuentra recogida de forma independiente. Es decir, en función de la componente temática se establecen distintos bloques de datos espaciales. Cada uno de estos bloques temáticos se conoce como \textbf{capa} (Figura \ref{Fig:Concepto_capa}). 
+In a GIS, the information about a given study area \textbf{is divided in several levels}. Even if it refers to the same location, the information about different variables is stored separately. That is, a set of different blocks of information exists for the same area, each of them containing a particular variable or set of elements. Each of these blocks is called a \textbf{layer}.(Figure \ref{Fig:Concept_layer}). 
 
 \begin{figure}[!hbt] 
 \centering
-\includegraphics[width=\textwidth]{../es/Datos/Concepto_capa.png}
-\caption{\small Concepto de \emph{capa} de información geográfica dentro de un SIG.}
-\label{Fig:Concepto_capa} 
+\includegraphics[width=\textwidth]{Data/Concept_layer.png}
+\caption{\small A graphical explanation of the concept of \emph{layer}.}
+\label{Fig:Concept_layer} 
 \end{figure}
 
-El concepto de capa es imprescindible para comprender todo SIG, y  favorece la correcta estructuración de la información y el trabajo con ella. Toda la información geográfica con que trabajemos en un SIG va a ser en forma de capas. Cada una de ellas puede abrirse de forma independiente en un SIG y utilizarse por sí misma o en conjunto con otras.
+The concept of layer is fundamental to understand GIS, and it helps to correctly structure and manage geographical information. All the information that we will use in a GIS will be in the form of layers. Each one of them can be used independently or along with others.
 
-Con la cartografía clásica, no es posible (o resulta difícil e impreciso) combinar distintos tipos de información, como por ejemplo la contenida en un mapa topográfico y la existente en un mapa de tipos de suelo y otro de vegetación potencial. En el caso de un SIG, los distintos tipos de información se pueden combinar de forma sencilla y limpia, y no aparecen los mismos problemas.
+With traditional cartography, it is not possible (or it is complex and not accurate) to combine different types of information, such as, for instance, the one contained in a topographic map and the one from a landuse map. In the case of a GIS, the different layer in which that information is contained can be combined in an easy and clean way, without any problems.
 
-La relevancia del concepto de capa como elemento fundamental de un SIG es enorme, pues constituye el marco básico sobre el que se van a llevar a cabo gran parte de las operaciones. Por ejemplo, vimos en el apartado dedicado a la generalización cartográfica cómo en un SIG podemos utilizar diferentes <<versiones>> de los datos correspondientes a una zona concreta, y representar una u otra de ellas en función de la escala de trabajo. Estas versiones se almacenarán como distintas capas. La capa es así la unidad fundamental no solo en términos de un área dada, sino también de una escala concreta, y permite una división de los datos óptima a todos los efectos.
+The concept of layer as the fundamental unit for geographical information in GIS has a huge relevance, as it constitutes the basic framework for most operations. For instance, we saw in the section about cartographic generalization how in a GIS we can use different <<versions>> of the data corresponding to a given area, and show one or another depending on the current scale. This versions will be stored as independent layers. Layers are, thus, not just the fundamental unit for a given area, but also for a given scale, and allow to optimally separate and organize geographical information. 
+
+Layers also help avoiding data redundancy, since each layer just contains information about a particular variable or type of feature. A traditional map always contains a set of different variables, not just a single one. Some of them are used to provide a general context, such as the names of the main cities or the main roads, and these are appear in most maps. In a GIS, they exist independently, and the user can add them and combine them with other layers whenever is needed. Therefore, working with layers provides a more efficient approach, with a \textbf{more atomized} organization of the data, with the advantages that it has for its storage, management and use.
+
+Apart from dividing geogrpahical information in layers depending on its content, it is also divided considering purely spatial criteria, <<cutting>> it in smaller parts that cover a smaller area. This is similar to what happens with traditional cartography, divided in \textbf{map sheets}.
+
+The main feature of a GIS to transparently integrate data corresponding to different areas and create a seamless mosaic is the \textbf{separation between the data and its visualization}. Data is required for visualization, but these two elements constitute different parts of a GIS, with a clear separation between them. That means that data is used to create a visual output, but data itself does not contain any value related to its rendering and visualization.
+
+Thus, it is possible to combine data and then represent that combination together as a whole. Something like that is not possible with a printed map, since it contain also the visualization elements (colors, line thickness, label placements, etc.) and even some additional cartographic ones (legend, scale, North arrow, etc.). Even if printed maps can be combined, information contained in them does not <<fuse>> to create a single new map. In a GIS, on the other hand, visualization of several blocks of data can be identical to the one that would be obtained if that data were stored as a single block.
 
 
-La separación de la información en capas evita asimismo la redundancia de datos, ya que cada capa contiene un tipo de información concreto. En un mapa clásico se presentan siempre varias variables, algunas de ellas presentes con carácter general, tales como nombres de ciudades principales o vías más importantes de comunicación. En un SIG, al encontrarse estas variables separadas en sus correspondientes capas, es el usuario quien las combina.
+\section{Geographical information models}
 
-El trabajo con capas permite, por tanto, una estructura \textbf{más organizada} y una \textbf{mayor atomización} de los datos, con las consecuentes ventajas en el almacenamiento, manejo y funcionalidad que esto conlleva.
-
-
-Además de dividir la información geográfica en capas de acuerdo con su contenido, también dividimos esta con criterios puramente espaciales, <<cortándola>> en unidades menores que ocupen una región de amplitud más reducida. Este es un procedimiento similar al que encontramos en un mapa impreso, ya que el territorio de un país se encuentra cartografiado en diferentes \emph{hojas}. 
-
-La principal cualidad de un SIG para integrar de forma transparente datos correspondientes a zonas distintas y formar un mosaico único es la \textbf{separación que existe entre datos y visualización}. Los datos son la base de la visualización, pero en un SIG estos elementos conforman partes del sistema bien diferenciadas. Esto quiere decir que los datos se emplean para crear un resultado visual pero en sí mismos no contienen valores relativos a esa visualización.
-
-De este modo, es posible combinar los datos y después representarlos en su conjunto. Un proceso así no puede realizarse con un mapa ya impreso, pues este contiene ya elementos de visualización e incluso componentes cartográficos tales como una flecha indicando el Norte, una leyenda o una escala. Por ello, aunque puedan combinarse, realmente no se <<funde>> la información de cada uno de los mapas para conformar uno único. En un SIG, por el contrario, la visualización de cuatro o más bloques de datos puede ser idéntica a la que obtendría si todos esos datos constituyeran un único bloque. 
-
-\section{Modelos para la información geográfica}
-
-El proceso de convertir un área geográfica y la información acerca de ella en un dato susceptible de ser incorporado a un SIG puede dividirse en tres fases:
+The process of converting a given geogrpahical area and the informacion about it in a data that can be used within a GIS can be divided in three different phases.
 
 \begin{itemize}
- \item Establecimiento de un \textbf{modelo geográfico}. Es decir, un modelo conceptual de la realidad geográfica y su comportamiento.
-\item Establecimiento de un \textbf{modelo de representación}. Es decir, una forma de recoger el anterior modelo conceptual y sus características propias, reduciéndolo a una serie finita de elementos.
-\item Establecimiento de un \textbf{modelo de almacenamiento}. Es decir, un esquema de cómo almacenar los distintos elementos del modelo de representación.
+ \item Establishing a \textbf{geographical model}. That is, a conceptual model of a reality and its behaviour.
+\item Establishing a \textbf{representation model}. That is, a way of coding the conceptual model, reducing it to a finite set of elements.
+\item Establishing a \textbf{storage model}. That is, a storage strategy for storing the elements of the representation model.
 \end{itemize}
-\index{Modelo!geográfico}\index{Modelo!de representacion}\index{Modelo!de almacenamiento}
 
+Representation models are the most important ones, and we will focus on them here. The two main representation models are the \textbf{raster model} and the \textbf{vector model}. Layers using these models are commonly known as \textbf{raster layers} and \textbf{vector layers}.
 
+\subsection{Raster model}
 
-Por su mayor importancia, nos centraremos en los modelos de representación. Los modelos de representación que se utilizan principalmente en un SIG son dos: \textbf{modelo raster} y \textbf{modelo vectorial}. Las capas que utilizan estos modelos se conocen como \textbf{capas raster} y \textbf{capas vectoriales}, y esta es la terminología habitual en el ámbito de los SIG para referirse a la naturaleza de una determinada capa. 
+The raster model is based on a \textbf{systematic division} of space. The whole spaces is characterized by a set of elements that cover it, each of them with an associated value.
 
-\subsection{Modelo ráster}
+The most common raster model is based on a grid of \textbf{square cells}, or sometimes rectangular ones. Knowing the orientation of the grid, the size of each one of the cells, and at least the coordinates of one of them, it is possible to know the location of all cells, thanks to its \textbf{regular structure}. With that, the values of the variable we are working with are know in all points of the area that is covered by the layer. The \textbf{cell size} is a parameter related to the scale of the layer, since it defines its resolution and depends on the level of detail used when the corresponding measures were taken.
 
-El modelo ráster se basa en una \textbf{división sistemática} del espacio. Todo el espacio queda cubierto y caracterizado como un conjunto de unidades elementales, cada una de ellas con un valor asociado.  
-
-Lo más habitual es una división en una malla de \textbf{celdas cuadradas} o rectangulares. Conociendo la orientación de la malla y las dimensiones de cada una de las celdas, así como las coordenadas de al menos una de ellas, es posible conocer las coordenadas del resto en virtud de su \textbf{estructura regular}. Con esto, conocemos los valores de la variable en todos los puntos del espacio cubierto por la capa. El \textbf{tamaño de celda} es un parámetro relacionado con la escala de trabajo de la capa, ya que define la resolución de esta y está en función de la precisión con que se han tomado los datos correspondientes.
-
-
-La figura \ref{Fig:Raster_closeup} muestra un ejemplo de una malla ráster.
+Figure \ref{Fig:Raster_closeup} shows an example of a raster grid.
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.4\textwidth]{../es/Datos/Raster_closeup.png}
-\caption{\small Celdas de una malla ráster con sus valores asociados.}
+\includegraphics[width=.4\textwidth]{Data/Raster_closeup.png}
+\caption{\small Cells in a raster grid with their associated values.}
 \label{Fig:Raster_closeup} 
 \end{figure}
 
-El número de valores distintos recogidos para cada celda coincide con el número de las denominadas \textbf{bandas}. Una banda contiene un único valor en una capa raster. Puede entenderse una capa raster de más de una banda como un conjunto de capas (cada banda sería una subcapa de ese conjunto), teniendo en todas ellas la malla de celdas las mismas características espaciales, y presentandose el conjunto como un único elemento. 
+The number of values stored for each cell defines the number of \textbf{bands} in a raster layer. A band contains a single value for each cell. We can understand a raster layer with more than one band as a set of sublayers, all of them having the same spatial structure (extent and cell size), and wrapped as a single layer.
 
-El ejemplo más claro de uso del modelo raster lo encontramos en las imágenes. Una imagen digital se compone de una malla de elementos (denominados \textbf{píxeles}, cada uno de los cuales tiene un color asociado). El conjunto de estos píxeles forman la imagen completa. Lo más habitual es que las imágenes contengan 3 bandas, correspondientes a las intensidades de los colores rojo, verde y azul, las cuales al combinarse permiten obtener el color de cada píxel.
+We can find a clear example of that in digital color images. A digital image is composed of a grid of values (called \textbf{pixels}), each of them with an associated color. In the most common case, that color is expressed with three values, corresponding to the intensity of colors red, green and blue, which, when combined, give the pixel color. That is, an image like that is a raster layer with three bands, containing each of them one of the red, green and blue components.
 
-Otro uso habitual del modelo raster es en los denominados \textbf{Modelos Digitales de Elevaciones} (MDE), que recogen la topografía de un terreno. El modelo raster es el habitual de capa raster son las capas con modelos
-De forma general, los valores de una capa ráster, en cualquiera de sus bandas, son casi exclusivamente numéricos, no estando los SIG preparados para manejar otro tipo de valores en la componente temática de una capa ráster. De esta forma, una capa raster puede equipararse al concepto matemático de una \textbf{matriz}, con las ventajas que ello supone para aplicar sobre ella herramientas matemáticas a la hora de su análisis.
+Another typical use of the raster model is for the so-called \textbf{Digital Elevation Models} (DEM), which contain the topography of a given area. These are always single band layers.
 
-\subsection{Modelo vectorial}
+In most cases, the values of a raster layer are numerical, and GIS software is usually not adapted to handle other types of values in the thematic component of a raster layer. Due to this, raster layers can be seen as \emph{matrices}, and the corresponding mathematical tools can be used for their analysis.
 
 
-El otro modelo principal de representación es el modelo vectorial. En este modelo, no existen unidades fundamentales que dividen la zona recogida, sino que se recoge la variabilidad y características de esta mediante \textbf{entidades}, para cada una de las cuales dichas características son constantes. Las entidades se componen de \textbf{primitivas geométricas}, y estas pueden ser de tres tipos: \textbf{puntos, líneas} y \textbf{polígonos} (Figura \ref{Fig:Primitivas_vectoriales}).
+\subsection{Vector model}
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=\textwidth]{../es/Datos/Primitivas_vectoriales.pdf}
-\caption{\small Primitivas geométricas en el modelo de representación vectorial y ejemplos particulares de cada una de ellas con atributos asociados}
-\label{Fig:Primitivas_vectoriales} 
-\end{figure}
 
-Utilizando puntos, líneas o polígonos, puede modelizarse el espacio geográfico si se asocia a estas geometrías una serie de valores definitorios. Una entidad puede tener \textbf{varias primitivas}. Por ejemplo, en una capa de países, necesitaríamos varios conjuntos para representar España si queremos incluir tanto la peninsula como las islas que la forman. Todos estos polígonos constituyen una única entidad, ya que todos pertenecen al mismo país y tendrán el mismo conjunto de valores asociados.
-
-A la hora de definir las formas geométricas básicas, todas ellas pueden en última instancia \textbf{reducirse a puntos}. Así, las líneas son un conjunto de puntos interconectados en un determinado orden, y los polígonos son líneas cerradas, también expresables por tanto como una serie de puntos. Todo elemento del espacio geográfico queda definido, pues, por una serie de puntos que determinan sus propiedades espaciales y una serie de valores asociados.
-
-Dentro de un SIG, una capa vectorial puede contener \textbf{un único tipo de primitiva}. Así, tenemos capas vectoriales de puntos, de líneas y de polígonos, respectivamente. Una variable puede recogerse con varios tipos de primitivas (por ejemplo, puede indicarse una ciudad con un punto o con un polígono que delimite su perímetro), y la elección de uno u otro tipo de geometría ha de ser función del tipo de fenómeno que se pretende modelizar o la precisión necesaria, entre otros factores. 
-
-La componente temática en el modelo vectorial se establece mediante los denominados \textbf{atributos}, que suelen ser múltiples, a diferencia de lo que sucede en el modelo raster, donde lo habitual es tener un único valor para cada celda. Los atributos de una capa vectorial pueden contener información de cualqueir clase, siendo más versátiles que en el caso de las capas ráster, donde ya vimos que se maneja únicamente información numérica. Por su estructura particular (series de atributos asociados a una entidad), la componente temática en el modelo vectorial se presta especialmente a representarse en tablas y almacenarse en una \textbf{base de datos}, y puede analizarse independientemente de la componente espacial. 
-
-Un elemento particular del modelo de representación vectorial es la \textbf{topología}.  Una capa vectorial contiene topología si en ella se almacenan de algún modo las relaciones espaciales que existen entre sus elementos. Disponer de topología en una capa vectorial es de gran importancia a la hora de llevar a cabo ciertos tipos de análisis, así como procedimientos tales como la edición de los propios datos geográficos. 
+The other main representation model is the vector model. In this model, there are no fundamental units that divide and cover the area that is modeled. Instead, the variability and characteristics of that area are modeled using \textbf{features}, which represent elements in which those characteristics do not change. The geographical part of a feature is made of \textbf{geometric primitives}, and these can be of three different types: \texbf{points}, \textbf{lines} and \textbf{polygons} (Figure \ref{Fig:Primitives}).
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.8\columnwidth]{../es/Datos/Topologia_vias.pdf}
-\caption{\small Capa de vías de comunicación sin topología (a) o con ella (b). Los puntos en este segundo caso indican conexiones entre vias, y son una representación visible de la topología existente. }
-\label{Fig:Topologia_vias} 
+\includegraphics[width=\textwidth]{Datos/Primitivas_vectoriales.pdf}
+\caption{\small Geometric primitives in the vector representation model and some examples of each of them and their associated attributes}
+\label{Fig:Primitives} 
 \end{figure}
 
-Aunque la mayoría de operaciones con una capa vectorial pueden llevarse a cabo en ausencia de topología, algunas de ellas como el \textbf{análisis de redes} no se pueden llevar a cabo sin topología. Si pensamos en una capa de vías sobre la que desarrollar ese análisis de redes, un mero conjunto de elementos geométricos (líneas en este caso), no nos da información sobre los posibles enlaces entre las vías que quedan representadas. Los puntos donde se cruzan dos vías pueden ser cruces o rotondas (es decir, puede pasarse de una vía a otra, existiendo conexión entre ellas), o bien pasos elevados o subterráneos donde una de las vías pasa por encima de la otra (y por tanto no existe comunicación entre ambas). Las circunstancias son muy distintas en función del tipo de cruce que exista, y por ello es imprescindible conocer esta información para efectuar un análisis de redes correcto (Figura \ref{Fig:Topologia_vias})
+Using points, lines and polygons, geographical space can be modeled by associating values to this primitives. A feature can have \textbf{multiple primitives}. For instance, in a layer that contains countries, a country such as the United States will require several polygons (continental US, Alaska, Hawaii islands, etc.). All those polygons form a single feature, since all of them belong to the same country and will share the same associated values.
 
+A layer can contain features with primitives of different types, but usually it is restricted to just one single type. It is common to speak of a <<points layer>> or a <<polygons layer>> to indicate that. 
 
+Elements can be represented using different types of primitives. For instance, a city can be represented as a single point or as a polygon with its perimeter. Using one or another geometry should depend on the type of phenomenon that we want to model or the level of detail that is needed, among other factors.
 
+The thematic component in the vector model is defined with the so-called \textbf{attributes}. A layer usually contains multiple attributes. Attributes associated to a vector layer can have information of all types, and they are more versatile than the values associated to raster layers, which, as it was mentioned, normally contain just numerical values. Due to its particular structure (a set of attributes associated to a feature), the thematic component in the vector model can be represented as a table and stored in a \text{database}. Also, it can be be analized independently of the spatial component.
 
-El almacenamiento de entidades basado en una mera lista de coordenadas de cada entidad, sin topología,  se conoce popularmente como \emph{spaghetti}, pues si pensamos en una capa de lineas sin topología que se entrecruzan en el espacio, esta se asemejan en cierta forma a un caótico plato de \emph{spaguettis} sin orden ni relación entre ellos.
-
-
-\subsection{Raster \emph{vs} vectorial}
-
-
-Tanto el modelo raster como el vectorial pueden emplearse para recoger \textbf{cualquier tipo de información}. La figura \ref{Fig:Esquemas_modelos_representacion} muestra un ejemplo de esto, representando una capa de vías según ambos modelos. Otro ejemplo para mostrar esto lo encontrarmos en las capas de elevaciones, que ya hemos visto que suelen recogerse en capas raster, en especial si se va a desarrollar sobre ellas algún tipo de análisis. No obstante, pueden recogerse también como una capa vectorial de puntos (este es una caso habitual si se obtienen los datos de un levantamiento topográfico), o bien como una capa de líneas que contenga \textbf{curvas de nivel}, entre otras opciones.
+A particular element of the vect representation model is the \emph{topology}. A vector layer is said to contain topology if it contains the spatial relations between its features. Topology is required for certain analysis, and changes the way some operations, such as geometry editing, work in a GIS.
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=\textwidth]{../es/Datos/Esquemas_modelos_representacion.pdf}
-\caption{\small Comparación entre los esquemas del modelo de representación vectorial (a) y ráster (b).}
-\label{Fig:Esquemas_modelos_representacion} 
+\includegraphics[width=.8\columnwidth]{Data/Topology_roads.pdf}
+\caption{\small A roads layer without topology (a) and with topology (b). Circles in this last case indicate connections between roads.}
+\label{Fig:Topologia_roads} 
+\end{figure}
+
+Although most vector layer operations can be performed without topology,some of them such as \textbf{network analysis} are not possible without it. If we think about a roads layer, if it just contains lines representing roads but no information about how they are connected, there is no way of constructing the network from them. The points where lines intersect might be crossings or roundabouts (so it is possible to move from one road to another), but they might also be points without connection between the roads (one passing above the other). Without knowing that, we are missing information, and the network analysis cannot be performed. (Figure \ref{Fig:Topology_roads})
+
+Line data without topology is popularly know as \emph{spaghetti} data.
+
+
+\subsection{Raster \emph{vs} vector}
+
+
+Both the raster and vector representation models can be used to store \emph{any geographical information}. Figure \ref{Fig:Representation_models} contains an example of that, and it shows a roads layer represented using both models. 
+
+We mentioned DEMs as a typical case of raster layers. Representing elevation as a raster layer has many advantages, especially for performing analysis, but it is not the only way of doint it. We can have a vector layer with points (that will be the case if the elevation data comes for a topographic survey), or a lines layer with contour lines (which is the most common way of representing elevation in a traditional map).
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=\textwidth]{Data/Representation_models.pdf}
+\caption{\small Comparison between vector (a) and raster (b) representation models.}
+\label{Fig:Representation_models} 
 \end{figure}
 
 
-Resulta obvio que las diferencias entre los modelos ráster y vectorial son muy notables, y que cada uno de ellos posee sus propias ventajas e inconvenientes. 
-Algunos aspectos a los cuales puede atenderse para comparar uno y otro modelo son los siguientes:
+Itis clear that both model have many differences, and each of them has it pros and cons. The following are some ideas to compare between them.
+
 
 \begin{itemize}
-\item \textbf{Planteamiento}. El modelo ráster hace más énfasis en aquella característica del espacio que analizamos (\emph{qué} y \emph{cómo}), mientras que el modelo vectorial da prioridad a la localización de dicha característica (\emph{dónde})
- \item \textbf{Precisión}. El modelo ráster tiene su precisión limitada por el tamaño de celda. Las entidades menores que dicho tamaño de celda no pueden recogerse, y la variación espacial que sucede dentro del espacio de la celda tampoco. 
+\item \textbf{Approach}. Raster model focuses on the properties of the space that is represented (\emph{what} and \emph{how}), while the vector model focuses on the location of that property (\emph{where}).
+ \item \textbf{Accuracy}. Raster model has its precision limited by the cell size. While this can be as small as we want, that would result in very large amouts of data. Features smaller than that size cannot be represented, and it is assumed that there is no variability within a cell.
 
-Asimismo, existe una imprecisión en las formas. El detalle con el que puede recogerse la forma de una entidad geográfica según el modelo vectorial es, en la práctica, ilimitado, mientras que, como puede verse en la imagen \ref{Fig:Imprecision_raster}, el modelo ráster restringe las formas a ángulos rectos, ya que la unidad base es un cuadrado. 
+ Also, shapes are limited to straight angles, since the base unit for the raster grid, as we have seen, it is a square or rectangle (Figure \ref{Fig:Raster_accuracy}
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.4\columnwidth]{../es/Datos/Imprecision_raster.png}
-\caption{\small Imprecisión de forma en el modelo de representación ráster. La división del espacio en unidades cuadradas impide la representación fiel de entidades tales como curvas.}
-\label{Fig:Imprecision_raster} 
+\includegraphics[width=.4\columnwidth]{Data/Raster_accuracy.png}
+\caption{\small Limitation os the raster representation model. Since the space is divided in square units, elements such as curves cannot be faithfully represented.}
+\label{Fig:Raster_accuracy} 
 \end{figure}
 
-\item \textbf{Complejidad}. La regularidad y sistematicidad de las mallas ráster hacen sencillo el implementar algoritmos de análisis, muy especialmente aquellos que implican el uso combinado de varias capas. Por el contrario, la irregularidad espacial de las capas vectoriales hace que la implementación de los mismos algoritmos sea sumamente más compleja si se trabaja con estas capas.
-
-
+\item \textbf{Complexity}. Analysis algorithms, specially those in which several layers are used and combined, are usually simpler and easier to implement with raster layers, mainly due to their regularity and systematicity. Wroking with vector layer, which do not have any regularity, tends to be more complex from the algorithmic point of view.
 \end{itemize}
 
-No existe un modelo de representación idóneo de forma global, sino que esta idoneidad depende de muchos factores, como por ejemplo:
+Overall, there is no representation model that is better than the other. Depending on the case, one will be more suitable than the other. The following factors should be considered when evaluating the suitability of these models to a particular circumstance:
 
 \begin{itemize}
- \item \textbf{Tipo de variable o fenómeno a recoger}. Las variables \textbf{continuas} tales como la elevación es más adecuado en general recogerlas en capas raster, para así facilitar su análisis, mientras que las variables \textbf{discretas} es preferible almacenarlas como capas vectoriales.
-\item \textbf{Tipo de análisis o tarea a realizar sobre dicha variable}. El uso que demos a una capa temática condiciona en gran medida el modelo de datos idóneo. Por ejemplo, en el caso de una capa de elevaciones, su análisis se lleva mejor a cabo si esta información está recogida según el modelo ráster. Sin embargo, si el objetivo principal es la visualización de esa elevación en conjunto con otras variables, unas curvas de nivel pueden resultar más adecuadas, ya que, entre otras cosas, no interfieren tanto con otros elementos a la hora de diseñar un mapa con todas esas variables.
-\item \textbf{Contexto de trabajo}. Por ejemplo, si queremos trabajar con imágenes, esto nos condiciona al empleo de datos ráster, ya que resulta mucho más sencillo combinarlos con las imágenes, las cuales siempre se presentan como capas ráster. 
+ \item \textbf{Type of variable or phenomenon to represent}. In general, \textbf{Continuous} variables such as elevation are better represented in raster layer, in order to make it easier to perform analysis based on then. \textbf{Discrete} variables, on the other hand, are better represented using a vector approach.
+\item \textbf{Type of analysis to perform}. It is important to know how we plan to use a layer, to decide the representation model that might better suit our case. For instance, if we have elevation data and we plan to perform analysis, it will be better to have a raster DEM, since most algorithms require the elvevation data to be raster layer. However, if we want to use that elevation data just for visualization, and combine it with other layers to create a map, it might be better to have a vector layer with contour lines, since those will be a better cartographic solution and will interfere less with the remaining variables. 
+\item \textbf{Context}. The context might make it better (or even mandatory) to work with a given representation model. For instance, if we are working working with images and we plan to do some analysis with other layers as well, those should be raster ones, since images, as we have seen, are always raster layers.
 \end{itemize}
 
-
-Existen procedimientos para \textbf{convertir} entre los formatos ráster y vectorial, de forma que el disponer de datos en un modelo de representación particular no implica que debamos desarrollar nuestro trabajo sobre dichos datos directamente, sino que podemos efectuar previamente una conversión.
+There are algorithms that allow \textbf{converting between the raster and vector representation models}, so if we have our data in one of them, we can obtain a new layer that uses the other model and might be more suitable for our work.
 
 
 \pagestyle{empty}
