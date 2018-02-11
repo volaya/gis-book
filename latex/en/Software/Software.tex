@@ -1,211 +1,185 @@
 
-\chapter{Software y tecnología}
+\chapter{Software and technology}
 
 
 \pagestyle{fancy}
 
-
-El concepto clásico de un SIG es el de una aplicación completa en la cual se implementan herramientas para llevar a cabo las tareas básicas del trabajo con datos geográficos: creación o edición, manejo y análisis. Junto a este enfoque tradicional, con el tiempo han surgido otras formas distintas de aplicaciones que también pueden considerar como parte del ámbito del SIG. 
-
-Veremos en este capítulo las características de las aplicaciones SIG, divididas en tres grupos fundamentales: herramientas de escritorio, cartografía en la Web (\emph{Web--mapping}) y SIG móvil. Asimismo, veremos algunos aspectos tecnológicos relacionados con ellas.
+The clasic concept of a GIS is that of a complete software application which implements all the tools needed for working with geographical data: creating or editing it, managing it, analysing it and visualizing it. Along with that, other types of applications have appeared which, although they do not match exactly that definition, have to be considered as part of the GIS world as well.
+We will divide GIS applications in three main blocks: desktop GIS, web-based GIS, and mobile GIS. They will be described in detail in this chapter. We will also provide additional information about some technologies that they are based one.
 
 
-\section{Herramientas de escritorio}
+\section{Desktop GIS}
 
-Podemos dividir las funciones básicas de un SIG de escritorio en cinco bloques: \textbf{entrada y salida de datos, visualización, edición, análisis y generación de cartografía}. Una aplicación de escritorio habitual presenta todas estas capacidades en cierta medida, aunque no necesariamente con el mismo nivel de implementación.
+Five are the fundamental functionalities of a desktop GIS: \textbf{data input and output, visualization, editing, analysis, and map creation}. Most desktop GIS tools have these five capabilities, although the level of functionality for each of them might differ. Some tools might be more prepared for data editing, while others might focus mainly on analysis.
 
-\subsection{Entrada y salida de datos}
+\subsection{Data input and output}
 
-Una aplicación SIG de escritorio debe implementar capacidades para \textbf{leer datos} y, opcionalmente, para \textbf{guardarlos}. Esta ultima es necesaria en el caso en que el SIG pueda generar nuevos datos geográficos (nuevas capas), pero no en aquellas aplicaciones sin capacidades de análisis o edición, donde su empleo no ha de crear nuevos datos.
+A desktop GIS must be able to \textbf{read data} and, optionally, to \textbbf{save} it. This last functionality is needed in case the GIS can produce new layers, but not in those ones that do not contain analysis or editing capabilities.
 
-La existencia de librerías y componentes de acceso a datos en los que las aplicaciones SIG de escritorio pueden apoyarse permite dar soporte al \textbf{gran número de formatos de datos existentes}, mejorando la \textbf{conectividad} entre estas.
+There is a very large number of data formats for \textbf{geographical data}, and most GIS use common libraries to be able to read and write them, which allows them to share data between them and improve their connectivity.
 
-Además de acceder a ficheros de datos, en la actualidad es importante poder acceder a \textbf{bases de datos} o \textbf{servicios remotos}. Hablaremos de  estos últimos más adelante dentro de este capítulo.
+Apart from being able to read data files, nowadays it is also important to be able to connect to \emph{databases} and \textbf{remote services}. We will talk about them later in this same chapter.
 
-\subsection{Visualización}
+\subsection{Visualization}
 
-La visualización es una función fundamental dentro de los SIG y del trabajo con cartografía en general. Tiene importancia cuando la representación de los datos es el propósito principal de utilizar un SIG, pero también cuando el trabajo está enfocado a la edición o la realización de análisis, ya que la visualización y exploración visual de los datos de partida es un paso previo.
+Visualization is a fundamental capabilities of GIS. It is, of course, important when the main purpose of using a GIS is to create cartography, but also when our work is focused on data editing or analysis, since visual exploration of the data is a previous step.
 
+The visualization part of a GIS is mainly comprised of \textbf{canvas} on which layers are rendered. The user can add or remove layers, and also change their \textbf{symbology}, that is, the way in which the layer data is converted into graphical elements. Layers are rendered in a given order, which allows to create a \emph{rendering hierarchy}.
 
-Esta estructura se compone fundamentalmente de un \textbf{lienzo} sobre el que se sitúan las distintas capas de información geográfica, y que el usuario va conformando añadiendo nuevas capas y editando su \textbf{simbología}, es decir, la forma en la que estas se representan. Las capas se sitúan en un \textbf{orden dado} dentro del lienzo, lo que permite establecer una \textbf{jerarquía de representación} y así lograr el aspecto deseado.
-
-Junto a este lienzo existen herramientas de navegación que permiten ampliar o reducir la escala, o bien modificar el encuadre (Figura \ref{Fig:Herramientas_navegacion}). 
+Along with the canvas, there are \textbf{navigation tools} that allow the user to modify the area that is being displayed, by zooming in, zooming out or panning (Figure \ref{Fig:Navigation_tools}). 
 
 \begin{figure}[!hbt]
 \centering
-<<<<<<< HEAD
-\includegraphics[width=.99\textwidth]{Software/Herramientas_navegacion.png}
-=======
-\includegraphics[width=.99\textwidth]{../es/Software/Herramientas_navegacion.png}
->>>>>>> fb5f35aebe659bc9016e958b6166eed4e0882d72
-\caption{\small Herramientas de navegación fundamentales en el entorno gráfico de un SIG de escritorio. a) alejamiento (\emph{zoom out}), b) acercamiento (\emph{zoom in}), c) desplazamiento (\emph{pan})}
-\label{Fig:Herramientas_navegacion} 
+\includegraphics[width=.99\textwidth]{Software/Navigation_tools.png}
+
+\caption{\small Navigation tools that are common in a desktop GIS. a) zoom out, b) zoom in, and c) pan}
+\label{Fig:Navigation_tools} 
 \end{figure}
 
-El aspecto más destacable de la visualización de datos espaciales en un SIG es que, a diferencia de un mapa clásico donde no pueden modificarse sus características, el usuario puede aquí de forma rápida y sencilla elegir \emph{qué} ve y \emph{cómo} lo ve. El dato espacial digital es \textbf{independiente de la información necesaria para su representación} (colores, texturas, etc.), y un mismo dato puede por tanto representarse de maneras diferentes. Esto es particularmente cierto para el caso de capas vectoriales, así como para capas ráster que contengan un valor de tipo no gráfico, es decir, aquellas que no sean imágenes.
+The most remarkable feature of geographical data visualization in a GIS is that, unlike what happens with a classic printed map, where its characteristics cannot be changed, here the user can select \emph{what} he sees} and \emph{he} sees it. Geogrpahical data is \textbf{independent of the information needed to visualize it}, and, therefore, it can be represented in different ways. This is true even for data that has an inherent visual nature, such as images, since even in that case the rendering can be adjusted and modified by the user.
 
-Aunque en el caso más habitual la representación de una capa en un lienzo de un SIG es bidimensional, existen también SIG con \textbf{capacidades de visualización tridimensional}. En este caso, las herramientas de navegación son más complejas, existiendo ajustes relativos a la perspectiva, a los ángulos de visión o a la exageración del relieve, entre otros parámetros. 
+Although in the most common case the canvas is bidimensional, certain GIS are also capable of \textb{three-dimensional rendering}. In this case, navigation tools are more complex, and they allow to adjust perspective, vision angles or vertical exaggeration, among other parameters.
 
-\subsection{Análisis}
+\subsection{Analysis}
 
-El análisis es una capacidad fundamental de los SIG desde sus orígenes. Otros usos, tales como la visualización, pese a ser prácticamente imprescindibles hoy en día, estaban muy limitados en los primeros SIG. 
+Analysis is a fundamental functionality of GIS since its origins. Other ones, such as visualization, although we cannot imagine GIS without them nowadays, were vey limited in the early days. Analysis, however, has always been at the core of GIS.
 
-La tendencia actual en los SIG es considerar las capacidades de análisis como \textbf{herramientas modulares} que se ejecutan sobre una plataforma base, la cual comprende las capacidades de visualización y entrada y salida de datos. Todas estas capacidades de análisis son independientes entre sí, aunque pueden coordinarse y emplearse en conjunto para alcanzar un resultado concreto. 
+The current trend in GIS is to consider analysis capabilites as \textbf{modular tools} that are run on a base platform, which includes the data input and output capabilities, along with the visualization component. Analysis tools are independent, but they can be used together to create more complex analyses.
 
-Cuando las herramientas de análisis utilizan directamente la base del SIG donde se encuentran las capacidades de visualización y manejo de datos, puede existir cierto grado de interactividad. Por ejemplo, el usuario puede delimitar un área o introducir una coordenada operando sobre el lienzo donde se representan las capas, y este valor se utilizará después como parámetro de entrada para una operación analítica.
+Analysis tools might be completely independent of the visualization part, or be linked to it. In the first case, the analysis is performed on a set of layers and parameters without any interaction with the <<map>>, while in the second case the user might interact with the view to define how the analysis is performed (for instance, selecting a coordinate or a region in the canvas, which will then be used as a parameter for the analysis tool).
 
-En caso de no existir este tipo de interacción entre elementos de análisis y elementos de visualización y exploración de datos, los procesos de análisis suelen constituir utilidades autocontenidas que simplemente toman una serie de datos de entrada, realizan un proceso en el que el usuario no interviene, y finalmente generan un resultado con carácter definitivo. Este resultado podrá ser posteriormente visualizado o utilizado como entrada para un nuevo análisis.
+The result of an analysis tool in a GIS can be geograhical (a new layer) or not (a simple value, such as the one resulting from some statistical analysis of the input data).
 
-Por su naturaleza, tanto los datos espaciales como los procesos en los que estos intervienen se prestan a formar parte de \textbf{flujos de trabajo} más o menos complejos, y es por ello que en los SIG actuales una funcionalidad básica dentro del análisis es la \textbf{automatización}. Esta se da mediante la \textbf{creación de tareas complejas que permiten simplificar todo un proceso} de muchas etapas en una única que las engloba a todas. La forma anteriormente comentada en que aparecen las formulaciones dentro de un SIG, de forma atomizada y modular, facilita la creación de estos <<modelos>> a partir de procesos simples.
+Analysis tools can be organized into \textbf{workflows} which help\textbf{automate} analysis routines. Also, the analysis functionality of desktop GIS can usually be used from \emph{scripting languages}, which allow to define more complex models and data flows. this is one of the main strengths of current GIS tools, since it provides the user more power and flexibility.
 
-Asimismo, las herramientas SIG que contienen funcionalidad de análisis suelen permitir el acceso a estas a traves de lenguajes de \emph{scripting}, lo cual facilita la creación de flujos de trabajo y la automatización de rutinas complejas de análisis. Si bien este trabajo requiere mayores conocimientos, la flexibilidad y potencia que ofrece es mucho mayor.
+\subsection{Editing}
 
-\subsection{Edición}
+The geographical data with which we work in a GIS are not static. Information contained in a layer \textbf{might have to be changed or corrected}, and the functionality that allows the user to do that is important if we want the GIS tool to be versatile. Without them, geographical data lose part of their potential, and that's the reason why most desktop GIS tools implement editing capabilities to some extent.
 
-
-Los datos geográficos con los que trabajamos en un SIG no son una realidad estática. La información contenida en una capa es \textbf{susceptible de ser modificada o corregida}, y las funciones que permiten estas tareas son importantes para dotar al SIG de versatilidad. Sin ellas, los datos espaciales pierden gran parte de su utilidad dentro de un SIG, ya que se limitan las posibilidades de trabajo sobre estos. Las funcionalidades de edición son, por tanto, básicas en una herramienta de escritorio.
-
-Las operaciones de edición pueden emplearse para la \textbf{creación de nueva cartografía}, así como para la \textbf{actualización} de esta. Aunque las tareas de edición más habituales son las relacionadas con la edición de geometrías, no es esta la única edición que puede realizarse dentro de un SIG. Podemos distinguir las siguientes formas de edición:
+This capabilities can be used to \textbf{create new layers} or to \textbf{update existing ones}. The following are some editing tasks that can be performed with a GIS:
 
 \begin{itemize}
-\item Edición de geometrías de una capa vectorial.
-\item Edición de atributos de una capa vectorial, incluyendo la adición o eliminación de atributos en toda una capa.
-\item Edición de valores de una capa ráster.
+\item Editing the geometries of a vector layer feature.
+\item Editing the attribute values of a vector layer feature. That includes editing the list of attributes of the layer, adding or removing them.
+\item Adding new features to a vector layer or removing existing ones.
+\item Editing cell values in a raster layer.
 \end{itemize}
 
-Las herramientas destinadas a la edición de entidades geométricas heredan sus características de los programas de \textbf{diseño asistido por ordenador (CAD)}, cuya funcionalidad principal es precisamente la edición de elementos gráficos. Aparecen en algunos casos herramientas adicionales, como sucede en el caso de que se registre \textbf{información topológica}.
+Tools used to edit geometries inherit a large part of their design from CAD sofware. In certain case, they are extendend with new functionalities, as it happens in the case of editing geographical data with topology (CAD software does not consider topology).
 
 
+\subsection{Map creation}
 
-\subsection{Generación de cartografía}
+Most desktop GIS are capable of producing cartographic documents which can later be printed and used as a classic paper map. These documents are composed in the GIS from the its data, and use the same functionality that it has for the on-screen rendering (symbology, etc)
 
+Along with that, other tools allow to \textbf{design and compose the map}, and to \emph{adjust its elements} (rendered layers, legend, title, etc.), and are inspired by those found in design software. 
 
-La mayoría de las herramientas de escritorio incorporan capacidades de creación de cartografía impresa, generando un documento cartográfico que posteriormente puede imprimirse y emplearse como un mapa clásico. Estas capacidades permiten la composición de documentos cartográficos de acuerdo con un diseño dado, y la impresión directa de estas en algún periférico tal como una impresora común o un \emph{plotter} de gran formato. 
-
-Las funciones de diseño que se implementan por regla general en un SIG son similares a las que pueden encontrarse en un software de maquetación genérico, permitiendo la \textbf{composición gráfica del documento} general y el \textbf{ajuste de los distintos elementos} que lo forman. Entre estos elementos, destaca el mapa como tal, es decir, aquel que contiene la representación del dato geográfico.
-
-Junto a esto, las herramientas de escritorio incluyen funcionalidades para \textbf{automatizar la producción cartográfica}, tales como la creación de plantillas o las generación de series de mapas que cubren en su conjunto una amplia extensión, fragmentando esta en unidades (Figura \ref{Fig:Serie_mapas})
+Some desktop GIS include elements to \emph{automate cartographic production}, such as templates or tools to generate map series (Figura \ref{Fig:Map_series}).
 
 \begin{figure}[!hbt]
 \centering
-<<<<<<< HEAD
-\includegraphics[width=\textwidth]{Software/Serie_mapas.png}
-=======
-\includegraphics[width=\textwidth]{../es/Software/Serie_mapas.png}
->>>>>>> fb5f35aebe659bc9016e958b6166eed4e0882d72
-\caption{\small La automatización de las tareas de creación cartográfica permite simplificar la producción de grandes volúmenes de cartografía, como por ejemplo al dividir un área geográfica en una serie dada de mapas.}
-\label{Fig:Serie_mapas} 
+\includegraphics[width=\textwidth]{Software/Map_series.png}
+\caption{\small Automated creation of map series in a GIS.}
+\label{Fig:Map_series} 
 \end{figure}
 
-Estas posibilidades surgen de la \textbf{separación entre los datos espaciales y el diseño del documento cartográfico} que los contiene, del mismo modo que ya vimos que existe entre datos y parámetros de representación a la hora de visualizar los primeros.
+This is possible thanks to the \textbf{separation between geographical data and the design of the cartographic document}, similar to what we commented for the case of visualization.
 
 
-\section{Cartografía en la Web (\emph{Web--mapping}). Clientes y servidores}
+\section{Web mapping. Clients and servers}
 
+One of the most relevant advances in the history of GIS is the advent of \textbf{Web mapping}. Web mapping technologies are used to incorporate GIS elements as part of websites, with internet browsers being then the base platform on which GIS functionality is executed. These technologies include not just the elements run on the browser, and they have been key in shaping hape and develop other ones such as \textbf{remote data services}, which are used by Web Mapping applications, but also by desktop GIS.
 
-Uno de los avances más importantes en la historia de los SIG lo constituye la llegada del \emph{Web Mapping}. Entendemos como tal a las tecnologías que permiten \textbf{incorporar las ideas de los SIG dentro de paginas Web}, utilizando un navegador Web como aplicación principal. Asimismo, estas tecnologías, junto a la importancia de Internet, han propiciado el desarrollo de otros elementos tecnológicos tales como \textbf{servicios de datos remotos}, que se utilizan tanto en las aplicaciones de escritorio como en el propio \emph{Web Mapping}.
+The concepts of \emph{server} and \emph{client} are fundamental in this context. Let's discuss them with a bit more of detail.
 
-Los conceptos de \emph{servidor} y \emph{cliente} son fundamentales en este contexto. Veamos algunas ideas generales al respecto.
+A \textbf{} is the element that provides (serves) a given content through the network. In our GIS context, this content means basically geographical data. The \textbf{client} is the element that requests the data, receives it and works with it. 
 
-Conocemos como \textbf{servidor} al elemento encargado de proporcionar (servir) algún tipo de contenido. En el ámbito SIG, se trata fundamentalmente de datos geográficos, que constituyen el principal producto que se distribuye a través de la red dentro de nuestro campo. 
+A web browser is a client, since it makes a request to get the content of a web site and show it to the user. When we enter a web address in the address bar of a web browser, we provide the information needed to establish the connection between the server and the client, and to transfer the data from one to the other.
 
-El \textbf{cliente} es responsable de pedir ese dato al servidor, tomarlo y trabajar con él. Un navegador Web es un cliente, ya que  realiza una petición para mostrar una página Web. Al introducir una dirección Web en la barra de direcciones del navegador, proporcionamos una serie de datos que son los que se emplean para realizar el proceso.
-
-Supongamos la dirección Web:
+Let's see how that works. Suppose that we want to visit the following website:
 
 \begin{center}
 \small\texttt{http://victorolaya.com/writing}
 \end{center}
 
-Al visitar esa página, se efectúa una petición a través de su dirección, la cual se compone de las siguientes partes:
+The requests is done based on the web address ---more technically, a Uniform Resource Locator (URL)---, which is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. We can divide it in the following parts:
 
 \begin{itemize}
-	\item \texttt{http}: El protocolo a usar, que define la forma en que se van a comunicar cliente y servidor.
-	\item \texttt{victorolaya.com}: Esta cadena identifica la máquina donde reside la página que buscamos. Es en realidad una versión más legible para el ojo humano de un código numérico que indica la dirección concreta. 
-	\item \texttt{writing}: La página que buscamos dentro de todas las que hay en esa máquina. 
+	\item \texttt{http}: The protocol to use, which defines the way client and serer will communicate with each other.
+	\item \texttt{victorolaya.com}: The host name. This part identifies the server machine connected to the network where the page that we want to visit is stored. It is a human-readable version of a numeric code that indicates the address.
+	\item \texttt{writing}: The page we want among all the ones that the server can provide. 
 \end{itemize}
-\index{FTP}
 
-El proceso mediante el que podemos ver esa página en un navegador Web comprende los cuatro pasos siguientes:
+The process that allows us to have that page in our web browser comprises the following steps:
 
 \begin{enumerate}
-	\item El cliente realiza la petición.
-	\item La petición se conduce a través de la red hasta el servidor.
-	\item El servidor busca la página y la devuelve a través de la red en caso de encontrarla, o devuelve una pagina de error en caso de no tenerla.
-	\item El cliente recibe la página y la representa.
+	\item The client makes the request.
+	\item The server machine is identified and the request is driven to it.
+	\item The server prepares the page that has been requested and sends it back to the client (or it send an error message in case it could not find or prepare the page).
+	\item The client receives the page and renders it so the client can see it.
 \end{enumerate}
 
 
-La figura \ref{Fig:Asi_funciona_internet} muestra un esquema de este proceso.
+Figure \ref{Fig:How_internet_works} shows a summary of this.
 
 \begin{figure}[!hbt]   
 \centering
-<<<<<<< HEAD
-\includegraphics[width=\columnwidth]{Software/Asi_funciona_internet.pdf}
-=======
-\includegraphics[width=\columnwidth]{../es/Software/Asi_funciona_internet.pdf}
->>>>>>> fb5f35aebe659bc9016e958b6166eed4e0882d72
-\caption{\small Esquema del proceso de consulta de una página Web desde un navegador.}
-\label{Fig:Asi_funciona_internet} 
+\includegraphics[width=\columnwidth]{Software/How_internet_works.pdf}
+\caption{\small Client-server interaction mechanism that takes place when visiting a website.}
+\label{Fig:How_internet_works} 
 \end{figure}
 
-Se establece una relación entre clientes y servidores, en la cual un número variable de clientes se <<conectan>> a un servidor, del cual obtienen una serie de datos cuando este responde a las peticiones formuladas por cada uno de ellos. En la arquitectura cliente--servidor, este último es el que posee la información a compartir a través de los servicios, mientras que en cada uno de los clientes se almacena tan solo la información personal de estos.
+A relation is established between clients and servers, in which an arbitrary number of clients <<connect>> themselves to a server, from which they obtain data whenever each of them makes a request. In this client-server architecture, the server has the data to be shared through a service, while clients only provide information about themselves needed to validate and perform the data sharing.
 
-Veamos ahora algunas características de los servidores y clientes dentro del ámbito SIG.
+Now let's see how this ideas apply to the field of GIS.
 
-Respecto a los servidores, las capacidades fundamentales en este contexto pueden dividirse en los siguientes grupos:
+Regarding servers, they can have four main capabilities:
 
 \begin{itemize}
-\item \textbf{Servir representaciones de los datos}. El servidor puede responder directamente a este tipo de necesidades, preparando una \textbf{imagen a partir de los datos geográficos} de los que dispone. En el caso de que estos sean ya imágenes ---por ejemplo, imágenes de satélite u ortofotos---, bastará servir estas, transmitiendo una versión escalada de las dimensiones exactas que el cliente necesite para representar en pantalla. En caso de que los datos sean de tipo vectorial, o bien ráster sin una forma de representación implícita ---por ejemplo, un Modelo Digital del Terreno--- es necesario emplear algún método para asignarles dicha representación. Este puede ser asignado por defecto por el servidor, que establecerá una simbología fija, o bien ofrecer un servicio más complejo en el que el cliente no solo pide una representación gráfica de una serie de datos para una zona dada, sino que además puede especificar \emph{cómo} crear esa representación.
+\item \textbf{Serve rendered geographical data}. Generally known as \textbf{map servers}, they provide <<maps>>, that is images created from geographical data. If data is already an image (such as an aerial or satellite photograph), the server will just send it as it is. If data is not an image (vector layer or raster layer other than image), the server will create an image based on the geogrpahical data. The symbology used to do this can be a default one that the server uses for all requests, or it can be provided by the client in the request. 
+
+In both cases, the client also specifies the dimensions of the requested map image that is served, and the server takes care of preparing it.
 
 
-\item \textbf{Servir los datos directamente}. Una opción más flexible que lo anterior es que el servidor provea \textbf{directamente los datos geográficos} y sea después el cliente quien los utilice como corresponda, bien sea simplemente \textbf{representándolos}, o bien trabajando con ellos de cualquier otra forma, como por ejemplo \textbf{analizándolos}. 
+\item \textbf{Serve the data directly}. A more flexible option is to serve the geogrpahical data itself. The client requests the data and, once it has been transmited across the network, can use it however he needs. In case the data is to be visualized, the symbology has to be set in the client side, since the server is not taking care of that and provides the raw data.
 
 
-\item \textbf{Servir consultas}. Un paso más allá en la funcionalidad que puede ofrecer el servidor es responder a \emph{preguntas} realizadas por el cliente relativas a los datos, ya sean estas relativas a la parte espacial de dichos datos, o bien a su componente temática. El servidor puede ofrecer como respuesta \textbf{conjuntos reducidos} de los datos de los que dispone, o \textbf{valores que describan} a estos. Estas consultas pueden ser útiles, por ejemplo, para \textbf{establecer filtros} previos cuando se dispone de un conjunto amplio de orígenes de datos. Un cliente Web puede obtener datos de distintos servidores, y puede consultar si, para un zona dada, estos servidores disponen de información, sin más que consultar la extensión cubierta por los datos de cada uno de ellos y comprobar si se interseca con la región de interés. En función de la respuesta, puede o no realizarse posteriormente el acceso a los datos en sí. Como ya vimos, los \textbf{metadatos} son de gran utilidad para conseguir que este tipo de consultas se realicen de forma eficiente.
+\item \textbf{Serve the result of queries}. Another functionality that the server can have is to return not just the full set of geographical data, but a subset of it. The client can specify a \textbf{filter} and the server will use it to create a subset that will later be send in the reponse. Also, the server can provide \textbf{descriptive values} about the data it has. The client, which might be connected to several services and consume that from then, can use those values to filter which services to use (for instance, asking them the extent of their data and then selecting only those ones that have data about a given study area). As we have already seen, \textbf{metadata} have a great relevance in this context, since they allow this kind of queries to be executed (and the corresponding requests to be responded) efficiently.
 
-\item \textbf{Servir procesos}. Por último, un servidor puede ofrecer nuevos datos, espaciales o no espaciales, resultantes de algún tipo de proceso o cálculo a partir de datos espaciales. En este caso, el proceso constituye en sí el servicio ofrecido por el servidor, y el cliente debe definir los parámetros de entrada de este y los posibles parámetros de ajuste que resulten necesarios. Los datos con los que se trabaja pueden ser proporcionados por el cliente, incorporándolos a su propia petición, o bien pueden residir en el propio servidor. También pueden emplearse datos en un servidor distinto, a los que el servidor de procesos puede acceder si estos están disponibles, convirtiéndose en cliente de ese segundo servidor (Figura \ref{Fig:Datos_y_procesos_remotos}).
+\item \textbf{Serve processes}. Finally, a server can provide new data, whether geographical or not, computed from the geographical data. In this case, the server provides a processing service, as it processes the data that is passed to it as part of the request. The request can contain the data itself, or a reference to it. If a reference is passed, the data might already be in the server, or it can be in another one. In this last case, the first server will become a client of the second one, it will retrieve its data, process it, and send back the result to the original client (Figure \ref{Fig:Remote_data_and_services}).
 
 
 \begin{figure}[!hbt]   
 \centering
-<<<<<<< HEAD
-\includegraphics[width=0.95\textwidth]{Software/Datos_y_procesos_remotos.png}
-=======
-\includegraphics[width=0.95\textwidth]{../es/Software/Datos_y_procesos_remotos.png}
->>>>>>> fb5f35aebe659bc9016e958b6166eed4e0882d72
-\caption{\small Esquema de acceso a un servicio de procesos remotos, el cual a su vez utiliza datos de un segundo servidor. El encadenamiento de procesos permite ampliar notablemente la utilidad de estos.}
-\label{Fig:Datos_y_procesos_remotos} 
+\includegraphics[width=0.95\textwidth]{Software/Remote_data_and_services.png}
+\caption{\small Remote processign service using data from a second server..}
+\label{Fig:Remote_data_and_services} 
 \end{figure}
 
 \end{itemize}
 
-Respecto a los clientes, distinguimos en función de sus capacidades dos clases:
-
+About clients, they can be divided in two classes:
 
 \begin{itemize}
 
-	\item \textbf{Cliente pesado}. El cliente \emph{pesado} es una \textbf{aplicación individual} que no se ejecuta sobre otra aplicación soporte como puede ser un navegador Web. Al ser un programa independiente, debe ocuparse de toda la lógica del proceso y de proveer todas las funcionalidades necesarias, por lo que su tamaño es generalmente mayor. 
+	\item \textbf{Heavy clients}. Heavy clients are independent applications that do not run on top of another one such as a web browser. They usually have a larger size, since the application has to care of all the program logic.
+
+	Heavy clients handle and use data not coming from web services, such as local data files. They are not just clients, but full-fleged applications that work even without its client part.
+
+	Nowadays, most desktop GIS are heavy clients themselves, since they have the functionalty of classic GIS, but can also consume web services.
 
 
-	Los clientes pesados suelen permitir el uso de datos \textbf{no procedentes del acceso a servicios}, tales como datos en ficheros locales, y no están pensados exclusivamente como clientes, sino como aplicaciones más amplias que además disponen de capacidades para aprovechar un determinado tipo de servicios. 
+	\item \textbf{Light clients}. They normally have a smaller size and their capabilities are more limited. They run on web browsers and most of the tiem rely on remote data from servers.
 
-	En la actualidad, la \textbf{práctica totalidad de SIG de escritorio} son a su vez clientes pesados, ya que pueden consumir servicios tales como los descritos previamente en este apartado.
+	Although originally they focused on data visualization (adding map views to websites, with a certain degree of interactivity), they have started implementing more advances functionalities such as analysis functionality (whether on the client side or using a processing service) or data editing.
 
-
-	\item \textbf{Cliente ligero}. Se denomina \emph{ligero} por el tamaño relativamente reducido del programa en sí, lo cual va consecuentemente asociado a unas capacidades limitadas. Hablamos de clientes ligeros cuando nos referimos a \emph{Web Mapping} y a clientes que se ejecutan sobre un navegador Web, ya que estos suelen ser sencillos en cuanto a sus funcionalidades.
+	Hablamos de clientes ligeros cuando nos referimos a \emph{Web Mapping} y a clientes que se ejecutan sobre un navegador Web, ya que estos suelen ser sencillos en cuanto a sus funcionalidades.
 	
-	No obstante, los clientes Web empiezan progresivamente a ampliar sus posibilidades, y en ello juegan un importante papel otros \textbf{servicios distintos a los de mapas o los de datos}, como pueden ser los de procesos. Estos permiten que las funcionalidades adicionales no se implementen en el propio cliente (y por tanto sin aumentar en exceso su tamaño y sin disminuir su <<ligereza>>), sino que sean accedidas también como servicios remotos.
-
-	La \textbf{edición de capas} es otra capacidad que puede aparecer en los clientes Web con funcionalidad más avanzada.
-	
-	La evolución de la cartografía Web en esta dirección se dirige desde el \emph{Web Mapping} al denominado \textbf{Web GIS}, en el que la aplicación Web incluye la totalidad de capacidades clásicas del SIG de escritorio.
-
+	The term \emph{Web mapping} is used to refer to the lighter clients which focus only on rendering maps, while the term \emph{Web GIS} is used to those with more functionality, which incorporate some of the tools traditionally found in desktop GIS.
 \end{itemize}
 
-\section{Algunas técnicas relacionadas con servicios SIG}
+\section{Some techniques related to GIS services}
 
-\index{Tiling}\index{Cacheo}
 
 Dos técnicas básicas que se emplean actualmente en los clientes que manejan información geográfica son el \emph{tiling} y el \emph{cacheo}. Estas técnicas permiten que la experiencia de trabajar con un cliente SIG, ya sea este ligero o pesado, sea más agradable, logrando una mayor fluidez y superando en cierta medida las limitaciones de la red.
 

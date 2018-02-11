@@ -1,149 +1,141 @@
 
-\chapter{Fuentes principales de datos espaciales}
+\chapter{Geographical data sources}
 
 \pagestyle{fancy}
 
+Not so long ago, all information used in a GIS came had its origin in a paper map, which was \emph{prepared} to adapt to the particular nature of that GIS. Geogrpahical data were obtained from the \textbf{digitalization} of printed cartography, that is, from the conversion of analogic maps into digital data that a GIS can handle.
 
-No hace tanto tiempo, toda la información que se manejaba dentro de un SIG tenía su origen en un mapa en papel, el cual debía \emph{prepararse} para adaptarse a la naturaleza propia del SIG. El dato geográfico se obtenía a partir de la \textbf{digitalización} de cartografía, es decir, convertir los datos geográficos en formato impreso en datos en formato digital que un SIG pudiera manejar. 
+Apart from the fact that we can use them in a GIS, digital data have many advantages and represent an important qualitative imrpovement. Digital data are easier to update, easier to distribute (specially since the Internet was created), use less physical space and are easier to maintain (digital data do not degrade. Their physical support does, but they are easy to replicate without losing their quality).
 
-Un SIG implica una aplicación informática, y esta se alimenta en última instancia exclusivamente de datos digitales. Los datos geográficos digitales tienen una serie de ventajas frente a los analógicos (además del mero hecho de que podemos incorporarlos a nuestro SIG), y suponen, como sucede en muchos otros campos, un salto cualitativo importante. Entre estas ventajas, que son a su vez comunes a otros ámbitos,  destacan la sencillez de actualización, la facilidad de distribución (en especial con la aparición de Internet), el menor espacio físico necesario para su almacenamiento, la facilidad y precisión del análisis, y la facilidad de mantenimiento (el dato digital no se degrada, lo que se degrada es su soporte, pero es sencillo replicar el dato sin pérdida de calidad)
+Techniques for gepgraphical data aquisition have evolved, and can now create data that can be directly integrated into a GIS. Data sources that produce data ready for being used in a GIS are called \textbf{primary} data sources. Those that generate data that has to be adapted or converted are called \textbf{secondary} data sources.
 
-Hoy en día las técnicas de adquisición de datos han evolucionado y permiten crear datos que pueden ser directamente integrados en un SIG. Distinguimos así \textbf{fuentes de datos primarias} y \textbf{secundarias}. 
+In this chapter, we will see the main data sources that provide data for GIS.
 
-Las fuentes de datos primarias son aquellas cuyos datos podemos emplear en un SIG, ya que estos, en su forma original, ya son susceptibles de ser sometidos a las operaciones de manejo y análisis que incorporan los SIG. Por su parte, las fuentes de datos secundarias generan datos que no pueden emplearse en un SIG sin un proceso de adaptación previo, siendo el dato derivado el que utilizamos en un SIG, no el original. 
+\section{Remote sensing}
 
-En este capítulo, veremos las distintas fuentes de datos con las que podemos trabajar un en SIG.
+Remote sensing is the \textbf{acquisition of information about an object or phenomenon without making physical contact with it}. Instead of measuring the object itself, it measures the perturbations ---mainly the electromagnetic ones--- that it causes on its surroundings. In our case, it is applied to objects on the Earth's surface.
 
-
-\section{Teledetección}\index{Teledetección}
-
-La primera fuente de datos que trataremos en este capítulo es la teledetección. Entendemos por teledetección el \textbf{estudio y medida de las características de un objeto sin que exista contacto físico}. Para ello, se miden las perturbaciones que el objeto provoca en su entorno, principalmente las de tipo electromagnético. En nuestro caso, se aplica a elementos de la superficie terrestre.
-
-Un sistema de teledetección cuenta con los siguientes elementos (Figura \ref{Fig:Elementos_teledeteccion}):
+A remote sensing system contains the following elements (Figure \ref{Fig:Elements_remote_sensing}):
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.6\textwidth]{../es/Fuentes_datos/Elementos_teledeteccion.pdf}
-\caption{\small Esquema de un sistema de teledetección.}
-\label{Fig:Elementos_teledeteccion} 
+\includegraphics[width=.6\textwidth]{Data_sources/Elements_remote_sensing.pdf}
+\caption{\small Elements in a remote sensing system.}
+\label{Fig:Elements_remote_sensing} 
 \end{figure}
 
 
 \begin{itemize}
-	\item \textbf{Una fuente de radiación (A)}\index{Fuente de radiación}. Puede ser de origen natural o artificial. La radiación emitida por dicha fuente llega al terreno y sufre una perturbación causada por los elementos de este, siendo esta perturbación el objeto de estudio de la teledetección. Los propios objetos pueden ser también emisores ellos mismos de radiación.
-	\item \textbf{Unos objetos (B) que interaccionan con la radiación} o la emiten, según lo anterior.
-	\item \textbf{Una atmósfera (C)} por la que se desplaza la radiación, tanto desde la fuente hasta el objeto como desde el objeto hasta el receptor. La atmósfera también interactúa con la radiación, introduciendo igualmente perturbaciones en ella.
-	\item \textbf{Un receptor (D) que recoge la radiación} una vez esta ha sido perturbada o emitida por los objetos. El receptor va a generar como producto final una imagen (en términos de un SIG, una capa ráster), en cuyas celdas o píxeles se va a contener un valor que indica la intensidad de la radiación. Estos valores son valores enteros que indican el nivel de dicha radiación dentro de una escala definida (habitualmente valores entre 1 y 256), y se conocen dentro del ámbito de la teledetección como \textbf{Niveles Digitales}.
+	\item \textbf{A source of radiation (A)}. It can be natural or artificial. Radiation emitted by the source reaches the Earth's surface and is altered by the presence of the objects on that surface. Remote sensing studies that alteration. Objects themselves can emit radiation as well.
+	\item \textbf{Objects (B) that interact with radiation} or can emit it, as mentioned above.
+	\item \textbf{An atmosphere (C)} through which radiation moves from the source to the objects. The atmosphere also interacts with the radiation and alters it.
+	\item \textbf{A receiver (D) which receives the radiation} once that has been emited or altered by the objects. The receptor measures the intensity of the radiation coming from differnt points in the area being studied, and with them generates its final product (in most cases, and image). 
 \end{itemize}
 
-A lo largo de este apartado veremos con detalle estos elementos. Para estudiar los dos primeros, estudiaremos los fundamentos físicos relativos a la radiación y a la la interacción entre esta y la materia, mientras que para el estudio del sistema receptor analizaremos los elementos de este en dos componentes por separado: sensores y plataformas. 
+In this chapter, we will describe these elements in detail. To study the two first, we will also study some fundamentals about radiation and its interaction with matter. For describing the receivers take make part of a remote sensing system, we will separate them into two components: sensors and platforms.
 
-La interacción de la atmósfera interesa de cara a eliminar su efecto, ya que lo que resulta de interés en general son los objetos en la superficie terrestre, no la atmósfera como tal. Eliminar esta influencia de la atmósfera es parte de los procesos posteriores que se realizan con la imagen, y que se detallan en los capítulos dedicados al análisis de imágenes en lugar de en este.
-
-\subsection{Fundamentos físicos}
-
-La radiación electromagnética es producto de las alteraciones en los campos eléctrico y magnético, las cuales generan ondas correspondientes a cada uno de los campos magnético y eléctrico. Estas ondas se desplazan a la velocidad de la luz, y se pueden describir con los parámetros habituales, tales como la longitud de onda o la frecuencia. El rango de longitudes de onda cubierta por la radiación electromagnética se conoce como \textbf{espectro electromagnético}.
-
-El espectro se subdivide en regiones en función de su longitud de onda, tales como (de menor a mayor longitud de onda) los rayos gamma, los rayos X, la región ultravioleta, la región visible, la región infraroja, o las microondas  
-
-La radiación emitida por una fuente de radiación es alterada por la presencia de los distintos objetos, ya que estos \textbf{absorben, transmiten} o \textbf{reflejan} esta.
-
-Estos tres fenómenos se dan en diferente proporción en función de las características del objeto y de la radiación. A efectos de la teledetección, \textbf{la parte que interesa es aquella que se refleja} en el objeto, ya que esta es la que posteriormente puede recogerse y emplearse para la generación de las imágenes.
-
-Como ya se dijo en el capítulo acerca de los datos, las imágenes como capas ráster presentan habitualmente la particularidad de tener varias bandas. En lugar de un único valor para cada celda, existen $n$ valores, uno por cada banda. La imagen recoge la \textbf{intensidad de la radiación} dentro de una amplitud dada del espectro, y a su vez subdivide esta en distintas franjas. Los Niveles Digitales de cada banda corresponden a la intensidad dentro de una de esas franjas del espectro en particular.
-
-Puesto que cada objeto refleja la radiación de diferentes longitudes de onda de modo distinto, esto puede considerarse como una propiedad del objeto. Se tiene así el concepto de \textbf{firma espectral}, que es la respuesta característica de un tipo de objeto dentro del espectro electromagnético. 
+Interaction with the atmosphere is interesting in order to eliminate its influence, since in most cases we are interested in the object on the Earth's surface, not the atmosphere itself. Removing that influence is part of the post-processing of the data. Those processes are, however, rather complex, and they will not be explained here.
 
 
-\subsection{Sensores y plataformas}
+\subsection{Electromagnetic radiation}
 
-En un sistema de teledetección, dos son los elementos tecnológicos principales que lo definen: el \textbf{sensor} y la \textbf{plataforma}. 
+Electromagnetic radiation is caused by alterations in the electric and magnetic fields, which generate waves corresponding to each one of the. This waves move at the speed of light and can be described with the usual parameters such as wavelength and frequency. The range of frequencies (and corresponding wavelengths) of electromagnetic radiation is calle the \textbf{electromagnetic spectrum}
 
-El sensor es el elemento que incorpora la capacidad de <<leer>> la radiación electromagnética y registrar su intensidad dentro de la una zona concreta del espectro. Puede ir desde una simple cámara fotográfica hasta un sensor más especializado.
-
-Los sensores se denominan \textbf{pasivos} si aprovechan las fuentes de radiación existentes en la naturaleza (fundamentalmente el Sol) y se limitan a recoger la radiación de dichas fuentes reflejada por los elementos del medio, o \textbf{activos} si emiten radiación, y recogen dicha radiación tras ser reflejada por dichos elementos. Para entender este concepto de un modo sencillo, podemos decir que una cámara fotográfica es un sensor pasivo, mientras que una camara fotográfica con \emph{flash} es un sensor activo. La radiación emitida por los sensores activos no ha de ser necesariamente luz visible (como en el caso del flash), sino que pueden emitir en otras secciones del espectro.
-
-Tecnologías como el \textbf{radar} o el \textbf{LiDAR} (similar al radar pero con pulsos de laser en lugar de ondas de radio), se basan en sensores activos. En el caso del LiDAR, permite obtener imagenes que no tiene un caracter visual, sino que contienen en sus valores la elevación de los objetos, pudiendo así emplearse para cartografiar el relieve.
+The spectrum is subdivided in regions depending on the wavelength, such as (for shorter to larger wavelength) gamma rays, X rays, ultraviolet region, visible region, infrared region or microwaves.
 
 
-La plataforma, por su parte, es el medio en el que se sitúa el sensor y desde el cual se realiza la observación.  A bordo de una plataforma pueden montarse \textbf{varios sensores}.
+Radiation emited by a radiation source is altered by the presence of objects that \textbf{absorb, transmit} or \textbf{reflect} it.
 
-Los dos tipos principales de plataformas son aquellas situadas \textbf{dentro de la atmósfera} terrestre (aviones en su mayoría) y aquellas situadas \textbf{fuera de la atmósfera} (a bordo de satélites).
+These three phenomena take place in a different proportion depending on the characteristics of the object and the radiation. For remote sensing, \textbf{the interesting part fis the one that is reflected}, since it is the one that can be collected later and used to produce the data output.
 
-Los aviones tienen la ventaja de su \textbf{disponibilidad}, ya que pueden pilotarse y de este modo permiten cubrir cualquier lugar de la tierra en cualquier momento.
+Since each object reflects radiation at different wavelengths in a different way, this can be considered as a property of an object. The particular response of a given object and the way it alters a given radiation (which depends on its shape, material, etc.) is known as its \textbf{spectral signature} and can be used to identify the object.
 
-A diferencia de un avión, un satélite no puede dirigirse a voluntad (no puede pilotarse), y su movimiento es una característica inherente que viene definida por una serie de parámetros. Estos parámetros se conocen como \textbf{parámetros orbitales} pues definen la órbita descrita por el satélite en torno a la Tierra. 
 
-Las órbitas pueden clasificarse en función de su \textbf{eje de rotación} así como en función de su \textbf{movimientos}. En este último caso tenemos órbitas \textbf{geosíncronas} (el satélite se sitúa sobre un punto fijo de la Tierra y su movimiento sigue al de rotación de esta) o \textbf{heliosíncronas} (mientras el satélite recorre la órbita, la Tierra efectúa su movimiento de rotación, lo cual hace que a cada vuelta de la órbita se cubran zonas distintas) 
+\subsection{Sensors and platforms}
+
+The two main technological elemtns in a remote sensing system, both of them related to the receiver are the \textbf{sensor} and the \textbf{platform}.
+
+The sensor is the element that can <<read>> the electromagnetic radiation and register its intensity for a given zone of the spectrum. It can be a simple photographic camera or a more specialized sensor.
+
+\textbf{Passive} sensors use natural source of radiation (in most cases, sunlight), and just measure that radiation as it is reflected on the Earth's surface. \textbf{Active} sensors emit their own radiation, and then collect it back after it has been reflected. Here is a simple example to better understandthis: a photographic camera as a passive sensor, while a photographic camera that uses a flash unit is an active one. The radiation emitted by an active sensor does not have to be visible light (as in the case of the flash); the sensor can emit in other parts of the spectrum.
+
+Technologies such as \textbf{radar} or \textbf{LiDAR} (similar to radar but with light pulses instead of radio waves) are based on active sensors.
+
+The sensor is \textbf{mounted on a platform}, and it perfoms its data acquisition from it. \textbf{Several sensors} can be mounted on a single platform.
+
+The two main types of platforms are those located inside the Earth's atmosphere (mostly on airplanes) and those outside of it (on satellites).
+
+The advantage of airplanes is their \textbf{availability}, since they can be piloted and used to cover any place on earth at any moment. Satellites, on the other hand, cannot be guided, and its movement is fixed and defined by a set of parameters known as \textbf{orbital parameters}, which define the orbit described by the satellite around the Earth.
+
+Orbits can be classified according to their \textbf{rotation axis} or their \textbf{movement}. Two particular cases are the \textbf{geosynchronous} orbits (the satellite is located in a fixed point and its movement follows the earth rotation) and the \textbf{heliosynchronous} (the satellite passes over any given point in its path always at the same local solar time).
 	
-\subsubsection{Resoluciones}
+\subsubsection{Resolutions}
 
-Uno de los parámetros principales que definen las propiedades de un sistema de teledetección son las \emph{resoluciones}. Estas establecen el nivel de detalle de los productos que el sistema genera, determinando este en las distintas magnitudes en las que el sistema opera. Las resoluciones dependen del sensor y de la plataforma como binomio operativo, y de las características propias de ambos. Distinguimos cuatro resoluciones, a saber:
+One of the most important parameters that define the characteristics of a remote sensing system are its \textbf{resolutions}. These define the level of detail of the products that it creates. Resolutions depend on both the sensor and the platform as an single operative unit, and on the individual characteristics of each of them. Four resolutions can be defined:
 
 \begin{itemize}
-	\item \textbf{Resolución espacial}. Indica la dimensión del objeto más pequeño que puede distinguirse en la imagen. Es la dimensión real que un píxel de la imagen tiene sobre el terreno.
-	\item \textbf{Resolución espectral}. Indica la amplitud de cada una de las regiones del espectro que se recogen en la imagen. La región del espectro abarcada y el número de bandas son los elementos que definen la resolución espectral. 
-	\item \textbf{Resolución radiométrica}. Para cada una de las bandas que produce un sensor (asociada esta a una determinada región del espectro según su resolución espectral), el dato recogido, que constituye su Nivel Digital, indica la intensidad correspondiente a esa región. El nivel de detalle con el que puede medirse esa intensidad es el que define la resolución radiométrica del sensor.\index{Resolución!radiométrica}
-	\item \textbf{Resolución temporal}. Indica el tiempo que tarda el sensor en volver a tomar una imagen de una misma zona.  Tiene sentido en el caso de sensores orbitales. La resolución temporal depende de la altura a la que se encuentra la plataforma que monta el sensor, así como la resolución espacial. 
+	\item \textbf{Spatial resolution}. It indicates the size of the smaller object that can be distinguished. If the output is an image, the spatial resolution is the real size of the area represented by a single pixels.
+	\item \textbf{Spectral resolution}. It indicates the amplitude of each of the regions of the spectrum that is registerd. It is defined by the total amplitude that is covered and the number of sections into which it is divided. The measurement corresponding to each of these sections will usually be stored in a separate band in the resulting image. 
+	\item \textbf{Radiometric resolution}. It indicates the level of detail of the intensity measurement taken for each of the spectral regions that are registered. 
+	\item \textbf{Temporal resolution}. It indicates the time that it takes the sensor to return to a given place. It makes sense only for orbital sensors. It depends on the platform characteristics, such as its attitude, and also on the sensor characteristics.
 \end{itemize}
 
-No resulta posible (por razones técnicas y teóricas) disponer de un sensor en el cual todas las anteriores regiones sean altas. Algunos sensores priman determinadas resoluciones, mientras que otros favorecen otras distintas.
+It is not possible (for technical or theoretical reasons) to have a sensor in which all the above resolutions are high. Some sensor might favor cetain resolutions, while other might favor different ones.
 
-A la hora de utilizar imágenes de teledetección, debe considerarse qué tipo de resolución  resulta de mayor interés (por ejemplo, para localizar elementos de pequeño tamaño son necesarias imágenes con alta resolución espacial). En base a esto, se escogerá una u otra clase de imágenes, que será la que ofrezca los valores de resolución más adecuados en conjunto. La utilización simultánea de datos de varios sensores en un proyecto es una alternativa para compensar este hecho.
-
-
-\subsection{Fotogrametría}
-
-Relacionada con la teledetección, encontramos la \textbf{fotogrametría}. La fotogrametría es la técnica para estudiar y definir con precisión la forma, dimensiones y posición en el espacio de un objeto cualquiera, utilizando medidas realizadas sobre una o varias fotografías. En el campo del SIG, es de especial interés la \textbf{fotogrametría aérea}, cuya base de trabajo tradicional son las fotografías aéreas, y que sirve principalmente para la creación de cartografía de elevaciones a partir de un proceso de \textbf{restitución}.
-
-En lugar de imágenes individuales, la fotogrametría emplea pares de imágenes, cada una de ellas tomada desde un punto distinto. Mediate estereoscopía, resulta posible recrear el efecto que ambas imágenes tendrían para la reconstrucción tridimensional de la escena, y <<engañar>> al cerebro del observador para que este pueda observar la escena con \textbf{volumen y profundidad}. Esto permite posteriormente conocer las formas del terreno, y a partir de ello crear las capas correspondientes, con informacion de elevaciones.
-
-Cuando se emplean imágenes de satélite, los pares se pueden obtener con aquellas plataformas y sensores que permiten \textbf{variar el ángulo de visión}, de modo que en la misma pasada del satélite se toman imágenes de una zona desde distintos puntos. 
-
-Según su enfoque, la fotogrametría puede ser \textbf{analógica}, \textbf{analítica} o  \textbf{digital}, siendo esta última la que se basa en el trabajo con imágenes digitales dentro de un entorno computerizado, y la que mayor relación tiene con los SIG. 
-
-La fotogrametría requiere de una \textbf{estación fotogramétrica}, que en el caso digital incorpora muchos elementos propios de un SIG, así como otros específicos del trabajo fotogramétrico. Entre estos, caben destacar aquellos que permiten la generación de visualizaciones con sensación de profundidad, así como los periféricos específicos tales como ratones 3D o manivelas similares a las que presentan los restituidores analíticos, facilitando así la adaptación de los operarios a este tipo de estación.
+When using images coming from remote sensing in a GIS, we should consider which resolution is more important (for instance, to locate elements that have a small size, high spatial resolution is needed). Using data from several different sensors is a good strategy for overcoming these limitations.
 
 
-\section{Cartografía impresa. Digitalización}
+\subsection{Photogrammetry}
 
-Existe gran cantidad de cartografía en formato no digital, tales como mapas impresos o fotografías aéreas antiguas en formato analógico. 
+Photogrammetry is the technique used to study and precisely define the shape, size and position in space of any object, using measurements taken on one or several photographs. Of special interest to GIS is the branch of photogrametry known as \textbf{aerial photogrammetry}, which uses aerial photographs and it is mainly used for generating elevation data through a process known as \textbf{restitution}.
 
-La \textbf{digitalización} de esta cartografía, necesaria para su uso en un SIG, supone la creacion de capas raster o vectoriales a partir de ella. En este último caso, implica la \textbf{disgregación} de la información que contiene, ya que en un mapa clasico se presentan distintas informaciones que en el uso común de un SIG se almacenan en capas independientes.
+Instead of single images, the branch of photogrammery known as \textbf{stereophotogrammetry} uses pairs of images, each of them taken from a different point. These images form a \textbf{stereo pair} and with them a three-dimensional reconstruction of the original scene can be produced. This can be used by an operator to <<see>> the scene with \textbf{depth and volume}, and using that, terrain forms can be identified and elevation information can be obtained. 
 
-La digitalización implica tres etapas: el \textbf{registro o georeferenciación}(Establecimiento del marco geográfico ---sistema de coordenadas, puntos de control, etc---, de forma que los elementos digitalizados posteriormente sean correctos), la digitalización de la compoente espacial (creación de geometrías en el caso de capas vectoriales), y la digitalización de la componente temática (creación de valores de celda en el caso de capas raster o de atributos en el caso vectorial).
+If using satellite images, stereo pairs can be obtained from those platforms and sensors that allow \textbf{changing the angle of vision}, so in the same satellite pass pictures of a given area can be taken from different points.
 
-La digitalización puede ser \textbf{manual} o \textbf{automática}. En el primer caso, es un operario quien introduce los valores de los elementos digitalizados, mientras que en el segundo caso es un procedimiento automatizado el que se encarga de ello.
+Photogrammetry can be \textbf{analogic} or \textbf{digital}, the latter being the one more related to the field of GIS.
 
-Para la creación de capas raster, lo habitual es la digitalización automática, a partir del \textbf{escaneo} del documento original.
+Stereoplotters are used to combine and align the images that form the stereo pair. Current stereoplotters are called \emph{analytical stereoplotters}  contain elements from GIS, along with more specific ones. Among these, we find specific visualization software and peripherals such as 3D mouses or other mechanical elements found in analogic photogrammetric devices, making it easy for operators to adapt to this new type of tools.
 
-El escaneo es el proceso de digitalización que convierte una imagen impresa (analógica) en una imagen digital. Dentro de un SIG, se emplea para digitalizar tanto mapas como fotografías aéreas, y su resultado es una capa ráster. 
+\section{Printed cartography. Digization}
 
-Aunque existen escáneres específicamente diseñados para el trabajo con documentos cartográficos, estos son dispositivos muy especializados y de muy elevado coste. Los escáneres más genéricos, pensados para el trabajo con todo tipo de imágenes y para todo tipo de usos, pueden, no obstante, emplearse de igual modo para escanear tanto mapas como imágenes aéreas con resultados aceptables, utilizándose con frecuencia.
-
-
-Los parámetros básicos que definen las características de un escáner son la \textbf{resolución espacial} y la \textbf{resolución radiométrica}. La primera de estas se mide habitualmente en \textbf{puntos por pulgada} y nos indica el número de puntos (celdas) que el sensor es capaz de tomar por cada unidad de longitud sobre el papel. La resolución radiométrica, por su parte, indica la capacidad del sensor para distinguir entre dos colores distintos. 
-
-En relación con las resoluciones de escaneo, no deben olvidarse los fundamentos cartográficos que se explicaron en un capítulo anterior. Trabajando con una resolución más elevada no hace necesariamente que estemos incorporando más información, ya que esta puede no existir en el documento original. Tendríamos un volumen de datos más elevado que el necesario para recoger toda la información del mapa.
-
-En el caso de capas vectoriales, es más habitual la \textbf{digitalización manual}. En ella, un operario va definiendo las entidades, trazando las forma de estas o, en caso de ser una entidad de tipo punto, indicando su localización. 
-
-Para llevar a cabo ese trazado de la entidad, se necesita emplear algún equipo que recoja la información introducida por el operador. Existen dos alternativas principales: utilizar una \textbf{tableta digitalizadora} diseñada específicamente para la digitalización, o bien digitalizar utilizando las \textbf{funciones de edición} de un SIG, realizando todo el proceso dentro de este y sin más herramientas que el propio ordenador y un dispositivo señalador como el ratón. En este segundo caso, la digitalización se produce sobre la pantalla, por lo que es necesario tener ya una versión  digital del documento (aunque no en forma de capa vectorial), la cual puede obtenerse mediante escaneo.
-
-La digitalización automática de entidades para formar una capa vectorial, conocida como \textbf{vectorización}, resulta también posible, aunque presenta más dificultades. El principal problema reside en la necesidad de una \textbf{adecuada preparación} del documento a digitalizar, ya que las condiciones de este afectan notablemente a la calidad del resultado. La vectorización, al igual que la digitalización manual, puede llevarse a cabo mediante dispositivos especializados, o bien mediante el software apropiado, el cual se ejecuta en un ordenador y trabaja con una imagen escaneada del documento original.
-
-Un caso particular de digitalización es la creación de \textbf{capas a partir de valores o coordenadas}. Es decir, cuando no existe un mapa o documento cartográfico, sino simplemente una serie de datos espaciales expresados de forma alfanumérica que son susceptibles de convertirse en una capa y emplearse así dentro de un SIG. Este proceso se conoce como \textbf{geocodificación}  e implica la asignación de coordenadas a puntos de interés tales como muestreos de campo levantamientos topográficos, inventarios de lugares donde tiene lugar un determinado fenómeno  o existe un determinado elemento, u otros como el \emph{geotagging} de fotografías, para asociar a estas la posición del enclave en el que se han tomado.
-
-En el caso de encontrarse en formato analógico, estos datos pueden digitalizarse mediante la simple introducción manual de coordenadas a través del teclado o bien mediante algún sistema más específico como el escaneo del documento y el empleo de algún software de reconocimiento de caracteres (OCR).
-
-En el caso de encontrarse ya en formato digital, estos datos pueden presentarse como tablas en una hoja de cálculo, datos asociados a otro dato de cualquier tipo (como en el caso del \emph{geotagging}) o incluso simples archivo de texto. Muchos SIG incorporan métodos para leer estos archivos y después utilizar las coordenadas que contienen con el fin de crear una nueva capa, en general de puntos.
+A large amount of cartography exists in printed form, such as maps or old analogic aerial photographs. To be used in a GIS, this cartography has to be \textbf{digitized}. That means creating raster or vector layers from them. In this last case, it also implies \textbf{separating the different types of information} that the map might contain, since printed maps information that, in a GIS, would be stored in independent layers.
 
 
+Digitizing a printed cartographic document involves three steps: 
 
-\subsection{Calidad de la digitalización}
+\begin{itemize}
+\item \textbf{Georeferencing} the original document. That is, setting a geogrpahical context (coordinate system, control points, etc.), so the digitized element that we will produce are correctly referenced.
+\item \textbf{Digitizing the spatial component}. That is creating the corresponding geometries.
+\item \textbf{Digitizing the thematic component}. Creating cell values for raster layer or attributes in the case of vector ones.
+
+Digitazion can be \textbf{manual} or \textbf{automatic}. In the first case, an operator introduces the value, while in the second one that is an done by an algorithm.
+
+To create raster layers, the most common method is to \textbf{scan} the original document using a \textbf{scanner}, which creates a digital image from an analogic one.
+
+There are hihg-end scanners specifically designed for woking with cartographic documents. Generic scanners, however, can be used for this task with acceptable result in terms of accuracy and distortion. 
+
+Two parameters define the characteristics of a scanner: its \textbf{spatial resolution} and its \textbf{radiometric resolution}. The first one is usually measured in \textbf{dots per inch} (DPI) and indicates the number of points (cells) that the sensor will create in the resulting image for each length unit in the original document. Radiometric resolution defines the ability of the sensor to separate between to different colors.
+
+The ideas discussed in chapter \ref{Fundamentals} about scale should be taken into account here as well. Working with a higuer resolution (if the scanner allows it) will not always mean adding more information to the resulting image, since it might not exist in the original document. We would just have a larger volume of data than the one needed to capture all the information in the printed document, but not more information.
+
+In the case of vector layers, \textbf{manual digitazion} is the most common method. An operator defines the features, tracing its geometries and entering the associated attribute data.
+
+To digitize geometries, the operator can use the \textbf{editing functionality of a GIS} and work on the screen of the computer using its mouse as tracing device, or use specialized peripheral such as a \textbf{digitizing tablet}. In the first case, digitizing takes places on the screen, so a digital version of the printed document is needed (although not a vector one), which can be obtained by scanning it. The full digitazion process is, therefore, a two-step one, which includes two different types of digitazion: from printed map to raster image (automatic), and from image to vector features (manual). If using a tablet, the printed map can be used directly to trace geometries on it.
+
+Automatic digitazation of geometries in a vector layer is known as \textbf{vectorization}. A digital image is needed, so the original document has to be scanned first. The vectorization algorithm analyzes the map and finds the elements that it contains, creating the corresponding vector layer elements from that. Manual work is usually needed to complete and correct the resulting data, since this tends to be a complex and error-prone process in which data preparation has a great importance, and a fully automatic alternative is not possible most of the time.
+
+A particular case of digitazion is the \textbf{creation of layers from values representing some spatial process}. That is, when the original analogic document is not a map, but just a set of values. This process is known as \textbf{geocoding}, and it involves assigning coordinates to those values, and then creating the corresponding layers with the combination of the original thematic data and the geographical information (the spatial component) that resulted from the geocoding process.
+
+The original alphanumeric data can be introduced manually or using an automated approach, such as scanning the document and then using some character recognition (OCR) software.
+
+A particular and very popular case of geocoding (although in this case the document is not analogic) is \textbf{geotagging}, in which coordinates are assigned to digital images.
 
 
-Uno de los aspectos más importantes del proceso de digitalización es la \textbf{calidad del resultado} obtenido, que debe tratar de ser lo más cercano posible a la calidad original de la información que se digitaliza, es decir, del mapa o imagen original. Independientemente de la precisión del equipo utilizado o la habilidad y experiencia del operario, la digitalización no es por completo perfecta, conteniendo siempre ciertas deficiencias y errores. 
+\subsection{Quality of digitization}
+
+One of the most important aspects of digitazion is the \textbf{quality of its result}, which should be as close as possible to the quality of the document being digitized. Digitazion is never perfect, regardless of the accuracy of the equipment that is used or the skills or the person that performs it. There will always be errors and deficiencies.
+
 
 Además de los errores que puedan incorporarse en las distintas fases del proceso de digitalización (sea este del tipo que sea), hay que considerar que las fuentes originales a digitalizar también pueden incluir los suyos propios. Así, el proceso de escaneado puede incorporar distorsiones geométricas, pero es posible que el mapa o fotografía aérea de partida también presente alguna distorsión como consecuencia de su deterioro, más patente cuanto más antigua sea esta. 
 
@@ -153,7 +145,7 @@ Dentro de los errores que aparecen como consecuencia de la digitalización en sí,
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=\textwidth]{../es/Fuentes_datos/Imprecisiones_digitalizacion.pdf}
+\includegraphics[width=\textwidth]{Data_sources/Imprecisiones_digitalizacion.pdf}
 \caption{\small Errores derivados del proceso de digitalización. a) Versión correcta, con nodos coincidentes. b) y c) Versiones con errores que causan una falsa desconexión entre las líneas.}
 \label{Fig:Imprecisiones_digitalizacion} 
 \end{figure}
@@ -183,7 +175,6 @@ Para la aplicación del GPS diferencial se requiere no solo un receptor único (aq
 El fundamento de esta técnica es que los errores que afectan al receptor móvil \textbf{también afectan al de referencia}. No obstante, la magnitud del error que afecta al receptor de referencia puede conocerse, ya que se conoce la coordenada exacta de este, y en base a eso puede eliminarse el error que afecta al receptor móvil, asumiendo que ambos errores son de similar índole.
 
 En la actualidad, aplicando estas técnicas de corrección diferencial, un GPS puede obtener precisiones del orden de 2 metros en latitud y longitud, y 3 en altitud. Sin corrección diferencial, esta precisión es de unos 10--20 metros.
-
 
 La precisión del sistema GPS depende del tipo de receptor GPS (o, en el lenguaje común, GPS a secas) que se emplee, obteniéndose mayores precisiones con receptores más avanzados, siempre dentro de las posibilidades del propio sistema GPS. Existen muchas clases de receptores GPS, siendo dos de ellas las principales en relación con los SIG:
 \begin{itemize}
