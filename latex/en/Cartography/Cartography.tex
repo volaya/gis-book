@@ -89,6 +89,10 @@ It is common when working with a GIS to have layers in \textbf{several different
 
 In a GIS, conversion and transformation capabilities allow to generate new layers that use a different CRS. Also, GIS include the ability to perform them \emph{on-the-fly} when layers are rendered, so we can create a map with layers that do not share the same CRS. These are correctly represented on the map and <<match>> one with another, since the GIS is automatically performing the corresponding changes to their coordinates to have them in a common CRS.
 
+To facilitate the use of coordinate reference systems, there are initiatives that try organize and code them, so each system can be easily identified by a unique code. The most common of this coding system are the EPSG codes defined by the International Association of Oil and Gas Producers. 
+
+Para facilitar el uso de sistemas de referencia, existen proyectos de codificación de estos, de forma que cada sistema existente puede identificarse de forma sencilla mediante un código. El más extendido de estos es el sistema de codificación \textbf{EPSG}.
+
 \section{Basic cartographic concepts}
 
 Among the fundamental concepts of cartography that any GIS user has to kno, \emph{scale} is the most important one. The scale of a map represent the \emph{size-ratio} between the <<map>> that would be obtained by developing the real surface we are representing (the Earth's surface in this case), and the scale of our smaller map. Knowing this ratio, we can know the real measures of the elements that are included in the map, since we can convert the measurements that we make on it into real-world measures. It's important to keep in mid that these measures are not so <<real>>, since the projection might have distorted them, but they are, nonetheless, measures at the original scale of the object that is measured.
