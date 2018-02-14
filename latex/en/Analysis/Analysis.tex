@@ -37,173 +37,169 @@ Queries can be combined with other analysis tools, for instance, to \textbf{sele
 
 \subsection{Topological analysis}
 
-Pueden plantearse consultas referidas no solo a la posición de los elementos geográficos, sino a la \textbf{relación con otros elementos}. La existencia de topología puede emplearse para la realización de consultas que respondan a cuestiones como:
+Queries can be refered not just to the position of geographical elements, ut also to their \emph{relation with other elements}. If we have topological information, we can perform analysis that responds to questions such as:
 
 \begin{itemize}
-\item ¿Cómo llegar desde mi posición actual hasta una coordenada concreta por la red viaria existente?
+\item How can I reach a give coordinate from my current position using the existing road network? 
 
-\item ¿Qué comunidades autónomas comparten límite con Madrid?
+\item Which countries share their border with France?
 \end{itemize}
 
-\subsection{Medición} 
+\subsection{Measurement} 
 
-La existencia de una referencia espacial para cada uno de los elementos con los que trabajamos en el análisis dentro de un SIG hace que podamos \textbf{cuantificar} otra serie de parámetros también espaciales. Entre las mediciones más básicas, encontramos las distancias, áreas, perímetros o factores de forma. Mas elaboradas, encontramos otras como pendientes o indices derivados de medidas simples.
+Spatial properties can be quantified and measured. Among the most basic ones, we find length, area, perimeter or shape factors. More elaborated ones such as slope or multiple indices derived from basic masurements can also be computed with the help of a GIS.
 
 
-\subsection{Combinación}
+\subsection{Combination}
 
-Uno de los procedimientos más habituales y más característicos dentro del uso de un SIG es la \textbf{combinación o superposición} de varias capas de información. La propia estructura de la información geográfica en capas facilita notablemente estos procedimientos y convierte a los SIG en plataformas ideales para llevar a cabo análisis donde se combina información sobre diversas variables.
+One of the most typical procedures within a GIS is the \tetbf{combination and overlay} of layers. The separation of geographical data into layers facilitates this kind of operations, and turn GIS into the optimal platform to perform any analysis that requires combining information from different variables.
 
-En el caso de capas vectoriales, las \textbf{operaciones de solape} tales como \textbf{unión, intersección, diferencia o recorte}, son habituales. La figura \ref{Fig:Interseccion} muestra un ejemplo de la operación de intersección con dos capas de polígonos.
+In the case of vector layers, overlay operations such as \textbf{union, intersection, difference or clipping} are frequently used. Figure \ref{Fig:Intersection} shows an example of an overlay operation between polygon layers.
 
 \begin{figure}[!hbt]   
 \centering
 \includegraphics[width= \columnwidth]{Analysis/Intersection.pdf}
-\caption{\small Operación de intersección de dos capas de polígonos.}
+\caption{\small Intersection between two polygon layers.}
 \label{Fig:Intersection} 
 \end{figure}
 
-\subsection{Transformaciones}
+\subsection{Transformations}
 
-Podemos englobar dentro de este grupo una amplia serie de procedimientos que modifican los elementos de entrada de diversas formas. Entre los más habituales, encontramos la \textbf{transformación de coordenadas}, la \textbf{simplificación de geometrías}, o la \textbf{creación de áreas de influencia} o la \textbf{reclasificación de valores}. Estas transformación pueden afectar tanto a la componente espacial como a la componente temática del dato. 
+We include in this group a large set of operations that alter the input data in different ways. Among them we find \textbf{coordinate transformations}, \textbf{simplification of geometries} or the \textbf{creation of influence areas (buffers)}. These transformations may affect both the spatial component and the thematic component of the data. 
 
-Un caso particular, ya mencionado en un capítulo anterior, es la \textbf{conversión entre modelos de datos}, esto es, entre el modelo ráster y el vectorial. La figura \ref{Fig:Conversions} muestra un ejemplo de esto. Partiendo de un mapa escaneado (una capa ráster) con curvas de nivel, pueden detectarse estas y crearse una capa vectorial con dichas curvas de nivel. Estas pueden posteriormente convertirse en un Modelo Digital de Elevaciones (ráster) mediante \textbf{interpolación}, el cual es posible convertir de nuevo en una capa vectorial de líneas.
+A particular case, already mentioned in a previous chapter, is the \textbf{conversion between representation models}. Figure \ref{Fig:Conversions} shows an example of this. Starting with a scanned map (a raster layer) with contour lines, these can be traced and a vector layer created based on them. The lines in that vector layer can be later converted into a raster DEM using interpolation techniques. From the raster DEM it is possible to obtain contour lines at an arbitrary contour distance (of course, within the level of detail of the original data).
 
 \begin{figure}[!hbt]   
 \centering
 \includegraphics[width= \columnwidth]{Analysis/Conversions.png}
-\caption{\small Conversión entre distintos modelos de datos para una capa de elevaciones.}
+\caption{\small Conversion between representation models for an elevation layer.}
 \label{Fig:Conversions} 
 \end{figure}
 
-\subsection{Análisis de superficies}
+\subsection{Terrain analysis}
 
-El análisis de superficies es uno de los más potentes de cuantos encontramos en un SIG. Desde parámetros básicos como la \textbf{pendiente} o la \textbf{orientación} hasta parámetros morfométricos muy específicos, pasando por todas las herramientas del \textbf{análisis hidrológico}, la batería de operaciones disponibles es muy amplia. 
+Terrain analysis is one of the most powerful capabilities we find in GIS. From basic parameters such as \textbf{slope} or \textbf{aspect}, to highly specific morphometric ones, and passing through a large collection of tools for \textbf{hydrological analysis}, a vast array of analysis capabilities is available in this field.
 
-\subsection{Estadística descriptiva}
+\subsection{Descriptive statistics}
 
-Los elementos de la estadística clásica tienen sus equivalentes en los datos espaciales, y nos permiten \textbf{calificar cuantitativamente} los datos con los que trabajamos. Se incluyen aquí descriptores de centralidad y dispersión, de dependencia espacial o el estudio de patrones espaciales, entre otros muchos. Estos pueden a su vez usarse para el contraste de hipótesis que contengan una cierta componente espacial.
+The common elements of classic statistics have their equivalents when working with geographical data, and they allow us to \textbf{quantitatively describe} the data we work with. Here we include centrality and dispersion measures,  pattern analysis, and many others. These can be themselves used in hypothesis testing, in case there is a spatial component involved.
 
-Por ejemplo, estos estadísticos nos permiten dar respuesta a cuestiones del tipo:
+These statistical values allow us to respond to questions such as:
+
 
 \begin{itemize}
-\item ¿Es constante la media de altura a lo largo de toda la geografía de mi país?
+\item Is average height a constant value across a given country?
 
-\item ¿Existe alguna dirección predominante en los movimientos de individuos de una especie o se desplazan erráticamente?
+\item Is there a predominant movement direction for individuals of a given species, or do they move erraticaly?
 \end{itemize}
 
-\subsection{Inferencia}
+\subsection{Inference}
 
-Otro análisis estadístico de gran importancia en los SIG es el que permite inferir comportamientos de las distintas variables y estudiar, por ejemplo, la forma en que estas van a evolucionar a lo largo del tiempo.
+Another important statistical analysis in GIS is the one that helps infering the behaviour of variables and their evolution.
 
-El establecimiento de modelos de cambio y variación representa una de las herramientas más actuales en el campo de los SIG, y un campo en abundante desarrollo.
+\tetbf{Change modelling} is one of the many fields that are rapidly evolving thanks to the help of GIS.
 
-\subsection{Toma de decisiones y optimización}
+\subsection{Optimization and decision-making}
 
-La estructura de la información geográfica en capas dentro de un SIG, favorable como ya vimos para la superposición de capas, lo es igualmente para estudiar de forma combinada los efectos de distintos factores. Este estudio nos permite luego responder a cuestiones como, por ejemplo:
+The layered structure of geographical information in a GIS, which, as we have seen was ideal for overlay operations, provides also an optimal framework for estudied the combined effect of multiple platforms. GIS is the perfect framework for \tetbf{multiple-criteria analysis}.
+
+Questions such as the following ones can be responded using a GIS:
 
 \begin{itemize}
-\item ¿Cuál es el mejor lugar para emplazar una nueva construcción en función de su impacto sobre el medio?
+\item Which one is the best place to build a new pwer station considering its effect on the environment and the people living close to it?
 
-\item ¿Dónde situar un nuevo hospital para que el servicio en la comarca mejore lo máximo posible?
+\item Where should a hospital be located to provide the best possible service to the inhabitants of a given region?
 \end{itemize}
 
-\subsection{Modelización}
 
-La creación de modelos espaciales dentro de un SIG es una tarea aún pendiente de mucho desarrollo. No obstante, existe un gran número de modelos en los más diversos campos, y la arquitectura de datos y procesos de los SIG es propicia para la implementación de otros nuevos.
+\section{Particularities of spatial data for its analysis}
+
+Spatial data has some great potential thanks to its particular properties, but at the same time these properties might \tetbf{limit or condition} working with them. In some cases, they might represent problems that have to be considered when analyzing them; in others, they are just something that anyone working with them should know, but that are not problematic \emph{per se}.
+
+\subsection{Scale}
+
+We can study geographical information at \emph{different scales}, and depending one we use, the results we will otain will be different. For this reason, apart from considering scale when rendering and visualizing geographical data, the \textbf{analysis scale} should be considered as well when performing any analysis.
+
+The analysis scale should depend on the \emph{data properties} (accuracy, data type, etc.) and the \textbf{analysis to be performed} with them.
+
+This can be easily understood with the help of \ref{Fig:Scales}. If we want to categorize the form of terrain at a given point, we need to analize the elevation of the point and also the elevation in its surroundings. Depending on the size of that analysys <<window>> around the center point (which is what defines the analysis scale), the results can be very different. In the image, for a small value of the analysis radius, the terrain will be categorized as being a peak. For a larger region, however, it will be considered the bottom of a valley.
 
 
-\section{Particularidades de los datos espaciales para su análisis}
-
-Las características propias de los datos espaciales dotan a estos de una \textbf{gran potencialidad} de análisis, al tiempo que \textbf{condicionan o limitan} otras operaciones. Algunas de estas características representan problemas que han de tenerse presentes en el análisis; otros son simplemente conceptos básicos que deben conocerse pero no han de implicar necesariamente una dificultad asociada.
-
-\subsection{Escala}
-
-
-A la hora de estudiar la información geográfica, podemos hacerlo a \textbf{distintos niveles} y, dependiendo del nivel elegido, los resultados serán de una u otra naturaleza. Debido a esto, además de considerar la escala cartográfica para la representación y gestión de datos en un SIG, es necesario considerar la \textbf{escala de análisis}.
-
-La escala de análisis depende \textbf{del dato en sí} (precisión, tipo, etc.), así como del \textbf{análisis que se va a realizar} con él.
-
-Como se muestra en la figura \ref{Fig:Scales}, si para definir las formas de relieve en un punto dado lo hacemos considerando dicho punto y los valores de elevación a su alrededor, la caracterización que hagamos varía en función de la dimensión de esa zona alrededor (que es la que define la escala de análisis). Para valores pequeños de dicha zona de análisis, el punto analizado puede definirse como una cima, mientras que aumentando la escala de análisis se advierte que el punto se sitúa en el fondo de un valle.
 
 \begin{figure}[h]   
 \centering
 \includegraphics[width= .45\columnwidth]{Analysis/Scales.pdf}
-\caption{\small Dependiendo de la escala de análisis, un mismo relieve puede ser caracterizado como cima (a) o fondo de valle (b)}
+\caption{\small Depending on the analysis scale, the form of the terrain can   be classified as a peak (a) or a valley bottom (b).}
 \label{Fig:Scales} 
 \end{figure}
 
-Por tanto, debemos observar el relieve desde la distancia correcta a la cual la información que nos proporciona es la más adecuada para un análisis dado. Además de existir una escala de mayor relevancia para un análisis concreto,  es de interés el trabajar a \textbf{múltiples escalas} y combinar los resultados.
+Therefore, we must <<look>> at the terrain at the correct distance for which the information that it gives us is the most interesting and correct for the kind of analysis that we are performing. Apart from the fact that there is an optimal analysis scale for each type of analysis, it is also interesting to work at \textbf{multiple scales}, since that will provide us more information than what we can obtain working only at a single scale.
 
-Otro ejemplo de cómo la escala de análisis condiciona los resultados obtenidos lo encontramos en el caso de efectuar \textbf{mediciones}. Como puede verse en la figura \ref{Fig:Fractal_line}, la unidad de medida empleada provoca que se obtengan resultados distintos. 
+Another example of how the analysis scale affects the analysis result is found in the case of \textbf{taking measurements}. As it can be seen in figure \ref{Fig:Fractal_line}, the measurement unit (which is implicitely defined by the level of detail of the data) that is used causes the results to be different. 
 
 \begin{figure}[h]   
 \centering
 \includegraphics[width= .45\columnwidth]{Analysis/Fractal_line.pdf}
-\caption{\small La unidad de medida empleada modifica el resultado obtenido.}
+\caption{\small Measurement unit affects the value of the measurement.}
 \label{Fig:Fractal_line} 
 \end{figure}
 
-La unión del valor resultante con la escala a la que se ha obtenido tiene en conjunto pleno significado, pero ese valor por sí mismo carece de dicho significado. 
+A vlue by itself might not have mening if it is not accompanied by the scale that was used to obtain it.
 
-El concepto de \textbf{fractal} tiene una implicación directa en este hecho.
-
-El propio \textbf{formato de almacenamiento} condiciona el efecto de la escala, ya que puede imponer límites. Tal es el caso cuando se trabaja con capas raster, en las que el \textbf{tamaño de celda} delimita la precisión que puede obtenerse en el análisis.
-
-\subsection{El Problema de la Unidad de Área Modificable}
-
-Muchas de las variables con las que trabajamos dentro de un SIG \textbf{no pueden medirse de forma puntual}, y por ello han de \textbf{estudiarse para un área dada}. Ejemplos de este tipo de variables son el porcentaje de población en un rango de edad determinado o la densidad media de población.
-
-Las áreas que se definen para poder trabajar con las variables de esta índole son \textbf{esencialmente arbitrarias}, tales como países, regiones o distritos, que se establece sin ningún criterio propio del análisis espacial. La utilización de una u otra unidad \textbf{altera los resultados} extraídos de las variables estudiadas.
-
-Este problema, por tener relación con la elección de la unidad de agregación de la información, se conoce como \emph{Problema de la Unidad de Área Modificable} (PUAM).
+The concept of \textbf{fractal} has a direct link with this.
 
 
-Un problema particular relacionado con el PUAM es la denominada \textbf{falacia ecológica}, que consiste en asumir que los valores calculados para una unidad de área pueden aplicarse a los individuos de la población existente en dicha área. Sólo en el caso de que exista una completa homogeneidad para la variable analizada, lo cual raramente sucede, la anterior suposición sería cierta.
+\subsection{The Modifiable Areal Unit Problem}
 
-\subsection{Autocorrelación espacial} 
 
-Se denomina \textbf{autocorrelación espacial} a la existencia de una \textbf{correlación de la variable consigo misma}, de tal modo que los valores de esta variable en un punto guardan relación directa con los de esa misma variable en otros puntos cercanos. Por ejemplo, en el caso de medirse la temperatura, los puntos cerca de un foco de calor tendrán una temperatura mayor que aquellos cerca de focos fríos. Si estudiamos la distribución de una enfermedad infecciosa, es más probable que los casos se encuentren agrupados, de forma que la presencia de un alto número de casos implique también una alta incidencia en poblaciones cercanas.
+Many of the variables that with which we work in a GIS \textbf{cannot be measured at a single point}, and they must be \textbf{aggregated for a given area around that point}. Examples of that are the percentage of the population within a given age range, or the population density. 
 
-Otra forma de expresar la autocorrelación espacial es mediante la conocida como \textbf{Primera Ley Geográfica de Tobler}, que establece que <<todo está relacionado con todo, pero las cosas próximas entre sí están más relacionadas que las distantes>>.
+Areas defined to work with these variables are \textbf{esentially arbitrary}, such as countries, counties, districts, etc., and they are defined without taking into account any criteria related to spatial anlysis. Using different areas (different units for computing the values of the variable) will yield different results.
 
-La autocorrelación espacial, tal y como se ha descrito antes, es \textbf{positiva}. Puede, no obstante, existir una autocorrelación espacial \textbf{negativa}, si los valores altos se rodean de valores bajos y viceversa.
+This problem is known as the \textbf{Modifiable Areal Unit Problem} (PUAM). Solving or reducing its effect is complex, and no solution exists that can be applied in all cases, but whenever we work with this type of geographical data, it is important to keep in mind that there will be a source of statistical bias that cannot be neglected.
 
-En caso de no existir ningún tipo de autocorrelación espacial, se tiene que los datos recogidos en una serie de puntos son \textbf{independientes entre sí} y no se afectan mutuamente, sin que tenga influencia de la distancia.
+Another problem relateb with the PUAM is the so-called \textbf{ecological fallacy}, which result from (wrongly) assuming that the values computed for a given area can be assigned to the individuals of the population within that area. This would be true only in the case of complete homogeneity.
 
-La figura \ref{Fig:Autocorrelation} muestra unas sencillas capas ráster en las que se presentan los tres tipos de autocorrelación espacial anteriores.
+
+\subsection{Spatial autocorrelation} 
+
+\textbf{Spatial autocorrelation} is the \tetbf{correlation of a variable with itself}, in such a way that values of the variable at any point are correlated with values of that same variable in close-by points. For instance, in the case of temperature, points close to a heat source will have a higher temperature that those far from it or closer to a cold spot. If we study the distribution of an infectious disease, reported cases are likely to appear grouped, and a large number of them normally cause the neary populations to also be largely affected by the disease.
+
+Another way of expressing this is using the well-known \textbf{Tobler's First Law of Geography}, which states that <<everything is related to everything else, but near things are more related than distant things>>.
+
+In the above cases, sppatial autocorrelation is said to be \textb{positive}. However, it can be also \textbf{negative}, if higher values are surrounded by lower ones, or there can be no correlation at all, when values in separate points are \textbf{independent} and do not affect each other regardless of distance.
+
+Figure \ref{Fig:Autocorrelation} shows three raster layers which demonstrate the above types of spatial autocorrelation.
 
 \begin{figure}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Analysis/Autocorrelation.png}
-\caption{\small a) Autocorrelación espacial positiva. b) Autocorrelación espacial negativa. c) Ausencia de autocorrelación espacial (independencia)}
+\caption{\small a) Positive spatial autocorrelation. b) Negative spatial autocorrelation. c) No spatial autocorrelation (independency).}
 \label{Fig:Autocorrelation} 
 \end{figure}
 
-Las consecuencias de la existencia de autocorrelación espacial son numerosas y de gran importancia.
+The existence of spatial autocorrelation has many important consequences.
 
-Por una parte, muchos de los análisis estadísticos suponen la \textbf{independencia de la variable}. Puesto que existe una dependencia de la componente espacial, será necesario para obtener resultados correctos introducir dicha componente espacial como una variable más. 
-
-Algo similar sucede cuando los datos presentan alguna \textbf{tendencia espacial} (los valores de una variable están relacionados con sus propias coordenadas geográficas), ya que esto tambien invalida el supuesto de la independencia de los datos.
-
-Existiendo autocorrelación espacial, y siendo esta positiva, la \textbf{inferencia estadística es menos eficaz} que si se cuenta con un número igual de observaciones de una variable independiente. 
-
-La autocorrelación espacial no es, no obstante, un elemento que siempre tenga consecuencias negativas. Puesto que los puntos cercanos a uno dado guardan relación con este, la autocorrelación puede aprovecharse para \textbf{estimar valores} en un punto cualquiera si conocemos los valores en puntos cercanos. Este es el fundamento de los \textbf{métodos de interpolación}
+First, many of the most commmon statistical analyses assume depency of the variable that is being studied. Since there is a dependency on the spatial component, this component has to be introduced as another variable to consider, in order to ensure that results are sound.
 
 
-\subsection{Existencia de estructura}
+Something similar happens when data have a \textbf{spatial trend}(values of a variable depend on the position, like, for instance, temperature values, which show a clear trend as latitude changes), since that also invalidates the assumption that data are independent.
 
-Tanto la disposición de los datos como las propiedades de la variable estudiada (por ejemplo, la propia autocorrelación espacial como propiedad intrínseca) exhiben una estructura determinada. Esta estructura puede condicionar los resultados del análisis y tener influencia sobre estos.
+If positive correlation exists, \textbf{statistical inference is less effective}. The same number of observations contain less information about the phenomena represented by the variable.
 
-Los dos principales conceptos estadísticos que definen la estructura espacial de los datos son la \textbf{estacionaridad} y la \textbf{isotropía}. La estacionaridad indica que el proceso es \textbf{invariante a la traslación}. Es decir, que las propiedades son constantes en el espacio y no existe tendencia alguna. La isotropía indica que el proceso es \textbf{invariante a la rotación} y tiene lugar del mismo modo en todas direcciones. 
-
-
-\subsection{Efectos de borde}
+The consequences of spatial autocorrelation, however, are not only negativa. If points located in the vicinity of a given one are related to it, and the value of a variable are affected by that proximity, that can be used to \textbf{estimate values} at any point, knowing the values in a set of naerby points. That is the fundamental idea behind \textbf{interpolation methods}.
 
 
-Las zonas que estudiamos dentro de todo análisis espacial \textbf{tienen unos límites establecidos}. Estos límites vienen definidos de forma artificial ---el límite de la fotografía aérea de la que disponemos, por ejemplo--- o bien de forma natural ---si estudiamos un bosque junto a un pantano, el bosque encuentra su límite al borde de este último---. La presencia de estos bordes \textbf{distorsiona el resultado de los análisis}, en especial para aquellos parámetros no puntuales que requieren la definición de un area de estudio (densidades, etc., como ya vimos para el caso del PUAM)
+\subsection{Structure}
 
-En algunos casos, el efecto de borde no se manifiesta únicamente para puntos cercanos a dicho borde, sino para \textbf{todos aquellos relacionados o conectados} con él según un determinado criterio, con independencia de su distancia a este.
+Both the data itself and the properties of the phenomeon they represent (such as the aforementioned spatial correlation) have some sort of structure. This structure can have a relevant effect on the analysis results, and should be taken into account.
 
+The two basic statistical concepts related to the spatial structure of a process are \textbf{stationarity} and \textbf{isotropy}. Stationarity indicates that the process is \textbf{translation-invariant}. That is, its properties are constant across the whole space and there is no spatial trend. Isotropy means that the process is \textbf{rotation-invariant}, and happens in the same way in all directions.
+
+\subsection{Border effects}
+
+The areas in which we perform spatial analysis \textbf{have boundaries}. These might be artificial ---for instance, the limit of the aerial photograph we are working with---, or natural ---if we study a forest that is close to a lake, the shore will be limit of the forest. Boundaries \tetbf{distort the result of analysis}, specially for those variables that have to be aggregated (density, etc., as we saw for the case of PUAM)
+
+In some cases, the border effect might manifest itself only for those point close to the border. In others, however, \textbf{all the points related or somehow connected to the border} might be affected, regardless of the distance to it.
 
 \pagestyle{empty}
