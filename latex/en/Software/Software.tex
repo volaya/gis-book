@@ -13,7 +13,7 @@ Five are the fundamental functionalities of a desktop GIS: \textbf{data input an
 
 \subsection{Data input and output}
 
-A desktop GIS must be able to \textbf{read data} and, optionally, to \textbbf{save} it. This last functionality is needed in case the GIS can produce new layers, but not in those ones that do not contain analysis or editing capabilities.
+A desktop GIS must be able to \textbf{read data} and, optionally, to \textbf{save} it. This last functionality is needed in case the GIS can produce new layers, but not in those ones that do not contain analysis or editing capabilities.
 
 There is a very large number of data formats for \textbf{geographical data}, and most GIS use common libraries to be able to read and write them, which allows them to share data between them and improve their connectivity.
 
@@ -35,9 +35,9 @@ Along with the canvas, there are \textbf{navigation tools} that allow the user t
 \label{Fig:Navigation_tools} 
 \end{figure}
 
-The most remarkable feature of geographical data visualization in a GIS is that, unlike what happens with a classic printed map, where its characteristics cannot be changed, here the user can select \emph{what} he sees} and \emph{he} sees it. Geogrpahical data is \textbf{independent of the information needed to visualize it}, and, therefore, it can be represented in different ways. This is true even for data that has an inherent visual nature, such as images, since even in that case the rendering can be adjusted and modified by the user.
+The most remarkable feature of geographical data visualization in a GIS is that, unlike what happens with a classic printed map, where its characteristics cannot be changed, here the user can select \emph{what} he sees and \emph{how} he sees it. Geographical data is \textbf{independent of the information needed to visualize it}, and, therefore, it can be represented in different ways. This is true even for data that has an inherent visual nature, such as images, since even in that case the rendering can be adjusted and modified by the user.
 
-Although in the most common case the canvas is bidimensional, certain GIS are also capable of \textb{three-dimensional rendering}. In this case, navigation tools are more complex, and they allow to adjust perspective, vision angles or vertical exaggeration, among other parameters.
+Although in the most common case the canvas is bidimensional, certain GIS are also capable of \textbf{three-dimensional rendering}. In this case, navigation tools are more complex, and they allow to adjust perspective, vision angles or vertical exaggeration, among other parameters.
 
 \subsection{Analysis}
 
@@ -135,7 +135,7 @@ Now let's see how this ideas apply to the field of GIS.
 Regarding servers, they can have four main capabilities:
 
 \begin{itemize}
-\item \textbf{Serve rendered geographical data}. Generally known as \textbf{map servers}, they provide <<maps>>, that is images created from geographical data. If data is already an image (such as an aerial or satellite photograph), the server will just send it as it is. If data is not an image (vector layer or raster layer other than image), the server will create an image based on the geogrpahical data. The symbology used to do this can be a default one that the server uses for all requests, or it can be provided by the client in the request. 
+\item \textbf{Serve rendered geographical data}. Generally known as \textbf{map servers}, they provide <<maps>>. That is, images created from geographical data. If data is already an image (such as an aerial or satellite photograph), the server will just send it as it is. If data is not an image (vector layer or raster layer other than image), the server will create an image based on the geogrpahical data. The symbology used to do this can be a default one that the server uses for all requests, or it can be provided by the client in the request. 
 
 In both cases, the client also specifies the dimensions of the requested map image that is served, and the server takes care of preparing it.
 
@@ -179,7 +179,7 @@ About clients, they can be divided in two classes:
 
 \section{Some techniques related to GIS services}
 
-Two important techniques used in the context of the client--server architecture for geographical data are \textf{tiling} and \textbf{caching}. These techniques, whether implemented on a light client or a heavy one, allow to have more responsive interfaces and to reduce the amount of data sent over the network, overcoming to a certain extent the problems that a slow network might cause. Both are used mainly with map servers (server that provide rendered images).
+Two important techniques used in the context of the client--server architecture for geographical data are \textbf{tiling} and \textbf{caching}. These techniques, whether implemented on a light client or a heavy one, allow to have more responsive interfaces and to reduce the amount of data sent over the network, overcoming to a certain extent the problems that a slow network might cause. Both are used mainly with map servers (server that provide rendered images).
 
 Tiling divides the images that the client is working with into smaller ones, forming a mosaic. By correctly managing the tiles in that mosaic, the amount of data transmitted can be reduced. When the request is sent to the server, instead of a single image, a set of them is requested. Although this does not reduce the amount of data, the tiled structure will allow a more flexible and optimized handling of data once a new image is needed, as it will soon be explained.
 

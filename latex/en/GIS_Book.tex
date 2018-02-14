@@ -1,11 +1,9 @@
 \documentclass[pdftex,11pt]{book}
 \usepackage[pdftex]{graphicx}
-\usepackage[activeacute,spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{enumitem}
 \usepackage{lmodern}
-\usepackage[latin1]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,dvips,paperwidth=5in,paperheight=8in,tmargin=.65in,bmargin=.9in, left=0.80in, right=0.65in}
 \usepackage{lettrine}
@@ -89,12 +87,10 @@
 
 \vspace*{3cm}
 \begin{center}
-\Large{\emph{Introduction to Geographical Information Systems}}
+\Large{\emph{Introduction to GIS}}
 \end{center}
 
-\newpage
-
-
+\cleardoublepage
 
 \makeatletter
 \newlength\drop
@@ -112,7 +108,7 @@
 \vbox{%
     \vspace{\drop}
     {\Large\textsc{Víctor Olaya}\par}\vskip3.5\baselineskip
-    {\Huge\bfseries\raggedright{Introduction to Geographical Information Systems}\par}
+    {\huge\bfseries\raggedright{Introduction to GIS}\par}
     \vspace{2.5cm}
     \vspace{0.4\textheight}
 }% end of vbox
@@ -124,27 +120,21 @@
 \makeatother
 \titleGM
 
-\newpage
 
 \null
 \vfill
 \scriptsize
 \noindent
-Introduction to Geographical Information Systems\\
+Introduction to GIS\\
 Copyright \copyright 2018 Víctor Olaya\\
 
-\vspace{10mm}
-\noindent Las update: \today{}\\
+\noindent Cover Image: The Art Journal The Industry of All Nations Illustrated Catalogue (London, England: Bradbury and Evans, 1851)\\
 
-\vspace{6mm}
-\noindent
-This books is distributed under a Creative Commons Atribution license.\\
+\noindent Last update: \today{}\\
 
-\vspace{5mm}
-\noindent \rule{\textwidth}{1pt}
+\noindent This is book is distributed under a Creative Commons Atribution license.\\
 
-
-\cleardoublepage
+\newpage
 \normalsize
 
 \input{preface}
@@ -155,7 +145,7 @@ This books is distributed under a Creative Commons Atribution license.\\
 \cleardoublepage
 \vspace*{3cm}
 \begin{center} 
-{\Large\scshape Introduction to Geographical Information Systems}
+{\Large\scshape Introduction to GIS}
 \end{center}
 
 \begin{mainmatter}
@@ -165,9 +155,9 @@ This books is distributed under a Creative Commons Atribution license.\\
 \include{Data/Data}
 \include{Data_sources/Data_sources}
 \include{Software/Software}
-\include{Databases/Databases}
+%\include{Databases/Databases}
 \include{Analysis/Analysis}
-\include{Visualization/Visualization} 
+%\include{Visualization/Visualization} 
 \tableofcontents
 \end{mainmatter}
 

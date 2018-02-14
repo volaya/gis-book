@@ -101,13 +101,13 @@ Stereoplotters are used to combine and align the images that form the stereo pai
 
 A large amount of cartography exists in printed form, such as maps or old analogic aerial photographs. To be used in a GIS, this cartography has to be \textbf{digitized}. That means creating raster or vector layers from them. In this last case, it also implies \textbf{separating the different types of information} that the map might contain, since printed maps information that, in a GIS, would be stored in independent layers.
 
-
 Digitizing a printed cartographic document involves three steps: 
 
 \begin{itemize}
 \item \textbf{Georeferencing} the original document. That is, setting a geogrpahical context (coordinate system, control points, etc.), so the digitized element that we will produce are correctly referenced.
 \item \textbf{Digitizing the spatial component}. That is creating the corresponding geometries.
 \item \textbf{Digitizing the thematic component}. Creating cell values for raster layer or attributes in the case of vector ones.
+\end{itemize}
 
 Digitization can be \textbf{manual} or \textbf{automatic}. In the first case, an operator introduces the value, while in the second one that is an done by an algorithm.
 
@@ -156,13 +156,13 @@ This is particularly important in the case of digitizing not only the geometries
 
 \section{GPS}
 
-One of the most relevant advancements in geographical data sources have been \emph{\textbf{global navigation satellite systems} (GNSS). These systems allow, \textbf{for any given point and at any time, to know the exact location of that point} with an accuracy of a few meters or less. To do it, they use a constellation of satellites to which information is transmitted from the study point, and use that transmition to compute the coordinates at which the point is located.
+One of the most relevant advancements in geographical data sources have been \textbf{global navigation satellite systems} (GNSS). These systems allow, \textbf{for any given point and at any time, to know the exact location of that point} with an accuracy of a few meters or less. To do it, they use a constellation of satellites to which information is transmitted from the study point, and use that transmition to compute the coordinates at which the point is located.
 
-The first and most popular of this systems is the \textbf{Global Positioning System} (GPS). It has 24 active satellites (the satellite segment), along with terrestrial stations to control them (the control segment), and it is based on \texbf{trilateration}. Distances are measured from a GPS unit (the user segment) to a certain number of satellites. Knowing those distances and the exact position of the satellites, the position of the unit can be computed. Position is computed with its \emph{x, y} and \emph{z} coordinates. The GPS system uses WGS-84 as its reference ellipsoid.
+The first and most popular of this systems is the \textbf{Global Positioning System} (GPS). It has 24 active satellites (the satellite segment), along with terrestrial stations to control them (the control segment), and it is based on \textbf{trilateration}. Distances are measured from a GPS unit (the user segment) to a certain number of satellites. Knowing those distances and the exact position of the satellites, the position of the unit can be computed. Position is computed with its \emph{x, y} and \emph{z} coordinates. The GPS system uses WGS-84 as its reference ellipsoid.
 
 The satellite network is designed to guarantee that, from any point of the Earth's surface, and at any time, a GPS unit can locate the required number of satellites the compute its position.
 
-There are \tetbf{several error sources} that might affect the accuracy of the position computed by a GPS unit. Among them, we find errors in the position of satellites, errors due to the effect of the Earth's atmosphere on the GPS signal, and also those caused by the accuracy problems of the clocks used to measure signal travel time (which is then converted into travel distance). \textbf{Selective availability} was a random error introduced in the GPS signal with military purposes. It was, however, removed on May 2, 2000.
+There are \textbf{several error sources} that might affect the accuracy of the position computed by a GPS unit. Among them, we find errors in the position of satellites, errors due to the effect of the Earth's atmosphere on the GPS signal, and also those caused by the accuracy problems of the clocks used to measure signal travel time (which is then converted into travel distance). \textbf{Selective availability} was a random error introduced in the GPS signal with military purposes. It was, however, removed on May 2, 2000.
 
 Among the techniques use to correct or minimize these errors, \textbf{differential GPS} in the most important one. It was originally conceived to remove the effect of selective availability, but can be used to correct a large part of the other errors that affect the GPS system.
 

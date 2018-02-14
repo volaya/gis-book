@@ -58,22 +58,22 @@ En el caso de capas vectoriales, las \textbf{operaciones de solape} tales como \
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width= \columnwidth]{Analisis/Interseccion.pdf}
+\includegraphics[width= \columnwidth]{Analysis/Intersection.pdf}
 \caption{\small Operación de intersección de dos capas de polígonos.}
-\label{Fig:Interseccion} 
+\label{Fig:Intersection} 
 \end{figure}
 
 \subsection{Transformaciones}
 
 Podemos englobar dentro de este grupo una amplia serie de procedimientos que modifican los elementos de entrada de diversas formas. Entre los más habituales, encontramos la \textbf{transformación de coordenadas}, la \textbf{simplificación de geometrías}, o la \textbf{creación de áreas de influencia} o la \textbf{reclasificación de valores}. Estas transformación pueden afectar tanto a la componente espacial como a la componente temática del dato. 
 
-Un caso particular, ya mencionado en un capítulo anterior, es la \textbf{conversión entre modelos de datos}, esto es, entre el modelo ráster y el vectorial. La figura \ref{Fig:Conversiones} muestra un ejemplo de esto. Partiendo de un mapa escaneado (una capa ráster) con curvas de nivel, pueden detectarse estas y crearse una capa vectorial con dichas curvas de nivel. Estas pueden posteriormente convertirse en un Modelo Digital de Elevaciones (ráster) mediante \textbf{interpolación}, el cual es posible convertir de nuevo en una capa vectorial de líneas.
+Un caso particular, ya mencionado en un capítulo anterior, es la \textbf{conversión entre modelos de datos}, esto es, entre el modelo ráster y el vectorial. La figura \ref{Fig:Conversions} muestra un ejemplo de esto. Partiendo de un mapa escaneado (una capa ráster) con curvas de nivel, pueden detectarse estas y crearse una capa vectorial con dichas curvas de nivel. Estas pueden posteriormente convertirse en un Modelo Digital de Elevaciones (ráster) mediante \textbf{interpolación}, el cual es posible convertir de nuevo en una capa vectorial de líneas.
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width= \columnwidth]{Analisis/Conversiones.png}
+\includegraphics[width= \columnwidth]{Analysis/Conversions.png}
 \caption{\small Conversión entre distintos modelos de datos para una capa de elevaciones.}
-\label{Fig:Conversiones} 
+\label{Fig:Conversions} 
 \end{figure}
 
 \subsection{Análisis de superficies}
@@ -124,24 +124,24 @@ A la hora de estudiar la información geográfica, podemos hacerlo a \textbf{disti
 
 La escala de análisis depende \textbf{del dato en sí} (precisión, tipo, etc.), así como del \textbf{análisis que se va a realizar} con él.
 
-Como se muestra en la figura \ref{Fig:Escalas_formas_terreno}, si para definir las formas de relieve en un punto dado lo hacemos considerando dicho punto y los valores de elevación a su alrededor, la caracterización que hagamos varía en función de la dimensión de esa zona alrededor (que es la que define la escala de análisis). Para valores pequeños de dicha zona de análisis, el punto analizado puede definirse como una cima, mientras que aumentando la escala de análisis se advierte que el punto se sitúa en el fondo de un valle.
+Como se muestra en la figura \ref{Fig:Scales}, si para definir las formas de relieve en un punto dado lo hacemos considerando dicho punto y los valores de elevación a su alrededor, la caracterización que hagamos varía en función de la dimensión de esa zona alrededor (que es la que define la escala de análisis). Para valores pequeños de dicha zona de análisis, el punto analizado puede definirse como una cima, mientras que aumentando la escala de análisis se advierte que el punto se sitúa en el fondo de un valle.
 
 \begin{figure}[h]   
 \centering
-\includegraphics[width= .45\columnwidth]{Analisis/Escalas_formas_terreno.pdf}
+\includegraphics[width= .45\columnwidth]{Analysis/Scales.pdf}
 \caption{\small Dependiendo de la escala de análisis, un mismo relieve puede ser caracterizado como cima (a) o fondo de valle (b)}
-\label{Fig:Escalas_formas_terreno} 
+\label{Fig:Scales} 
 \end{figure}
 
 Por tanto, debemos observar el relieve desde la distancia correcta a la cual la información que nos proporciona es la más adecuada para un análisis dado. Además de existir una escala de mayor relevancia para un análisis concreto,  es de interés el trabajar a \textbf{múltiples escalas} y combinar los resultados.
 
-Otro ejemplo de cómo la escala de análisis condiciona los resultados obtenidos lo encontramos en el caso de efectuar \textbf{mediciones}. Como puede verse en la figura \ref{Fig:Medida_linea_fractal}, la unidad de medida empleada provoca que se obtengan resultados distintos. 
+Otro ejemplo de cómo la escala de análisis condiciona los resultados obtenidos lo encontramos en el caso de efectuar \textbf{mediciones}. Como puede verse en la figura \ref{Fig:Fractal_line}, la unidad de medida empleada provoca que se obtengan resultados distintos. 
 
 \begin{figure}[h]   
 \centering
-\includegraphics[width= .45\columnwidth]{Analisis/Medida_linea_fractal.pdf}
+\includegraphics[width= .45\columnwidth]{Analysis/Fractal_line.pdf}
 \caption{\small La unidad de medida empleada modifica el resultado obtenido.}
-\label{Fig:Medida_linea_fractal} 
+\label{Fig:Fractal_line} 
 \end{figure}
 
 La unión del valor resultante con la escala a la que se ha obtenido tiene en conjunto pleno significado, pero ese valor por sí mismo carece de dicho significado. 
@@ -171,13 +171,13 @@ La autocorrelación espacial, tal y como se ha descrito antes, es \textbf{positiv
 
 En caso de no existir ningún tipo de autocorrelación espacial, se tiene que los datos recogidos en una serie de puntos son \textbf{independientes entre sí} y no se afectan mutuamente, sin que tenga influencia de la distancia.
 
-La figura \ref{Fig:Autocorrelacion_espacial} muestra unas sencillas capas ráster en las que se presentan los tres tipos de autocorrelación espacial anteriores.
+La figura \ref{Fig:Autocorrelation} muestra unas sencillas capas ráster en las que se presentan los tres tipos de autocorrelación espacial anteriores.
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=\textwidth]{Analisis/Autocorrelacion_espacial.png}
+\includegraphics[width=\textwidth]{Analysis/Autocorrelation.png}
 \caption{\small a) Autocorrelación espacial positiva. b) Autocorrelación espacial negativa. c) Ausencia de autocorrelación espacial (independencia)}
-\label{Fig:Autocorrelacion_espacial} 
+\label{Fig:Autocorrelation} 
 \end{figure}
 
 Las consecuencias de la existencia de autocorrelación espacial son numerosas y de gran importancia.

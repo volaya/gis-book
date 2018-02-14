@@ -102,11 +102,11 @@ In most cases, the values of a raster layer are numerical, and GIS software is u
 \subsection{Vector model}
 
 
-The other main representation model is the vector model. In this model, there are no fundamental units that divide and cover the area that is modeled. Instead, the variability and characteristics of that area are modeled using \textbf{features}, which represent elements in which those characteristics do not change. The geographical part of a feature is made of \textbf{geometric primitives}, and these can be of three different types: \texbf{points}, \textbf{lines} and \textbf{polygons} (Figure \ref{Fig:Primitives}).
+The other main representation model is the vector model. In this model, there are no fundamental units that divide and cover the area that is modeled. Instead, the variability and characteristics of that area are modeled using \textbf{features}, which represent elements in which those characteristics do not change. The geographical part of a feature is made of \textbf{geometric primitives}, and these can be of three different types: \textbf{points}, \textbf{lines} and \textbf{polygons} (Figure \ref{Fig:Primitives}).
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=\textwidth]{Datos/Primitivas_vectoriales.pdf}
+\includegraphics[width=\textwidth]{Data/Primitives.pdf}
 \caption{\small Geometric primitives in the vector representation model and some examples of each of them and their associated attributes}
 \label{Fig:Primitives} 
 \end{figure}
@@ -117,7 +117,7 @@ A layer can contain features with primitives of different types, but usually it 
 
 Elements can be represented using different types of primitives. For instance, a city can be represented as a single point or as a polygon with its perimeter. Using one or another geometry should depend on the type of phenomenon that we want to model or the level of detail that is needed, among other factors.
 
-The thematic component in the vector model is defined with the so-called \textbf{attributes}. A layer usually contains multiple attributes. Attributes associated to a vector layer can have information of all types, and they are more versatile than the values associated to raster layers, which, as it was mentioned, normally contain just numerical values. Due to its particular structure (a set of attributes associated to a feature), the thematic component in the vector model can be represented as a table and stored in a \text{database}. Also, it can be be analized independently of the spatial component.
+The thematic component in the vector model is defined with the so-called \textbf{attributes}. A layer usually contains multiple attributes. Attributes associated to a vector layer can have information of all types, and they are more versatile than the values associated to raster layers, which, as it was mentioned, normally contain just numerical values. Due to its particular structure (a set of attributes associated to a feature), the thematic component in the vector model can be represented as a table and stored in a \textbf{database}. Also, it can be be analized independently of the spatial component.
 
 A particular element of the vect representation model is the \emph{topology}. A vector layer is said to contain topology if it contains the spatial relations between its features. Topology is required for certain analysis, and changes the way some operations, such as geometry editing, work in a GIS.
 
@@ -125,7 +125,7 @@ A particular element of the vect representation model is the \emph{topology}. A 
 \centering
 \includegraphics[width=.8\columnwidth]{Data/Topology_roads.pdf}
 \caption{\small A roads layer without topology (a) and with topology (b). Circles in this last case indicate connections between roads.}
-\label{Fig:Topologia_roads} 
+\label{Fig:Topology_roads} 
 \end{figure}
 
 Although most vector layer operations can be performed without topology,some of them such as \textbf{network analysis} are not possible without it. If we think about a roads layer, if it just contains lines representing roads but no information about how they are connected, there is no way of constructing the network from them. The points where lines intersect might be crossings or roundabouts (so it is possible to move from one road to another), but they might also be points without connection between the roads (one passing above the other). Without knowing that, we are missing information, and the network analysis cannot be performed. (Figure \ref{Fig:Topology_roads})
@@ -136,9 +136,9 @@ Line data without topology is popularly know as \emph{spaghetti} data.
 \subsection{Raster \emph{vs} vector}
 
 
-Both the raster and vector representation models can be used to store \emph{any geographical information}. Figure \ref{Fig:Representation_models} contains an example of that, and it shows a roads layer represented using both models. 
+Both the raster and vector representation models can be used to store \textbf{any geographical information}. Figure \ref{Fig:Representation_models} contains an example of that, and it shows a roads layer represented using both models. 
 
-We mentioned DEMs as a typical case of raster layers. Representing elevation as a raster layer has many advantages, especially for performing analysis, but it is not the only way of doint it. We can have a vector layer with points (that will be the case if the elevation data comes for a topographic survey), or a lines layer with contour lines (which is the most common way of representing elevation in a traditional map).
+We mentioned DEMs as a typical case of raster layers. Representing elevation as a raster layer has many advantages, especially for performing analysis, but it is not the only option. We can have a vector layer with points (that will be the case if the elevation data comes for a topographic survey), or a lines layer with contour lines (which is the most common way of representing elevation in a traditional map).
 \begin{figure}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Data/Representation_models.pdf}
@@ -147,7 +147,7 @@ We mentioned DEMs as a typical case of raster layers. Representing elevation as 
 \end{figure}
 
 
-Itis clear that both model have many differences, and each of them has it pros and cons. The following are some ideas to compare between them.
+It is clear that both models have many differences, and each of them has it pros and cons. The following are some ideas to compare between them.
 
 
 \begin{itemize}
