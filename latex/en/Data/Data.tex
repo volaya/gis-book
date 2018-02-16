@@ -11,7 +11,7 @@ From all GIS subsystems, the data one is probably the most importart one. It is 
 
 There is a big difference between the concepts of \textbf{data} and \textbf{information}. A GIS is a Geographical \emph{Information} System, but it uses geographical \emph{data}.
 
-Data is a \emph{set of values of elements used to represent something}. For instance, the string 502132N is a data.
+Data is a \textbf{set of values of elements used to represent something}. For instance, the string 502132N is a data.
 
 We can interpret that data as being a geographical reference, in which case it could be a latitude value, in particular 50\degree $21'$ $32''$ North. If we interpret it as being a reference to an indentity card associated to a person, the information that we get from it is completely different. It is the same data, containing six digits and a letter, but the information that we extract from it is different, since we understand and interpret it in a differet way.
 
@@ -19,7 +19,7 @@ Information is, therefore, the result of data and \textbf{its interpretation}. a
 
 Understanding the meaning and the differences between data an information allows us to understand, for instance, why the ratio between the size of a given data and the amount of information it contains is not constant. The strings 502132NORTH and FIFTY TWENTY ONE THIRTY TWO NORTH are longer than 502132N, but they contain the same information (as long as we interpret them as the latitude component of a coordinate).
 
-Geographical information has two separate components: \emph{spatial} and \emph{thematic}. The spatial component contains the position, referred to a given reference system, and it answers the question \emph{where?}. The thematic component answers the question \emph{what?}, and it defines the characteristics of the phenomenon or feature that occurs at the location indicated by the spatial component.
+Geographical information has two separate components: \textbf{spatial} and \textbf{thematic}. The spatial component contains the position, referred to a given reference system, and it answers the question \emph{where?}. The thematic component answers the question \emph{what?}, and it defines the characteristics of the phenomenon or feature that occurs at the location indicated by the spatial component.
 
 While the spatial component is usually a numerical value (most coordinate systems use just numbers), the thematic component can be \textbf{numeric} or \textbf{alphanumeric}. A numeric variable can be itself of four different types: \textbf{nominal, ordinal, interval} or \textbf{ratio}.
 
@@ -96,7 +96,7 @@ We can find a clear example of that in digital color images. A digital image is 
 
 Another typical use of the raster model is for the so-called \textbf{Digital Elevation Models} (DEM), which contain the topography of a given area. These are always single band layers.
 
-In most cases, the values of a raster layer are numerical, and GIS software is usually not adapted to handle other types of values in the thematic component of a raster layer. Due to this, raster layers can be seen as \emph{matrices}, and the corresponding mathematical tools can be used for their analysis.
+In most cases, the values of a raster layer are numerical, and GIS software is usually not adapted to handle other types of values in the thematic component of a raster layer. Due to this, raster layers can be seen as \textbf{matrices}, and the corresponding mathematical tools can be used for their analysis.
 
 
 \subsection{Vector model}
@@ -119,7 +119,7 @@ Elements can be represented using different types of primitives. For instance, a
 
 The thematic component in the vector model is defined with the so-called \textbf{attributes}. A layer usually contains multiple attributes. Attributes associated to a vector layer can have information of all types, and they are more versatile than the values associated to raster layers, which, as it was mentioned, normally contain just numerical values. Due to its particular structure (a set of attributes associated to a feature), the thematic component in the vector model can be represented as a table and stored in a \textbf{database}. Also, it can be be analized independently of the spatial component.
 
-A particular element of the vect representation model is the \emph{topology}. A vector layer is said to contain topology if it contains the spatial relations between its features. Topology is required for certain analysis, and changes the way some operations, such as geometry editing, work in a GIS.
+A particular element of the vect representation model is the \textbf{topology}. A vector layer is said to contain topology if it contains the spatial relations between its features. Topology is required for certain analysis, and changes the way some operations, such as geometry editing, work in a GIS.
 
 \begin{figure}[!hbt]   
 \centering
@@ -159,7 +159,7 @@ It is clear that both models have many differences, and each of them has it pros
 \begin{figure}[!hbt]   
 \centering
 \includegraphics[width=.4\columnwidth]{Data/Raster_accuracy.png}
-\caption{\small Limitation os the raster representation model. Since the space is divided in square units, elements such as curves cannot be faithfully represented.}
+\caption{\small Limitations of the raster representation model. Since the space is divided in square units, elements such as curves cannot be faithfully represented.}
 \label{Fig:Raster_accuracy} 
 \end{figure}
 
@@ -169,7 +169,7 @@ It is clear that both models have many differences, and each of them has it pros
 Overall, there is no representation model that is better than the other. Depending on the case, one will be more suitable than the other. The following factors should be considered when evaluating the suitability of these models to a particular circumstance:
 
 \begin{itemize}
- \item \textbf{Type of variable or phenomenon to represent}. In general, \textbf{Continuous} variables such as elevation are better represented in raster layer, in order to make it easier to perform analysis based on then. \textbf{Discrete} variables, on the other hand, are better represented using a vector approach.
+ \item \textbf{Type of variable or phenomenon to represent}. In general, it is better to use raster layers for \textbf{continuous} variables such as elevation, in order to make it easier to perform analysis based on then. \textbf{Discrete} variables, on the other hand, are better represented using a vector approach.
 \item \textbf{Type of analysis to perform}. It is important to know how we plan to use a layer, to decide the representation model that might better suit our case. For instance, if we have elevation data and we plan to perform analysis, it will be better to have a raster DEM, since most algorithms require the elvevation data to be raster layer. However, if we want to use that elevation data just for visualization, and combine it with other layers to create a map, it might be better to have a vector layer with contour lines, since those will be a better cartographic solution and will interfere less with the remaining variables. 
 \item \textbf{Context}. The context might make it better (or even mandatory) to work with a given representation model. For instance, if we are working working with images and we plan to do some analysis with other layers as well, those should be raster ones, since images, as we have seen, are always raster layers.
 \end{itemize}

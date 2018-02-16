@@ -52,7 +52,7 @@ Spatial properties can be quantified and measured. Among the most basic ones, we
 
 \subsection{Combination}
 
-One of the most typical procedures within a GIS is the \tetbf{combination and overlay} of layers. The separation of geographical data into layers facilitates this kind of operations, and turn GIS into the optimal platform to perform any analysis that requires combining information from different variables.
+One of the most typical procedures within a GIS is the \textbf{combination and overlay} of layers. The separation of geographical data into layers facilitates this kind of operations, and turn GIS into the optimal platform to perform any analysis that requires combining information from different variables.
 
 In the case of vector layers, overlay operations such as \textbf{union, intersection, difference or clipping} are frequently used. Figure \ref{Fig:Intersection} shows an example of an overlay operation between polygon layers.
 
@@ -97,16 +97,16 @@ These statistical values allow us to respond to questions such as:
 
 Another important statistical analysis in GIS is the one that helps infering the behaviour of variables and their evolution.
 
-\tetbf{Change modelling} is one of the many fields that are rapidly evolving thanks to the help of GIS.
+\textbf{Change modelling} is one of the many fields that are rapidly evolving thanks to the help of GIS.
 
 \subsection{Optimization and decision-making}
 
-The layered structure of geographical information in a GIS, which, as we have seen was ideal for overlay operations, provides also an optimal framework for estudied the combined effect of multiple platforms. GIS is the perfect framework for \tetbf{multiple-criteria analysis}.
+The layered structure of geographical information in a GIS, which, as we have seen was ideal for overlay operations, provides also an optimal framework for estudied the combined effect of multiple platforms. GIS is the perfect framework for \textbf{multiple-criteria analysis}.
 
 Questions such as the following ones can be responded using a GIS:
 
 \begin{itemize}
-\item Which one is the best place to build a new pwer station considering its effect on the environment and the people living close to it?
+\item Which one is the best place to build a new power station considering its effect on the environment and the people living close to it?
 
 \item Where should a hospital be located to provide the best possible service to the inhabitants of a given region?
 \end{itemize}
@@ -114,7 +114,7 @@ Questions such as the following ones can be responded using a GIS:
 
 \section{Particularities of spatial data for its analysis}
 
-Spatial data has some great potential thanks to its particular properties, but at the same time these properties might \tetbf{limit or condition} working with them. In some cases, they might represent problems that have to be considered when analyzing them; in others, they are just something that anyone working with them should know, but that are not problematic \emph{per se}.
+Spatial data has some great potential thanks to its particular properties, but at the same time these properties might \textbf{limit or condition} working with them. In some cases, they might represent problems that have to be considered when analyzing them; in others, they are just something that anyone working with them should know, but that are not problematic \emph{per se}.
 
 \subsection{Scale}
 
@@ -163,11 +163,11 @@ Another problem relateb with the PUAM is the so-called \textbf{ecological fallac
 
 \subsection{Spatial autocorrelation} 
 
-\textbf{Spatial autocorrelation} is the \tetbf{correlation of a variable with itself}, in such a way that values of the variable at any point are correlated with values of that same variable in close-by points. For instance, in the case of temperature, points close to a heat source will have a higher temperature that those far from it or closer to a cold spot. If we study the distribution of an infectious disease, reported cases are likely to appear grouped, and a large number of them normally cause the neary populations to also be largely affected by the disease.
+\textbf{Spatial autocorrelation} is the \textbf{correlation of a variable with itself}, in such a way that values of the variable at any point are correlated with values of that same variable in close-by points. For instance, in the case of temperature, points close to a heat source will have a higher temperature that those far from it or closer to a cold spot. If we study the distribution of an infectious disease, reported cases are likely to appear grouped, and a large number of them normally cause the neary populations to also be largely affected by the disease.
 
 Another way of expressing this is using the well-known \textbf{Tobler's First Law of Geography}, which states that <<everything is related to everything else, but near things are more related than distant things>>.
 
-In the above cases, sppatial autocorrelation is said to be \textb{positive}. However, it can be also \textbf{negative}, if higher values are surrounded by lower ones, or there can be no correlation at all, when values in separate points are \textbf{independent} and do not affect each other regardless of distance.
+In the above cases, sppatial autocorrelation is said to be \textbf{positive}. However, it can be also \textbf{negative}, if higher values are surrounded by lower ones, or there can be no correlation at all, when values in separate points are \textbf{independent} and do not affect each other regardless of distance.
 
 Figure \ref{Fig:Autocorrelation} shows three raster layers which demonstrate the above types of spatial autocorrelation.
 
@@ -198,7 +198,7 @@ The two basic statistical concepts related to the spatial structure of a process
 
 \subsection{Border effects}
 
-The areas in which we perform spatial analysis \textbf{have boundaries}. These might be artificial ---for instance, the limit of the aerial photograph we are working with---, or natural ---if we study a forest that is close to a lake, the shore will be limit of the forest. Boundaries \tetbf{distort the result of analysis}, specially for those variables that have to be aggregated (density, etc., as we saw for the case of PUAM)
+The areas in which we perform spatial analysis \textbf{have boundaries}. These might be artificial ---for instance, the limit of the aerial photograph we are working with---, or natural ---if we study a forest that is close to a lake, the shore will be limit of the forest. Boundaries \textbf{distort the result of analysis}, specially for those variables that have to be aggregated (density, etc., as we saw for the case of PUAM)
 
 In some cases, the border effect might manifest itself only for those point close to the border. In others, however, \textbf{all the points related or somehow connected to the border} might be affected, regardless of the distance to it.
 

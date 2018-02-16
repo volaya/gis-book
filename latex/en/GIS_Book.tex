@@ -3,13 +3,18 @@
 \usepackage[T1]{fontenc}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{enumitem}
-\usepackage{lmodern}
+\usepackage{ebgaramond}
 \usepackage{geometry}
 \geometry{verbose,dvips,paperwidth=5in,paperheight=8in,tmargin=.65in,bmargin=.9in, left=0.80in, right=0.65in}
 \usepackage{lettrine}
 \usepackage[raggedright]{titlesec}
+\usepackage{booktabs}
+\usepackage[all]{nowidow}
+\usepackage{soul}
 
 \newcommand{\degree}{\ensuremath{^\circ}}
+
+\renewcommand{\textbf}[1]{\ul{#1}}
 
 \setcounter{secnumdepth}{0} 
 \setcounter{tocdepth}{2}
@@ -109,8 +114,9 @@
     \vspace{\drop}
     {\Large\textsc{Víctor Olaya}\par}\vskip3.5\baselineskip
     {\huge\bfseries\raggedright{Introduction to GIS}\par}
-    \vspace{2.5cm}
-    \vspace{0.4\textheight}
+    \vspace{1.5cm}
+    {\itshape Foreword by} \textsc{Gretchen Peterson}
+    \vspace{0.5\textheight}
 }% end of vbox
 }% end of parbox
 }% end of hbox

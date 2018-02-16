@@ -51,9 +51,9 @@ Once we have a model to define the Earth's shape, we can establish a system to c
 
 Regarding the coordinate system, we have two main alternatives: using the elements of \textbf{spherical geometry} using the concepts of \textbf{plane geometry}. In this last case, we need a \textbf{projection system} to place the elements on the surface of the ellipsoid into a plane.
 
-\textbf{Geographical coordinates} use a spherical coordinates syste in which the location of every point is defined by two angular values: \textbf{latitude}and \textbf{longitude}. Lines of equal latitude are called \textbf{parallels}, while lines of equal longitud are called \textbf{meridians}.
+\textbf{Geographical coordinates} use a spherical coordinates syste in which the location of every point is defined by two angular values: \textbf{latitude} and \textbf{longitude}. Lines of equal latitude are called \textbf{parallels}, while lines of equal longitud are called \textbf{meridians}.
 
-Geographical coordinates are of great utility, especially when working with large regions. However, it is not a cartesian system, and \textbf{it is difficult to perform tasks such as measuring distances or areas}. To simplify operations like those ones, we need cartesian coordinates. To assign a plane coordinate to every point on te Earth's surface (which is not a plane), we must use a \emph{cartographic projection}.
+Geographical coordinates are of great utility, especially when working with large regions. However, it is not a cartesian system, and \textbf{it is difficult to perform tasks such as measuring distances or areas}. To simplify operations like those ones, we need cartesian coordinates. To assign a plane coordinate to every point on te Earth's surface (which is not a plane), we must use a \textbf{cartographic projection}.
 
 Earth's surface is not \textbf{developable}. That is, it cannot be flattened without distortion. For this reason, we need a methodology for converting points on this surface into points on a plane. Figure \ref{Fig:Projection} shows this idea.
 
@@ -70,7 +70,7 @@ It can be seen in the figure that projecting points introduces distortions. For 
 
 Depending on the context and the purpose of our data, we might use one or another type of projection. 
 
-One of the most widespread projections nowadays is the \emph{Universal Transverse Mercator}, which is the basis for the \textbf{UTM coordinate system}. This system is not just a projection, but a complete system of many of them. Earth's surface is divided in rectangular regions, and for each of them a different projection an a different set of geodetical parameters are used. It uses a single ellipsoid: WGS-84.
+One of the most widespread projections nowadays is the \textbf{Universal Transverse Mercator}, which is the basis for the \textbf{UTM coordinate system}. This system is not just a projection, but a complete system of many of them. Earth's surface is divided in rectangular regions, and for each of them a different projection an a different set of geodetical parameters are used. It uses a single ellipsoid: WGS-84.
 
 In the UTM system, coordinate are not expressed as absolute coordinates, but instead the are refered to the corresponding rectangle, as relatives coordinates within it.
 
@@ -89,13 +89,12 @@ It is common when working with a GIS to have layers in \textbf{several different
 
 In a GIS, conversion and transformation capabilities allow to generate new layers that use a different CRS. Also, GIS include the ability to perform them \emph{on-the-fly} when layers are rendered, so we can create a map with layers that do not share the same CRS. These are correctly represented on the map and <<match>> one with another, since the GIS is automatically performing the corresponding changes to their coordinates to have them in a common CRS.
 
-To facilitate the use of coordinate reference systems, there are initiatives that try organize and code them, so each system can be easily identified by a unique code. The most common of this coding system are the EPSG codes defined by the International Association of Oil and Gas Producers. 
+To facilitate the use of coordinate reference systems, there are initiatives that try organize and code them, so each system can be easily identified by a unique code. The most common of this coding system are the \textbf{EPSG} codes defined by the International Association of Oil and Gas Producers. 
 
-Para facilitar el uso de sistemas de referencia, existen proyectos de codificación de estos, de forma que cada sistema existente puede identificarse de forma sencilla mediante un código. El más extendido de estos es el sistema de codificación \textbf{EPSG}.
 
 \section{Basic cartographic concepts}
 
-Among the fundamental concepts of cartography that any GIS user has to kno, \emph{scale} is the most important one. The scale of a map represent the \emph{size-ratio} between the <<map>> that would be obtained by developing the real surface we are representing (the Earth's surface in this case), and the scale of our smaller map. Knowing this ratio, we can know the real measures of the elements that are included in the map, since we can convert the measurements that we make on it into real-world measures. It's important to keep in mid that these measures are not so <<real>>, since the projection might have distorted them, but they are, nonetheless, measures at the original scale of the object that is measured.
+Among the fundamental concepts of cartography that any GIS user has to know, \textbf{scale} is the most important one. The scale of a map represent the \textbf{size ratio} between the <<map>> that would be obtained by developing the real surface we are representing (the Earth's surface in this case), and the scale of our smaller map. Knowing this ratio, we can know the real measures of the elements that are included in the map, since we can convert the measurements that we make on it into real-world measures. It's important to keep in mid that these measures are not so <<real>>, since the projection might have distorted them, but they are, nonetheless, measures at the original scale of the object that is measured.
 
 Scale is usually expressed as a quotient between the distance measured in a map and the distance that this measure represents in reality. For instance, a 1:50000 scale means that 1 centimeter in a map is equivalent to 50000 centimeters in reality, that is 500 meters. This value is known as the \textbf{numeric scale}.
 
@@ -114,7 +113,7 @@ Related to the concept of scale, we find the so-called \textbf{cartographic gene
 \begin{figure}[!hbt]
 \centering
 \includegraphics[width=.75\columnwidth]{Cartography/Generalization_aggregation.png}
-\caption{\small Generalization by aggregation. Two roads that are almost paralell are represented as two separate elemtns in the map, but in the overview map of the upper-left corner, with a smaller level of detail, it is generalized as one single element.(Taken from Yahoo Maps).}
+\caption{\small Generalization by aggregation. Two roads that are almost paralell are represented as two separate elements in the map, but in the overview map of the upper-left corner, with a smaller level of detail, they are generalized as one single element. (Taken from Yahoo Maps.)}
 \label{Fig:Generalization_aggregation} 
 \end{figure}
 
