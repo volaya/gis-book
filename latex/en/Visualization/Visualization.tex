@@ -108,55 +108,56 @@ The perception of visual variables \textbf{might be altered by the environment}.
 
 Perceptual constancy defines how objects are \textbf{perceived in the same way regardless of the changes in the environment}. For instance, if an object is round, such as a wheel, it will have a round shape when we look at it from a perpendicular direction. If we now look at it from a different angle, we will see an ellipse instead of a circle. However, we will not think it is not round, and we will still identify its shape correctly. That is an example of the perceptual constancy of the shape.
 
-Not all visual variables have such a perceptual constancy. When the perception of an element changes even if the object itself does not, we have a \textbf{perceptual contrast}. These might cause a visual element to be wrongly perceived , and the information that it transmits to be misinterpreted.
+Not all visual variables have such a perceptual constancy. When the perception of an element changes even if the object itself does not, a \textbf{perceptual contrast} is said to exist. Perceptual contrast might cause a visual element to be wrongly perceived, and the information that it transmits to be misinterpreted.
 
 The following ones are some of the main ideas about perceptual contrasts to take into account when creating a map:
 
 \begin{itemize}
 	\item Size is the visual variable that is more affected by perceptual contrasts. The apparent size of an object might change if it is surrounded by other elements of a different size. This is particularly relevant when using point symbols in a map.	
-	\item El valor se ve igualmente alterado al situar alrededor elementos de distinto valor, especialmente si estos son numerosos.
-	\item El tono se ve alterado por la presencia de otros tonos distintos. En un mapa, veremos este efecto al enfrentar el color de un elemento sobre el color del fondo. 
-	\item Tonos complementarios puestos juntos pueden crear sensación de vibración en la frontera que los separa.
+	\item Values is also altered when other elements with a differnet valu appear nearby, specially if there is a large numebr of them.
+	\item Hue is altered by the presence of other hues. In a map, we should consider how the background color might affect the one of foreground symbols. 
+	\item Complementary hues, when put together, might cause a <<vibration>>sensation in the border between them.
 \end{itemize}
 
-En lo que respecta a las ayudas a la percepción, el factor más importante en la creación de un mapa es una \textbf{correcta separación entre el fondo y la figura}. Dentro de los distintos elementos o niveles de un mapa (que se corresponderán en líneas generales con las capas que se empleen en el SIG para crearlo), se han de emplear las propiedades de las variables visuales para restar importancia visual a aquellas que tengan menos relevancia, y de este modo centrar la atención sobre la información que se desea transmitir por encima de las demás.
+Regarding perception aid, the mosst important factor when creating a map is the \textbf{correct separation between the figure (the foreground objects) and the background}. The properties of the visual variables must to be used to create different levels in the visualization, assigning more relevance to some element in order to focus the attention on the information that they transmit.
 
-Para de aquellas capas que tengan la misma importancia y quieran destacarse en el mapa, es necesario establecer una \textbf{adecuada jerarquización}. Esta jerarquía debe aportar una <<profundidad>> a la información, de forma que existan niveles en esta y se perciba que algunos elementos están por encima de otros. La forma de ordenar las distintas capas en un SIG ya establece un orden, aunque este no es en sí suficiente, y deben utilizarse las variables visuales para enfatizar o no unas o otras capas y la información que contienen.
+To make certain layers (the most relevant ones for the purpose of the map) more visible, a \textbf{correct hierarchy} must be establish with the help of visual variables. This hierarchy will add <<depth>> to the information displayed in the map, and some elements will be perceived as being more important than ohers. Layer ordering already defines a structure and a hierarchy, but that is not enough in most cases, and visual variables should be used to reinforce it.
 
-Como ejemplo de lo anterior, la figura \ref{Fig:JerarquiaMapa} muestra un ejemplo de como una correcta jerarquización es fundamental para crear mapas de calidad.
+Figure \ref{Fig:HierarchyMap} shows why a correct hierarchy is needed to create a good map.
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=\columnwidth]{Visualization/JerarquiaMapa.png}
-\caption{\small Mapa con jerarquía incorrecta (a) y mapa adecuadamente jerarquizado (b).}
-\label{Fig:JerarquiaMapa} 
+\includegraphics[width=\columnwidth]{Visualization/HierarchyMap.png}
+\caption{\small Comparison between a map without hierarchy (a) and a map with a correct hierarchy (b).}
+\label{Fig:HierarchyMap} 
 \end{figure}
 
 
-\section{El mapa y la comunicación cartográfica}
+\section{Maps and cartographic communication}
 
-El mapa es un medio de comunicación visual que constituye un lenguaje con un objetivo particular: la \textbf{descripción de relaciones espaciales}. Un mapa es, pues, una abstracción simbólica de algún fenómeno real, lo cual significa que presenta un cierto grado de simplificación y generalización.
+Maps are a method of communication that uses a language with a particular purpose: \textbf{describing spatial relations}. A map is, therefore, a symbolic abstraction of a real-word phenomenom, which implies that it has some degree of simplification and generalization.
 
-El lenguaje visual que ya conocemos se convierte ahora en un lenguaje cartográfico al adaptarlo al caso particular de la creación de mapas, y sus reglas son imprescindibles para poder crear cartografía que facilite la labor posterior del usuario. El conjunto de ideas relativas a la producción de mapas dan forma a lo que conocemos como \textbf{diseño cartográfico}.
+The visual language that we have just seen becomes now a cartographic language when it is adapted to the particular case of creating maps, and knowing its rules is needed to create cartography that is later useful for the map user. All these ideas related to map production form what is known as \textbf{cartographic design}.
 
-El diseño cartográfico implica la toma de decisiones por parte del cartógrafo (en este caso el usuario de SIG). Estas decisiones han de estar motivadas fundamentalmente por la \textbf{utilidad del mapa} y el \textbf{público al que va destinado}, y en función de estas han de elegirse aspectos como la \textbf{proyección} a utilizar (no necesariamente la misma en que se encuentran las capas que se van a incluir en el mapa), la \textbf{escala} (dependiendo del nivel de detalle que se desee comunicar, y siempre dentro de las limitaciones de los propios datos), el \textbf{tipo de mapa} (más adelante en este capítulo detallaremos los tipos más importantes), la cantidad de \textbf{simplificación} que debe realizarse o los \textbf{símbolos} que han de emplearse para plasmar la información a transmitir.
+Cartographic design involves taking decisions (in this case, by the GIS user who takes the role of the cartographer). This decision must be guided by the \textbf{purpose of the map} and the \textbf{public it is target at}, and depending on these factors the cartographer must decide \textbf{the projection} (which not always has to be the original one of the data) 
+, the \textbf{scale} (depending on the level of detail and taking into account the limitations of the data), the \textbf{type of map} (we will see more about this later in this chapter), or the \textbf{symbols} to use.
+
+There are two main types of cartography: \textbf{base cartography} (also called \textbf{fundamental} or \textbf{topographic}) and \textbf{thematic cartography}.
+
+Base cartography represents the classic maps that have been created by cartographers during most part of the history of cartography. This type of map serves the purpose of precisely describing \emph{what} is on the surface of the Earth.
+
+Thematic cartography focuses on \textbf{displaying information about a given phenomenon} (a given geographical variable), which can be of any type: physical, social, political, cultural, etc. We exclude from this list those phenomena that are purely topographic, which are the subject matter of base cartography.
+
+WE can also say that base cartography represents \textbf{physical elements} (a stream, a coast line, a road, a valley, etc.), while thematic cartography focuses on \textbf{representing values and attributes}.
+
+Thematic cartography uses base cartography (usually included in thematic maps) to help the map user to understand the spatial behavior of the variable being represented, and also to provide a geogrpahical context for it.
 
 
-Es importante distinguir entre dos tipos de cartografía: \textbf{cartografía base}, también denominada \emph{fundamental} o \emph{topográfica}, y \textbf{cartografía temática}.
+\subsection{Types of information and their visualization}
 
-La cartografía base representa el tipo de mapa que originalmente era el objeto principal de la cartografía, cuando lo primordial era recoger con precisión \emph{qué} había sobre la Tierra, documentando a través del documento cartográfico las características físicas de esta. 
+We already know that the thematic component of geogrpahical information can be numeric or alphanumeric, and that numeric variables can be nominal, ordinal, intervals, or ratios. Selecting a correct symbology depending on the type of information that we are working with is key to produce an effective map. In particular, we must use a visual variable that has the correct properties (levels of organization) for that variable that we want to visualize.
 
-La cartografía temática se centra en la \textbf{representación de un tema concreto} (una variable espacial dada), pudiendo esta ser de cualquier índole: física, social, política, cultural, etc. Se excluyen de la lista de esos temas posibles a los puramente topográficos, que constituyen el objeto de la cartografía base.
-
-De otro modo, la cartografía topográfica representa \textbf{elementos físicos del terreno} (un accidente geográfico, el curso de un río, el perfil de una costa), mientras que la cartografía temática se centra más en la \textbf{representación de valores y atributos}.
-
-La cartografía temática se apoya en la cartografía base, ya que esta se incluye también en los mapas temáticos para facilitar la comprensión del comportamiento espacial de la variable representada y ubicar esta en un contexto geográfico dentro del propio mapa. 
-
-
-\subsection{Los tipos de información y su representación}
-
-Sabemos ya que la componente temática de la información geográfica puede ser de tipo numérico o alfanumérico, y que la primera se divide en los tipos nominal, ordinal, intervalos y razones.  La selección de una forma de simbolización adecuada en función de la naturaleza de la información es clave para lograr un mapa efectivo. En particular, debe emplearse una variable visual que presente la propiedad (nivel de organización) adecuado. 
-
+For instance, associative and selective properties
 Por ejemplo, las propiedades asociativa y selectiva solo son de interés para información cualitativa, mientras que el tamaño es la única variable visual con la propiedad cuantitativa, y por tanto la única adecuada para representar razones.
 
 Las siguientes son algunas ideas básicas a este respecto referidas a los distintos tipos antes citados.
