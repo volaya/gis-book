@@ -2,61 +2,59 @@
 
 \pagestyle{fancy}
 
-Las bases de datos son un elemento fundamental en el entorno informático hoy en día y tienen aplicación en la práctica totalidad de campos. Concebidas con un propósito general, son de utilidad para toda disciplina o área de aplicación en la que exista una necesidad de gestionar datos, tanto más cuanto más voluminosos sean estos. En el ámbito particular de los SIG, los datos son cada día más voluminosos, debido no solo a una mayor cantidad de información, sino también a una mayor precisión en esta, la cual implica un mayor volumen de datos. Además, presentan otra serie de características (uso múltiple, necesidad de acceso eficiente para análisis, necesidad de indexación, etc.), haciendo todas ellas que sea recomendable el uso de bases de datos y tecnologías específicas para su manejo.
+Databases are used in all disciplines in which an efficient data handling is needed, specially if those data are large. The data that is used in GIS are usually rather large, and the improvements in data acquisition have caused geogrpahical data to be now more precise and, consequiently, larger. 
 
+Databases not only have the advantage of being able to work with large datasets, but also otrhe ones such as managing multiple users or providing efficient access and indexing. For this reasons, they are a fundamental element in any software context, including GIS.
 
-Entendemos como \emph{Base de Datos} un \textbf{conjunto de datos estructurado y almacenado de forma sistemática} con objeto de facilitar su posterior utilización. Los elementos clave de la base de datos son esa estructuración y sistematicidad, pues son responsables de las características que hacen de la base de datos un enfoque superior a la hora de gestionar datos.
+A \textbf{Database} is a \textbf{organized and sistematically stored collection of data}. Databases provide a better way of handling and using data, thanks to their structure.
 
-Las ventajas de utilizar una base de datos frente a una gestión no organizada de estos las encontramos tanto en los propios datos como en el uso que se hace de ellos. Algunas ventajas que afectan directamente a los datos son las siguientes:
-
-\begin{itemize}
-	\item \textbf{Mayor independencia}. Los datos son independientes de las aplicaciones que los usan, así como de los usuarios.
-	\item \textbf{Mayor disponibilidad}. Se facilita el acceso a los datos desde contextos, aplicaciones y medios distintos, haciéndolos útiles para un mayor número de usuarios.
-	\item \textbf{Mayor seguridad (protección de los datos)}. Mayor facilidad de replicación de datos y mejor sincronización.
-	\item \textbf{Menor redundancia}. Con el consiguiente menor volumen de datos y mayor rapidez de acceso.
-	\item \textbf{Mayor eficiencia en la captura, codificación y entrada de datos}.
-\end{itemize}
-
-Esto tiene una consecuencia directa sobre los resultados que se obtienen de la explotación de la base de datos, presentándose al respecto ventajas como, por ejemplo:
+Some of the advantages of using a database instead of a tradicional file-based approach for storing data are:
 
 \begin{itemize}
-	\item \textbf{Mayor coherencia}. La mayor calidad de los datos que se deriva de su mejor gestión deriva en mayor calidad de los resultados.
-	\item \textbf{Mayor eficiencia}. Facilitando el acceso a los datos y haciendo más sencilla su explotación, la obtención de resultados es más eficiente.
-	\item \textbf{Mayor valor informativo}. Resulta más sencillo extraer la información que los datos contienen, ya que uno de los cometidos de la base de datos es aumentar el valor de estos como fuente de información.
+	\item \textbf{More independence}. Data are independent from both the users and the software.
+	\item \textbf{More availability}. Databases facilitate the access to data from different context and applications, making them more useful for a larger number of users.
+	\item \textbf{More security (data protection)}. Replication and synchronization of data becomes easier.
+	\item \textbf{Less redundancy}. Which implies a smaller volume of data and faster access.
+	\item \textbf{More efficiency in data capture, encoding and input}}.
 \end{itemize}
 
-Por último, los usuarios de la base de datos también obtienen ventajas al trabajar con estas, entre los que cabe citar:
+This has a direct influence in the results that are obtained from the explotation of database data, and we find the following advantages:
 
 \begin{itemize}
-	\item \textbf{Mayor facilidad y sencillez de acceso}. El usuario de la base de datos se debe preocupar únicamente de \emph{usar} los datos, disponiendo para ello de las herramientas adecuadas y de una estructura solida sobre la que apoyarse.
-	\item \textbf{Facilidad para reutilización de datos}. Esto es, facilidad para compartir.
+	\item \textbf{More coherence}. Better management leads to better data, and that produces results with a better quality.
+	\item \textbf{More efficiency}. Accesing the data is easier and more effective.
+	\item \textbf{More informative value}. It is easier to extract the information that is contained in the data, since one of the goals of a database is the increse the value of data as source of information.
 \end{itemize}
 
-De forma resumida, puede decirse que la principal bondad de una base de datos es la \textbf{centralización} que supone de todos los datos con los que se trabaja en un contexto determinado, con las consecuencias que ello tiene para una \textbf{mejor gestión, acceso o estructuración} de estos.
+Users also get advantages when using a database, such as the following ones:
+
+\begin{itemize}
+	\item \textbf{Easier access}. The user of the database just has to worry about \emph{using} the data. A solid infrastructure to do it is available, and so are the tools needed for it.
+	\item \textbf{Easier data reutilization}. Data is easier to share when using a database.
+\end{itemize}
+
+In short, we can say that the main characteristic of a database is the \textbf{centralization} of data that it implies, which results in a \textbf{better data access, management and organization}.
 
 
-\section{Bases de datos relacionales}
+\section{Relational databases}
+
+From the many different models that have been defined for creating a database, the most popular one, both in the GIS context and outside of it, is the one used in databases known as \textbf{relational databases}. This model uses a scheme based on \textbf{tables}, which is both easy to understand and to use for analysis and data queries. Tales have a certain number of \textbf{records} (rows) and \textbf{fields} (columns).
+
+The table itself is knows as a \textbf{relation}, since it contains the relation that exists between its elements. Columns represent the \textbf{attributes} associated to a feature, while rows contain the \textbf{records}. A row is formed with a set of $n$ attributes, which form a \textbf{tuple}.
+
+A databse usually contains more than a table, since the information to store is of many different types, and it is convenient to separate it into several tables. Apart from the relations that the table itself implies, relations between tables can also be defined. In this case, we need to have some attribute that can be used to unequivocally represent a tuple. This attribute is known as a \textbf{key attribute}, and it must be \textbf{unique and invariable} for each tuple. For instance, if we have a table where each row represents a person, an attribute containing the Social Security can be used as a key attribute.
+
+When working with geographical data, it is common to use \textbf{the spatial component as key}, since it is usually unique.
 
 
-De entre los distintos modelos existentes para plantear una base de datos, el más habitual, tanto dentro como fuera del ámbito de los SIG, es de las denominadas \textbf{bases de datos relacionales}. Este modelo utiliza un esquema basado en \textbf{tablas}, que resulta a la vez sencillo de comprender y fácil de utilizar para el análisis y la consulta de los datos. Las tablas contienen un número dado de \textbf{registros} (equivalentes a las filas en la tabla), así como \textbf{campos} (columnas),
-
-La tabla en sí se conoce como \textbf{relación}, ya que recoge la relación existente entre sus elementos, y constituye así el eje central del modelo relacional. Las columnas representan los distintos \textbf{atributos} asociados a la entidad, mientras que las filas conforman los distintos \textbf{registros}. Una fila se forma con un conjunto de $n$ atributos, constituyendo una \textbf{tupla}.
-
-Una base de datos contiene normalmente más de una tabla, ya que suelen ser muchos los tipos de datos a almacenar y resulta conveniente dividirlos en distintas tablas.  Además de las relaciones que la tabla en sí implica, es necesario definir interrelaciones entre las distintas tablas, y para ello se emplean los denominados atributos \textbf{clave}. Un atributo clave es aquel que tiene valor \textbf{único e invariable} para cada tupla, pudiendo servir para representar a esta plenamente. Por ejemplo, en una tabla  con nombres de personas e información adicional sobre ellas, el número de su DNI puede servir como atributo clave. 
+Relations between tables can be of several types, depending on the records of one table that are related with the ones of the other table. We have \textbf{one to one}, \textbf{one to many} and \textbf{many to many} relations. for instance, if we have a table with cities and another one with persons, and we define a relation \emph{lives in}, it will be a one to many relation, since many people can live in a a single city, and each person lives in only one of them.
 
 
-Cuando trabajamos con datos espaciales, es habitual emplear la \textbf{componente espacial como clave}, ya que esta suele ser única. 
+\section{Database management systems}
 
-Las interrelaciones entre tablas pueden ser de distintos tipos, según el número de entidades de una tabla con los que se relacionen las entidades de la otra. Tenemos así relaciones de \textbf{uno a muchos}, de \textbf{uno a uno} o de \textbf{muchos a muchos}. Por ejemplo, en una tabla con entidades que representan personas y otra con entidades que representan ciudades, si establecemos una interrelación \emph{vive en}, se tratará de una interrelación de uno a muchos, ya que en una ciudad pueden habitar varias personas.
+Along with databases, the fundamental element to exploit them are \textbf{database management systems} (DBMS). These systems are an \txtbf{intermediary element between the data and the sofware that consumes them}. Software such as a desktop GIS does not access the database directly, but instead \textbf{through a DBMS}.
 
-
-
-\section{Sistemas gestores de bases de datos}
-
-Junto con las bases de datos, el elemento fundamental para el aprovechamiento de estas son los \textbf{Sistemas Gestores de Bases de Datos} (SGDB o DBMS, del inglés \emph{DataBase Management System}). Estos sistemas representan un \textbf{elemento intermedio entre los propios datos y los programas} que van a hacer uso de ellos, facilitando las operaciones a realizar sobre aquellos. Los programas tales como un SIG no acceden directamente a la base de datos, sino que lo hacen \textbf{a través de un SGBD}.
-
-
-Algunas características que ha de tener un SGBD son las siguientes:
+The following are some of the characteristics that a DBMS must have:
 
 \begin{itemize}
 	\item \textbf{Acceso transparente a los datos}. El SGBD debe crear una abstracción de los datos que haga el trabajo con estos más sencillo, ocultando aspectos internos que no sean relevantes para dicho trabajo.
