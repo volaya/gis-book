@@ -29,7 +29,7 @@ Visual elements have several properties that can be used to transmit information
 
 These properties are known as \textbf{visual variables}, and are applied to the geometric elements used to visualize geographical information. Those elements can be differentiated using the following visual variables, which are shown in figure \ref{Fig:VisualVariables}: position, shape, size, hue, value, texture and orientation.
 
-Usage of \textbf{Position} is rather restricted in the case of a map, since the real position of the element to be rendered should be respected. It is seldom used. 
+The use of \textbf{position} is rather restricted in the case of a map, since the real position of the element to be rendered should be respected. It is seldom used. 
 
 The \textbf{shape} is defined by the perimeter of the object. This variable is mostly used in the case of point data, using a symbol of a given shape located at the exact coordinates of the point to be rendered. It is difficult to apply to linear symbols, and in the case of areal symbols it requires altering the shape of the symbol itself.
 
@@ -43,7 +43,7 @@ Color is the most important of all visual variables. Two of its components can b
 
 \textbf{Hue} is what we usually call color. That is, the name of the color (blue, red, green, etc.)
 
-Hue can be \tetbf{can be altered by the hue of surrounding elements}, specially in small symbols. Although human perception has a great sensitivity to it, it might be difficult to identify in small symbols, and it can be wrongly identified if the symbol has other larger ones with different hues in its surroundings.
+Hue can be \textbf{can be altered by the hue of surrounding elements}, specially in small symbols. Although human perception has a great sensitivity to it, it might be difficult to identify in small symbols, and it can be wrongly identified if the symbol has other larger ones with different hues in its surroundings.
 
 \textbf{Value} defines the darkness of the color. For instance, light blue and dark blue have the same hue, but they have different value.
 
@@ -286,9 +286,9 @@ Size is the only visual variable used with isolines. It is used to highlight tho
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=.8\columnwidth]{Visualization/Isolineas.png}
+\includegraphics[width=.8\columnwidth]{Visualization/Isolines.png}
 \caption{\small Map with isolines and hypsometric tints.}
-\label{Fig:Isolineas} 
+\label{Fig:Isolines} 
 \end{figure}
 
 
@@ -298,14 +298,13 @@ A particular case of isolines are the so called \textbf{hypsometric tints}. apar
 
 Figure \ref{Fig:Isolines} shows an example of this.
 
-
 \subsection{Choropleth maps}
 
 Choropleth maps are a very common type of map in GIS. For instance, maps in figure \ref{Fig:IntervalClasses} were all choropleth maps.
 
 In a choropleth map, there is a set of areas, each of them representing a single value of a variable. This value applies to the whole area, and is normally represented using hue applied to the areal symbol.
 
-Choropleth maps have some  important limitations. One of them is the \textf{sharp change in the boundaries between area}. which might be interpreted as a abrupt change in the variable value in that boundary. This could hide the continuity of the variable distribution, in case it exists. Another problem is the \textbf{homogeneity within each area}, which might lead to thinking that the variable has a uniform distribution, even if that is false.
+Choropleth maps have some  important limitations. One of them is the \textbf{sharp change in the boundaries between area}. which might be interpreted as a abrupt change in the variable value in that boundary. This could hide the continuity of the variable distribution, in case it exists. Another problem is the \textbf{homogeneity within each area}, which might lead to thinking that the variable has a uniform distribution, even if that is false.
 
 
 In many cases, an in order to correctly transmit the information contained in the variable, its values have to be \textbf{normalized using the area of each region}.
@@ -342,7 +341,7 @@ A common functionality that most GIS have is the use of \textbf{transparency} fo
 
 In the case of raster layers, transparency can be applied partially, just rendering those cells that are within a given range of values.
 
-If a variable is divided in many \textbf{separate layers} (horizontal division), the \texxtbf{same symbology} must be applied to all of them, in order to have a coherent map.
+If a variable is divided in many \textbf{separate layers} (horizontal division), the \textbf{same symbology} must be applied to all of them, in order to have a coherent map.
 
 
 \subsection{Particularities of on-screen rendering}
@@ -374,6 +373,6 @@ A solution to that is to use an \textbf{absolute size} for those elements, so th
 \label{Fig:SaturatedMap} 
 \end{figure}
 
-The ability of GIS to render layers at different scales can also cause \texbf{performance issues}. At low scales, the number of elements to be rendered can be too large, and painting them on the screen might take to omuch time. To avoid these problems, a \textbf{multiscalar approach} can be adopted, in which, depending on the scale, different layers and elements are rendered. For the same information, different versions with different levels of detail can be used, eachof them being used only at a given scale range.
+The ability of GIS to render layers at different scales can also cause \textbf{performance issues}. At low scales, the number of elements to be rendered can be too large, and painting them on the screen might take to omuch time. To avoid these problems, a \textbf{multiscalar approach} can be adopted, in which, depending on the scale, different layers and elements are rendered. For the same information, different versions with different levels of detail can be used, eachof them being used only at a given scale range.
 
 \pagestyle{empty}
