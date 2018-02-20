@@ -10,7 +10,9 @@
 \usepackage[raggedright]{titlesec}
 \usepackage{booktabs}
 \usepackage[all]{nowidow}
-\usepackage{soul}
+
+
+\usepackage{blindtext}
 \usepackage{everypage}
 \usepackage{draftwatermark}
 \SetWatermarkText{DRAFT}
@@ -29,8 +31,6 @@
 \titleformat{\subsection}
   {\raggedright\normalfont\slshape}{\thesection}{1em}{}	
 	
-\widowpenalty=10000
-\clubpenalty=10000
 \brokenpenalty=10000\relax
 
 \setlist[itemize]{leftmargin=*, noitemsep}
@@ -103,33 +103,29 @@
 
 \makeatletter
 \newlength\drop
-\newcommand*{\titleGM}{%
 \thispagestyle{empty}
 \begingroup
-\drop = 0.1\textheight
 \vspace*{\baselineskip}
 \vfill
-\hbox{%
-\hspace*{0.1\textwidth}%
+\hbox{
+\hspace*{0.1\textwidth}
 \rule{1pt}{\dimexpr\textheight-28pt\relax}%
-\hspace*{0.05\textwidth}% 
+\hspace*{0.05\textwidth}
 \parbox[b]{0.75\textwidth}{%
 \vbox{%
-    \vspace{\drop}
+    \vspace{0.1\textheight}
     {\Large\textsc{Víctor Olaya}\par}\vskip3.5\baselineskip
     {\huge\bfseries\raggedright{Introduction to GIS}\par}
     \vspace{1.5cm}
     {\itshape Foreword by} \textsc{Gretchen Peterson}
     \vspace{0.5\textheight}
-}% end of vbox
-}% end of parbox
-}% end of hbox
+}
+}
+}
 \vfill
 \null
-\endgroup}
+\endgroup
 \makeatother
-\titleGM
-
 
 \null
 \vfill
@@ -147,7 +143,8 @@ Copyright \copyright 2018 Víctor Olaya\\
 \newpage
 \normalsize
 
-\input{preface}
+\input{foreword}
+\input{prologue}
 
 \end{frontmatter} 
 \pagestyle{empty}

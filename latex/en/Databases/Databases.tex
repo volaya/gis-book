@@ -2,13 +2,13 @@
 
 \pagestyle{fancy}
 
-Databases are used in all disciplines in which an efficient data handling is needed, specially if those data are large. The data that is used in GIS are usually rather large, and the improvements in data acquisition have caused geographical data to be now more precise and, consequiently, larger. 
+Databases are used in all disciplines in which an efficient data handling is needed, specially if those data are large. The data that is used in GIS are usually rather large, and the improvements in data acquisition have caused geographical data to be now more precise and, consequently, larger. 
 
 Databases not only have the advantage of being able to work with large datasets, but also other ones such as managing multiple users or providing efficient access and indexing. For this reasons, they are a fundamental element in any software context, including GIS.
 
-A \textbf{database} is an \textbf{organized and sistematically stored collection of data}. Databases provide a better way of handling and using data, thanks to their structure.
+A \textbf{database} is an \textbf{organized and systematically stored collection of data}. Databases provide a better way of handling and using data, thanks to their structure.
 
-Some of the advantages of using a database instead of a tradicional file-based approach for storing data are:
+Some of the advantages of using a database instead of a traditional file-based approach for storing data are:
 
 \begin{itemize}
 	\item \textbf{More independence}. Data are independent from both the users and the software.
@@ -22,8 +22,8 @@ This has a direct influence in the results that are obtained from the explotatio
 
 \begin{itemize}
 	\item \textbf{More coherence}. Better management leads to better data, and that produces results with a better quality.
-	\item \textbf{More efficiency}. Accesing the data is easier and more effective.
-	\item \textbf{More informative value}. It is easier to extract the information that is contained in the data, since one of the goals of a database is the increse the value of data as source of information.
+	\item \textbf{More efficiency}. Accessing the data is easier and more effective.
+	\item \textbf{More informative value}. It is easier to extract the information that is contained in the data, since one of the goals of a database is the increase the value of data as source of information.
 \end{itemize}
 
 Users also get advantages when using a database, such as the following ones:
@@ -51,17 +51,17 @@ Relations between tables can be of several types, depending on the records of on
 
 \section{Database management systems}
 
-Along with databases, the fundamental element to exploit them are \textbf{database management systems} (DBMS). These systems are an \textbf{intermediary element between the data and the sofware that consumes them}. Software such as a desktop GIS does not access the database directly, but instead \textbf{through a DBMS}.
+Along with databases, the fundamental element to exploit them are \textbf{database management systems} (DBMS). These systems are an \textbf{intermediary element between the data and the software that consumes them}. Software such as a desktop GIS does not access the database directly, but instead \textbf{through a DBMS}.
 
 The following are some of the characteristics that a DBMS must have:
 
 \begin{itemize}
 	\item \textbf{Transparent access to data}. The DBMS creates an abstraction of the data that makes it easier to work with them, hiding the internal elements that are not relevant for exploiting the data.
 
-	Procedures such as \textbf{queries} are done throught a DBMS, which takes care of interpreting them, apply them on the database and returning the cooresponding result. The GIS does not query the database, but instead communicates with the DBMS.
+	Procedures such as \textbf{queries} are done through a DBMS, which takes care of interpreting them, apply them on the database and returning the corresponding result. The GIS does not query the database, but instead communicates with the DBMS.
 	\item \textbf{Data protection}. If the database contains sensible information, a DBMS must \textbf{control the access to it}, restricting it to certain users and implementing the protection mechanisms that are needed for this.
 	\item \textbf{Efficiency}. A DBMS must be capable of efficiently handling \textbf{a large volume of data and a large number of operations} (for instance, many users accessing simultaneously), and provide a quick response to user requests.
-	\item \textbf{Transaction management}. Operations on a database such as adding or deleting a record are perform using what is known as a \textbf{transaction}. A transaction is a unit of work performed within a database management system against a database. A DBMS is said to be \textbf{transatcional} if it can guarantee the integrity of the data and does not allow transactions to remain uncompleted. 
+	\item \textbf{Transaction management}. Operations on a database such as adding or deleting a record are perform using what is known as a \textbf{transaction}. A transaction is a unit of work performed within a database management system against a database. A DBMS is said to be \textbf{transactional} if it can guarantee the integrity of the data and does not allow transactions to remain uncompleted. 
 
 \end{itemize}
 
@@ -71,15 +71,13 @@ Since software such as a GIS communicates with the DBMS and does not access the 
 
 We have seen the fundamental ideas about general databases, which can contain any type of data. Adding spatial data to this is not trivial, and adds more complexity and makes it necessary to use a different approach. For a database to be considered spatial, it should adapt to the particular nature of spatial data, and include additional elements.
 
-First, the database has to be able to \textbf{store spatial data natively}. That means that a geometry can be stored associated to record in the table, just like it happens with other data types that can be used for table attributes, such as numerical values or text strings. Not only the database must be able to store spatial data, but also to \textbf{understand it} and be aware of its properties, so it can support queries related to that data. 
+First, the database has to be able to \textbf{store spatial data natively}. That means that a geometry can be stored in the table, just like it happens with other data types that can be used for table attributes, such as numerical values or text strings. Not only the database must be able to store spatial data, but also to \textbf{understand it} and be aware of its properties, so it can support queries related to that data. 
 
-This is known as \textbf{transparent storage}, as opposed to \textbf{opaque storage}, in which the geometry is stored using some of the data types (for instance, a string with the geometry coordinates), but the database does not know about its spatial nature (it makes no difference between that string and any other containing other type of information).
+This is what make the database fully spatially enabled, unlike a storage mechanism in which the geometry is stored using some of the basic data types (for instance, using a string containing the geometry coordinates), and the database does not know about its spatial nature (it makes no difference between that string and any other containing other type of information).
 
+Although raster data can be stored as well, \textbf{spatial databases work mostly with vector data} and are better adapted to them. The geometries are stored as part of the attributes of a table record, which corresponds to a feature in the vector representation model. The thematic component can be stored in the database without requiring further adaptation.
 
-
-Aunque existen planteamientos para almacenar datos ráster en bases de datos, \textbf{las bases de datos espaciales trabajan principalmente con datos vectoriales} y están mejor adaptadas a estos. Las geometrías del dato vectorial se incluyen, como ya se ha dicho, dentro de los valores de un registro de la tabla (que se corresponde con una entidad en el modelo de datos vectoriales). Por su parte, la componente temática del dato espacial puede almacenarse sin problema en la base de datos, sin necesidad de ningún tipo de adaptación.
-
-Assuming that the database is prepared to store spatial data and correctly work with it, we now need to \textbf{adapt the query language}. Along with the usual operations that a DBMS can perform, new ones are added that use the spatial properties of spatial data. We have a \textbf{spatial query language} that allows to make queries related to the spatial component of the data.
+Assuming that the database is prepared to store spatial data and correctly work with it, we now need to \textbf{adapt the query language}. Along with the usual operations that a DBMS can perform, new ones are added that use the spatial properties of spatial data. A query language that allows to make queries related to the spatial component of the data is known as a \textbf{spatial query language} .
 
 
 \section{Queries}
@@ -102,13 +100,13 @@ A very simple example of a query is \textbf{selection}. This is an operation tha
 
 A query can also be used to extract certain information from a database according to our needs, and to later create a new layer with it. This operation is very useful when the database contains a large amount of data, but we only need a part of those data. We might create a subset based on spatial criteria (for instance, if the database contains information for the whole world and just want the one corresponding to a given country), a thematic one (the database contains many attributes associated to teach feature, but only a few of them are of interest to us), or a combination of both. To extract that information and create a subset of the original data, we will use a query.
 
-Let's see some more examples of queries. Let's assumme that we have a layer with the world countries, and a set of economic and social parameters associated to each of them. For each countrie, we also have a polygon representing its boundaries.
+Let's see some more examples of queries. Let's assume that we have a layer with the world countries, and a set of economic and social parameters associated to each of them. For each country, we also have a polygon representing its boundaries.
 
 We can make queries like the following ones:
 
 \begin{itemize}
  \item Which countries have a GDP larger that Spain's one?
-\item Which countries have grown aconomically during the last year?
+\item Which countries have grown economically during the last year?
 \item Which countries have a population of more than 200 million people? 
 \end{itemize}
 
@@ -118,17 +116,17 @@ Queries might include several criteria. For instance:
 
 \begin{itemize}
  \item Which countries that have grown economically during the last year have a population of more than 40 million people?
-\item In which countries where english is spoken population increased during the last year?
+\item In which countries where English is spoken population increased during the last year?
 \end{itemize}
 
-To express this queries in a way that can be later adapted to a query language, we need to use \textbf{logical operators}. The above queries will be rewritten as follows.
+To express this queries in a way that can be later adapted to a query language, we need to use \textbf{logical operators}. The above queries would be rewritten as follows.
 
 \begin{itemize}
  \item Which countries have grown economically during the last year \emph{and} have a population of more than 40 million people?
-\item In which countries is english spoken \emph{and} the population increased during the last year?
+\item In which countries is English spoken \emph{and} the population increased during the last year?
 \end{itemize}
 
-Query languages that are used to communicate with the DMBS support this operator for queries.
+Query languages that can be used to communicate with the DMBS support this operators for queries.
 
 If the DBMS is spatial and \emph{understands} that certain columns of a table contain spatial information, it will support queries that use that information, such as the following ones:
 
@@ -162,23 +160,23 @@ However, even if we do not have such a field, we can join the tables if we have 
 
 If we make a query to a spatial database, responding to it might involve a large number of operation. For instance, if we want to know which countries have a population of more than 10 million people, we need to read the population of every single country in our table and compare it to that value. If the table has a large number or records, the query might take long to be processed. We can clearly see that this is not the optimal way of processing a query.
 
-By using what is known as \textbf{indices}, we can reach the data that will form the reponse of our query in a shorter time, without having to pass through all the data contained in the database.
+By using what is known as \textbf{indexes}, we can reach the data that will form the response of our query in a shorter time, without having to pass through all the data contained in the database.
 
 This is easy to understand with an example. Imagine a telephone book. It contains a large number of entries, but you can easily find a name without having to read them all. This is because a) the data is ordered (\textbf{indexed}) in a particular way (alphabetically) and b) you know how to use that indexing (you know the order of letter in the alphabet). With that, you know that it does not make sense to search for Peter Johnson in the pages that correspond to letter A or B, and you can skip them.  
 
-Apart fo indices for numerical or alphanumerical values, which are easy to create, another type of indices, known as \textbf{spatial indexes} are of great importance in the context of GIS. The concept is similar to non-spatial indexes, and serve the same purpose: to \textbf{optimize searches using a correct data structure}, in this case based on its spatial component.
+Apart from indexes for numerical or alphanumerical values, which are easy to create, another type of indexes, known as \textbf{spatial indexes} are of great importance in the context of GIS. The concept is similar to non-spatial indexes, and serve the same purpose: to \textbf{optimize searches using a correct data structure}, in this case based on its spatial component.
 
-We will use another example to help understand how an spatial index works. Suppose that we are using our layer with countries and the want to find those that are located at less than 2000 km from the border of Spain. How would we proceed ro response to this query? 
+We will use another example to help understand how an spatial index works. Suppose that we are using our layer with countries and the want to find those that are located at less than 2000 km from of Spain. How would we proceed to response to this query? 
 
 A naive approach would be to measure the distance between Spain and all the remaining countries, then select those at a distance of less than 2000 km. We would get the correct result, but this approach is far from optimal. 
 
-Finding a better approach is easy. For instance, with a little knowledge of world geography, we can inmediately exclude all countries in America. We can be sure that they will not be part of the response, since the distance between Spain and America is already larger than 2000 km. We do not know the distance between those countries and Spain, but we are sure that it will be more than 2000 km. Therefore, it makes no sense to measure the distances to all of them.
+Finding a better approach is easy. For instance, with a little knowledge of world geography, we can immediately exclude all countries in America. We can be sure that they will not be part of the response, since the distance between Spain and America is already larger than 2000 km. We do not know the distance between those countries and Spain, but we are sure that it will be more than 2000 km. Therefore, it makes no sense to measure the distances to all of them.
 
 That knowledge of world geography that allows us to reduce the number of countries to work with is actually like a spatial index. It cannot be used to respond to the query, but it \textbf{provides an approximation that makes it easier to respond to it}. We can discard a large number of countries, and then perform the most costly operations (the measurement) with just a subset.
 
 Thanks to spatial indexes, queries are more efficient and we can work with larger datasets.
 
-Spatial indexes are stored along with the data they refer to, whether in a separate file or inside the database itself. Spatial DBMS have \textbf{built-in capabilities to compute spatial indexes} and store them, and once they have been computed, they are used whenever the DBMS has to respond to a spatial query.
+Spatial indexes are stored along with the data they refer to, whether in separate files or inside the database itself. Spatial DBMS have \textbf{built-in capabilities to compute spatial indexes} and store them, and once they have been computed, they are used whenever the DBMS has to respond to a spatial query.
 
 
 \pagestyle{empty}
