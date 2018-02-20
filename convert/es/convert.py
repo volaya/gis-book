@@ -108,7 +108,7 @@ def convertFile(path, chapterNum):
         try:
             replace = "<a name='%s'></a>%s<center><figcaption>Cuadro %s: %s</figcaption></center>" % (tablelabel, tableshtml[tablelabel], tableNum + 1, caption)
             s = s.replace(table, replace)
-            s = s.replace("\\ref{%s}" % tablelabel, '<a href="#%s">%s</a>' % (label, tableNum))
+            s = s.replace("\\ref{%s}" % tablelabel, '<a href="#%s">%s</a>' % (label, tableNum + 1))
         except Exception, e:
             pass
 

@@ -14,7 +14,7 @@ import shutil
 import zipfile
 
 tableshtml={
-"Tabla:PropiedadesVariablesVisuales": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">Posición</th><th class="head">Tamaño</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">Orientación</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-odd"><td>Selectiva</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-even"><td>Ordenada</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
+"Table:PropertiesVisualVariables": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">Posición</th><th class="head">Tamaño</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">Orientación</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-odd"><td>Selectiva</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-even"><td>Ordenada</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
 }
 
 exps_pre = [(r"\\bigskip", ""),
@@ -100,16 +100,19 @@ def convertFile(path, chapterNum):
 
     p = re.compile(r"(\\begin\{table[\S\s]*?\\end\{table.*?\})")
     tables = p.findall(s)
+    print tables
     for tableNum, table in enumerate(tables):  
-        idx = table.find("Tabla:")
+        idx = table.find("Table:")
         tablelabel = table[idx:table.find("}", idx)]
         idx = table.find(r"\caption") + 9        
         caption = table[idx:table.find("}\n", idx)]
+        print tablelabel, caption
         try:
-            replace = "<a name='%s'></a>%s<center><figcaption>Cuadro %s: %s</figcaption></center>" % (tablelabel, tableshtml[tablelabel], tableNum + 1, caption)
+            replace = "<a name='%s'></a>%s<center><figcaption>Table %s: %s</figcaption></center>" % (tablelabel, tableshtml[tablelabel], tableNum + 1, caption)
             s = s.replace(table, replace)
-            s = s.replace("\\ref{%s}" % tablelabel, '<a href="#%s">%s</a>' % (label, tableNum))
+            s = s.replace("\\ref{%s}" % tablelabel, '<a href="#%s">%s</a>' % (label, tableNum + 1))
         except Exception, e:
+            print e
             pass
 
     for exp, replace in exps_post:
@@ -130,7 +133,7 @@ def convert():
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
 
-    chapterFiles = [os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "latex/es/prologo.tex")]
+    chapterFiles = [os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "latex/en/prologue.tex")]
     chapterNames = ["Introduction", "History", "Cartography", "Data", 
                     "Data_sources", "Software", "Databases", "Analysis", "Visualization"]
     chapterFiles.extend([os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 
@@ -146,7 +149,7 @@ def convert():
             pass 
 
 
-    epub = zipfile.ZipFile(os.path.join(os.path.dirname(__file__), "ebook", "librosig.epub"), 'w')
+    epub = zipfile.ZipFile(os.path.join(os.path.dirname(__file__), "ebook", "gisbook.epub"), 'w')
 
     epub.writestr("mimetype", "application/epub+zip")
 
@@ -160,10 +163,10 @@ def convert():
     index = '''<package version="2.0"
         xmlns="http://www.idpf.org/2007/opf">
         <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
-            <dc:title>Introducción a los SIG</dc:title>
+            <dc:title>Introducction to GIS</dc:title>
             <dc:creator opf:file-as="Olaya, Víctor" opf:role="aut">Víctor Olaya</dc:creator>
             <dc:language>es</dc:language>        
-            <dc:description>Introducción a los Sistemas de Información Geográfica.</dc:description> 
+            <dc:description>IIntroduction to GIS.</dc:description> 
             <meta name="cover" content="cover.jpg" />               
         </metadata>
       <manifest>
@@ -193,12 +196,12 @@ def convert():
 
     intro = '''<html> 
                 <head> 
-                <title>Introducción a los SIG</title> 
+                <title>Introduction to GIS</title> 
                 </head> 
                 <body> 
                 <a name="start"> 
-                <h2>Introducción a los SIG</h2></a> </p> 
-                <p>Copyright © Víctor Olaya. 2016</p> 
+                <h2>Introduction to GIS</h2></a> </p> 
+                <p>Copyright © Víctor Olaya. 2018</p> 
                 <p>Versión del %s</p> 
                 </body>
                 </html>'''

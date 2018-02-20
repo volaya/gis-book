@@ -1,12 +1,12 @@
-\chapter{Bases de datos}
+\chapter{Databases}
 
 \pagestyle{fancy}
 
-Databases are used in all disciplines in which an efficient data handling is needed, specially if those data are large. The data that is used in GIS are usually rather large, and the improvements in data acquisition have caused geogrpahical data to be now more precise and, consequiently, larger. 
+Databases are used in all disciplines in which an efficient data handling is needed, specially if those data are large. The data that is used in GIS are usually rather large, and the improvements in data acquisition have caused geographical data to be now more precise and, consequiently, larger. 
 
-Databases not only have the advantage of being able to work with large datasets, but also otrhe ones such as managing multiple users or providing efficient access and indexing. For this reasons, they are a fundamental element in any software context, including GIS.
+Databases not only have the advantage of being able to work with large datasets, but also other ones such as managing multiple users or providing efficient access and indexing. For this reasons, they are a fundamental element in any software context, including GIS.
 
-A \textbf{Database} is a \textbf{organized and sistematically stored collection of data}. Databases provide a better way of handling and using data, thanks to their structure.
+A \textbf{database} is an \textbf{organized and sistematically stored collection of data}. Databases provide a better way of handling and using data, thanks to their structure.
 
 Some of the advantages of using a database instead of a tradicional file-based approach for storing data are:
 
@@ -42,10 +42,9 @@ From the many different models that have been defined for creating a database, t
 
 The table itself is knows as a \textbf{relation}, since it contains the relation that exists between its elements. Columns represent the \textbf{attributes} associated to a feature, while rows contain the \textbf{records}. A row is formed with a set of $n$ attributes, which form a \textbf{tuple}.
 
-A databse usually contains more than a table, since the information to store is of many different types, and it is convenient to separate it into several tables. Apart from the relations that the table itself implies, relations between tables can also be defined. In this case, we need to have some attribute that can be used to unequivocally represent a tuple. This attribute is known as a \textbf{key attribute}, and it must be \textbf{unique and invariable} for each tuple. For instance, if we have a table where each row represents a person, an attribute containing the Social Security can be used as a key attribute.
+A database usually contains more than a table, since the information to store is of many different types, and it is convenient to separate it into several tables. Apart from the relations that the table itself implies, relations between tables can also be defined. This is commonly know as a table \textbf{join}. To perform a table join, we need to have some attribute that can be used to unequivocally represent a tuple. This attribute is known as a \textbf{key attribute}, and it must be \textbf{unique and invariable} for each tuple. For instance, if we have a table where each row represents a person, an attribute containing the Social Security can be used as a key attribute.
 
 When working with geographical data, it is common to use \textbf{the spatial component as key}, since it is usually unique.
-
 
 Relations between tables can be of several types, depending on the records of one table that are related with the ones of the other table. We have \textbf{one to one}, \textbf{one to many} and \textbf{many to many} relations. for instance, if we have a table with cities and another one with persons, and we define a relation \emph{lives in}, it will be a one to many relation, since many people can live in a a single city, and each person lives in only one of them.
 
@@ -57,126 +56,129 @@ Along with databases, the fundamental element to exploit them are \textbf{databa
 The following are some of the characteristics that a DBMS must have:
 
 \begin{itemize}
-	\item \textbf{Acceso transparente a los datos}. El SGBD debe crear una abstracción de los datos que haga el trabajo con estos más sencillo, ocultando aspectos internos que no sean relevantes para dicho trabajo.
-	
-	Procedimientos como las \textbf{consultas} se realizan a través del SGBD, que es quien se encarga de interpretar dichas consultas, aplicarlas sobre la base de datos y devolver el resultado correspondiente. El SIG no accede a los datos, sino que se comunica con el SGBD y deja en manos de este el proceso de consulta en sí.
-	\item \textbf{Protección de los datos}. Si la base de datos almacena información sensible, el SGBD debe \textbf{controlar el acceso} a esta, restringiendo el acceso cuando corresponda (por ejemplo, estableciendo distintos permisos de acceso para distintos tipos de usuarios) e implementando los mecanismos de protección necesarios.
-	\item \textbf{Eficiencia}. El SGBD debe ser capaz de gestionar de forma fluida \textbf{grandes volúmenes de datos o de operaciones} (por ejemplo, muchos usuarios accediendo simultáneamente), de modo que dé una respuesta rápida a las peticiones de los usuarios de la base de datos.
-	\item \textbf{Gestión de transacciones}. Las operaciones sobre la base de datos tales como la adición o borrado de un registro se realizan mediante transacciones. El SGBD ha de encargarse de gestionarlas de manera eficiente y segura para que todos los usuarios de la base de datos puedan hacer su trabajo de forma transparente. Se denomina \textbf{transaccional} al SGBD capaz de garantizar la integridad de los datos, no permitiendo que las transacciones puedan quedar en un estado intermedio. 
+	\item \textbf{Transparent access to data}. The DBMS creates an abstraction of the data that makes it easier to work with them, hiding the internal elements that are not relevant for exploiting the data.
+
+	Procedures such as \textbf{queries} are done throught a DBMS, which takes care of interpreting them, apply them on the database and returning the cooresponding result. The GIS does not query the database, but instead communicates with the DBMS.
+	\item \textbf{Data protection}. If the database contains sensible information, a DBMS must \textbf{control the access to it}, restricting it to certain users and implementing the protection mechanisms that are needed for this.
+	\item \textbf{Efficiency}. A DBMS must be capable of efficiently handling \textbf{a large volume of data and a large number of operations} (for instance, many users accessing simultaneously), and provide a quick response to user requests.
+	\item \textbf{Transaction management}. Operations on a database such as adding or deleting a record are perform using what is known as a \textbf{transaction}. A transaction is a unit of work performed within a database management system against a database. A DBMS is said to be \textbf{transatcional} if it can guarantee the integrity of the data and does not allow transactions to remain uncompleted. 
 
 \end{itemize}
 
-En este sentido, resulta de especial importancia la existencia de \textbf{lenguajes de consulta}, que son los que una aplicación utilizará para comunicarse con el SGBD y expresar las operaciones que desea realizar con los datos de la base de datos. El lenguaje de consulta mas extendido es \textbf{SQL} (Standard Query Language)
+Since software such as a GIS communicates with the DBMS and does not access the database directly, a language to establish this communication is needed. Languages used to make queries to a DBMS are known as \textbf{query languages}. The most popular of these languages is the \textbf{Structured Query Language (SQL)}.
 
-\subsection{Bases de datos espaciales}
+\subsection{Spatial databases}
 
-Todo cuanto hemos visto en los puntos anteriores constituye el conjunto de ideas fundamentales sobre las que se asienta la creación y uso de bases de datos de cualquier índole. La inclusión de datos espaciales en este esquema no es en absoluto obvia, y presenta una complejidad adicional que requiere de nuevos planteamientos. Para que una base de datos pueda considerarse espacial, debe adaptarse y añadir elementos adicionales. 
+We have seen the fundamental ideas about general databases, which can contain any type of data. Adding spatial data to this is not trivial, and adds more complexity and makes it necessary to use a different approach. For a database to be considered spatial, it should adapt to the particular nature of spatial data, and include additional elements.
 
-En primer lugar, el dato espacial debe poder \textbf{almacenarse de forma nativa} en la base de datos. Esto quiere decir que una geometría debe poder almacenarse asociada a una entidad en una tabla, del mismo modo que sucede con otros tipos de datos tales como valores numéricos o cadenas de texto. El dato no solo debe poder almacenarse, sino también \textbf{entenderse} por parte del SGBD, para así comprender su naturaleza espacial y poder responder a peticiones relativas a esta por parte del usuario. Esto se denomina \textbf{almacenamiento transparente}, frente al almacenamiento \textbf{opaco}, en el cual la base de datos es capaz de recoger cualquier tipo de valor, pero sin ser capaz de entender su naturaleza y utilizarlo.
+First, the database has to be able to \textbf{store spatial data natively}. That means that a geometry can be stored associated to record in the table, just like it happens with other data types that can be used for table attributes, such as numerical values or text strings. Not only the database must be able to store spatial data, but also to \textbf{understand it} and be aware of its properties, so it can support queries related to that data. 
+
+This is known as \textbf{transparent storage}, as opposed to \textbf{opaque storage}, in which the geometry is stored using some of the data types (for instance, a string with the geometry coordinates), but the database does not know about its spatial nature (it makes no difference between that string and any other containing other type of information).
+
+
 
 Aunque existen planteamientos para almacenar datos ráster en bases de datos, \textbf{las bases de datos espaciales trabajan principalmente con datos vectoriales} y están mejor adaptadas a estos. Las geometrías del dato vectorial se incluyen, como ya se ha dicho, dentro de los valores de un registro de la tabla (que se corresponde con una entidad en el modelo de datos vectoriales). Por su parte, la componente temática del dato espacial puede almacenarse sin problema en la base de datos, sin necesidad de ningún tipo de adaptación.
 
-Cuando la base de datos está preparada para almacenar y trabajar con los datos espaciales, es necesario \textbf{adaptar el lenguaje de consulta}. A las operaciones habituales que un SGBD es capaz de realizar en función de los datos, se añaden otras que utilizan las propiedades espaciales del dato espacial. Se tiene así un \textbf{lenguaje de consulta espacial}, que permite consultas con componente espacial.
+Assuming that the database is prepared to store spatial data and correctly work with it, we now need to \textbf{adapt the query language}. Along with the usual operations that a DBMS can perform, new ones are added that use the spatial properties of spatial data. We have a \textbf{spatial query language} that allows to make queries related to the spatial component of the data.
 
 
-\section{Consultas}
+\section{Queries}
 
+A query is an operation in which we \emph{ask} the geographical data about the information they content. This type of analysis is one of the key elements of GIS, since it represents a large part of the work that is done with a GIS software.
 
-Entendemos por consulta una operación en la cual \emph{preguntamos} a los datos geográficos algún tipo de cuestión simple, generalmente basada en conceptos formales sencillos. Este tipo de análisis, aunque no implica el uso de conceptos analíticos complejos, es uno de los elementos clave de los SIG, pues es parte básica del empleo diario de estos.
+Although queries are not exclusive of databases, they become more powerful and efficient with the help of a DBMS and a query language.
 
-Aunque las consultas no son algo exclusivo de las bases de datos, es mediante el concurso de estas que adquieren toda su potencia y permite efectuar gran parte de las operaciones habituales de un SIG.
+In the context of GIS, a query represent something similar to what we do when we use a classic paper map and, based on it, we respond to questions such as \emph{which is the closest river to X city?} or \emph{which rivers cross the Y province?}. We must not forget, however, that geographical data has two components: a thematic one and a spatial one. Questions such as the ones above refer only to the spatial component, but we can make queries that refer to the thematic one, or, moreover, to both of them simultaneously.
 
-En el contexto espacial, una consulta representa un uso similar al que damos a un mapa clásico, cuando en base a este respondemos a preguntas como \emph{¿qué hay en la localización X?} o \emph{¿qué ríos pasan por la provincia Y?} No obstante, no debemos olvidar que los datos espaciales tienen dos componentes: una espacial y otra temática. Preguntas como las anteriores hacen referencia a la componente espacial, pero igualmente pueden efectuarse consultas que se apliquen sobre la parte temática. Y más aún, pueden efectuarse consultas conjuntas que interroguen a los datos geográficos acerca de los atributos espaciales y temáticos que estos contienen.
-
-
-Un ejemplo muy sencillo de consulta es lo que conocemos en un SIG como \textbf{selección}. De todos los registros de la tabla de datos, aquellos que cumplen el criterio indicado se marcan como seleccionados, y posteriormente pueden utilizarse únicamente estos como base de otro análisis, o simplemente el usuario puede ver cuáles han sido los seleccionados para así obtener la respuesta a su consulta. La figura \ref{Fig:Seleccion} muestra un ejemplo típico de esto, en el que el usuario define un área rectangular y se seleccionan las entidades que cumplen la condición de intersecar con él. Los criterios de selección pueden ser sencillos como este, o más elaborados y complejos.
+A very simple example of a query is \textbf{selection}. This is an operation that is commonly performed in a GIS, to just work with a subset of all the features in a layer. In figure \ref{Fig:Selection} you see how the GIS user defines a rectangular area, and features that fall within its limits are selected. Selection criteria can be as simple as this one, or more complex, and they might also include the thematic component (here we are just using the spatial one)
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=\textwidth]{../es/Bases_datos/Seleccion_rectangulo.png}
-\caption{\small Una consulta sencilla mediante la definición gráfica de un rectángulo. Todas las entidades dentro de este son el resultado de la consulta y quedan seleccionadas en el SIG.}
-\label{Fig:Seleccion} 
+\includegraphics[width=\textwidth]{databases/Selection.png}
+\caption{\small Manual selection of features by defining a rectangular region.}
+\label{Fig:Selection} 
 \end{figure}
 
 
-Una consulta nos vale también para extraer información de una base de datos de acuerdo a nuestras necesidades, y para crear posteriormente y a partir de dicha información una nueva capa. Esta operación es útil cuando la base de datos de la que disponemos es muy voluminosa y solo resulta de interés para nuestro trabajo una parte de ella. Puede tratarse de una parte en el sentido espacial (la base de datos contiene datos a nivel mundial y se quiere trabajar a nivel estatal), en el sentido temático (la base de datos contiene mucha información de cada entidad y solo interesan algunos campos), o en una combinación de ambas. Para extraer dicha parte y trabajar únicamente con ella, utilizaremos una consulta.
+A query can also be used to extract certain information from a database according to our needs, and to later create a new layer with it. This operation is very useful when the database contains a large amount of data, but we only need a part of those data. We might create a subset based on spatial criteria (for instance, if the database contains information for the whole world and just want the one corresponding to a given country), a thematic one (the database contains many attributes associated to teach feature, but only a few of them are of interest to us), or a combination of both. To extract that information and create a subset of the original data, we will use a query.
 
-Veamos algunos ejemplos de consultas. Sea  una capa con los distintos países del mundo y una serie de valores económicos y sociales asociados a cada uno de ellos. Consideremos las siguientes preguntas:
+Let's see some more examples of queries. Let's assumme that we have a layer with the world countries, and a set of economic and social parameters associated to each of them. For each countrie, we also have a polygon representing its boundaries.
 
-\begin{itemize}
- \item ¿Qué países tienen un Producto Interior Bruto mayor que el de España?
-\item ¿Qué países han experimentado un crecimiento económico en el último año?
-\item ¿Cuántos países tienen más de 200 millones de habitantes? 
-\end{itemize}
-
-En todos estos casos estamos haciendo referencia a países, los cuales, como sabemos, estarán asociados a elementos geométricos que definan sus propiedades espaciales, es decir, a una componente espacial. Esta componente es la que permite que, además de poder plantear las consultas anteriores, podamos representar cada país en la pantalla y visualizarlo, o saber cuáles de ellos se encuentran en el hemisferio norte (esta sería una consulta espacial, de las que más adelante en este mismo capítulo veremos).
-
-Sin embargo, cuando realizamos consultas como las tres anteriores, no acudimos para nada a la componente espacial. Consultas como estas podrían resolverse si en lugar de una capa dentro de un SIG tuviéramos, por ejemplo, un simple anuario estadístico lleno de tablas con datos correspondientes a cada país. 
-
-Las consultas pueden incluir varios criterios en una sola pregunta. Por ejemplo:
+We can make queries like the following ones:
 
 \begin{itemize}
- \item ¿Qué países de la zona euro tienen más de 40 millones de habitantes?
-\item ¿En qué países de habla inglesa aumentó la población durante el último año?
+ \item Which countries have a GDP larger that Spain's one?
+\item Which countries have grown aconomically during the last year?
+\item Which countries have a population of more than 200 million people? 
 \end{itemize}
 
-Para expresar esas consultas se han de incluir elementos de la denominada \textbf{lógica booleana}. Esta implica el uso de \textbf{operadores lógicos}, mediante los cuales se reescribirían las consultas anteriores de la siguiente manera:
+In this queries, we are not using the spatial component (we do not need the polygon associated to each country). We could make those queries if we had country data without any spatial component, and using a regular database with no spatial capabilities.
+
+Queries might include several criteria. For instance:
 
 \begin{itemize}
- \item ¿Qué países tienen como moneda el euro \emph{y} a la vez tienen más de 40 millones de habitantes?
-\item ¿Que países hablan inglés \emph{y} sufrieron un aumento de población durante el último año?
+ \item Which countries that have grown economically during the last year have a population of more than 40 million people?
+\item In which countries where english is spoken population increased during the last year?
 \end{itemize}
 
-Los lenguajes de consulta que se emplean para transmitir estas operaciones a un SGBD, permiten el uso de tales operadores para formular consultas.
-
-Si el SGBD es de tipo espacial y \emph{entiende} que algunas de las columnas de una tabla contiene información espacial (es decir, que cada entidad no solo tiene información temática), pueden plantearse consultas que hacen uso de esta, tales como las siguientes.
+To express this queries in a way that can be later adapted to a query language, we need to use \textbf{logical operators}. The above queries will be rewritten as follows.
 
 \begin{itemize}
-\item ¿Qué países comparten frontera con Alemania?
-\item ¿Cuántos países se encuentran completamente en el hemisferio sur?
-\item ¿Qué países están a menos de 2000 km de España?
+ \item Which countries have grown economically during the last year \emph{and} have a population of more than 40 million people?
+\item In which countries is english spoken \emph{and} the population increased during the last year?
 \end{itemize}
 
-Para dar respuesta a esas cuestiones, basta analizar la componente espacial y no necesitamos para nada los datos con los que hemos trabajado anteriormente. Son consultas puramente espaciales. Aunque estas consultas amplían lo que ya conocemos, en realidad no abren ninguna nueva vía de estudio de los datos geográficos. Son consultas a las que podríamos responder utilizando un mero mapa impreso, sin aprovechar el hecho de que dentro de un SIG las componentes espacial y temática se hallan íntimamente vinculadas. La verdadera potencia de las consultas espaciales la encontramos en la combinación de estas consultas sobre la componente espacial y las que vimos anteriormente sobre la componente temática. Así, se pueden plantear, por ejemplo, cuestiones como:
+Query languages that are used to communicate with the DMBS support this operator for queries.
+
+If the DBMS is spatial and \emph{understands} that certain columns of a table contain spatial information, it will support queries that use that information, such as the following ones:
 
 \begin{itemize}
- \item ¿Qué países del hemisferio norte tiene una densidad de población mayor que la de Perú?
-\item ¿Cuántos países con más de 10 millones de habitantes se encuentran a menos de 1000 km de la frontera de Rusia?
+\item Which country spans the most degrees of latitude?
+\item How many countries are completely contained in the southern hemisphere?
+\item Which countries are located at less than 2000 km from Spain?
 \end{itemize}
 
-Estas consultas incorporan elementos que hacen necesario acudir a la tabla de atributos, y otros que requieren analizar la componente espacial, estudiando las relaciones espaciales y topológicas de las geometrías asociadas. 
+To respond to these queries, we just need to analyze the spatial component, and we do not need the rest of the attributes data. These queries are purely spatial. Although they extend what we had done before, we are not adding here any new way of studying geographical data that was not possible without a GIS. We could respond to those queries using just a classic paper map.
 
-Las consultas pueden incluir \textbf{varias capas}. Por ejemplo, si ademas de la capa de países disponemos de una capa de ríos del mundo, podríamos responder a la pregunta \emph{¿qué países atraviesa el Nilo?}
+The true power of spatial queries is to allow querying both the thematic and the spatial component. For instance, with queries such as these:
+
+\begin{itemize}
+ \item Which countries in the southern hemisphere have a population density higher than the one of Peru?
+\item How many countries with a population of more than 10 million people share their borders with Russia?
+\end{itemize}
+
+These queries require analyzing the thematic component, and at the same time include criteria that are based on the spatial and topological relations of the associated geometries.
+
+Queries can include \textbf{several layers}. For instance, if along with the countries layer that we have been using, we have a layer with rivers, we could respond to a query such as \emph{Which countries does the Nile river cross?}. This is be a purely spatial query that uses two layers.
+
+Table joins, which were discussed for regular databases with no spatial data, can also be performed with a spatial criteria. These are known as \textbf{spatial joins}.
+
+Here is an example of a spatial join. Suppose that we have a layer with world cities and the layer with countries that we have been using in previous examples. We can define a relation between the two corresponding tables, which will associate to each city all the attributes of the country it belongs to. A field with the country name in both tables is needed for that, to use it as the linking point. 
+
+However, even if we do not have such a field, we can join the tables if we have spatial data for both cities and countries. All cities that belong to a given country must be located within its boundaries. This can be used to define the relation between the tables, and we can know which country it belongs to, just by finding the polygon from the countries list in which the points representing the city is located.
 
 
-Igualmente, las uniones entre tablas que hemos visto para el caso de la componente temática pueden establecerse mediante un criterio espacial. Se tiene así una \textbf{unión espacial}.
+\subsection{Spatial indexes}
 
-Un ejemplo muy sencillo de unión espacial es el que encontramos si combinamos la capa de países del mundo que venimos utilizando con una capa de ciudades del mundo. Podemos unir a la tabla de esta segunda capa todos los valores que caracterizan al país al que pertenece cada ciudad. Si existe un campo común entre ambas tablas de atributos (por ejemplo, el nombre del país), esto serviría para efectuar esta unión. No obstante, esto no es necesario, ya que existe otro elemento común que no se encuentra almacenado dentro de la tabla, pero que puede tomarse de la componente espacial: toda ciudad debe estar situada dentro de los límites del país al que pertenece. Esto sirve para establecer la relación entre las tablas, y cada ciudad debe relacionarse con aquella entidad dentro de cuya geometría se encuentre el punto que la representa.
+If we make a query to a spatial database, responding to it might involve a large number of operation. For instance, if we want to know which countries have a population of more than 10 million people, we need to read the population of every single country in our table and compare it to that value. If the table has a large number or records, the query might take long to be processed. We can clearly see that this is not the optimal way of processing a query.
 
+By using what is known as \textbf{indices}, we can reach the data that will form the reponse of our query in a shorter time, without having to pass through all the data contained in the database.
 
+This is easy to understand with an example. Imagine a telephone book. It contains a large number of entries, but you can easily find a name without having to read them all. This is because a) the data is ordered (\textbf{indexed}) in a particular way (alphabetically) and b) you know how to use that indexing (you know the order of letter in the alphabet). With that, you know that it does not make sense to search for Peter Johnson in the pages that correspond to letter A or B, and you can skip them.  
 
-\subsection{Índices espaciales}
+Apart fo indices for numerical or alphanumerical values, which are easy to create, another type of indices, known as \textbf{spatial indexes} are of great importance in the context of GIS. The concept is similar to non-spatial indexes, and serve the same purpose: to \textbf{optimize searches using a correct data structure}, in this case based on its spatial component.
 
+We will use another example to help understand how an spatial index works. Suppose that we are using our layer with countries and the want to find those that are located at less than 2000 km from the border of Spain. How would we proceed ro response to this query? 
 
-Si realizamos una consulta a una base de datos, el resultado es un subconjunto de esta con los elementos que cumplen el criterio expresado en la consulta. Si se implementa de forma \emph{directa} dicha consulta, esta operación implica comprobar todos los elementos de la base de datos y ver cuáles son los que cumplen con el citado criterio. Teniendo en cuenta que una base de datos puede tener un gran tamaño, esta forma de proceder no es la óptima.
+A naive approach would be to measure the distance between Spain and all the remaining countries, then select those at a distance of less than 2000 km. We would get the correct result, but this approach is far from optimal. 
 
-Los índices nos permiten \emph{alcanzar} los elementos que constituyen la respuesta a nuestra consulta, haciéndolo de la forma más rápida y llegando hasta ellos sin tener que pasar por todos los restantes.
+Finding a better approach is easy. For instance, with a little knowledge of world geography, we can inmediately exclude all countries in America. We can be sure that they will not be part of the response, since the distance between Spain and America is already larger than 2000 km. We do not know the distance between those countries and Spain, but we are sure that it will be more than 2000 km. Therefore, it makes no sense to measure the distances to all of them.
 
-Un ejemplo fácil de entender es el de una guía telefónica en la que los nombre están ordenados alfabéticamente. Gracias a ese orden y a que se conoce el alfabeto, se puede buscar rápidamente un nombre sin necesidad de leer todos ellos.
+That knowledge of world geography that allows us to reduce the number of countries to work with is actually like a spatial index. It cannot be used to respond to the query, but it \textbf{provides an approximation that makes it easier to respond to it}. We can discard a large number of countries, and then perform the most costly operations (the measurement) with just a subset.
 
-Al utilizar una base de datos, si no disponemos de un índice deberemos recorrer toda ella para dar respuesta a nuestras consultas. No sabemos \emph{dónde} buscar las respuestas a nuestras consultas, del mismo modo que si no supiéramos que carece de sentido buscar en la letra F el número telefónico del señor Pérez.
+Thanks to spatial indexes, queries are more efficient and we can work with larger datasets.
 
-Ademas de índices para datos de tipo numérico o texto, en los que resulta obvio establecer un orden natural, en el ámbito de los SIG tienen importancia los denominados \textbf{índices espaciales}. Aunque sus fundamentos teóricos son distintos, el concepto es similar al de índices de bases de datos no espaciales: elementos que permiten \textbf{optimizar las consultas mediante una correcta estructuración} de los datos, en particular en este caso de su componente espacial.
-
-Puede entenderse la idea de un índice espacial mediante un sencillo ejemplo de cómo empleamos ideas parecidas a los índices espaciales de forma natural cuando tratamos de resolver una consulta espacial sin la ayuda de un SIG. Supongamos que tenemos nuestro mapa de países del mundo y queremos averiguar qué países tienen su frontera a menos de 3000 kilómetros de la frontera de España. ¿Cómo operaríamos de manera natural para dar respuesta a esta consulta?
-
-La solución más inmediata es medir la distancia entre España y todos los países restantes, y después tomar aquellos que hayan arrojado un resultado de distancia menor a 3000. La operación daría el resultado esperado, pero implicaría un gran número de mediciones, y no sería una forma óptima de operar. Más probable es que no efectuemos mediciones con los países de América, pues un conocimiento básico de geografía basta para saber que todos ellos se encuentran a más de 3000 kilómetros. No sabemos exactamente a qué distancia se encuentran, pero sabemos que no van a cumplir el criterio establecido en la consulta. 
-
-Ese conocimiento básico de geografía que tenemos es en realidad una especie de índice espacial. No sirve para saber las distancias exactas ni resolver la consulta por completo, pero sirve para \textbf{dar una aproximación y facilitar el trabajo}. Descartamos un buen numero de países de forma casi inmediata, y luego solo realizamos las operaciones costosas (la medición) con un subconjunto del total. 
-
-De modo similar, los índices espaciales nos permiten obtener resultados en un área concreta sin necesidad de analizar todo el espacio ocupado por el total de los datos. Gracias a ello, hacen las consultas mas efectivas y permiten trabajar con grandes volúmenes de datos.
-
-Los índices espaciales se almacenan junto con los datos a los que hacen referencia, bien en ficheros adicionales o dentro de la propia base de datos, en caso de utilizarse una. Los SGBD espaciales tienen \textbf{capacidades para calcular estos índices espaciales} y almacenarlos en la base de datos, recurriendo a ellos cuando se realiza una consulta que requiera su uso.
+Spatial indexes are stored along with the data they refer to, whether in a separate file or inside the database itself. Spatial DBMS have \textbf{built-in capabilities to compute spatial indexes} and store them, and once they have been computed, they are used whenever the DBMS has to respond to a spatial query.
 
 
 \pagestyle{empty}

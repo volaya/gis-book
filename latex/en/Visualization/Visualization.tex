@@ -1,11 +1,11 @@
-\chapter{Visualización y representación de datos espaciales. }
+\chapter{Visualization of geographical data.}
 
 
 \pagestyle{fancy}
 
-When working with a GIS, most of the time we will visualize the data we work with. Although certain data, such as satellite images or maps from a map server, include their own rendering and can be visualized \emph{as they are}, in most cases us the user of a GIS who defines the way geographical data is rendered. In other words, the GIS user \textbf{takes the role of the cartographer}, and for this reason must be familiar with the ideas and techniques used by cartographers.
+When working with a GIS, most of the time we will visualize the data we work with. Although certain data, such as satellite images or maps from a map server, include their own rendering and can be visualized \emph{as they are}, in most cases is the user of a GIS who defines the way geographical data is rendered. In other words, the GIS user \textbf{takes the role of the cartographer}, and for this reason must be familiar with the ideas and techniques used by cartographers.
 
-Along with the concepts and tools from classic cartography, GIS include elements from what is known as \tetbf{scientific visualization}, such as \textbf{interactivity} or \textbf{multidimensional data rendering}. This approach, richer the classic one from cartography, is known as \textbf{geovisualization}.
+Along with the concepts and tools from classic cartography, GIS include elements from what is known as \textbf{scientific visualization}, such as \textbf{interactivity} or \textbf{multidimensional data rendering}. This approach, richer the classic one from cartography, is known as \textbf{geovisualization}.
 
 In this chapter, we will see some fundamental ideas about data visualization, and how they are applied to both the traditional field of cartography and the GIS and geovisualization context.
 
@@ -84,11 +84,11 @@ The ordered property is found in those visual variables that we can use to defin
 
 Finally, the quantitative propery is found in those visual variables that can be used to visually estimate quantities and ratios. Only position and size have it. For instance, we can see that the big circles in the image corresponding to the size visual variables are more or less twice the size of the smaller ones.
 
-Table \ref{Tabla:PropertiesVisualVariables} contains a summary of all this.
+Table \ref{Table:PropertiesVisualVariables} contains a summary of all this.
 
 \begin{table}[!hbt]
 \small
-\centering  \label{Tabla:PropertiesVisualVariables}
+\centering  \label{Table:PropertiesVisualVariables}
 \begin{tabular}{p{3.6cm}ccccccc}  
  & \rotatebox{90}{\textbf{Position}} & \rotatebox{90}{\textbf{Size}} & \rotatebox{90}{\textbf{Shape}} & \rotatebox{90}{\textbf{Value}} & \rotatebox{90}{\textbf{Hue}} & \rotatebox{90}{\textbf{Texture}} & \rotatebox{90}{\textbf{Orientation}} \\ \midrule   
 \textbf{Associative}& $\diamondsuit$ & - & $\diamondsuit$ & - & $\diamondsuit$ & $\diamondsuit$ & $\diamondsuit$ \\
@@ -139,8 +139,8 @@ Maps are a method of communication that uses a language with a particular purpos
 
 The visual language that we have just seen becomes now a cartographic language when it is adapted to the particular case of creating maps, and knowing its rules is needed to create cartography that is later useful for the map user. All these ideas related to map production form what is known as \textbf{cartographic design}.
 
-Cartographic design involves taking decisions (in this case, by the GIS user who takes the role of the cartographer). This decision must be guided by the \textbf{purpose of the map} and the \textbf{public it is target at}, and depending on these factors the cartographer must decide \textbf{the projection} (which not always has to be the original one of the data) 
-, the \textbf{scale} (depending on the level of detail and taking into account the limitations of the data), the \textbf{type of map} (we will see more about this later in this chapter), or the \textbf{symbols} to use.
+Cartographic design involves taking decisions (in this case, by the GIS user who takes the role of the cartographer). These decisions must be guided by the \textbf{purpose of the map} and the \textbf{public it is targeted at}, and depending on these factors the cartographer must decide \textbf{the projection} (which not always has to be the original one of the data) 
+, the \textbf{scale} (depending on the level of detail and taking into account the limitations of the data), the \textbf{type of map} (we will see more about this later in this chapter), or the \textbf{symbols} to use, among other things.
 
 There are two main types of cartography: \textbf{base cartography} (also called \textbf{fundamental} or \textbf{topographic}) and \textbf{thematic cartography}.
 
@@ -150,7 +150,7 @@ Thematic cartography focuses on \textbf{displaying information about a given phe
 
 We can also say that base cartography represents \textbf{physical elements} (a stream, a coast line, a road, a valley, etc.), while thematic cartography focuses on \textbf{representing values and attributes}.
 
-Thematic cartography uses base cartography (usually included in thematic maps) to help the map user to understand the spatial behavior of the variable being represented, and also to provide a geogrpahical context for it.
+Thematic cartography uses base cartography (usually included in thematic maps) to help the map user to understand the spatial behavior of the variable being represented, and also to provide a geographical context for it.
 
 
 \subsection{Types of information and their visualization}
@@ -166,9 +166,8 @@ The following are some of the most important ideas about this, refered to the af
 	
 	\item \textbf{Nominal}. Nominal information is correctly represented using the visual variable shape. This information shows \emph{what} is found in the differnt locations of a map, and not \emph{how much} is found, and it more related to base cartography than to thematic cartography. Using different symbols for point elements and line elements is a common and very effective solution. For the case of areal symbols, hue and texture are the most common solution.
 
-	Alphanumeric information is has similar properties, and the same ideas apply to it as well.
+	Alphanumeric information has similar properties, and the same ideas apply to it as well.
 	
-
 	\item \textbf{Ordinal}. Since values of the variable define an order, a visual variable wiwth the ordered property is needed to correctly visualize this type of information
 	
 	\item \textbf{Interval and ratio}. Visual variables with the ordered property can be used in this case. However, size is a better choice in this case, since it is the only one that has the quiantitative property.
@@ -188,7 +187,7 @@ The following are some of the most important ideas about this, refered to the af
 \end{itemize}
 
 
-It is important to remark that, although levels of organization indicate increasing potential (that is, with a variable such as size or value we can convey all the information that can be conveyed with hue, since they have properties with a higher level), \textbf{it is not always a better idea to use variables with higher level of organization}, and it is not true that they will always be better than those with a lower one. For instance, using the visual variable value for a map with qualitative information (like using a ramp of different tones of blue for a map with soil type information) might not be a good idea, because it has the ordered property, and that might cause the map user to think that there is some hierarchy (that some soil types are <better>> than others), which is false.
+It is important to remark that, although levels of organization indicate increasing potential (that is, with a variable such as size or value we can convey all the information that can be conveyed with hue, since they have properties with a higher level), \textbf{it is not always better to use visual variables with a higher level of organization}, and it is not true that they will always be better than those with a lower one. For instance, using the visual variable value for a map with qualitative information (like using a ramp of different tones of blue for a map with soil type information) might not be a good idea, because it has the ordered property, and that might cause the map user to think that there is some hierarchy (that some soil types are <better>> than others), which is false.
 
 
 \subsection{Map elements. Map composition}
