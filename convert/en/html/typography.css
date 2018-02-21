@@ -183,3 +183,20 @@ img{
     z-index: 100;
 }
 
+#background{
+    position:absolute;
+    z-index:-200;
+    background:white;
+    display:block;
+    min-height:50%; 
+    min-width:50%;
+    color:yellow;
+}
+
+#bg-text
+{
+    color:lightgrey;
+    font-size:120px;
+    transform:rotate(300deg);
+    -webkit-transform:rotate(300deg);
+}

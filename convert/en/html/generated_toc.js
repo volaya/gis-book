@@ -84,7 +84,7 @@ generated_toc = {
     }
     
     b = document.createElement('b');
-    b.appendChild(document.createTextNode("Contents"));
+    b.appendChild(document.createTextNode("Chapter contents"));
     tocparent.appendChild(b);
 
     // make the basic elements of the TOC itself, ready to fill into

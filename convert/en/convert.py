@@ -14,7 +14,7 @@ import shutil
 import zipfile
 
 tableshtml={
-"Table:PropertiesVisualVariables": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Propiedad</th><th class="head">Posición</th><th class="head">Tamaño</th><th class="head">Forma</th><th class="head">Valor</th><th class="head">Tono</th><th class="head">Textura</th><th class="head">Orientación</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Asociativa</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-odd"><td>Selectiva</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-even"><td>Ordenada</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Cuantitativa</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
+"Table:PropertiesVisualVariables": r'<table border="1"><col width="11%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /><col width="13%" /></colgroup><thead valign="bottom"><tr class="row-odd"><th class="head">Property</th><th class="head">Position</th><th class="head">Size</th><th class="head">Shape</th><th class="head">Value</th><th class="head">Hue</th><th class="head">Textura</th><th class="head">Orientation</th></tr></thead><tbody valign="top"><tr class="row-even"><td>Associative</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-odd"><td>Selective</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td><td>&loz;</td></tr><tr class="row-even"><td>Ordered</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr><tr class="row-odd"><td>Quantitative</td><td>&loz;</td><td>&loz;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr></tbody></table>'
 }
 
 exps_pre = [(r"\\bigskip", ""),
@@ -95,7 +95,7 @@ def convertFile(path, chapterNum):
         label = re.search(r"\\label\{(.*?)\}", img).groups()[0]
         figNum = "%i.%i" % (chapterNum, i + 1)
         s = s.replace(img, (r"<a name='%s'></a><center><figure><img src='img/%s%s' width='%s%%'/>"
-            "<br><figcaption>Figura %s: %s</figcaption></figure></center>" % (label, path, ext, str(size), figNum, caption)))
+            "<br><figcaption>Figure %s: %s</figcaption></figure></center>" % (label, path, ext, str(size), figNum, caption)))
         s = s.replace("\\ref{%s}" % label, '<a href="#%s">%s</a>' % (label, figNum))
 
     p = re.compile(r"(\\begin\{table[\S\s]*?\\end\{table.*?\})")
@@ -112,7 +112,6 @@ def convertFile(path, chapterNum):
             s = s.replace(table, replace)
             s = s.replace("\\ref{%s}" % tablelabel, '<a href="#%s">%s</a>' % (label, tableNum + 1))
         except Exception, e:
-            print e
             pass
 
     for exp, replace in exps_post:
@@ -133,7 +132,9 @@ def convert():
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
 
-    chapterFiles = [os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "latex/en/prologue.tex")]
+    latexRootFolder = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "latex/en/")
+
+    chapterFiles = [latexRootFolder + "foreword.tex", latexRootFolder + "prologue.tex"]
     chapterNames = ["Introduction", "History", "Cartography", "Data", 
                     "Data_sources", "Software", "Databases", "Analysis", "Visualization"]
     chapterFiles.extend([os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 
@@ -147,7 +148,6 @@ def convert():
         except Exception, e:
             traceback.print_exc()
             pass 
-
 
     epub = zipfile.ZipFile(os.path.join(os.path.dirname(__file__), "ebook", "gisbook.epub"), 'w')
 
