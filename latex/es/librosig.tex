@@ -1,0 +1,166 @@
+\documentclass[pdftex,11pt]{book}
+\usepackage[pdftex]{graphicx}
+\usepackage[activeacute,spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{enumitem}
+\usepackage{ebgaramond}
+\usepackage[latin1]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,dvips,paperwidth=5in,paperheight=8in,tmargin=.65in,bmargin=.9in, left=0.80in, right=0.65in}
+\usepackage{lettrine}
+\usepackage[raggedright]{titlesec}
+\usepackage{booktabs}
+\usepackage[all]{nowidow}
+\usepackage{soul}
+
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\renewcommand{\textbf}[1]{\ul{#1}}
+
+\setcounter{secnumdepth}{0} 
+\setcounter{tocdepth}{2}
+
+\titleformat{\section}
+  {\raggedright\normalfont\scshape}{\thesection}{1em}{}
+	
+\titleformat{\subsection}
+  {\raggedright\normalfont\slshape}{\thesection}{1em}{}	
+	
+\brokenpenalty=10000\relax
+
+\setlist[itemize]{leftmargin=*, noitemsep}
+
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{20\p@}%
+  {\parindent \z@ \raggedright
+    \Large
+    \ifnum \c@secnumdepth >\m@ne
+        \textsc{\Large#1}
+        \par\nobreak    
+    \fi
+    \interlinepenalty\@M
+    \vskip 110\p@
+  }}
+  
+  \def\notesname{}%
+
+
+\def\@makeschapterhead#1{%
+  \vspace*{20\p@}%
+  {\parindent \z@ \raggedright
+    \Large
+    \ifnum \c@secnumdepth >\m@ne
+        \textsc{\Large#1}
+        \par\nobreak    
+    \fi
+    \interlinepenalty\@M
+    \vskip 110\p@
+  }}
+  
+  \def\notesname{}%
+
+\makeatletter
+
+\usepackage{fancyhdr}
+\fancyhead[LE,RO]{}
+\fancyhead[CE,CO]{}
+\fancyhead[RE,LO]{}
+\fancyfoot[LO,RE]{}
+\fancyfoot[CE,CO]{}
+\fancyfoot[LE,RO]{\thepage}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\normalsize
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\begin{frontmatter}
+\pagestyle{empty}
+
+\vspace*{3cm}
+\begin{center}
+\Large{\emph{Introducción a los SIG}}
+\end{center}
+\cleardoublepage
+
+
+\makeatletter
+\newlength\drop
+\newcommand*{\titleGM}{%
+\thispagestyle{empty}
+\begingroup% Gentle Madness
+\drop = 0.05\textheight
+\vspace*{\baselineskip}
+\vfill
+\hbox{%
+\hspace*{0.1\textwidth}%
+\rule{1pt}{\dimexpr\textheight-28pt\relax}%
+\hspace*{0.05\textwidth}% 
+\parbox[b]{0.75\textwidth}{%
+\vbox{%
+    \vspace{\drop}
+    {\Large\textsc{Víctor Olaya}\par}\vskip3.5\baselineskip
+    {\Huge\bfseries\raggedright{Introducción a los SIG}\par}
+    \vspace{0.55\textheight}
+}% end of vbox
+}% end of parbox
+}% end of hbox
+\vfill
+\null
+\endgroup}
+\makeatother
+\titleGM
+
+\null
+\vfill
+\scriptsize
+\noindent
+Introducción a los SIG.\\
+Copyright \copyright 2016 Víctor Olaya.\\
+Imagen de cubierta: The Art Journal; \emph{The Industry of All Nations Illustrated Catalogue} (London, England: Bradbury and Evans, 1851)
+
+\cleardoublepage
+\normalsize
+
+\input{prologo}
+
+\end{frontmatter} 
+\pagestyle{empty}
+
+\cleardoublepage
+\vspace*{3cm}
+\begin{center} 
+{\Large\scshape Introducción a los SIG}
+\end{center}
+
+\begin{mainmatter}
+\include{Introduccion/Introduccion}
+\include{Historia/Historia}
+\include{Fundamentos_cartograficos/Fundamentos_cartograficos}
+\include{Datos/Datos}
+\include{Fuentes_datos/Fuentes_datos}
+\include{Software/Software}
+\include{Bases_datos/Bases_datos}
+\include{Analisis/Analisis}
+\include{Visualizacion/Visualizacion} 
+\tableofcontents
+\end{mainmatter}
+
+\cleardoublepage
+
+\end{document}
+
+
