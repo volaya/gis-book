@@ -46,7 +46,7 @@ Analysis is a fundamental functionality of GIS since its origins. Other ones, su
 
 The current trend in GIS is to consider analysis capabilities as \textbf{modular tools} that are run on a base platform, which includes the data input and output capabilities, along with the visualization component. Analysis tools are independent, but they can be used together to create more complex analyses.
 
-Analysis tools might be completely independent of the visualization part, or be linked to it. In the first case, the analysis is performed on a set of layers and parameters without any interaction with the <<map>>, while in the second case the user might interact with the view to define how the analysis is performed (for instance, selecting a coordinate or a region in the canvas, which will then be used as a parameter for the analysis tool).
+Analysis tools might be completely independent of the visualization part, or be linked to it. In the first case, the analysis is performed on a set of layers and parameters without any interaction with the ``map'', while in the second case the user might interact with the view to define how the analysis is performed (for instance, selecting a coordinate or a region in the canvas, which will then be used as a parameter for the analysis tool).
 
 The result of an analysis tool in a GIS can be geographical (a new layer) or not (a simple value, such as the one resulting from some statistical analysis of the input data).
 
@@ -129,14 +129,14 @@ Figure \ref{Fig:How_internet_works} shows a summary of this.
 \label{Fig:How_internet_works} 
 \end{figure}
 
-A relation is established between clients and servers, in which an arbitrary number of clients <<connect>> themselves to a server, from which they obtain data whenever each of them makes a request. In this client-server architecture, the server has the data to be shared through a service, while clients only provide information about themselves needed to validate and perform the data sharing.
+A relation is established between clients and servers, in which an arbitrary number of clients ``connect'' themselves to a server, from which they obtain data whenever each of them makes a request. In this client-server architecture, the server has the data to be shared through a service, while clients only provide information about themselves needed to validate and perform the data sharing.
 
 Now let's see how this ideas apply to the field of GIS.
 
 Regarding servers, they can have four main capabilities:
 
 \begin{itemize}
-\item \textbf{Serve rendered geographical data}. Generally known as \textbf{map servers}, they provide <<maps>>. That is, images created from geographical data. If data is already an image (such as an aerial or satellite photograph), the server will just send it as it is. If data is not an image (vector layer or raster layer other than image), the server will create an image based on the geographical data. The symbology used to do this can be a default one that the server uses for all requests, or it can be provided by the client in the request. 
+\item \textbf{Serve rendered geographical data}. Generally known as \textbf{map servers}, they provide ``maps''. That is, images created from geographical data. If data is already an image (such as an aerial or satellite photograph), the server will just send it as it is. If data is not an image (vector layer or raster layer other than image), the server will create an image based on the geographical data. The symbology used to do this can be a default one that the server uses for all requests, or it can be provided by the client in the request. 
 
 In both cases, the client also specifies the dimensions of the requested map image that is served, and the server takes care of preparing it.
 
@@ -260,7 +260,7 @@ In this case, there is a server that manages and offers the services for each da
 
 \subsection{Relevant standards in GIS}
 
-The most common standards for geographical information are created and promoted by the  \textbf{Open Geospatial Consortium (OGC)}. The OGC is <<an international not for profit organization committed to making quality open standards for the global geospatial community>>.
+The most common standards for geographical information are created and promoted by the  \textbf{Open Geospatial Consortium (OGC)}. The OGC is ``an international not for profit organization committed to making quality open standards for the global geospatial community''.
 
 Some of the most relevant OGC standards are the following ones:
 

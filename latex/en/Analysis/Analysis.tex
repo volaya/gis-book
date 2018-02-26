@@ -119,7 +119,7 @@ We can study geographical information at \emph{different scales}, and depending 
 
 The analysis scale should depend on the \emph{data properties} (accuracy, data type, etc.) and the \textbf{analysis to be performed} with them.
 
-This can be easily understood with the help of figure \ref{Fig:Scales}. If we want to categorize the form of terrain at a given point, we need to analyze the elevation of the point and also the elevation in its surroundings. Depending on the size of that analysis <<window>> around the center point (which is what defines the analysis scale), the results can be very different. In the image, for a small value of the analysis radius, the terrain will be categorized as being a peak. For a larger region, however, it will be considered the bottom of a valley.
+This can be easily understood with the help of figure \ref{Fig:Scales}. If we want to categorize the form of terrain at a given point, we need to analyze the elevation of the point and also the elevation in its surroundings. Depending on the size of that analysis ``window'' around the center point (which is what defines the analysis scale), the results can be very different. In the image, for a small value of the analysis radius, the terrain will be categorized as being a peak. For a larger region, however, it will be considered the bottom of a valley.
 
 \begin{figure}[h]   
 \centering
@@ -128,7 +128,7 @@ This can be easily understood with the help of figure \ref{Fig:Scales}. If we wa
 \label{Fig:Scales} 
 \end{figure}
 
-Therefore, we must <<look>> at the terrain at the correct distance for which the information that it gives us is the most interesting and correct for the kind of analysis that we are performing. Apart from the fact that there is an optimal analysis scale for each type of analysis, it is also interesting to work at \textbf{multiple scales}, since that will provide us more information than what we can obtain working only at a single scale.
+Therefore, we must ``look'' at the terrain at the correct distance for which the information that it gives us is the most interesting and correct for the kind of analysis that we are performing. Apart from the fact that there is an optimal analysis scale for each type of analysis, it is also interesting to work at \textbf{multiple scales}, since that will provide us more information than what we can obtain working only at a single scale.
 
 Another example of how the analysis scale affects the analysis result is found in the case of \textbf{taking measurements}. As it can be seen in figure \ref{Fig:Fractal_line}, the measurement unit (which is implicitly defined by the level of detail of the data) that is used causes the results to be different. 
 
@@ -160,7 +160,7 @@ Another problem related with the MAUP is the so-called \textbf{ecological fallac
 
 \textbf{Spatial autocorrelation} is the \textbf{correlation of a variable with itself}, in such a way that values of the variable at any point are correlated with values of that same variable in close-by points. For instance, in the case of temperature, points close to a heat source will have a higher temperature that those far from it or closer to a cold spot. If we study the distribution of an infectious disease, reported cases are likely to appear grouped, and a large number of them normally cause the nearby populations to also be largely affected by the disease.
 
-Another way of expressing this is using the well-known \textbf{Tobler's First Law of Geography}, which states that <<everything is related to everything else, but near things are more related than distant things>>.
+Another way of expressing this is using the well-known \textbf{Tobler's First Law of Geography}, which states that ``everything is related to everything else, but near things are more related than distant things''.
 
 In the above cases, spatial autocorrelation is said to be \textbf{positive}. However, it can be also \textbf{negative}, if higher values are surrounded by lower ones, or there can be no correlation at all, when values in separate points are \textbf{independent} and do not affect each other regardless of distance.
 

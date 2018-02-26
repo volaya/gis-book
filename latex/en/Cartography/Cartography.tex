@@ -41,7 +41,7 @@ Figure  \ref{Fig:Three_surfaces} shows a comparison of the three surfaces: Earth
 
 In a \textbf{general ellipsoid}, both the location of it center of gravity and it equatorial plane match those of the Earth. In a \textbf{local ellipsoid}, this does not have to be true, and the ellipsoid by itself is not enough, since we do not know how to place it relative to the real Earh's surface.
 
-The concept of \textbf{datum} solves this problem. A \textbf{datum} is the combination of a reference surface (the ellipsoid) and a point in which it is <<linked>> to the geoid. That point is called the \textbf{fundamental point}, and the ellipsoid is tangent to the geoid at it. At the fundamental point, a line perpendicular to the geoid is identical to a line perpendicular to the ellipsoid. 
+The concept of \textbf{datum} solves this problem. A \textbf{datum} is the combination of a reference surface (the ellipsoid) and a point in which it is ``linked'' to the geoid. That point is called the \textbf{fundamental point}, and the ellipsoid is tangent to the geoid at it. At the fundamental point, a line perpendicular to the geoid is identical to a line perpendicular to the ellipsoid. 
 
 Para un mismo elipsoide pueden utilizarse distintos puntos fundamentales, que darán lugar a distintos datum y a distintas coordenadas para un mismo punto.
 
@@ -87,14 +87,14 @@ To avoid negative numbers, the origin is assumed to have and X coordinate of 500
 It is common when working with a GIS to have layers in \textbf{several different coordinate systems}, or in the same coordinate system but using different parameters (such as for instance, a different datum). In order to use be able to use those layers together, we have to work in a single coordinate systems, and at least some of those layers will have to be converted to it. That is known as \textbf{coordinate conversion}. If the origin and destination coordinate systems have a different datum, coordinate conversion is called \textbf{coordinate transformation}.
 
 
-In a GIS, conversion and transformation capabilities allow to generate new layers that use a different CRS. Also, GIS include the ability to perform them \emph{on-the-fly} when layers are rendered, so we can create a map with layers that do not share the same CRS. These are correctly represented on the map and <<match>> one with another, since the GIS is automatically performing the corresponding changes to their coordinates to have them in a common CRS.
+In a GIS, conversion and transformation capabilities allow to generate new layers that use a different CRS. Also, GIS include the ability to perform them \emph{on-the-fly} when layers are rendered, so we can create a map with layers that do not share the same CRS. These are correctly represented on the map and ``match'' one with another, since the GIS is automatically performing the corresponding changes to their coordinates to have them in a common CRS.
 
 To facilitate the use of coordinate reference systems, there are initiatives that try organize and code them, so each system can be easily identified by a unique code. The most common of this coding system are the \textbf{EPSG} codes defined by the International Association of Oil and Gas Producers. 
 
 
 \section{Basic cartographic concepts}
 
-Among the fundamental concepts of cartography that any GIS user has to know, \textbf{scale} is the most important one. The scale of a map represent the \textbf{size ratio} between the <<map>> that would be obtained by developing the real surface we are representing (the Earth's surface in this case), and the scale of our smaller map. Knowing this ratio, we can know the real measures of the elements that are included in the map, since we can convert the measurements that we make on it into real-world measures. It's important to keep in mid that these measures are not so <<real>>, since the projection might have distorted them, but they are, nonetheless, measures at the original scale of the object that is measured.
+Among the fundamental concepts of cartography that any GIS user has to know, \textbf{scale} is the most important one. The scale of a map represent the \textbf{size ratio} between the ``map'' that would be obtained by developing the real surface we are representing (the Earth's surface in this case), and the scale of our smaller map. Knowing this ratio, we can know the real measures of the elements that are included in the map, since we can convert the measurements that we make on it into real-world measures. It's important to keep in mid that these measures are not so ``real'', since the projection might have distorted them, but they are, nonetheless, measures at the original scale of the object that is measured.
 
 Scale is usually expressed as a quotient between the distance measured in a map and the distance that this measure represents in reality. For instance, a 1:50000 scale means that 1 centimeter in a map is equivalent to 50000 centimeters in reality, that is 500 meters. This value is known as the \textbf{numeric scale}.
 

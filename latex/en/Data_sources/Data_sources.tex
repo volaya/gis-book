@@ -55,7 +55,7 @@ Since each object reflects radiation at different wavelengths in a different way
 
 The two main technological elements in a remote sensing system, both of them related to the receiver, are the \textbf{sensor} and the \textbf{platform}.
 
-The sensor is the element that can <<read>> the electromagnetic radiation and register its intensity for a given zone of the spectrum. It can be a simple photographic camera or a more specialized sensor.
+The sensor is the element that can ``read'' the electromagnetic radiation and register its intensity for a given zone of the spectrum. It can be a simple photographic camera or a more specialized sensor.
 
 \textbf{Passive} sensors use natural source of radiation (in most cases, sunlight), and just measure that radiation as it is reflected on the Earth's surface. \textbf{Active} sensors emit their own radiation, and then collect it back after it has been reflected. Here is a simple example to better understand this: a photographic camera is a passive sensor, while a photographic camera that uses a flash unit is an active one. The radiation emitted by an active sensor does not have to be visible light (as in the case of the flash); the sensor can emit in other regions of the spectrum.
 
@@ -89,7 +89,7 @@ When using images coming from remote sensing in a GIS, we should consider which 
 
 Photogrammetry is the technique used to study and precisely define the shape, size and position in space of any object, using measurements taken on one or several photographs. Of special interest to GIS is the branch of photogrammetry known as \textbf{aerial photogrammetry}, which uses aerial photographs and it is mainly used for generating elevation data through a process known as \textbf{restitution}.
 
-Instead of single images, the branch of photogrammetry known as \textbf{stereophotogrammetry} uses pairs of images, each of them taken from a different point. These images form a \textbf{stereo pair} and with them a three-dimensional reconstruction of the original scene can be produced. This can be used by an operator to <<see>> the scene with \textbf{depth and volume}, and using that, terrain forms can be identified and elevation information can be obtained. 
+Instead of single images, the branch of photogrammetry known as \textbf{stereophotogrammetry} uses pairs of images, each of them taken from a different point. These images form a \textbf{stereo pair} and with them a three-dimensional reconstruction of the original scene can be produced. This can be used by an operator to ``see'' the scene with \textbf{depth and volume}, and using that, terrain forms can be identified and elevation information can be obtained. 
 
 If using satellite images, stereo pairs can be obtained from those platforms and sensors that allow \textbf{changing the angle of vision}, so in the same satellite pass pictures of a given area can be taken from different points.
 
@@ -195,12 +195,12 @@ Neogeography has changed some fundamental ideas in cartography, since it has mod
 
 
 \begin{itemize}
-	\item \textbf{Popularization and democratization}. Cartographic production has always been in the hands of governments or agencies, and in many cases has been strongly censored due to its high strategical value. With the advent of VGI, geographical information becomes more democratic, and its creation is a free, participative and unrestricted process. The <<top-down>> approach that had dominated the production and use of cartography gets inverted.
+	\item \textbf{Popularization and democratization}. Cartographic production has always been in the hands of governments or agencies, and in many cases has been strongly censored due to its high strategical value. With the advent of VGI, geographical information becomes more democratic, and its creation is a free, participative and unrestricted process. The ``top-down'' approach that had dominated the production and use of cartography gets inverted.
 	\item Citizens become \textbf{sensors} and have more conscience of their geospatial reality.
-	\item Cartographic production loses its <<Mysticism>>.	
+	\item Cartographic production loses its ``Mysticism''.	
 \end{itemize}
 
-The most relevant VGI project nowadays is \textbf{OpenStreetMap} (OSM), a << collaborative project to create a free editable map of the world.>>.
+The most relevant VGI project nowadays is \textbf{OpenStreetMap} (OSM), a `` collaborative project to create a free editable map of the world.''.
 
 
 \section{Metadata}
@@ -219,7 +219,7 @@ Geographical data, as many other types of data, are usually created for a given 
 
 Data creators must take care of \textbf{adding enough metadata to them}, and users must \textbf{consult their associated metadata} before using any data.
 
-Regarding data management, metadata facilitate operations such as searching data in larger datasets or data collections. Metadata can contain a <<summary>> of the full data they accompany, and that can be used to \textbf{make search operations more efficient} if they use a geographical criteria. For instance, if a user wants to find whether a data collection has some data for a given area, the full content of each vector layers in the collection should be checked, to see if any of its geometries falls within the requested region. This can be a lengthy operation. If each layer has an associated metadata with its extent, the query can be executed with the metadata, which is much faster, as it is independent of the number of features in the layer. This is fundamental when creating \textbf{data catalogs}, which respond to user queries based on the information contained in the metadata.
+Regarding data management, metadata facilitate operations such as searching data in larger datasets or data collections. Metadata can contain a ``summary'' of the full data they accompany, and that can be used to \textbf{make search operations more efficient} if they use a geographical criteria. For instance, if a user wants to find whether a data collection has some data for a given area, the full content of each vector layers in the collection should be checked, to see if any of its geometries falls within the requested region. This can be a lengthy operation. If each layer has an associated metadata with its extent, the query can be executed with the metadata, which is much faster, as it is independent of the number of features in the layer. This is fundamental when creating \textbf{data catalogs}, which respond to user queries based on the information contained in the metadata.
 
 
 \subsection{Content of metadata. Metadata creation}
