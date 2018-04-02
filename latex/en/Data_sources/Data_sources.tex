@@ -3,7 +3,7 @@
 
 \pagestyle{fancy}
 
-Not so long ago, all information used in a GIS had its origin in a paper map whose content was \emph{prepared} to adapt it to the particular nature of that GIS. Geographical data were obtained from the \textbf{digitalization} of printed cartography; that is, from the conversion of analogical maps into digital data that a GIS can handle.
+Not so long ago, all information used in a GIS had its origin in a paper map whose content was later transformed to adapt it to the particular nature of that GIS. Geographical data were obtained from the \textbf{digitalization} of printed cartography; that is, from the conversion of analogical maps into digital data that a GIS can handle.
 
 Apart from the fact that we can use them in a GIS, digital data have many advantages and represent an important qualitative improvement. Digital data are easier to update, easier to distribute (specially since the Internet was created), use less physical space and are easier to maintain (digital data do not degrade. Their physical support does, but they are easy to replicate without losing their quality).
 
@@ -34,7 +34,7 @@ A remote sensing system contains the following elements (Figure \ref{Fig:Element
 
 In this chapter, we will describe these elements in detail. To study the two first ones, we will also study some fundamentals about radiation and its interaction with matter. For describing the receivers that make part of a remote sensing system, we will separate them into two components: \textbf{sensors} and \textbf{platforms}.
 
-Interaction with the atmosphere is interesting in order to eliminate its influence, since in most cases we are interested in the object on the Earth's surface, not the atmosphere itself. Removing that influence is part of the post-processing of the data. Those processes are, however, rather complex, and they go beyond the scope of this book, so they will not be explained here.
+Interaction with the atmosphere must be managed in order to eliminate its influence since, in most cases, we are interested in the object on the Earth's surface, not the atmosphere itself. Removing that influence is part of the post-processing of the data. Those processes are, however, rather complex, and they go beyond the scope of this book, so they will not be explained here.
 
 
 \subsection{Electromagnetic radiation}
@@ -46,7 +46,7 @@ The spectrum is subdivided in regions depending on the wavelength, such as (from
 
 Radiation emitted by a radiation source is altered by the presence of objects that \textbf{absorb, transmit} or \textbf{reflect} it.
 
-These three phenomena take place in a different proportion depending on the characteristics of the object and the radiation. For remote sensing, \textbf{the interesting part is the one that is reflected}, since it is the one that can be collected later and used to produce the data output.
+These three phenomena take place in a different proportion depending on the characteristics of the object and the radiation. For remote sensing, \textbf{the radiation that is reflected is the one of interest}, since it can be collected later and used to produce the data output.
 
 Since each object reflects radiation at different wavelengths in a different way, this can be considered as a property of an object. The particular response of a given object and the way it alters a given radiation (which depends on its shape, material, etc.) is known as its \textbf{spectral signature} and can be used to identify the object.
 
@@ -80,7 +80,7 @@ The the most important parameters that define the characteristics of a remote se
 	\item \textbf{Temporal resolution}. It indicates the time that it takes the sensor to return to a given place. It makes sense only for orbital sensors. It depends on the platform characteristics, such as its attitude, and also on the sensor characteristics.
 \end{itemize}
 
-It is not possible (for technical and theoretical reasons) to have a sensor in which all the above resolutions are maximized simultaneously. Some sensors might favor certain resolutions, while others might favor different ones.
+It is not possible (for technical and theoretical reasons) to have a sensor in which all the above resolutions are maximized simultaneously. Some sensors might favor certain resolutions, while others might favor a different one.
 
 When using images coming from remote sensing in a GIS, we should consider which resolution is more important (for instance, to locate elements that have a small size, high spatial resolution is needed). Using data from several different sensors is a good strategy for overcoming these limitations.
 
@@ -89,17 +89,17 @@ When using images coming from remote sensing in a GIS, we should consider which 
 
 Photogrammetry is the technique used to study and precisely define the shape, size and position in space of any object, using measurements taken on one or several photographs. Of special interest to GIS is the branch of photogrammetry known as \textbf{aerial photogrammetry}, which uses aerial photographs and it is mainly used for generating elevation data through a process known as \textbf{restitution}.
 
-Instead of single images, the branch of photogrammetry known as \textbf{stereophotogrammetry} uses pairs of images, each of them taken from a different point. These images form a \textbf{stereo pair} and with them a three-dimensional reconstruction of the original scene can be produced. This can be used by an operator to ``see'' the scene with \textbf{depth and volume}, and using that, terrain forms can be identified and elevation information can be obtained. 
+Instead of single images, the branch of photogrammetry known as \textbf{stereophotogrammetry} uses pairs of images, each of them taken from a different point. These images form a \textbf{stereo pair} and with them a three-dimensional reconstruction of the original scene can be produced. This can be used by an operator to ``see'' the scene with \textbf{depth and volume}, so that terrain forms can be identified and elevation information obtained. 
 
 If using satellite images, stereo pairs can be obtained from those platforms and sensors that allow \textbf{changing the angle of vision}, so in the same satellite pass pictures of a given area can be taken from different points.
 
 Photogrammetry can be \textbf{analogical} or \textbf{digital}, the latter being the one more related to the field of GIS.
 
-Stereoplotters are used to combine and align the images that form the stereo pair. Current stereoplotters are called \emph{analytical stereoplotters}, and contain elements from GIS, along with more specific ones. Among these, we find specific visualization software and peripherals such as 3D mouses or other mechanical elements found in analogical photogrammetric devices, making it easy for operators to adapt to this new type of tools.
+Stereoplotters are used to combine and align the images that form the stereo pair. Current stereoplotters are called \emph{analytical stereoplotters}, and contain elements from GIS, along with more specific elements. Among these, we find specific visualization software and peripherals such as 3D mouses or other mechanical elements found in analogical photogrammetric devices, making it easy for operators to adapt to this new type of tools.
 
 \section{Printed cartography. Digization}
 
-A large amount of cartography exists in printed form, such as maps or old analogical aerial photographs. To be used in a GIS, this cartography has to be \textbf{digitized}. That means creating raster or vector layers from them. In this last case, it also implies \textbf{separating the different types of information} that the map might contain, since the information contained in a single printed map, in a GIS would be stored in independent layers.
+A large amount of cartography exists in printed form, such as maps or old analogical aerial photographs. To be used in a GIS, this cartography has to be \textbf{digitized}. That means creating raster or vector layers from them. In this latter case it also implies \textbf{separating the different types of information} that the map might contain, since the information in a single printed map would be stored in independent layers, in GIS
 
 Digitizing a printed cartographic document involves three steps: 
 
@@ -121,7 +121,7 @@ The ideas discussed in chapter \ref{Fundamentals} about scale should be taken in
 
 In the case of vector layers, \textbf{manual digitization} is the most common method. An operator defines the features, tracing its geometries and entering the associated attribute data.
 
-To digitize geometries, the operator can use the \textbf{editing functionality of a GIS} and work on the screen of the computer using its mouse as tracing device, or use specialized peripherals such as a \textbf{digitizing tablet}. In the first case, digitizing takes places on the screen, so a digital version of the printed document is needed (although not a vector one), which can be obtained by scanning it. The full digitization process is, therefore, a two-step one, which includes two different types of digitization: from printed map to raster image (automatic), and from image to vector features (manual). If using a tablet, the printed map can be used directly to trace geometries on it.
+To digitize geometries, the operator can use the \textbf{editing functionality of a GIS} and work on the screen of the computer using its mouse as tracing device, or use specialized peripherals such as a \textbf{digitizing tablet}. In the first case, digitizing takes places on the screen, so a digital version of the printed document is needed (although not a vector one), which can be obtained by scanning it. The full digitization process involves two steps which include two different types of digitization: from printed map to raster image (automatic), and from image to vector features (manual). If using a tablet, the printed map can be used directly to trace geometries on it.
 
 Automatic digitization of geometries in a vector layer is known as \textbf{vectorization}. A digital image is needed, so the original document has to be scanned first. The vectorization algorithm analyzes the map and finds the elements that it contains, creating the corresponding vector layer elements from that. Manual work is usually needed to complete and correct the resulting data, since this tends to be a complex and error-prone process in which data preparation has a great importance, and a fully automatic alternative is not possible most of the time.
 

@@ -12,7 +12,7 @@ There is a big difference between the concepts of \textbf{data} and \textbf{info
 
 Data is a \textbf{set of values of elements used to represent something}. For instance, the string 502132N is a data.
 
-We can interpret that data as being a geographical reference, in which case it could be a latitude value, in particular 50\degree $21'$ $32''$ North. If we interpret it as being a reference to an identity card associated to a person, the information that we get from it is completely different. It is the same data, containing six digits and a letter, but the information that we extract from it is different, since we understand and interpret it in a different way.
+We can interpret that data as being a geographical reference, in which case it could be a latitude value, in particular 50\degree $21'$ $32''$ North. If we interpret it as being a reference to an identity card (such as a driver's license) associated with a person, the information that we get is completely different. It is the same data, containing six digits and a letter, but the information that we extract from it is different, since we understand and interpret it differently. 
 
 Information is, therefore, the result of data and \textbf{its interpretation}. and in many cases, working with data means just trying to extract from it all the information that it might contain.
 
@@ -170,7 +170,7 @@ Overall, there is no representation model that is better than the other. Dependi
 \begin{itemize}
  \item \textbf{Type of variable or phenomenon to represent}. In general, it is better to use raster layers for \textbf{continuous} variables such as elevation, in order to make it easier to perform analysis based on them. \textbf{Discrete} variables, on the other hand, are better represented using a vector approach.
 \item \textbf{Layer purpose}. It is important to know how we plan to use a layer, to decide the representation model that might better suit our case. For instance, if we have elevation data and we plan to perform analysis, it will be better to have a raster DEM, since most algorithms require the elevation data to be raster layer. However, if we want to use that elevation data just for visualization and combine it with other layers to create a map, it might be better to have a vector layer with contour lines, since those will be a better cartographic solution and will interfere less with the remaining variables. 
-\item \textbf{Context}. The context might make it better (or even mandatory) to work with a given representation model. For instance, if we are working with images and we plan to do some analysis with other layers as well, those should be raster ones, since images, as we have seen, are always raster layers.
+\item \textbf{Context}. The context might make it better (or even mandatory) to work with a given representation model. For instance, if we are working with images and we plan to do some analysis with other layers as well, those should be raster layers, since images, as we have seen, are always raster layers.
 \end{itemize}
 
 There are algorithms that allow \textbf{converting between the raster and vector representation models}, so if we have our data in one of them, we can obtain a new layer that uses the other model and might be more suitable for our work.
