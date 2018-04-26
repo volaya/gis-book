@@ -3,30 +3,30 @@
 
 \pagestyle{fancy}
 
-The classic concept of a GIS is that of a complete software application which implements all the tools needed for working with geographical data: creating or editing it, managing it, analyzing it and visualizing it. Along with that, other types of applications have appeared which, although they do not match exactly that definition, have to be considered as part of the GIS world as well.
+The classic concept of GIS is that of a complete software application which implements all the tools needed for working with geographical data: creating or editing, managing, analyzing and visualizing. Along with that, other types of applications have appeared which, although they do not match exactly that definition, have to be considered as part of the GIS world.
 
-We will divide GIS applications in three main blocks: \textbf{desktop GIS, web-based GIS}, and \textbf{mobile GIS}. They will be described in detail in this chapter. We will also provide additional information about some technologies that they are based on.
+We will divide GIS applications into three main blocks: \textbf{desktop GIS, web-based GIS}, and \textbf{mobile GIS}. They will be described in detail in this chapter. We will also provide additional information about some technologies that they are based on.
 
 
 \section{Desktop GIS}
 
-Five are the fundamental functionalities of a desktop GIS: \textbf{data input and output, visualization, editing, analysis, and map design}. Most desktop GIS tools have these five capabilities, although the level of functionality for each of them might differ. Some tools might be more prepared for data editing, while others might focus mainly on analysis.
+There are five fundamental functionalities of a desktop GIS: \textbf{data input and output, visualization, editing, analysis, and map design}. Most desktop GIS tools have these five capabilities, although the level of functionality for each of them might differ. Some tools might be more prepared for data editing, while others might focus on analysis.
 
 \subsection{Data input and output}
 
-A desktop GIS must be able to \textbf{read data} and, optionally, to \textbf{save} it. This last functionality is needed in case the GIS can produce new layers, but not in those ones that do not contain analysis or editing capabilities.
+A desktop GIS must be able to \textbf{read data} and, optionally, to \textbf{save} it. This last functionality is needed in case the GIS can produce new layers, but not in those that do not contain analysis or editing capabilities.
 
-There is a \textbf{very large number of data formats for geographical data}, and most GIS use common libraries to be able to read and write them, which allows them to share data between them and improve their connectivity.
+There are a \textbf{very large number of data formats for geographical data}, and most GIS use common libraries to be able to read and write them, allowing them to share data among them and improve their connectivity.
 
-Apart from being able to read data files, nowadays it is also important to be able to connect to \emph{databases} and \textbf{remote services}. We will talk about them later in this same chapter.
+Apart from being able to read data files, it is now also important to be able to connect to \emph{databases} and \textbf{remote services}. We will talk about those later in this chapter.
 
 \subsection{Visualization}
 
-Visualization is a fundamental capability of GIS. It is, of course, important when the main purpose of using a GIS is to create cartography, but also when our work is focused on data editing or analysis, since visual exploration of the data is a previous step.
+Visualization is a fundamental capability of GIS. It is, of course, important when the main purpose of using GIS is to create cartography, but also when our work is focused on data editing or analysis, since visual exploration of the data is a previous step.
 
-The visualization part of a GIS is mainly comprised of a \textbf{canvas} on which layers are rendered. The user can add or remove layers, and also change their \textbf{symbology}, that is, the way in which the layer data is converted into graphical elements. Layers are rendered in a given order, which allows to create a \emph{rendering hierarchy}.
+The visualization part of GIS is mainly comprised of a \textbf{canvas} on which layers are rendered. The user can add or remove layers, and also change their \textbf{symbology}, that is, the way in which the layer data is converted into graphical elements. Layers are rendered in a given order which allows to create a \emph{rendering hierarchy}.
 
-Along with the canvas, there are \textbf{navigation tools} that allow the user to modify the area that is being displayed, by zooming in, zooming out or panning (Figure \ref{Fig:Navigation_tools}). 
+Along with the canvas, there are \textbf{navigation tools} that allow the user to modify the area that is being displayed by zooming in, zooming out or panning (Figure \ref{Fig:Navigation_tools}). 
 
 \begin{figure}[!hbt]
 \centering
@@ -36,43 +36,43 @@ Along with the canvas, there are \textbf{navigation tools} that allow the user t
 \label{Fig:Navigation_tools} 
 \end{figure}
 
-The most remarkable feature of geographical data visualization in a GIS is that, unlike what happens with a classic printed map, where its characteristics cannot be changed, here the user can select \emph{what} he sees and \emph{how} he sees it. Geographical data is \textbf{independent of the information needed to visualize it}, and, therefore, it can be represented in different ways. This is true even for data that has an inherent visual nature, such as images, since even in that case the rendering can be adjusted and modified by the user.
+The most remarkable feature of geographical data visualization in GIS is that, unlike what happens with a classic printed map where its characteristics cannot be changed, the user can select \emph{what} he/she sees and \emph{how} he/she sees it. Geographical data is \textbf{independent of the information needed to visualize it} and, therefore, it can be represented in different ways. This is true even for data that has an inherent visual nature, such as images, since even in that case the rendering can be adjusted and modified by the user.
 
-Although in the most common case the canvas is bidimensional, certain GIS are also capable of \textbf{three-dimensional rendering}. In this case, navigation tools are more complex, and they allow to adjust perspective, vision angles or vertical exaggeration, among other parameters.
+Although in the most common case the canvas is bidimensional, certain GIS are also capable of \textbf{three-dimensional rendering}. In this case, navigation tools are more complex and they allow for adjusting perspective, vision angles or vertical exaggeration, among other parameters.
 
 \subsection{Analysis}
 
-Analysis is a fundamental functionality of GIS since its origins. Other ones, such as visualization, although we cannot imagine GIS without them nowadays, were very limited in the early days. Analysis, however, has always been at the core of GIS.
+Analysis is a fundamental functionality of GIS since its origins. Others, such as visualization, although we cannot imagine GIS without them nowadays, were very limited in the early days. Analysis, however, has always been at the core of GIS.
 
-The current trend in GIS is to consider analysis capabilities as \textbf{modular tools} that are run on a base platform, which includes the data input and output capabilities, along with the visualization component. Analysis tools are independent, but they can be used together to create more complex analyses.
+The current trend in GIS is to consider analysis capabilities as \textbf{modular tools} that are run on a base platform which includes the data input and output capabilities, along with the visualization component. Analysis tools are independent, but they can be used together to create more complex analyses.
 
-Analysis tools might be completely independent of the visualization part, or be linked to it. In the first case, the analysis is performed on a set of layers and parameters without any interaction with the ``map'', while in the second case the user might interact with the view to define how the analysis is performed (for instance, selecting a coordinate or a region in the canvas, which will then be used as a parameter for the analysis tool).
+Analysis tools might be completely independent of the visualization component or be linked to it. In the first case, the analysis is performed on a set of layers and parameters without any interaction with the map while in the second case, the user might interact with the view to define how the analysis is performed (for instance, selecting a coordinate or a region in the canvas which will then be used as a parameter for the analysis tool).
 
-The result of an analysis tool in a GIS can be geographical (a new layer) or not (a simple value, such as the one resulting from some statistical analysis of the input data).
+The result of an analysis tool in GIS can be geographical (a new layer) or not (a simple value, such as the one resulting from some statistical analysis of the input data).
 
-Analysis tools can be organized into \textbf{workflows} which help\textbf{automate} analysis routines. Also, the analysis functionality of desktop GIS can usually be used from \emph{scripting languages}, which allow to define more complex models and data flows. This is one of the main strengths of current GIS tools, since it provides the user more power and flexibility.
+Analysis tools can be organized into \textbf{workflows} which help\textbf{automate} analysis routines. Also, the analysis functionality of desktop GIS can usually be used from \emph{scripting languages}, which allow definition of more complex models and data flows. This is one of the main strengths of current GIS tools, since it provides the user more power and flexibility.
 
 \subsection{Editing}
 
-The geographical data with which we work in a GIS are not static. Information contained in a layer \textbf{might have to be changed or corrected}, and the functionality that allows the user to do that is important if we want the GIS tool to be versatile. Without them, geographical data lose part of their potential, and that is the reason why most desktop GIS tools implement editing capabilities to some extent.
+The geographical data with which we work in GIS are not static. Information contained in a layer \textbf{might have to be changed or corrected}, and the functionality that allows the user to do that is important if we want the GIS tool to be versatile. Without them, geographical data lose part of their potential, and that is the reason why most desktop GIS tools implement editing capabilities to some extent.
 
-This capabilities can be used to \textbf{create new layers} or to \textbf{update existing ones}. The following are some editing tasks that can be performed with a GIS:
+This capabilities can be used to \textbf{create new layers} or to \textbf{update existing ones}. The following are some editing tasks that can be performed with GIS:
 
 \begin{itemize}
 \item Editing the geometries of a vector layer feature.
-\item Editing the attribute values of a vector layer feature. That includes editing the list of attributes of the layer, adding or removing them.
+\item Editing the attribute values of a vector layer feature, including editing the list of attributes of the layer, adding or removing them.
 \item Adding new features to a vector layer or removing existing ones.
 \item Editing cell values in a raster layer.
 \end{itemize}
 
-Tools used to edit geometries inherit a large part of their design from CAD software. In certain case, they are extended with new functionalities, as it happens in the case of editing geographical data with topology (CAD software does not consider topology).
+Tools used to edit geometries inherit a large part of their design from CAD software. In certain cases, they are extended with new functionalities, as happens in the case of editing geographical data with topology (CAD software does not consider topology).
 
 
 \subsection{Map design}
 
 Most desktop GIS are capable of producing cartographic documents which can later be printed and used as a classic paper map. These documents are composed in the GIS from the data, and use the same functionality that it is used for the on-screen rendering (symbology, etc.).
 
-Along with that, other tools allow to \textbf{design and compose the map}, and to \emph{adjust its elements} (rendered layers, legend, title, etc.), and are inspired by those found in design software. 
+Along with that, other tools allow the user to \textbf{design and compose the map}, and to \emph{adjust its elements} (rendered layers, legend, title, etc.), and are inspired by those found in design software. 
 
 Some desktop GIS include elements to \emph{automate cartographic production}, such as templates or tools to generate map series (Figure \ref{Fig:Map_series}).
 
@@ -83,18 +83,18 @@ Some desktop GIS include elements to \emph{automate cartographic production}, su
 \label{Fig:Map_series} 
 \end{figure}
 
-This is possible thanks to the \textbf{separation between geographical data and the design of the cartographic document}, similar to what we commented for the case of visualization.
+This is possible thanks to the \textbf{separation between geographical data and the design of the cartographic document}, similar to what we noted for the case of visualization.
 
 
 \section{Web mapping. Clients and servers}
 
-One of the most relevant advances in the history of GIS is the advent of \textbf{Web mapping}. Web mapping technologies are used to incorporate GIS elements as part of websites, with Internet browsers being then the base platform on which GIS functionality is executed. These technologies include not just the elements run on the browser, and they have been key in shaping and developing other ones such as \textbf{remote data services}, which are used by Web Mapping applications, but also by desktop GIS.
+One of the most relevant advances in the history of GIS is the advent of \textbf{Web mapping}. Web mapping technologies are used to incorporate GIS elements as part of websites, with internet browsers being then the base platform on which GIS functionality is executed. These technologies include not just the elements run on the browser, and have been key in shaping and developing others such as \textbf{remote data services}, which are used not only by Web Mapping applications but also by desktop GIS.
 
-The concepts of \emph{server} and \emph{client} are fundamental in this context. Let's discuss them with a bit more of detail.
+The concepts of \emph{server} and \emph{client} are fundamental in this context. Let's discuss them in a bit more detail.
 
 A \textbf{server} is the element that provides (serves) a given content through the network. In our GIS context, this content means basically geographical data. The \textbf{client} is the element that requests the data, receives it and works with it. 
 
-A web browser is a client, since it makes a request to get the content of a website and show it to the user. When we enter a web address in the address bar of a web browser, we provide the information needed to establish the connection between the server and the client, and to transfer the data from one to the other.
+A web browser is a client, since it makes a request to get the content of a website and shows it to the user. When we enter a web address in the address bar of a web browser, we provide the information needed to establish the connection between the server and the client and to transfer the data from one to the other.
 
 Let's see how that works. Suppose that we want to visit the following website:
 
@@ -129,22 +129,22 @@ Figure \ref{Fig:How_internet_works} shows a summary of this.
 \label{Fig:How_internet_works} 
 \end{figure}
 
-A relation is established between clients and servers, in which an arbitrary number of clients ``connect'' themselves to a server, from which they obtain data whenever each of them makes a request. In this client-server architecture, the server has the data to be shared through a service, while clients only provide information about themselves needed to validate and perform the data sharing.
+A relation is established between clients and servers, in which an arbitrary number of clients connect themselves to a server, from which they obtain data whenever each of them makes a request. In this client-server architecture, the server has the data to be shared through a service, while clients only provide information about themselves needed to validate and perform the data sharing.
 
-Now let's see how this ideas apply to the field of GIS.
+Now let's see how these ideas apply to the field of GIS.
 
 Regarding servers, they can have four main capabilities:
 
 \begin{itemize}
-\item \textbf{Serve rendered geographical data}. Generally known as \textbf{map servers}, they provide ``maps''. That is, images created from geographical data. If data is already an image (such as an aerial or satellite photograph), the server will just send it as it is. If data is not an image (vector layer or raster layer other than image), the server will create an image based on the geographical data. The symbology used to do this can be a default one that the server uses for all requests, or it can be provided by the client in the request. 
+\item \textbf{Serve rendered geographical data}. Generally known as \textbf{map servers}, they provide maps. That is, images created from geographical data. If data is already an image (such as an aerial or satellite photograph), the server will just send it as it is. If data is not an image (vector layer or raster layer other than image), the server will create an image based on the geographical data. The symbology used to do this can be a default one that the server uses for all requests or it can be provided by the client in the request. 
 
-In both cases, the client also specifies the dimensions of the requested map image that is served, and the server takes care of preparing it.
-
-
-\item \textbf{Serve the data directly}. A more flexible option is to serve the geographical data itself. The client requests the data and, once it has been transmitted across the network, can use it however he needs. In case the data is to be visualized, the symbology has to be set in the client side, since the server is not taking care of that and provides the raw data.
+In both cases, the client also specifies the dimensions of the requested map image that is served, and then the server prepares it.
 
 
-\item \textbf{Serve the result of queries}. Another functionality that the server can have is to return not just the full set of geographical data, but a subset of it. The client can specify a \textbf{filter} and the server will use it to create a subset that will later be send in the response. Also, the server can provide \textbf{descriptive values} about the data it has. The client, which might be connected to several services and consume that from then, can use those values to filter which services to use (for instance, asking them the extent of their data and then selecting only those ones that have data about a given study area). As we have already seen, \textbf{metadata} have a great relevance in this context, since they allow this kind of queries to be executed (and the corresponding requests to be responded) efficiently.
+\item \textbf{Serve the data directly}. A more flexible option is to serve the geographical data itself. The client requests the data and once it has been transmitted across the network, can use it however he/she needs. In case the data is to be visualized, the symbology has to be set in the client side, since the server is not taking care of that and provides the raw data.
+
+
+\item \textbf{Serve the result of queries}. Another functionality that the server can have is to return not just the full set of geographical data, but a subset of it. The client can specify a \textbf{filter} and the server will use it to create a subset that will later be sent in the response. Also, the server can provide \textbf{descriptive values} about the data it has. The client, which might be connected to several services and obtain the values, can use those values to filter which services to use (for instance, asking them the extent of their data and then selecting only those that have data about a given study area). As we have already seen, \textbf{metadata} have a great relevance in this context, since they allow this kind of queries to be executed (and the corresponding requests to be responded to) efficiently.
 
 \item \textbf{Serve processes}. Finally, a server can provide new data, whether geographical or not, computed from geographical data. In this case, the server provides a processing service, and it processes the data that is passed to it as part of the request. The request can contain the data itself, or a reference to it. If a reference is passed, the data might already be in the server, or it can be in another one. In this last case, the first server will become a client of the second one, it will retrieve its data, process it, and send back the result to the original client (Figure \ref{Fig:Remote_data_and_services}).
 
