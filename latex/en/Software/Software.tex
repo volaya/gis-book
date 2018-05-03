@@ -146,7 +146,7 @@ In both cases, the client also specifies the dimensions of the requested map ima
 
 \item \textbf{Serve the result of queries}. Another functionality that the server can have is to return not just the full set of geographical data, but a subset of it. The client can specify a \textbf{filter} and the server will use it to create a subset that will later be sent in the response. Also, the server can provide \textbf{descriptive values} about the data it has. The client, which might be connected to several services and obtain the values, can use those values to filter which services to use (for instance, asking them the extent of their data and then selecting only those that have data about a given study area). As we have already seen, \textbf{metadata} have a great relevance in this context, since they allow this kind of queries to be executed (and the corresponding requests to be responded to) efficiently.
 
-\item \textbf{Serve processes}. Finally, a server can provide new data, whether geographical or not, computed from geographical data. In this case, the server provides a processing service, and it processes the data that is passed to it as part of the request. The request can contain the data itself, or a reference to it. If a reference is passed, the data might already be in the server, or it can be in another one. In this last case, the first server will become a client of the second one, it will retrieve its data, process it, and send back the result to the original client (Figure \ref{Fig:Remote_data_and_services}).
+\item \textbf{Serve processes}. Finally, a server can provide new data, whether geographical or not, computed from geographical data. In this case, the server provides a processing service, and it processes the data that is passed to it as part of the request. The request can contain the data itself, or a reference to it. If a reference is passed, the data might already be in the server, or it can be in another one. In this last case, the first server will become a client of the second one, will retrieve its data, process it, and send back the result to the original client (Figure \ref{Fig:Remote_data_and_services}).
 
 
 \begin{figure}[!hbt]   
@@ -162,27 +162,27 @@ About clients, they can be divided in two classes:
 
 \begin{itemize}
 
-	\item \textbf{Heavy clients}. Heavy clients are independent applications that do not run on top of another one such as a web browser. They usually have a larger size, since the application has to care of all the program logic.
+	\item \textbf{Heavy clients}. Heavy clients are independent applications that do not run on top of another one such as a web browser. They usually have a larger size since the application has to care of all the program logic.
 
 	Heavy clients handle and use data not coming from web services, such as local data files. They are not just clients, but full-fledged applications that work even without its client part.
 
-	Nowadays, most desktop GIS are heavy clients themselves, since they have the functionality of classic GIS, but can also consume web services.
+	Nowadays, most desktop GIS are heavy clients themselves as they have the functionality of classic GIS but can also consume web services.
 
 
 	\item \textbf{Light clients}. They normally have a smaller size and their capabilities are more limited. They run on web browsers and most of the time rely on remote data from servers.
 
-	Although originally they focused on data visualization (adding map views to websites, with a certain degree of interactivity), they have started to implement more advanced functionalities such as analysis functionality (whether on the client side or using a processing service) or data editing.
+	Although originally, they focused on data visualization (adding map views to websites, with a certain degree of interactivity), they have begun to implement more advanced functionalities such as analysis functionality (whether on the client side or using a processing service) or data editing.
 
-	The term \emph{Web mapping} is used to refer to the lighter clients which focus only on rendering maps, while the term \emph{Web GIS} is used for those with more functionality, which incorporate some of the tools traditionally found in desktop GIS.
+	The term \emph{Web mapping} is used to refer to the lighter clients which focus only on rendering maps, while the term \emph{Web GIS} is used for those with more functionality, incorporating some of the tools traditionally found in desktop GIS.
 \end{itemize}
 
 \section{Some techniques related to GIS services}
 
-Two important techniques used in the context of the client--server architecture for geographical data are \textbf{tiling} and \textbf{caching}. These techniques, whether implemented on a light client or a heavy one, allow to have more responsive interfaces and to reduce the amount of data sent over the network, overcoming to a certain extent the problems that a slow network might cause. Both are used mainly with map servers (server that provide rendered images).
+Two important techniques used in the context of the client--server architecture for geographical data are \textbf{tiling} and \textbf{caching}. These techniques, whether implemented on a light client or a heavy one, allow for more responsive interfaces and reducing the amount of data sent over the network, overcoming to a certain extent the problems that a slow network might cause. Both are used mainly with map servers (servers that provide rendered images).
 
-Tiling divides the images that the client is working with into smaller ones, forming a mosaic. By correctly managing the tiles in that mosaic, the amount of data transmitted can be reduced. When the request is sent to the server, instead of a single image, a set of them is requested. Although this does not reduce the amount of data, the tiled structure will allow a more flexible and optimized handling of data once a new image is needed, as it will soon be explained.
+Tiling divides the images that the client is working with into smaller ones, forming a mosaic. By correctly managing the tiles in that mosaic, the amount of data transmitted can be reduced. When the request is sent to the server, instead of a single image, a set of them is requested. Although this does not reduce the amount of data, the tiled structure will allow a more flexible and optimized handling of data once a new image is needed, as will soon be explained.
 
-Caching is a technique frequently used not just for web SIG, but as a general tool in the context of the Internet context. Web browsers store previous responses from web servers, such as web pages and images, in a so-called \emph{cache}. When data that was previously requested is requested again, it can be taken from the cache instead of from the corresponding server, which is usually faster and more efficient.
+Caching is a technique frequently used not just for web SIG, but as a general tool in the context of the internet. Web browsers store previous responses from web servers, such as web pages and images, in a so-called \emph{cache}. When data that was previously requested is requested again, it can be taken from the cache instead of from the corresponding server, which is usually faster and more efficient.
 
 Combining tiling and caching increasing responsiveness and results in an optimized data management. Let's see how that works, using the example shown in figure \ref{Fig:Tiling}.
 
@@ -193,13 +193,13 @@ Combining tiling and caching increasing responsiveness and results in an optimiz
 \label{Fig:Tiling} 
 \end{figure}
 
-Initially, the application displays an area that cover 20 elements or tiles. All those tiles have already been downloaded from the server, and stored in the application cache, which means that using them again does not require making a new request to the server. Without caching and tiling, when the application user changes the area to be displayed as shown in the figure, a whole image has to be requested, exactly with the same size as the image to be rendered in the screen. However, if tiling and caching are applied, we just have the whole new image to be painted divided in 20 parts, and, since some of them are stored from a previous request, we just have to request a small number of them (8 in this case, corresponding to the areas not covered by the previous image). The amount of data that is requested to the server and transmitted over the network is much smaller.
+Initially, the application displays an area that cover 20 elements or tiles. All those tiles have already been downloaded from the server, and stored in the application cache, which means that using them again does not require making a new request to the server. Without caching and tiling, when the application user changes the area to be displayed as shown in the figure, a whole image has to be requested, with exactly the same size as the image to be rendered in the screen. However, if tiling and caching are applied, we just have the whole new image to be painted divided in 20 parts, and, since some of them are stored from a previous request, we just have to request a small number of them (8 in this case, corresponding to the areas not covered by the previous image). The amount of data that is requested to the server and transmitted over the network is much smaller.
 
-Caching can also be implemented on the server side. We have seen that map servers provide already rendered images based on some data. Rendering that data can be time consuming, and if it has to be done for each request, that would mean a lot of computing cost for the server. Instead, images are pre-rendered at different scales, so when a client request is received by the server, it just has to crop the pre-rendered image instead of producing the response image from the base data.
+Caching can also be implemented on the server side. We have seen that map servers provide already rendered images based on some data. Rendering that data can be time consuming and, if it has to be done for each request, that would mean a lot of computing cost for the server. Instead, images are pre-rendered at different scales so when a client request is received by the server, it just has to crop the pre-rendered image instead of producing the response image from the base data.
 
 A recent technique that is gaining popularity is \emph{vector tiling}. Using the same approach as in the case of the tiling we have just seen (that is, cutting the data in pieces), vector layers are divided and only the required data are sent to the client.
 
-This allows the client to request and use vector layers, and be responsive at the same time. Without vector tiling, this would be impossible for large layers. The advantage in this case is that the symbology can be defined by the client. Also, the user experience is improved, since, for instance, transitions become more fluent when changing the map scale, due to the scalability of vector data.
+This allows the client to request and use vector layers and be responsive at the same time. Without vector tiling, this would be impossible for large layers. The advantage in this case is that the symbology can be defined by the client. Also, the user experience is improved, since for instance, transitions become more fluent when changing the map scale, due to the scalability of vector data.
 
 
 
@@ -208,23 +208,23 @@ This allows the client to request and use vector layers, and be responsive at th
 
 To ensure the the client-server system works correctly, it is important to define how the communication between servers and clients takes place. Some \textbf{normalization} is needed, and there must be common and well-defined elements implemented by both the client and the server. This \emph{lingua franca} that allows clients and servers to communicate is what we call a \textbf{standard}.
 
-In an ideal situation, a complete \textbf{interoperability} would exist, independently of formats and applications used. Clients and servers would be able to connect with each other, regardless of their own characteristics. Standards are the element that allows that to happen, since they define a common framework in which clients and servers communicate. As long as a client or a server follows the standard, it will be able to communicate with all others that do it as well. Standards provide \textbf{technological homogeneity}.
+In an ideal situation, a complete \textbf{interoperability} would exist independent of formats and applications used. Clients and servers would be able to connect with each other, regardless of their own characteristics. Standards are the element that allows that to happen, because they define a common framework in which clients and servers communicate. As long as a client or a server follows the standard, it will be able to communicate with all others that do it as well. Standards provide \textbf{technological homogeneity}.
 
 
 Interoperability means that any element of the client-server system can be replaced with another one, and the interaction between all parts of the system will not  be affected. A client or server might have different functionalities, but regardless of its origin (its manufacturer), it will be able to interact with the other elements, if all implement the same standard.
 
-A standard is considered as such when it is used by a group or community, which accepts it to define the characteristics of a product or service within it. Standards can be established by public acceptance and custom (\emph{de facto} standards), or they might have legal recognition and be proposed by some official organization (\emph{de iure} standards).
+A standard is considered as such when it is used by a group or community, which accepts it to define the characteristics of a product or service within it. Standards can be established by public acceptance and custom (\emph{de facto} standards) or they might have legal recognition and be proposed by some official organization (\emph{de iure} standards).
 
 A standard is \textbf{open} if \textbf{its definition is available} to everyone who wants to know more about it and use it for any activity related to it.
 
-The following ones are some of the fundamental principles that open standards are based on:
+The following are some of the fundamental principles that open standards are based on:
 
 \begin{itemize}
 	\item \textbf{Availability}. Open standards are available to anyone, to read and to use.
 	\item \textbf{Maximize end-user choice}. Open standards create a fair, competitive market, and do not lock users in the closed environment of a given vendor. 
 	\item \textbf{No royalty}. Implementing a standard is free and has no cost, unlike the case of a patent.
-	\item \textbf{No discrimination}. Open standards and the organizations behind them do not favor any implementor of the standard over the rest of them.
-	\item \textbf{Extension or creation of subsets}. Standards can be extended with additional elements, or reduced to less-detailed subsets.
+	\item \textbf{No discrimination}. Open standards and the organizations behind them do not favor any implementer of the standard over the rest of them.
+	\item \textbf{Extension or creation of subsets}. Standards can be extended with additional elements or reduced to less-detailed subsets.
 \end{itemize}
 
 To know the impact that a standard has in the context of GIS, let's take a look at figure \ref{Fig:Non_interoperable}, which represents a non-interoperable architecture that does not use standards.
@@ -238,13 +238,13 @@ To know the impact that a standard has in the context of GIS, let's take a look 
 
 Data stored in each database are available only by using one client, the one corresponding to the server that serves those data. The remaining data are not available for that client. Each client-server-database group is an independent island, technologically isolated from the rest of them.
 
-Among the disadvantages of a non-interoperable architecture like that, we find the following ones:
+Disadvantages of a non-interoperable architecture like that include the following:
 
 \begin{itemize}
 \item \textbf{Waste of resources}. Each service must manage its own data. That is complex and has higher costs than sharing data with other compatible services.
 \item \textbf{Need to know multiple clients}. Since we need a different client for each service, the user must be familiar with all of them. Being capable of using just one client is not enough to use all the available data, since that client can only access a small part of all that data..
-\item \textbf{Combining data is not possible}. Two datasets that are available through two different services cannot be used in the same client, since it cannot communicate with the corresponding servers.
-\item \textbf{Combining functionalities is not possible}. If data is only available to a given client, the functionality in another one (which might not be implemented in the first) cannot be used on that data. When working with that data, the user has its possibilities limited to what the corresponding client can do.
+\item \textbf{Combining data is not possible}. Two datasets that are available through two different services cannot be used in the same client, as it cannot communicate with the corresponding servers.
+\item \textbf{Combining functionalities is not possible}. If data is only available to a given client, the functionality in another one (which might not be implemented in the first) cannot be used on that data. When working with that data, the user's possibilities are limited to what the corresponding client can do.
 \end{itemize}
 
 Now let's take a look at a fully interoperable architecture based on open standards, as seen in figure \ref{Fig:Interoperable}.
@@ -275,17 +275,17 @@ Some of the most relevant OGC standards are the following ones:
 
 Each one of these standards is described in the corresponding specification, which is subject to change and improvement. Several versions exist for each of them.
 
-Along with these standards, we find those made by organizations such as \textbf{ISO} o \textbf{W3C}, with a more general scope, but also important in the context of GIS. Among them, the most relevant standards are the ISO ones that define \textbf{how to store metadata} and the W3C ones related to \emph{communication over the Internet}.
+Along with these standards are those made by organizations such as \textbf{ISO} o \textbf{W3C}, with a more general scope, but also important in the context of GIS. Among them, the most relevant standards are the ISO ones that define \textbf{how to store metadata} and the W3C standards related to \textbf{communication over the Internet}.
 
 \section{Mobile GIS}
 
-GIS on mobile platforms such as mobile phones or tablets has a clear relation with both desktop GIS and web GIS. It takes the elements from them and adds  additional ones derived from running on a mobile platform, which expand their possibilities.
+GIS on mobile platforms such as mobile phones or tablets has a clear relation with both desktop GIS and web GIS. It takes the elements from them and adds others derived from running on a mobile platform which expand their possibilities.
 
-Mobile devices nowadays offer two main capabilities from the point of view of GIS: \textbf{wireless access to Internet} and \textbf{capability of knowing the position} of the device. 
+Mobile devices nowadays offer two main capabilities from the point of view of GIS: \textbf{wireless access to Internet} and \textbf{ability to know the position} of the device. 
 
 Internet access can be used to obtain maps and geographical information from a given server, or to send field data acquired with the aid of the mobile device.
 
-The position of the mobile device is usually known based on the GPS receiver that is part of most mobile phones. However, other approaches are also possible, from computing the position \textbf{based on the phone network} to using some \textbf{indoor positioning system} in case it is available.
+The position of the mobile device is usually known based on the GPS receiver that is part of most mobile phones. However, other approaches are also possible, from computing the position \textbf{based on the phone network} to using some \textbf{indoor positioning system} if it is available.
 
 Knowing the position of the device allows the mobile GIS application to provide additional functionality. For instance, it might be used to make \textbf{field data acquisition} easier and more efficient (the coordinates of measured points do not have to be entered manually), or to provide \textbf{location-based services} (LBS).  
 
