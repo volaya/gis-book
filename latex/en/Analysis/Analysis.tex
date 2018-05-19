@@ -33,26 +33,26 @@ The following sections describe some common types of spatial analysis.
 
 We already discussed queries in the chapter devoted to databases.
 
-Queries can be combined with other analysis tools, for instance, to \textbf{select} a subset of feature with which we will later perform some other analysis.
+Queries can be combined with other analysis tools for instance, to \textbf{select} a subset of features with which we will later perform some other analysis.
 
 \subsection{Topological analysis}
 
-Queries can be referred not just to the position of geographical elements, but also to their \emph{relation with other elements}. If we have topological information, we can perform analysis that responds to questions such as:
+Queries can be referred not just to the position of geographical elements but also to their \emph{relation with other elements}. If we have topological information, we can perform analysis that responds to questions such as:
 
 \begin{itemize}
 \item How can I reach a give coordinate from my current position using the existing road network? 
 
-\item Which countries share their border with France?
+\item Which countries share a border with France?
 \end{itemize}
 
 \subsection{Measurement} 
 
-Spatial properties can be quantified and measured. Among the most basic ones, we find length, area, perimeter or shape factors. More elaborated ones such as slope or multiple indices derived from basic measurements can also be computed with the help of a GIS.
+Spatial properties can be quantified and measured. Among the most basic ones, we find length, area, perimeter or shape factors. More elaborated ones such as slope or multiple indices derived from basic measurements can also be computed with the help of GIS.
 
 
 \subsection{Combination}
 
-One of the most typical procedures within a GIS is the \textbf{combination and overlay} of layers. The separation of geographical data into layers facilitates this kind of operations, and turns GIS into the optimal platform to perform any analysis that requires combining information from different variables.
+One of the most typical procedures within GIS is the \textbf{combination and overlay} of layers. The separation of geographical data into layers facilitates this kind of operations and turns GIS into the optimal platform to perform any analysis that requires combining information from different variables.
 
 In the case of vector layers, overlay operations such as \textbf{union, intersection, difference or clipping} are frequently used. Figure \ref{Fig:Intersection} shows an example of an overlay operation between polygon layers.
 
@@ -67,7 +67,7 @@ In the case of vector layers, overlay operations such as \textbf{union, intersec
 
 We include in this group a large set of operations that alter the input data in different ways. Among them we find \textbf{coordinate transformations}, \textbf{simplification of geometries} or the \textbf{creation of influence areas (buffers)}. These transformations may affect both the spatial component and the thematic component of the data. 
 
-A particular case, already mentioned in a previous chapter, is the \textbf{conversion between representation models}. Figure \ref{Fig:Conversions} shows an example of this. Starting with a scanned map (a raster layer) with contour lines, these can be traced and a vector layer created based on them. The lines in that vector layer can be later converted into a raster DEM using interpolation techniques. From the raster DEM it is possible to obtain contour lines at an arbitrary contour distance (of course, within the level of detail of the original data).
+A particular case, already mentioned in a previous chapter, is the \textbf{conversion between representation models}. Figure \ref{Fig:Conversions} shows an example. Starting with a scanned map (a raster layer) with contour lines, these can be traced and a vector layer created based on them. The lines in that vector layer can be later converted into a raster DEM using interpolation techniques. From the raster DEM it is possible to obtain contour lines at an arbitrary contour distance (of course, within the level of detail of the original data).
 
 \begin{figure}[!hbt]   
 \centering
@@ -82,7 +82,7 @@ Terrain analysis is one of the most powerful capabilities we find in GIS. From b
 
 \subsection{Descriptive statistics}
 
-The common elements of classic statistics have their equivalents when working with geographical data, and they allow us to \textbf{quantitatively describe} the data we work with. Here we include centrality and dispersion measures,  pattern analysis, and many others. These can be themselves used in hypothesis testing, in case there is a spatial component involved.
+The common elements of classic statistics have their equivalents when working with geographical data, and they allow us to \textbf{quantitatively describe} the data we work with. Here we include centrality and dispersion measures, pattern analysis, and many others. These can be themselves used in hypothesis testing, in case there is a spatial component involved.
 
 These statistical values allow us to respond to questions such as:
 
@@ -93,7 +93,7 @@ These statistical values allow us to respond to questions such as:
 
 \subsection{Inference}
 
-Another important statistical analysis in GIS is the one that helps inferring the behavior of variables and their evolution.
+Another important statistical analysis in GIS is the one that helps to infer the behavior of variables and their evolution.
 
 \textbf{Change modeling} is one of the many fields that are rapidly evolving thanks to the help of GIS.
 
@@ -101,7 +101,7 @@ Another important statistical analysis in GIS is the one that helps inferring th
 
 The layered structure of geographical information in a GIS, which, as we have seen, was ideal for overlay operations, provides also an optimal framework for studying the combined effect of multiple phenomena. GIS is the perfect framework for \textbf{multiple-criteria analysis}.
 
-Questions such as the following ones can be responded using a GIS:
+Questions such as the following ones can be responded to using GIS:
 
 \begin{itemize}
 \item Which one is the best place to build a new power station considering its effect on the environment and the people living close to it?
@@ -111,15 +111,15 @@ Questions such as the following ones can be responded using a GIS:
 
 \section{Particularities of spatial data for its analysis}
 
-Spatial data have some great potential thanks to their particular properties, but at the same time these properties might \textbf{limit or condition} working with them. In some cases, they might represent problems that have to be considered when analyzing the data; in others, they are just something that anyone working with spatial data should know, but that are not problematic \emph{per se}.
+Spatial data have some great potential thanks to their particular properties but at the same time, these properties might \textbf{limit or condition} working with them. In some cases, they might represent problems that have to be considered when analyzing the data; in others, they are just something that anyone working with spatial data should know but that are not problematic \emph{per se}.
 
 \subsection{Scale}
 
-We can study geographical information at \emph{different scales}, and depending on which one we use, the results we will obtain will be different. For this reason, apart from considering scale when rendering and visualizing geographical data, the \textbf{analysis scale} should be considered as well when performing any analysis.
+We can study geographical information at \emph{different scales} and depending on which one we use, the results obtained will be different. For this reason, apart from considering scale when rendering and visualizing geographical data, the \textbf{analysis scale} should be considered as well when performing any analysis.
 
 The analysis scale should depend on the \emph{data properties} (accuracy, data type, etc.) and the \textbf{analysis to be performed} with them.
 
-This can be easily understood with the help of figure \ref{Fig:Scales}. If we want to categorize the form of terrain at a given point, we need to analyze the elevation of the point and also the elevation in its surroundings. Depending on the size of that analysis ``window'' around the center point (which is what defines the analysis scale), the results can be very different. In the image, for a small value of the analysis radius, the terrain will be categorized as being a peak. For a larger region, however, it will be considered the bottom of a valley.
+This can be easily understood with the help of figure \ref{Fig:Scales}. If we want to categorize the form of terrain at a given point, we need to analyze the elevation of the point and also the elevation in its surroundings. Depending on the size of that analysis window around the center point (which is what defines the analysis scale), the results can be very different. In the image, for a small value of the analysis radius, the terrain will be categorized as being a peak. For a larger region, however, it will be considered the bottom of a valley.
 
 \begin{figure}[h]   
 \centering
@@ -128,7 +128,7 @@ This can be easily understood with the help of figure \ref{Fig:Scales}. If we wa
 \label{Fig:Scales} 
 \end{figure}
 
-Therefore, we must ``look'' at the terrain at the correct distance for which the information that it gives us is the most interesting and correct for the kind of analysis that we are performing. Apart from the fact that there is an optimal analysis scale for each type of analysis, it is also interesting to work at \textbf{multiple scales}, since that will provide us more information than what we can obtain working only at a single scale.
+Therefore, we must look at the terrain at the correct distance for which the information that it gives us is the most interesting and correct for the kind of analysis that we are performing. Apart from the fact that there is an optimal analysis scale for each type of analysis, it is also interesting to work at \textbf{multiple scales}, as that will provide us more information than what we can obtain working only at a single scale.
 
 Another example of how the analysis scale affects the analysis result is found in the case of \textbf{taking measurements}. As it can be seen in figure \ref{Fig:Fractal_line}, the measurement unit (which is implicitly defined by the level of detail of the data) that is used causes the results to be different. 
 
