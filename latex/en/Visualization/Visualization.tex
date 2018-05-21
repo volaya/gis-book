@@ -3,7 +3,7 @@
 
 \pagestyle{fancy}
 
-When working with a GIS, most of the time we will visualize the data we work with. Although certain data, such as satellite images or maps from a map server, include their own rendering and can be visualized \emph{as they are}, in most cases is the user of a GIS who defines the way geographical data is rendered. In other words, the GIS user \textbf{takes the role of the cartographer}, and for this reason must be familiar with the ideas and techniques used by cartographers.
+When working with a GIS, most of the time we will visualize the data we work with. Although certain data, such as satellite images or maps from a map server, include their own rendering and can be visualized \emph{as they are}, in most cases is the user of a GIS who defines the way geographical data is rendered. In other words, the GIS user \textbf{takes the role of the cartographer} and for this reason, must be familiar with the ideas and techniques used by cartographers.
 
 Along with the concepts and tools from classic cartography, GIS include elements from what is known as \textbf{scientific visualization}, such as \textbf{interactivity} or \textbf{multidimensional data rendering}. This approach, richer than the classic one from cartography, is known as \textbf{geovisualization}.
 
@@ -13,7 +13,7 @@ In this chapter, we will see some fundamental ideas about data visualization, an
 
 When we visualize any kind of geographical information, whether on a computer screen or on a printed map, we are using a \textbf{visual language} to convey that information. 
 
-The study of signs of a language is called \textbf{semiology}. In the case of a visual language, we have a \textbf{graphic semiology}. This semiology works with the signs of the language that we use to visualize geographical data, and helps us understand why and how visual elements serve their purpose of correctly conveying the information from which they are created.
+The study of signs of a language is called \textbf{semiology}. In the case of a visual language, we have a \textbf{graphic semiology}. This semiology works with the signs of the language that we use to visualize geographical data and helps us understand why and how visual elements serve their purpose of correctly conveying the information from which they are created.
 
 \subsection{Visual variables}
 
@@ -27,15 +27,15 @@ Visual elements have several properties that can be used to transmit information
 \label{Fig:VisualVariables} 
 \end{figure}
 
-These properties are known as \textbf{visual variables}, and are applied to the geometric elements used to visualize geographical information. Those elements can be differentiated using the following visual variables, which are shown in figure \ref{Fig:VisualVariables}: position, shape, size, hue, value, texture and orientation.
+These properties are known as \textbf{visual variables} and are applied to the geometric elements used to visualize geographical information. Those elements can be differentiated using the following visual variables, which are shown in figure \ref{Fig:VisualVariables}: position, shape, size, hue, value, texture and orientation.
 
 The use of \textbf{position} is rather restricted in the case of a map, since the real position of the element to be rendered should be respected. It is seldom used. 
 
-The \textbf{shape} is defined by the perimeter of the object. This variable is mostly used in the case of point data, using a symbol of a given shape located at the exact coordinates of the point to be rendered. It is difficult to apply to linear symbols, and in the case of areal symbols it requires altering the shape of the symbol itself.
+The \textbf{shape} is defined by the perimeter of the object. This variable is mostly used in the case of point data, using a symbol of a given shape located at the exact coordinates of the point to be rendered. It is difficult to apply to linear symbols and in the case of areal symbols it requires altering the shape of the symbol itself.
 
-\textbf{Size} indicates the dimensions of the symbol. In the case of points, it can be applied by changing the size of the symbol itself. In the case of lines, changing their thickness is the most usual way of using this visual variable on them. It is not used in areal symbols, except for the case of using a texture fill, in which the size variable is applied to the texture and not to the symbol itself.
+\textbf{Size} indicates the dimensions of the symbol. In the case of points, it can be applied by changing the size of the symbol itself. In the case of lines, changing their thicknesses is the most usual way of applying this visual variable on them. It is not used in areal symbols, except in the case of using a texture fill, in which the size variable is applied to the texture and not to the symbol itself.
 
-Size \textbf{alters how other visual variables are perceived}, specially in the case of small sizes.
+Size \textbf{alters how other visual variables are perceived}, especially in the case of small sizes.
 
 \textbf{Texture} refers to the pattern used to fill the body of the symbol. It can be applied to lines, using dash patterns, but it is mostly applied to areal symbols.
 
@@ -43,7 +43,7 @@ Color is the most important of all visual variables. Two of its components can b
 
 \textbf{Hue} is what we usually call color. That is, the name of the color (blue, red, green, etc.)
 
-Hue \textbf{can be altered by the hue of surrounding elements}, specially in small symbols. Although human perception has a great sensitivity to it, it might be difficult to identify in small symbols, and it can be wrongly identified if the symbol has other larger ones with different hues in its surroundings.
+Hue \textbf{can be altered by the hue of surrounding elements}, especially in small symbols. Although human perception has a great sensitivity, it might be difficult to identify in small symbols, and it can be wrongly identified if the symbol has other larger ones with different hues in its surroundings.
 
 \textbf{Value} defines the darkness of the color. For instance, light blue and dark blue have the same hue, but they have different value.
 
@@ -64,7 +64,7 @@ Visual variables can have four basic properties.
 
 In the above list, variables are ordered according to the so-called \textbf{levels of organization}. The associative property is at the lower level, while the quantitative one is at the highest. The level of organization of visual variables is relevant when combining them, as we will see later. Also, the level of organization of a variable defines the type of information that the variable can transmit.
 
-Figure \ref{Fig:PropertiesVisualVariables} shows different renderings of a set of point symbols, explaining in each case one single visual variable.
+Figure \ref{Fig:PropertiesVisualVariables} shows different renderings of a set of point symbols, explaining in each case, one single visual variable.
 
 \begin{figure}[!hbt]
 \centering
@@ -73,16 +73,15 @@ Figure \ref{Fig:PropertiesVisualVariables} shows different renderings of a set o
 \label{Fig:PropertiesVisualVariables} 
 \end{figure}
 
-Starting with the associative property, we see that, except for size and value, all other visual variables do not make elements to be preponderant in the image. There is not an orientation than can be called more important that the rest of them. The same happens with texture, color, shape or position.
+Starting with the associative property, we see that, except for size and value, all other visual variables do not do not emphasize one element over the others. In other words, one element is not seen as more important than the rest of them when the visual variable is texture, color, shape or position.
 
-With size, however, it is clear that a larger one gives symbols a more prominent role. In the same way, a larger value (darker color) attracts the attention of the observer much more than a color with a lighter value.
+With size, however, it is clear that a larger one gives symbols a more prominent role. In the same way, a darker value attracts the attention of the observer much more than a color with a lighter value.
 
-Regarding the selective property, we can say that a variable has if, with a quick look, we can easily identify the elements that belong to a given group, that group being defined by that visual variable. The most clear example of this his ue. We can quickly separate from a set of symbols those that are red or yellow. All visual variables, excepting shape, have this property, although it might not be so inmediate to notice that as in the case of hue . Shape does not make elements form groups spontaneously.
+Regarding the selective property, we can say that a variable has a selective quality if, at a quick glance, we can easily identify the elements that belong to a given group which is defined by a visual variable. The clearest example of this is hue. We can quickly separate from a set of symbols those that are red or yellow. All visual variables, excepting shape, have this property, although it might not be so as in the case of hue. Shape does not make elements form groups spontaneously.
 
+The ordered property is found in those visual variables that we can use to define an ordering. Only position, texture, size and value are ordering properties.  For instance, in the image corresponding to the visual variable hue, we cannot say which element we would place at the beginning or end of a scale defined by hue itself. With value, however, we can, since that scale would range between the lighter tones to the darker ones, and we can visually differentiate and sort them.
 
-The ordered property is found in those visual variables that we can use to define an ordering. Ony position, texture, size and value have it. For instance, in the image corresponding to the the visual variable hue, we cannot say which element we would place at the beginning  or end of a scale defined by hue itself. With value, however, we can, since that scale would range between the lighter tones to the darker ones, and we can visually differentiate them and sort them.
-
-Finally, the quantitative propery is found in those visual variables that can be used to visually estimate quantities and ratios. Only position and size have it. For instance, we can see that the big circles in the image corresponding to the size visual variable are more or less twice the size of the smaller ones.
+Finally, the quantitative property is found in those visual variables that can be used to visually estimate quantities and ratios. Only position and size have it. For instance, we can see that the big circles in the image corresponding to the size visual variable are more or less twice the size of the smaller ones.
 
 Table \ref{Table:PropertiesVisualVariables} contains a summary of all these ideas.
 
@@ -99,28 +98,28 @@ Table \ref{Table:PropertiesVisualVariables} contains a summary of all these idea
 \caption{\small Properties of visual variables.}
 \end{table}
 
-Visual variables can be combined (for instance, representing object with different size and hue). The properties of all the visual variables that are used must be considered, and if a given property is needed for the information that we want to convey, all those visual variables should have it.
+Visual variables can be combined (for instance, representing objects with different size and hue). The properties of all the visual variables that are used must be considered, and if a given property is needed for the information that we want to convey, all those visual variables should have it.
 
 \subsection{The perception of visual variables}
 
-The perception of visual variables \textbf{might be altered by the environment}. It is important to study this from two points of view: \textbf{perceptual constancy} (how much we can modify visual elements and their surroundings before they fail to to convey the same information and can be misidentified) and \textbf{perceptive aids} (how we can help visual elements to be perceived exactly in the way that we want to).
+The perception of visual variables \textbf{might be altered by the environment}. It is important to study this from two points of view: \textbf{perceptual constancy} (how much we can modify visual elements and their surroundings before they fail to to convey the same information and can be misidentified) and \textbf{perceptive aids} (how we can help visual elements to be perceived exactly in the way that we want).
 
-Perceptual constancy defines how objects are \textbf{perceived in the same way regardless of the changes in the environment}. For instance, if an object is round, such as a wheel, it will have a round shape when we look at it from a perpendicular direction. If we now look at it from a different angle, we will see an ellipse instead of a circle. However, we will not think it is not round, and we will still identify its shape correctly. That is an example of the perceptual constancy of the shape.
+Perceptual constancy defines how objects are \textbf{perceived in the same way regardless of the changes in the environment}. For instance, if an object is round, such as a wheel, it will have a round shape when we look at it from a perpendicular direction. If we now look at it from a different angle, we will see an ellipse instead of a circle. However, we will read it as round and will still identify its shape correctly. That is an example of the perceptual constancy of the shape.
 
-Not all visual variables have such a perceptual constancy. When the perception of an element changes even if the object itself does not, a \textbf{perceptual contrast} is said to exist. Perceptual contrast might cause a visual element to be wrongly perceived, and the information that it transmits to be misinterpreted.
+Not all visual variables have such a perceptual constancy. When the perception of an element changes even if the object itself does not, a \textbf{perceptual contrast} is said to exist. Perceptual contrast might cause a visual element to be wrongly perceived and the information that it transmits to be misinterpreted.
 
-The following ones are some of the main ideas about perceptual contrasts to take into account when creating a map:
+The following are some of the main ideas about perceptual contrasts to take into account when creating a map:
 
 \begin{itemize}
 	\item Size is the visual variable that is more affected by perceptual contrasts. The apparent size of an object might change if it is surrounded by other elements of a different size. This is particularly relevant when using point symbols in a map.	
-	\item Values is also altered when other elements with a different value appear nearby, specially if there is a large number of them.
-	\item Hue is altered by the presence of other hues. In a map, we should consider how the background color might affect the one of foreground symbols. 
-	\item Complementary hues, when put together, might cause a ``vibration''sensation in the border between them.
+	\item Values is also altered when other elements with a different value appear nearby, specially if there are a large number of them.
+	\item Hue is altered by the presence of other hues. In a map, we should consider how the background color might affect the foreground symbols. 
+	\item Complementary hues, when put together, might cause a vibration sensation in the border between them.
 \end{itemize}
 
 Regarding perception aids, the most important factor when creating a map is the \textbf{correct separation between the figure (the foreground objects) and the background}. The properties of the visual variables must be used to create different levels in the visualization, assigning more relevance to some elements in order to focus the attention on the information that they transmit.
 
-To make certain layers (the most relevant ones for the purpose of the map) more visible, a \textbf{correct hierarchy} must be established with the help of visual variables. This hierarchy will add ``depth'' to the information displayed in the map, and some elements will be perceived as being more important than others. Layer ordering already defines a structure and a hierarchy, but that is not enough in most cases, and visual variables should be used to reinforce it.
+To make certain layers (the most relevant ones for the purpose of the map) more visible, a \textbf{correct hierarchy} must be established with the help of visual variables. This hierarchy will add depth to the information displayed in the map, and some elements will be perceived as being more important than others. Layer ordering already defines a structure and a hierarchy, but that is not enough in most cases and visual variables should be used to reinforce it.
 
 Figure \ref{Fig:HierarchyMap} shows why a correct hierarchy is needed to create a good map.
 
@@ -136,14 +135,13 @@ Figure \ref{Fig:HierarchyMap} shows why a correct hierarchy is needed to create 
 
 Maps are a method of communication that uses a language with a particular purpose: \textbf{describing spatial relations}. A map is, therefore, a symbolic abstraction of a real-word phenomenon, which implies that it has some degree of simplification and generalization.
 
-The visual language that we have just seen becomes now a cartographic language when it is adapted to the particular case of creating maps, and knowing its rules is needed to create cartography that is later useful for the map user. All these ideas related to map production form what is known as \textbf{cartographic design}.
+The visual language that we have just seen becomes a cartographic language when it is adapted to the particular case of creating maps and knowing its rules is needed to create cartography that is later useful for the map user. All these ideas related to map production form what is known as \textbf{cartographic design}.
 
-Cartographic design involves taking decisions (in this case, by the GIS user who takes the role of the cartographer). These decisions must be guided by the \textbf{purpose of the map} and the \textbf{public it is targeted at}, and depending on these factors the cartographer must decide \textbf{the projection} (which not always has to be the original one of the data) 
-, the \textbf{scale} (depending on the level of detail and taking into account the limitations of the data), the \textbf{type of map} (we will see more about this later in this chapter), or the \textbf{symbols} to use, among other things.
+Cartographic design involves making decisions (in this case, by the GIS user who takes the role of the cartographer). These decisions must be guided by the \textbf{purpose of the map} and the \textbf{target audience} and depending on these factors, the cartographer must decide \textbf{the projection} (which doesn not always have to be the original one of the data), the \textbf{scale} (depending on the level of detail and taking into account the limitations of the data), the \textbf{type of map} (we will see more about this later in this chapter), or the \textbf{symbols} to use, among other things.
 
 There are two main types of cartography: \textbf{base cartography} (also called \textbf{fundamental} or \textbf{topographic}) and \textbf{thematic cartography}.
 
-Base cartography represents the classic maps that have been created by cartographers during most part of the history of cartography. This type of map serves the purpose of precisely describing \emph{what} is on the surface of the Earth.
+Historically, base cartography represents the classic maps that have been created by cartographers. This type of map serves the purpose of precisely describing \emph{what} is on the surface of the Earth.
 
 Thematic cartography focuses on \textbf{displaying information about a given phenomenon} (a given geographical variable), which can be of any type: physical, social, political, cultural, etc. We exclude from this list those phenomena that are purely topographic, which are the subject matter of base cartography.
 
@@ -154,26 +152,26 @@ Thematic cartography uses base cartography (usually included in thematic maps) t
 
 \subsection{Types of information and their visualization}
 
-We already know that the thematic component of geographical information can be numeric or alphanumeric, and that numeric variables can be nominal, ordinal, intervals, or ratios. Selecting a correct symbology according to the type of information that we are working with is key to produce an effective map. In particular, we must use a visual variable that has the correct properties (levels of organization) for the variable that we want to visualize.
+We already know that the thematic component of geographical information can be numeric or alphanumeric and that numeric variables can be nominal, ordinal, intervals, or ratios. Selecting a correct symbology according to the type of information that we are working with is key to producing an effective map. In particular, we must use a visual variable that has the correct properties (levels of organization) for the variable that we want to visualize.
 
-For instance, the associative property and the the selective property are of interest just for qualitative information, while size is the only visual variable that we can use that has the quantitative property, and, therefore, the only one that should be used to represent ratios.
+For instance, the associative property and the selective property are of interest just for qualitative information, while size is the only visual variable that we can use that has the quantitative property and therefore, the only one that should be used to represent ratios.
 
-The following are some of the most important ideas about this, referred to the aforementioned types of information.
+The following are some of the more important ideas about this, referred to the aforementioned types of information.
 
 
 \begin{itemize}
 	
-	\item \textbf{Nominal}. Nominal information is correctly represented using the visual variable shape. This information shows \emph{what} is found in the different locations of a map, and not \emph{how much} is found, and it is more related to base cartography than to thematic cartography. Using different symbols for point elements and line elements is a common and very effective solution. For the case of areal symbols, hue and texture are the most common solution.
+	\item \textbf{Nominal}. Nominal information is correctly represented using the visual variable shape. This information shows \emph{what} is found in the different locations of a map, and not \emph{how much} is found, and it is more related to base cartography than to thematic cartography. Using different symbols for point elements and line elements is a common and very effective solution. For the case of areal symbols, hue and texture are the most common solutions.
 
-	Alphanumeric information has similar properties, and the same ideas apply to it as well.
+	Alphanumeric information has similar properties, and the same ideas apply to it.
 	
 	\item \textbf{Ordinal}. Since values of the variable define an order, a visual variable with the ordered property is needed to correctly visualize this type of information
 	
-	\item \textbf{Interval and ratio}. Visual variables with the ordered property can be used in this case. However, size is a better choice in this case, since it is the only one that has the quantitative property.
+	\item \textbf{Interval and ratio}. Visual variables with the ordered property can be used in this case. However, size is a better choice, as it is the only one which has the quantitative property.
 
-	Values are normally grouped in classes, so the same value of the visual variable (same size of the symbols or same color value, for instance) is used for different values of the variable that we are visualizing. There are different strategies for this, which try to maximize the information that the map transmits. The most commons ones are \textbf{equal intervals, intervals using percentiles} or \textbf{natural intervals} (intervals that try to minimize the variance within each class).
+	Values are normally grouped into classes so the same value of the visual variable (same size of the symbols or same color value, for instance) is used for different values of the variable that we are visualizing. There are different strategies for this, which try to maximize the information that the map transmits. The most commons ones are \textbf{equal intervals, intervals using percentiles} or \textbf{natural intervals} (intervals that try to minimize the variance within each class).
 
-	Using one or another of these methods can have a noticeable effect in the visualization, as it is shown in figure  \ref{Fig:IntervalClasses}.
+	Using one or another of these methods can have a noticeable effect in the visualization, as is shown in figure  \ref{Fig:IntervalClasses}.
 
 	\begin{figure}[!hbt]
 	\centering
@@ -186,12 +184,12 @@ The following are some of the most important ideas about this, referred to the a
 \end{itemize}
 
 
-It is important to remark that, although levels of organization indicate increasing potential (that is, with a variable such as size or value we can convey all the information that can be conveyed with hue, since they have properties with a higher level), \textbf{it is not always better to use visual variables with a higher level of organization}, and it is not true that they will always be better than those with a lower one. For instance, using the visual variable value for a map with qualitative information (like using a ramp of different tones of blue for a map with soil type information) might not be a good idea, because it has the ordered property, and that might cause the map user to think that there is some hierarchy (that some soil types are <better'' than others), which is false.
+It is important to remark that, although levels of organization indicate increasing potential (that is, with a variable such as size or value we can convey all the information that can be conveyed with hue, since they have properties with a higher level), \textbf{it is not always better to use visual variables with a higher level of organization}, and it is not true that they will always be better than those with a lower one. For instance, using the visual variable value for a map with qualitative information (like using a ramp of different tones of blue for a map with soil type information) might not be a good idea, because it has the ordered property, and that might cause the map user to think that there is some hierarchy (that some soil types are ``better'' than others), which is false.
 
 
 \subsection{Map elements. Map composition}
 
-A map is not just the part of it that represents the geographical information, but a set of multiple elements, one of them being the one that contains the geographical information itself.
+A map is not just the part that represents the geographical information, but a set of multiple elements, for example, the one that contains the geographical information itself.
 
 A \textbf{correct layout of the map elements} is as important as a correct symbology, since these, like symbology itself, are designed to help the map user to better interpret the information that it contains.
 
@@ -205,19 +203,19 @@ The following are the main elements that can be used to compose a map (Figure \r
 \end{figure}
 
 \begin{itemize}
-\item \textbf{Name or title}. Needed to know the information that is contained in the map.
-	\item \textbf{Author}. Individual or organization that created the map.
+\item \textbf{Name or title}. Needed to know what information is contained in the map.
+	\item \textbf{Author}. Creator the map.
 	\item \textbf{Additional information about the map}. For instance, the coordinate reference system used or its creation data, among others.
 	\item \textbf{Data frame}. The frame which contains the rendered geographical information. It is the central element and will use most of the space of the map. 
-	\item \textbf{Graticule}. On top of the data frame, it locates the content of our map in the Earth's surface and provides a geographical reference. It also serves the same purpose as the scale, helping to estimate distances. It is usually added at all scales, but it is more relevant in the case of small scales.
-	\item \textbf{Legend}. When designing a map, we should try to use a symbology that is as expressive as possible. However, sometimes it is not possible to include all the information with just the symbology itself, and a legend is required. The legend has to be clear and easy to interpret as well. A legend that is too large or difficult to understand is probably telling us that the symbology that we have selected can be improved.
+	\item \textbf{Graticule}. On top of the data frame, it locates the content of the map on the Earth and provides a geographical reference. It serves the same purpose as the scale, helping to estimate distances. It is usually added at all scales, but it is more relevant in the case of small scales.
+	\item \textbf{Legend}. When designing a map, we should try to use a symbology that is as expressive as possible. However, sometimes it is not possible to include all the information with just the symbology itself and a legend is required. The legend has to be clear and easy to interpret as well. A legend that is too large or difficult to understand is probably telling us that the symbology that we have selected can be improved.
 	
-	The legend and the data frame form a single unit, and should be together (legend inside the data frame), not separated in different frames or with boundaries between them, unless the data frame uses all the space of the map and it is not possible to visually separate both elements clearly.
+	The legend and the data frame form a single unit and should be together (legend inside the data frame), not separated in different frames or with boundaries between them, unless the data frame uses all the space of the map and it is not possible to visually separate both elements clearly.
 	
 
-	\item \textbf{North arrow}. Although by convention maps have a south-north orientation (north is at the top of the map), it does not always have to be like that. An arrow pointing north or a compass rose will help to clarify the map orientation.
+	\item \textbf{North arrow}. Although by convention maps have a south-north orientation (north is at the top of the map), it does not always have to be that way. An arrow pointing north or a compass rose will help to clarify the map orientation.
 	\item \textbf{Scale}. Map scale should be displayed both numerically and graphically (scale bar).
-	\item \textbf{Locator map}. It allows to locate the map in a larger geographical context. It is specially relevant in the case of map series, to show the relation between the current map and the rest of them, acting as an index map.
+	\item \textbf{Locator map}. Allows the user to locate the map in a larger geographical context. It is especially relevant in the case of map series, to show the relation between the current map and the rest of them, acting as an index map.
 	\item \textbf{Detail maps}. Used when there is an area that we can show with a greater level of detail. The area that it corresponds to should be indicated as well in the main map. 
 \end{itemize}
 
@@ -225,7 +223,7 @@ It is also important that the map \textbf{emphasizes its purpose}, giving more i
 
 \section{Types of thematic maps}
 
-There are many different ways of visualizing a given variable in a map. Several of them can be combined in a single map, specially if it includes more than one variable. In this case, the combination should strive to obtain the maximum possible clarity for all of them, so the rendering of a variable does not shadow the remaining ones.
+There are many different ways of visualizing a given variable in a map. Several of them can be combined in a single map, especially if it includes more than one variable. In this case, the combination should strive to obtain the maximum possible clarity for all of them so the rendering of a variable does not overshadow the remaining ones.
 
 In this section, we will describe the following types of thematic maps: proportional symbol maps, point density maps, isoline maps and choropleth maps.
 

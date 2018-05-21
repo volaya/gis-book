@@ -147,18 +147,18 @@ The concept of \textbf{fractal} has a direct link with this.
 \subsection{The Modifiable Areal Unit Problem}
 
 
-Many of the variables with which we work in a GIS \textbf{cannot be measured at a single point}, and they must be \textbf{aggregated for a given area around that point}. Examples of that are the percentage of the population within a given age range, or the population density. 
+Many of the variables with which we work in GIS \textbf{cannot be measured at a single point}, and they must be \textbf{aggregated for a given area around that point}. Examples of that are the percentage of the population within a given age range or the population density. 
 
-Areas defined to work with these variables are \textbf{essentially arbitrary}, such as countries, counties, districts, etc., and they are defined without taking into account any criteria related to spatial analysis. Using different areas (different units for computing the values of the variable) will yield different results.
+Areas defined to work with these variables are \textbf{essentially arbitrary} such as countries, counties, districts, etc., and they are defined without taking into account any criteria related to spatial analysis. Using different areas (different units for computing the values of the variable) will yield different results.
 
-This problem is known as the \textbf{Modifiable Areal Unit Problem} (MAUP). Solving or reducing its effect is complex, and no solution exists that can be applied in all cases, but whenever we work with this type of geographical data, it is important to keep in mind that there will be a source of statistical bias that cannot be neglected.
+This problem is known as the \textbf{Modifiable Areal Unit Problem} (MAUP). Solving or reducing its effect is complex and no solution exists that can be applied in all cases, but whenever we work with this type of geographical data, it is important to keep in mind that there will be a source of statistical bias that cannot be neglected.
 
 Another problem related with the MAUP is the so-called \textbf{ecological fallacy}, which result from (wrongly) assuming that the values computed for a given area can be assigned to the individuals of the population within that area. This would only be true in the case of complete homogeneity.
 
 
 \subsection{Spatial autocorrelation} 
 
-\textbf{Spatial autocorrelation} is the \textbf{correlation of a variable with itself}, in such a way that values of the variable at any point are correlated with values of that same variable in close-by points. For instance, in the case of temperature, points close to a heat source will have a higher temperature that those far from it or closer to a cold spot. If we study the distribution of an infectious disease, reported cases are likely to appear grouped, and a large number of them normally cause the nearby populations to also be largely affected by the disease.
+\textbf{Spatial autocorrelation} is the \textbf{correlation of a variable with itself}, in such a way that values of the variable at any point are correlated with values of that same variable in nearby points. For instance, in the case of temperature, points close to a heat source will have a higher temperature that those far from it or closer to a cold spot. If we study the distribution of an infectious disease, reported cases are likely to appear grouped and a large number of them normally cause the nearby populations to also be significantly affected by the disease.
 
 Another way of expressing this is using the well-known \textbf{Tobler's First Law of Geography}, which states that ``everything is related to everything else, but near things are more related than distant things''.
 
@@ -173,12 +173,11 @@ Figure \ref{Fig:Autocorrelation} shows three raster layers which demonstrate the
 \label{Fig:Autocorrelation} 
 \end{figure}
 
-The existence of spatial autocorrelation has many important consequences.
+The existence of spatial autocorrelation has several important consequences.
 
 First, many of the most common statistical analyses assume the independence of the variable that is being studied. Since there is a dependency on the spatial component, this component has to be introduced as another variable to consider, in order to ensure that results are sound.
 
-
-Something similar happens when data have a \textbf{spatial trend}(values of a variable depend on the position, like, for instance, temperature values, which show a clear trend as latitude changes), since that also invalidates the assumption that data are independent.
+Something similar happens when data have a \textbf{spatial trend}(values of a variable depend on the position; for instance, temperature values, which show a clear trend as latitude changes), since that also invalidates the assumption that data are independent.
 
 If positive correlation exists, \textbf{statistical inference is less effective}. The same number of observations contain less information about the phenomena represented by the variable.
 
@@ -187,13 +186,13 @@ The consequences of spatial autocorrelation, however, are not only negative. If 
 
 \subsection{Structure}
 
-Both the data itself and the properties of the phenomenon they represent (such as the aforementioned spatial correlation) have some sort of structure. This structure can have a relevant effect on the analysis results, and should be taken into account.
+Both the data itself and the properties of the phenomenon they represent (such as the aforementioned spatial correlation) have some sort of structure. This structure can have a relevant effect on the analysis results and should be taken into account.
 
 The two basic statistical concepts related to the spatial structure of a process are \textbf{stationarity} and \textbf{isotropy}. Stationarity indicates that the process is \textbf{translation-invariant}. That is, its properties are constant across the whole space and there is no spatial trend. Isotropy means that the process is \textbf{rotation-invariant}, and happens in the same way in all directions.
 
 \subsection{Border effects}
 
-The areas in which we perform spatial analysis \textbf{have boundaries}. These might be artificial ---for instance, the limit of the aerial photograph we are working with---, or natural ---if we study a forest that is close to a lake, the shore will be the limit of the forest. Boundaries \textbf{distort the result of analysis}, specially for those variables that have to be aggregated (density, etc., as we saw for the case of the MAUP)
+The areas in which we perform spatial analysis \textbf{have boundaries}. These might be artificial, for instance, the limit of the aerial photograph we are working with, or natural. If we study a forest that is close to a lake, the shore will be the limit of the forest. Boundaries \textbf{distort the result of analysis}, specially for those variables that have to be aggregated (density, etc., as we saw for the case of the MAUP)
 
 In some cases, the border effect might manifest itself only for those point close to the border. In others, however, \textbf{all the points related or somehow connected to the border} might be affected, regardless of the distance to it.
 
