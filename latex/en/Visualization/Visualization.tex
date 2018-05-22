@@ -230,7 +230,7 @@ In this section, we will describe the following types of thematic maps: proporti
 
 \subsection{Proportional symbol maps}
 
-A proportional symbol map represents \textbf{quantitative variables} using symbols whose size \textbf{is proportional to the value} of the variable. That is, it uses the visual variable size (the only one with the quantitative property), to transmit the value of the variable being represented. If the symbol used is linear (such as a bar), its length is used to scale the values to render. If it is areal, area is used. That means that, in case of using circles, a value three times larger than a reference one will not be rendered with a circle with a radius three times longer, but with a circle with an area three times the area of the reference circle.
+A proportional symbol map represents \textbf{quantitative variables} using symbols whose sizes \textbf{are proportional to the value} of the variable. That is, the map uses the visual variable size (the only one with the quantitative property) to transmit the value of the variable being represented. If the symbol used is linear (such as a bar), its length is used to scale the values to render. If it is areal, area is used. That means that, in case of using circles, a value three times larger than a reference one will not be rendered with a circle with a radius three times longer, but with a circle with an area three times the area of the reference circle.
 
 Symbol scaling can be done in a continuous way, but it is usually more convenient to use a discrete approach, grouping values in classes and assigning a single size for all values in each class, usually the size that corresponds to the center value of the class. 
 
@@ -246,17 +246,17 @@ To avoid problems when perceiving the size of each symbol, it is important to sh
 
 \subsection{Point density maps}
 
-Point density maps are particularly suitable for countable variables such as population or crop yield. These quantities are represented using \textbf{repeated points}, whose number is proportional to the quantity itself. Each point represents a unitary value, and all the points within an area add up to the total value of the variable in it. All points have the same size and shape, unlike what we saw in the case of proportional symbols.
+Point density maps are particularly suitable for countable variables such as population or crop yield. These quantities are represented using \textbf{repeated points} whose number is proportional to the quantity itself. Each point represents a unitary value and all the points within an area add up to the total value of the variable in it. All points have the same size and shape, unlike what we saw in the case of proportional symbols.
 
 When creating a point density map, three parameters have to be defined: the \textbf{value of each point} (that is, how many units of the variable the point represents), its \textbf{size} and its \textbf{position}.
 
 The value of each point should be defined \textbf{based on the range of values} covered by the variable, so points in the resulting map are not too scarce or too numerous. This value will be included in the legend, usually in text form, writing, for instance, that ``a point represents 1000 inhabitants''.
 
-Size must guarantee that points are visible and at the same time they do not take too much space in the map. The \textbf{optimal size is linked to the selected value of each point}, and both parameters should be considered together, so as to find the best combination of them. 
+Size must guarantee that points are visible and at the same time they do not take too much space in the map. The \textbf{optimal size is linked to the selected value of each point} and both parameters should be considered together, so as to find the best combination of them. 
 
 The position of the points is of great importance, as it should not convey wrong information or cause the user to misinterpret its meaning. If we do not have any additional information, points should be regularly distributed, covering the whole area that correspond to the variable value. If, on the other hand, we have more information about the distribution of the variable, we should use it to give the points a more realistic position. For instance, if we are creating a density map with population values for regions, there should be more points in the surroundings of the cities within the region, since there are more inhabitants in those areas.
 
-Another thing to consider is the meaning of the variable and whether or not the phenomenon that it represent can appear at a given point. For instance, if the variable that we are representing is the number of water birds know to nest in each region, it will be wrong to place the density points in forest areas or city ones, since it might be inferred that birds are found there, which is not true.
+Another thing to consider is the meaning of the variable and whether or not the phenomenon that it represent can appear at a given point. For instance, if the variable that we are representing is the number of water birds know to nest in each region, it will be wrong to place the density points in forest areas or city ones, since it might be inferred that birds are found there, which is likely not true.
 
 Image \ref{Fig:MapPoints} shows an example of a point density map.
 
@@ -269,15 +269,15 @@ Image \ref{Fig:MapPoints} shows an example of a point density map.
 \end{figure}
 
 
-\subsection{Isoline map}
+\subsection{Isoline maps}
 
-Isoline map are commonly used to represent \textbf{continuous variables}. Containing only lines, they mix well with other types of maps without being  obtrusive.
+Isoline maps are commonly used to represent \textbf{continuous variables}. Containing only lines, they mix well with other types of maps without being  obtrusive.
 
-An isoline map is formed by a set of lines, each of them connecting points that have the same value of the variable being represented. These lines cannot cross with each other, since a point cannot have two values at the same time. The most common use of isolines are contour lines in topographic maps, which represent points with the same elevation.
+An isoline map is formed by a set of lines, each of them connecting points that have the same value of the variable being represented. These lines cannot cross with each other, since a point cannot have two values at the same time. The most common use of isolines are contour lines in topographic maps which represent points with the same elevation.
 
-Isolines are defined by their \textbf{equidistance}, which indicate the difference between the values represented by any two contiguous isolines. A lower equidistance means more isolines and a denser map.
+Isolines are defined by their \textbf{equidistance} which indicate the difference between the values represented by any two contiguous isolines. A lower equidistance means more isolines and a denser map.
 
-Size is the only visual variable used with isolines. It is used to highlight those that represent a value that is multiple of a given number, to make the map easier to read. These lines are know as \textbf{index lines}.
+Size is the only visual variable used with isolines. It is used to highlight those that represent a value that is a multiple of a given number, to make the map easier to read. These lines are know as \textbf{index lines}.
 
 
 \begin{figure}[!hbt]
@@ -300,7 +300,7 @@ Choropleth maps are a very common type of map in GIS. For instance, maps in figu
 
 In a choropleth map, there is a set of areas, each of them representing a single value of a variable. This value applies to the whole area, and is normally represented using hue applied to the areal symbol.
 
-Choropleth maps have some  important limitations. One of them is the \textbf{sharp change in the boundaries between areas}, which might be interpreted as a abrupt change in the variable value in that boundary. This could hide the continuity of the variable distribution, in case it exists. Another problem is the \textbf{homogeneity within each area}, which might lead to thinking that the variable has a uniform distribution, even if that is false.
+Choropleth maps have some  important limitations. One of them is the \textbf{sharp change in the boundaries between areas}, which might be interpreted as an abrupt change in the variable value in that boundary. This could hide the continuity of the variable distribution, in case it exists. Another problem is the \textbf{homogeneity within each area}, which might lead to thinking that the variable has a uniform distribution, even if that is false.
 
 In many cases, and in order to correctly transmit the information contained in the variable, its values have to be \textbf{normalized using the area of each region}.
 
@@ -311,19 +311,19 @@ Now that we know the basic ideas about visualization and how they are applied to
 
 \subsection{Combining multiple layers}
 
-In most cases, visualizing a layer alone by itself is not the best way of visualizing the information it contains. In a map, we normally find several types of information, and that is not just for the sake of space, but because it helps the map user to understand and interpret the main information. For instance, contour lines help to understand the meaning of rivers and lakes, providing a valuable context.
+In most cases, visualizing a layer alone is not the best way of visualizing the information it contains. In a map, we normally find several types of information, and that is not just for the sake of space but because it helps the map user to understand and interpret the main information. For instance, contour lines help to understand the shapes of rivers and lakes, providing a valuable context.
 
-When combining layers, we should try to create a synergy between them, so they complement each other. This is mostly done by \textbf{correctly ordering the layers} and using \textbf{a symbology for each of them that does not interfere with the others}.
+When combining layers, we should try to create a synergy between them so they complement each other. This is mostly done by \textbf{correctly ordering the layers} and using \textbf{a symbology for each of them that does not interfere with the others}.
 
-When two layers have information for the same location, only the information of the layer on top will be seen. Layer ordering should maximize the information that is seen in the map, and prioritize the most important layers over those that contains secondary information.
+When two layers have information for the same location, only the information of the layer on top will be seen. Layer ordering should maximize the information seen in the map and prioritize the most important layers over those that contains secondary information.
 
 We know that raster layers fill the space and contain values in all of their cells (pixels in the case of an image). For this reason, they will cover whatever is underneath, and is not a good idea to place them at the top of the rendering order. Instead, they should be considered as \textbf{base layers on top of which the remaining layers are placed}.
 
-With a similar reasoning, we can define the best way to order vector layers, placing polygon ones first, then line ones, and then point ones at the top of the rendering order.
+With a similar reasoning, we can define the best way to order vector layers, placing polygons first, then lines, and then points at the top of the rendering order.
 
-Sometimes, the rendering order \textbf{might be imposed by the meaning of layers}. For instance, if we are creating a map with a layer containing streams and another one containing roads, this last one should go on top of the first one, since roads usually pass over streams and not the other way round.
+Sometimes, the rendering order \textbf{might be imposed by the meaning of layers}. For instance, if we are creating a map with a layer containing streams and another one containing roads, this last one should go on top of the first, since roads usually pass over streams and not the other way round.
 
-A common functionality that most GIS have is the use of \textbf{transparency} for layer. It can be applied to both raster and vector layers. Figure \ref{Fig:Transparency} was created using this technique. The polygon that defines the boundary of the watershed has a semi-transparent fill, which allows to see the shaded relief layer underneath. The result is a map in which the hydrogical meaning of the watershed is much clearer and easy to understand.
+A common functionality that most GIS have is the use of \textbf{transparency} for layers. It can be applied to both raster and vector layers. Figure \ref{Fig:Transparency} was created using this technique. The polygon that defines the boundary of the watershed has a semi-transparent fill, which allows to see the shaded relief layer underneath. The result is a map in which the hydrogical meaning of the watershed is much clearer and easy to understand.
 
 \begin{figure}[!hbt]
 \centering
@@ -339,13 +339,13 @@ If a variable is divided in many \textbf{separate layers} (horizontal division),
 
 \subsection{Particularities of on-screen rendering}
 
-Apart from the ideas that are applied to printed maps, additional ones must be taken into account when the visualization takes place instead on a computer screen. A printed map should not be designed in the same way as a map that is meant to be rendered on the screen.
+Apart from the ideas that are applied to printed maps, additional ones must be taken into account when the visualization occurs instead on a computer screen. A printed map should not be designed in the same way as a map that is meant to be rendered on the screen.
 
-The main elements to consider are the \textbf{low resolution of the screen} when compared to a printing device, and the \textbf{interactivity} of the visualization itself.
+The main elements to consider are the \textbf{low resolution of the screen} when compared to a printing device and the \textbf{interactivity} of the visualization itself.
 
 When creating a printed map, resolution is not a problem, since printing devices offer a level of detail that goes beyond what the cartographer might need. However, screen resolution is much lower and certain elements might not be rendered with enough clarity. Although these elements can be used in printed maps, they should be replaced for on-screen maps. Among these problematic element we find \textbf{fonts with ornaments} such as shades, \textbf{fonts with serifs} (small lines attached to the end of the stroke to increase readability) or \textbf{texture fills of small size}.
 
-Regarding interactivity, we must take into account that, unlike a printed map, an on-screen map is not a static element, but a dynamic one. That does not mean that the map changes by itself, but instead that the user can alter it using the tools that we have already seen (zoom, pan, etc.)
+Regarding interactivity, we must take into account that, unlike a printed map, an on-screen map is not a static element, but a dynamic one. That does not mean that the map changes by itself but instead that the user can alter it using the tools that we have already seen (zoom, pan, etc.)
 
 Since the scale can be changed by the user, that might cause problem with certain elements such as symbols and text labels. If all elements are scaled proportionally, reducing the scale will make the labels too small and impossible to read. On the other hand, if the scale is increased, labels might be too large, as can be seen in figure \ref{Fig:ProblemsChangeScale}. 
 
@@ -366,6 +366,6 @@ A solution to that is to use an \textbf{absolute size} for those elements, so th
 \label{Fig:SaturatedMap} 
 \end{figure}
 
-The ability of GIS to render layers at different scales can also cause \textbf{performance issues}. At low scales, the number of elements to be rendered can be too large, and painting them on the screen might take too much time. To avoid these problems, a \textbf{multiscalar approach} can be adopted, in which, depending on the scale, different layers and elements are rendered. For the same information, different versions with different levels of detail can be used, each of them being used only at a given scale range.
+The ability of GIS to render layers at different scales can also cause \textbf{performance issues}. At low scales, the number of elements to be rendered can be too large and painting them on the screen might take too much time. To avoid these problems, a \textbf{multiscalar approach} can be adopted, in which, depending on the scale, different layers and elements are rendered. For the same information, different versions with different levels of detail can be used, each of them being used only at a given scale range.
 
 \pagestyle{empty}
